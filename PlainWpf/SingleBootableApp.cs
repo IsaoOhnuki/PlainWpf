@@ -12,6 +12,7 @@ namespace PlainWpf
     /// http://kisuke0303.sakura.ne.jp/blog/?p=182 WPF で二重起動を防止する
     /// 
     /// スタートアップクラスAppの基底クラスApplicationと差し替えて使う
+    /// xamlの基底クラスも差し替える
     /// </summary>
     public class SingleBootableApp : Application
     {

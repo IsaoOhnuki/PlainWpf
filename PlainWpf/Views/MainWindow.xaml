@@ -1,14 +1,30 @@
-﻿<NavigationWindow x:Class="PlainWpf.Views.MainWindow"
+﻿<Window x:Class="PlainWpf.Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlainWpf.Views"
         xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
+        xmlns:Views="clr-namespace:PlainWpf.Views"
+        xmlns:MvvmHelper="clr-namespace:MvvmHelper"
         mc:Ignorable="d"
-        ShowsNavigationUI="False"
+        MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
+        MvvmHelper:NavigationServiceEx.Startup="{x:Type Views:SubPage1}"
         Title="{Binding Title}" Height="350" Width="525">
-    <NavigationWindow.DataContext>
+    <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
-    </NavigationWindow.DataContext>
-</NavigationWindow>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <ContentControl x:Name="MainContent" Grid.Column="1"/>
+        <Grid x:Name="LeftContent" Grid.Column="0">
+            <StackPanel Orientation="Vertical">
+                <Button Content="SubPage1" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage2" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

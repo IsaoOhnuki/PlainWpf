@@ -1,5 +1,4 @@
-﻿using PlainWpf.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +16,11 @@ using System.Windows.Shapes;
 namespace PlainWpf.Views
 {
     /// <summary>
-    /// MainWindow.xaml の相互作用ロジック
+    /// SubPage1.xaml の相互作用ロジック
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SubPage2 : UserControl
     {
-        public MainWindow()
+        public SubPage2()
         {
             InitializeComponent();
         }

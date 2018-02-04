@@ -48,7 +48,10 @@ namespace MvvmHelper
         /// <returns></returns>
         public bool Navigate(Type viewType)
         {
-            if (viewType == null) { return false; }
+            if (viewType == null)
+            {
+                return false;
+            }
 
             var view = Activator.CreateInstance(viewType) as FrameworkElement;
             return this.Navigate(view);
@@ -78,8 +81,11 @@ namespace MvvmHelper
             obj.SetValue(TargetProperty, value);
         }
         // Using a DependencyProperty as the backing store for Target.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty TargetProperty =
-            DependencyProperty.RegisterAttached("Target", typeof(ContentControl), typeof(NavigationServiceEx), new PropertyMetadata(null, OnTargetChanged));
+        public static readonly DependencyProperty TargetProperty = DependencyProperty.RegisterAttached(
+            "Target",
+            typeof(ContentControl),
+            typeof(NavigationServiceEx),
+            new PropertyMetadata(null, OnTargetChanged));
 
         private static void OnTargetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -117,8 +123,11 @@ namespace MvvmHelper
             obj.SetValue(StartupProperty, value);
         }
         // Using a DependencyProperty as the backing store for Startup.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty StartupProperty =
-            DependencyProperty.RegisterAttached("Startup", typeof(Type), typeof(NavigationServiceEx), new PropertyMetadata(null, OnStartupChanged));
+        public static readonly DependencyProperty StartupProperty = DependencyProperty.RegisterAttached(
+            "Startup",
+            typeof(Type),
+            typeof(NavigationServiceEx),
+            new PropertyMetadata(null, OnStartupChanged));
 
         private static void OnStartupChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
@@ -145,8 +154,11 @@ namespace MvvmHelper
             obj.SetValue(NavigatorProperty, value);
         }
         // Using a DependencyProperty as the backing store for Navigator.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty NavigatorProperty =
-            DependencyProperty.RegisterAttached("Navigator", typeof(NavigationServiceEx), typeof(NavigationServiceEx), new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
+        public static readonly DependencyProperty NavigatorProperty = DependencyProperty.RegisterAttached(
+            "Navigator",
+            typeof(NavigationServiceEx),
+            typeof(NavigationServiceEx),
+            new FrameworkPropertyMetadata(null, FrameworkPropertyMetadataOptions.Inherits));
         #endregion
     }
 

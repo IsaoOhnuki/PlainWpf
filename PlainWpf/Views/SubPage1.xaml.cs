@@ -18,7 +18,7 @@ namespace PlainWpf.Views
     /// <summary>
     /// SubPage1.xaml の相互作用ロジック
     /// </summary>
-    public partial class SubPage1 : Page
+    public partial class SubPage1 : UserControl
     {
         public SubPage1()
         {

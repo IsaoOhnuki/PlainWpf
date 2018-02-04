@@ -59,6 +59,11 @@
     <Compile Include="MvvmHelper\DelegateCommand.cs" />
     <Compile Include="MvvmHelper\NavigationServiceEx.cs" />
     <Compile Include="SingleBootableApp.cs" />
+    <Compile Include="ViewModels\SabPage2ViewModel.cs" />
+    <Compile Include="ViewModels\SabPage1ViewModel.cs" />
+    <Compile Include="Views\SubPage2.xaml.cs">
+      <DependentUpon>SubPage2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SubPage1.xaml.cs">
       <DependentUpon>SubPage1.xaml</DependentUpon>
     </Compile>
@@ -75,6 +80,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\SubPage2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\SubPage1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -8,22 +8,89 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       >
+    <UserControl.Resources>
+        <ViewModels:OrientationHorizontalToVisibilityConverter x:Key="HorizontalToVisibilityConverter"/>
+        <ViewModels:OrientationVerticalToVisibilityConverter x:Key="VerticalToVisibilityConverter"/>
+    </UserControl.Resources>
     <UserControl.DataContext>
-        <ViewModels:SabPage1ViewModel/>
+        <ViewModels:SabPage2ViewModel/>
     </UserControl.DataContext>
-    <Grid RenderTransformOrigin="0.5,0.5">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="40"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="40"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="40"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="40"/>
-        </Grid.RowDefinitions>
-        <Button Content="3" Grid.Column="0" Grid.Row="0"/>
-        <Button Content="4" Grid.Column="2" Grid.Row="0"/>
-        <Button Content="5" Grid.Column="0" Grid.Row="2"/>
+    <Grid>
+        <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource HorizontalToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Button Content="A" Grid.Column="0" Grid.Row="0"/>
+            <Button Content="B" Grid.Column="2" Grid.Row="0"/>
+            <Button Content="C" Grid.Column="0" Grid.Row="2"/>
+            <Button Content="X" Grid.Column="2" Grid.Row="2" Command="{Binding OrientationChangeCommand}"/>
+        </Grid>
+        <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource VerticalToVisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Button Grid.Column="0" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+                <TextBlock Text="A" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Button>
+            <Button Grid.Column="0" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
+                <TextBlock Text="B" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Button>
+            <Button Grid.Column="2" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
+                <TextBlock Text="C" HorizontalAlignment="Center" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </Button>
+            <Button Grid.Column="2" Grid.Row="0" Command="{Binding OrientationChangeCommand}">
+                <Label Content="X" RenderTransformOrigin="0.5,0.5">
+                    <Label.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="270"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Label.RenderTransform>
+                </Label>
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>

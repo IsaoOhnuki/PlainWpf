@@ -10,12 +10,13 @@ using System.Windows.Input;
 
 namespace MvvmHelper
 {
+    /// <summary>
+    /// http://sourcechord.hatenablog.com/entry/2016/02/01/003758 WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた
+    /// </summary>
     public class NavigationServiceEx : DependencyObject
     {
         /// <summary>
         /// ページナビゲーションを行う領域となるContentControlを保持するプロパティ
-        /// 
-        /// http://sourcechord.hatenablog.com/entry/2016/02/01/003758 WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた
         /// </summary>
         public ContentControl Content
         {

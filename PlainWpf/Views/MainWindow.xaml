@@ -18,11 +18,13 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <ContentControl x:Name="MainContent" Grid.Column="1"/>
+        <ContentControl x:Name="RightContent" Grid.Column="2"/>
         <Grid x:Name="LeftContent" Grid.Column="0">
             <StackPanel Orientation="Vertical">
-                <Button Content="SubPage1" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage1" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
                 <Button Content="SubPage2" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
             </StackPanel>
         </Grid>

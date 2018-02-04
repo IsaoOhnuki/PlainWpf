@@ -25,7 +25,7 @@ namespace MvvmHelper
 
         /// <summary>
         /// 検証後呼び出す
-        /// errorMessageがnullまたは空の文字列でエラーなし
+        /// errorMessageがnullまたは空の文字列でエラーなしまたはエラー状態解除、空白文字列はエラー状態
         /// </summary>
         /// <param name="errorMessage"></param>
         /// <param name="propertyName"></param>

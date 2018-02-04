@@ -24,7 +24,7 @@ namespace MvvmHelper
         public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
 
         /// <summary>
-        /// 検証後呼び出す
+        /// プロパティの検証後に呼び出す
         /// errorMessageがnullまたは空の文字列でエラーなしまたはエラー状態解除、空白文字列はエラー状態
         /// </summary>
         /// <param name="errorMessage"></param>
@@ -34,12 +34,14 @@ namespace MvvmHelper
             if (!string.IsNullOrEmpty(errorMessage))
             {
                 hasErrors[propertyName] = errorMessage;
-                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
             }
             else if (hasErrors.Any(x => x.Key == propertyName))
             {
                 hasErrors.Remove(propertyName);
-                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+            }
+            foreach (var hasError in hasErrors)
+            {
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(hasError.Key));
             }
         }
 

@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="MvvmHelper\BindableBase.cs" />
+    <Compile Include="MvvmHelper\DelegateCommand.cs" />
+    <Compile Include="MvvmHelper\NavigationServiceEx.cs" />
     <Compile Include="SingleBootableApp.cs" />
     <Compile Include="Views\SubPage1.xaml.cs">
       <DependentUpon>SubPage1.xaml</DependentUpon>
@@ -102,6 +105,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

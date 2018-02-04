@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,18 +9,52 @@ using System.Threading.Tasks;
 
 namespace MvvmHelper
 {
-    abstract public class BindableBase : INotifyPropertyChanged
+    abstract public class BindableBase : INotifyPropertyChanged, INotifyDataErrorInfo
     {
         protected BindableBase() { }
 
+        #region INotifyDataErrorInfo
+        /// <summary>
+        /// 検証エラーがあるプロパティ名と検証エラーメッセージのリスト
+        /// </summary>
+        private Dictionary<string, string> hasErrors = new Dictionary<string, string>();
+
+        public bool HasErrors { get { return hasErrors.Count > 0; } }
+
+        public event EventHandler<DataErrorsChangedEventArgs> ErrorsChanged;
+
+        /// <summary>
+        /// 検証後呼び出す
+        /// errorMessageがnullまたは空の文字列でエラーなし
+        /// </summary>
+        /// <param name="errorMessage"></param>
+        /// <param name="propertyName"></param>
+        protected virtual void RaiseErrorsChanged(string errorMessage, [CallerMemberName] string propertyName = null)
+        {
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                hasErrors[propertyName] = errorMessage;
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+            }
+            else if (hasErrors.Any(x => x.Key == propertyName))
+            {
+                hasErrors.Remove(propertyName);
+                ErrorsChanged?.Invoke(this, new DataErrorsChangedEventArgs(propertyName));
+            }
+        }
+
+        public IEnumerable GetErrors(string propertyName)
+        {
+            return hasErrors[propertyName];
+        }
+        #endregion
+
+        #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
+
         protected virtual void RaisePropertyChanged([CallerMemberName] string propertyName = null)
         {
-            var handler = PropertyChanged;
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] String propertyName = null)
@@ -30,5 +65,6 @@ namespace MvvmHelper
             this.RaisePropertyChanged(propertyName);
             return true;
         }
+        #endregion
     }
 }

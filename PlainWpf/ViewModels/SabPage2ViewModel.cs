@@ -37,6 +37,19 @@ namespace PlainWpf.ViewModels
         }
     }
 
+    public class OrientationToBooleanConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return ((Orientation)value) == Orientation.Vertical;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            return (bool)value ? Orientation.Vertical : Orientation.Horizontal;
+        }
+    }
+
     public class OrientationHorizontalToVisibilityConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

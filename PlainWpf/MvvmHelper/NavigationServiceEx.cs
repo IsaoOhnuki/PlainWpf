@@ -51,6 +51,7 @@ namespace MvvmHelper
         {
             if (viewType == null)
             {
+                this.Navigate((FrameworkElement)null);
                 return false;
             }
 

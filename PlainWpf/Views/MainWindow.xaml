@@ -9,7 +9,7 @@
         xmlns:MvvmHelper="clr-namespace:MvvmHelper"
         mc:Ignorable="d"
         MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
-        MvvmHelper:NavigationServiceEx.Startup="{x:Type Views:SubPage1}"
+        MvvmHelper:NavigationServiceEx.Startup="{x:Type Views:SubPage2}"
         Title="{Binding Title}" Height="350" Width="525">
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
@@ -18,13 +18,21 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
+        <!--<Grid.Style>
+            <Style TargetType="{x:Type ColumnDefinition}">
+                <Style.Triggers>
+                    <DataTrigger />
+                </Style.Triggers>
+            </Style>
+        </Grid.Style>-->
         <ContentControl x:Name="MainContent" Grid.Column="1"/>
-        <ContentControl x:Name="RightContent" Grid.Column="2"/>
+        <ContentControl x:Name="RightContent" Grid.Column="2" Width="Auto"/>
         <Grid x:Name="LeftContent" Grid.Column="0">
             <StackPanel Orientation="Vertical">
-                <Button Content="SubPage1" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage1-Show" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage1-Close" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
                 <Button Content="SubPage2" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
             </StackPanel>
         </Grid>

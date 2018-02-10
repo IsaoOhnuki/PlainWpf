@@ -232,7 +232,11 @@
               現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
             </summary>
         </member>
-        <!-- 正しくない形式の XML コメントがメンバー "T:Behaviours.FileDragBehaviour" で無視されました -->
+        <member name="T:Behaviours.FileDragBehaviour">
+            <summary>
+            ファイルのＤ＆Ｄを受け入れるビヘイビア
+            </summary>
+        </member>
         <member name="M:Behaviours.FileDragBehaviour.GetMultiSelect(System.Windows.DependencyObject)">
             <summary>
             複数ファイルドロップ可能添付プロパティのGetter
@@ -252,9 +256,25 @@
             複数ファイルドロップ可能添付プロパティ
             </summary>
         </member>
-        <!-- 正しくない形式の XML コメントがメンバー "M:Behaviours.FileDragBehaviour.GetDragFileExt(System.Windows.DependencyObject)" で無視されました -->
-        <!-- 正しくない形式の XML コメントがメンバー "M:Behaviours.FileDragBehaviour.SetDragFileExt(System.Windows.DependencyObject,System.String)" で無視されました -->
-        <!-- 正しくない形式の XML コメントがメンバー "F:Behaviours.FileDragBehaviour.DragFileExtProperty" で無視されました -->
+        <member name="M:Behaviours.FileDragBehaviour.GetDragFileExt(System.Windows.DependencyObject)">
+            <summary>
+            Ｄ＆Ｄ許可する拡張子をセットする添付プロパティのGetter
+            </summary>
+            <param name="obj"></param>
+            <returns>ドットからの拡張子、コロンセパレータで複数指定可、ワイルドカード指定可</returns>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.SetDragFileExt(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Ｄ＆Ｄ許可する拡張子をセットする添付プロパティのSetter
+            </summary>
+            <param name="obj"></param>
+            <param name="value">ドットからの拡張子、コロンセパレータで複数指定可、ワイルドカード指定可</param>
+        </member>
+        <member name="F:Behaviours.FileDragBehaviour.DragFileExtProperty">
+            <summary>
+            Ｄ＆Ｄ許可する拡張子をセットする添付プロパティ
+            </summary>
+        </member>
         <member name="F:Behaviours.FileDragBehaviour.FileExtRegex">
             <summary>
             DragFileExtの検証用正規表現
@@ -278,6 +298,20 @@
             <summary>
             ファイルがドロップされたときに呼び出されるコマンドの添付プロパティ
             </summary>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.Obj_Drop(System.Object,System.Windows.DragEventArgs)">
+            <summary>
+            ドロップ時のイベントハンドラ
+            </summary>
+            <param name="sender">ドロップ先のコントロール</param>
+            <param name="e">ドロップパラメータ</param>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.Obj_DragOver(System.Object,System.Windows.DragEventArgs)">
+            <summary>
+            ドラッグ時のイベントハンドラ
+            </summary>
+            <param name="sender">ドラッグ先のコントロール</param>
+            <param name="e">ドラッグパラメータ</param>
         </member>
         <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
             <summary>

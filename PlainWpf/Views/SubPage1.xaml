@@ -17,7 +17,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <Label Content="Label" Behaviours:FileDragBehaviour.DragFileExt=".csv:.lnk" Behaviours:FileDragBehaviour.MultiSelect="False" Behaviours:FileDragBehaviour.DropCommand="{Binding DragDropCommand}" Grid.Column="0" Background="HotPink" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-        <Label Content="Label" Behaviours:FileDragBehaviour.DragFileExt=".txt" Behaviours:FileDragBehaviour.MultiSelect="False" Behaviours:FileDragBehaviour.DropCommand="{Binding DragDropCommand}" Grid.Column="1"  Background="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Label" Behaviours:FileDragBehaviour.DragFileExt=".csv:.lnk" Behaviours:FileDragBehaviour.MultiSelect="True" Behaviours:FileDragBehaviour.DropCommand="{Binding DragDropCommand}" Grid.Column="0" Background="HotPink" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+        <Label Content="Label" Behaviours:FileDragBehaviour.DragFileExt=".txt" Behaviours:FileDragBehaviour.MultiSelect="True" Behaviours:FileDragBehaviour.DropCommand="{Binding DragDropCommand}" Grid.Column="1"  Background="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
     </Grid>
 </UserControl>

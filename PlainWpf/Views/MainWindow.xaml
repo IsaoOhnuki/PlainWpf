@@ -9,7 +9,7 @@
         xmlns:MvvmHelper="clr-namespace:MvvmHelper"
         mc:Ignorable="d"
         MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
-        MvvmHelper:NavigationServiceEx.Startup="{x:Type Views:SubPage2}"
+        MvvmHelper:NavigationServiceEx.Startup="{x:Type Views:SubPage1}"
         Title="{Binding Title}" Height="350" Width="525">
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
@@ -33,7 +33,7 @@
             <StackPanel Orientation="Vertical">
                 <Button Content="SubPage1-Show" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
                 <Button Content="SubPage1-Close" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
-                <Button Content="SubPage2" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
+                <Button Content="SubPage2" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
             </StackPanel>
         </Grid>
     </Grid>

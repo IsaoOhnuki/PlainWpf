@@ -232,5 +232,82 @@
               現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
             </summary>
         </member>
+        <!-- 正しくない形式の XML コメントがメンバー "T:Behaviours.FileDragBehaviour" で無視されました -->
+        <member name="M:Behaviours.FileDragBehaviour.GetMultiSelect(System.Windows.DependencyObject)">
+            <summary>
+            複数ファイルドロップ可能添付プロパティのGetter
+            </summary>
+            <param name="obj"></param>
+            <returns>True=複数可、False=一つのファイルのみ</returns>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.SetMultiSelect(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            複数ファイルドロップ可能添付プロパティのSetter
+            </summary>
+            <param name="obj"></param>
+            <param name="value">True=複数可、False=一つのファイルのみ</param>
+        </member>
+        <member name="F:Behaviours.FileDragBehaviour.MultiSelectProperty">
+            <summary>
+            複数ファイルドロップ可能添付プロパティ
+            </summary>
+        </member>
+        <!-- 正しくない形式の XML コメントがメンバー "M:Behaviours.FileDragBehaviour.GetDragFileExt(System.Windows.DependencyObject)" で無視されました -->
+        <!-- 正しくない形式の XML コメントがメンバー "M:Behaviours.FileDragBehaviour.SetDragFileExt(System.Windows.DependencyObject,System.String)" で無視されました -->
+        <!-- 正しくない形式の XML コメントがメンバー "F:Behaviours.FileDragBehaviour.DragFileExtProperty" で無視されました -->
+        <member name="F:Behaviours.FileDragBehaviour.FileExtRegex">
+            <summary>
+            DragFileExtの検証用正規表現
+            </summary>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.GetDropCommand(System.Windows.DependencyObject)">
+            <summary>
+            ファイルがドロップされたときに呼び出されるコマンドの添付プロパティのGetter
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.SetDropCommand(System.Windows.DependencyObject,System.Windows.Input.ICommand)">
+            <summary>
+            ファイルがドロップされたときに呼び出されるコマンドの添付プロパティのSetter
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Behaviours.FileDragBehaviour.DropCommandProperty">
+            <summary>
+            ファイルがドロップされたときに呼び出されるコマンドの添付プロパティ
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
     </members>
 </doc>

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace MvvmHelper
 {
     /// <summary>
-    /// ビューモデルの基底に使うベースクラス
+    /// ビューモデル等の基底に使うベースクラス
     /// </summary>
     /// <inherited name="INotifyPropertyChanged">プロパティ変更通知</inherited>
     /// <inherited name="INotifyDataErrorInfo">プロパティ検証エラー通知</inherited>
@@ -21,7 +21,7 @@ namespace MvvmHelper
         /// </summary>
         protected BindableBase() { }
 
-        #region INotifyDataErrorInfo
+        #region INotifyDataErrorInfo Implement
         /// <summary>
         /// 検証エラーがあるプロパティ名と検証エラーメッセージのリスト
         /// </summary>
@@ -66,17 +66,36 @@ namespace MvvmHelper
         }
 
         /// <summary>
+        /// プロパティの検証後にエラー状態なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
+        /// </summary>
+        /// <param name="errorMessage">エラーメッセージ、メッセージが空なら自動生成</param>
+        /// <param name="propertyName">エラー状態のプロパティ名</param>
+        public void SetError(string errorMessage, [CallerMemberName] string propertyName = null)
+        {
+            RaiseErrorsChanged(string.IsNullOrEmpty(errorMessage) ? "Error : PropertyName is " + propertyName : errorMessage);
+        }
+
+        /// <summary>
+        /// プロパティの検証後にエラー状態解除なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
+        /// </summary>
+        /// <param name="propertyName">エラー解除状態のプロパティ名</param>
+        public void ResetError([CallerMemberName] string propertyName = null)
+        {
+            RaiseErrorsChanged("");
+        }
+
+        /// <summary>
         /// エラー状態プロパティのエラーメッセージ
         /// </summary>
         /// <param name="propertyName">プロパティ名</param>
-        /// <returns>エラーメッセージ</returns>
+        /// <returns>指定したプロパティのエラーメッセージ</returns>
         public IEnumerable GetErrors(string propertyName)
         {
             return hasErrors[propertyName];
         }
         #endregion
 
-        #region INotifyPropertyChanged
+        #region INotifyPropertyChanged Implement
         /// <summary>
         /// 変更通知イベント
         /// </summary>
@@ -97,7 +116,7 @@ namespace MvvmHelper
         /// </summary>
         /// <typeparam name="T">プロパティフィールドの型</typeparam>
         /// <param name="storage">プロパティフィールドへの参照</param>
-        /// <param name="value">プロパティフィールドの代入値</param>
+        /// <param name="value">プロパティフィールドへの代入値</param>
         /// <param name="propertyName">プロパティ名</param>
         /// <returns>True=フィールド値が変更された,False=されなかった</returns>
         protected bool SetProperty<T>(ref T storage, T value, [CallerMemberName] String propertyName = null)

@@ -7,7 +7,7 @@
     <ProjectGuid>{A10D60E0-9458-4360-919F-612E557F9D92}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>PlainWpf</RootNamespace>
-    <AssemblyName>PlainWpf</AssemblyName>
+    <AssemblyName>XmlCommentFileReader</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>../PlainWpf.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -55,17 +56,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModels\CsXmlCommentReader.cs" />
     <Compile Include="MvvmHelper\BindableBase.cs" />
     <Compile Include="MvvmHelper\DelegateCommand.cs" />
     <Compile Include="MvvmHelper\NavigationServiceEx.cs" />
     <Compile Include="SingleBootableApp.cs" />
     <Compile Include="ViewModels\SabPage2ViewModel.cs" />
     <Compile Include="ViewModels\SabPage1ViewModel.cs" />
+    <Compile Include="ViewModels\XmlTreeViewModel.cs" />
     <Compile Include="Views\SubPage2.xaml.cs">
       <DependentUpon>SubPage2.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SubPage1.xaml.cs">
       <DependentUpon>SubPage1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\XmlTreeView.xaml.cs">
+      <DependentUpon>XmlTreeView.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -85,6 +91,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\SubPage1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\XmlTreeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,5 +128,6 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <Import Project="..\PlainUtility\PlainUtility.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

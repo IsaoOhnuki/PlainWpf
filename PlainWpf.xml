@@ -1,0 +1,431 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>XmlCommentFileReader</name>
+    </assembly>
+    <members>
+        <member name="T:PlainWpf.ViewModels.CsXmlCommentReader">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PlainWpf.ViewModels.CsXmlCommentReader.#ctor(System.String,System.Action{System.String},System.Action{System.String},System.Action{System.String,System.String},System.Action{System.String})">
+            <summary>
+            ToDo
+            </summary>
+            <param name="filePath"></param>
+            <param name="readElement"></param>
+            <param name="endElement"></param>
+            <param name="readAttribute"></param>
+            <param name="readText"></param>
+        </member>
+        <member name="M:PlainWpf.ViewModels.CsXmlCommentReader.Read(System.String)">
+            <summary>
+            ToDo
+            </summary>
+            <param name="filePath"></param>
+            <returns>非同期のTaskハンドラ</returns>
+        </member>
+        <member name="M:PlainWpf.ViewModels.CsXmlCommentReader.ReadXml">
+            <summary>
+            ToDo
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:PlainWpf.ViewModels.CsXmlCommentReaderException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PlainWpf.ViewModels.CsXmlCommentReaderException.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PlainWpf.ViewModels.XmlTreeViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:PlainWpf.ViewModels.XmlTreeViewModel.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PlainWpf.ViewModels.XmlTreeViewModel.TreeViewItems">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:PlainWpf.ViewModels.XmlTreeViewModel.DropFile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:PlainWpf.SingleBootableApp">
+            <summary>
+            2重起動防止アプリケーションクラス
+            http://kisuke0303.sakura.ne.jp/blog/?p=182 WPF で二重起動を防止する
+            http://www.geocities.jp/litorud/WPF.html#9 二重起動を防止し、起動中のウィンドウをアクティブにする
+            
+            スタートアップクラスAppの基底クラスApplicationと差し替えて使う
+            xamlの基底クラスも差し替える
+            </summary>
+        </member>
+        <member name="F:PlainWpf.SingleBootableApp.applicationId">
+            <summary>
+            実際はUUIDなどが良い。
+            </summary>
+        </member>
+        <member name="F:PlainWpf.SingleBootableApp.appName">
+            <summary>
+            コンストラクタでアプリケーション名を習得
+            </summary>
+        </member>
+        <member name="F:PlainWpf.SingleBootableApp.mutex">
+            <summary>
+            起動フラグ用ミューテックス
+            アプリケーション名使用
+            </summary>
+        </member>
+        <member name="M:PlainWpf.SingleBootableApp.DoubleBootCheckAndRegist">
+            <summary>
+            スタートアップ時のミューテックスのチェックと拾得
+            </summary>
+        </member>
+        <member name="M:PlainWpf.SingleBootableApp.DoubleBootRelease">
+            <summary>
+            終了時のミューテックスの解放
+            </summary>
+        </member>
+        <member name="T:PlainWpf.SingleBootableApp.IpcHandler">
+            <summary>
+            IPC用ハンドラ
+            </summary>
+        </member>
+        <member name="T:PlainWpf.Views.SubPage2">
+            <summary>
+            SubPage1.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            SubPage2
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.SubPage2.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PlainWpf.Views.SubPage1">
+            <summary>
+            SubPage1.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            SubPage1
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.SubPage1.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PlainWpf.Views.XmlTreeView">
+            <summary>
+            XmlTreeView.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            XmlTreeView
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.XmlTreeView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PlainWpf.Views.MainWindow">
+            <summary>
+            MainWindow.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            MainWindow
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.MainWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PlainWpf.App">
+            <summary>
+            App.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:PlainWpf.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:PlainWpf.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:PlainWpf.Properties.Resources">
+            <summary>
+              ローカライズされた文字列などを検索するための、厳密に型指定されたリソース クラスです。
+            </summary>
+        </member>
+        <member name="P:PlainWpf.Properties.Resources.ResourceManager">
+            <summary>
+              このクラスで使用されるキャッシュされた ResourceManager インスタンスを返します。
+            </summary>
+        </member>
+        <member name="P:PlainWpf.Properties.Resources.Culture">
+            <summary>
+              厳密に型指定されたこのリソース クラスを使用して、すべての検索リソースに対し、
+              現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
+            </summary>
+        </member>
+        <member name="T:MvvmHelper.BindableBase">
+            <summary>
+            ビューモデル等の基底に使うベースクラス
+            </summary>
+            <inherited name="INotifyPropertyChanged">プロパティ変更通知</inherited>
+            <inherited name="INotifyDataErrorInfo">プロパティ検証エラー通知</inherited>
+        </member>
+        <member name="M:MvvmHelper.BindableBase.#ctor">
+            <summary>
+            基底コンストラクタ
+            </summary>
+        </member>
+        <member name="F:MvvmHelper.BindableBase.hasErrors">
+            <summary>
+            検証エラーがあるプロパティ名と検証エラーメッセージのリスト
+            </summary>
+        </member>
+        <member name="P:MvvmHelper.BindableBase.HasErrors">
+            <summary>
+            検証エラー状態
+            </summary>
+            <override name="INotifyDataErrorInfo"></override>
+            <returns>True=エラーあり,False=エラーなし</returns>
+        </member>
+        <member name="E:MvvmHelper.BindableBase.ErrorsChanged">
+            <summary>
+            検証エラー通知イベント
+            </summary>
+            <override name="INotifyDataErrorInfo"></override>
+        </member>
+        <member name="M:MvvmHelper.BindableBase.RaiseErrorsChanged(System.String,System.String)">
+            <summary>
+            プロパティの検証後に呼び出す。検証エラー通知イベント起動メソッド
+            </summary>
+            <override name="INotifyPropertyChanged"></override>
+            <param name="errorMessage">nullまたは空の文字列でエラーなしまたはエラー状態解除、空白文字列または文字列はエラー状態メッセージ</param>
+            <param name="propertyName">エラー状態にあるプロパティ名</param>
+        </member>
+        <member name="M:MvvmHelper.BindableBase.SetError(System.String,System.String)">
+            <summary>
+            プロパティの検証後にエラー状態なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
+            </summary>
+            <param name="errorMessage">エラーメッセージ、メッセージが空なら自動生成</param>
+            <param name="propertyName">エラー状態のプロパティ名</param>
+        </member>
+        <member name="M:MvvmHelper.BindableBase.ResetError(System.String)">
+            <summary>
+            プロパティの検証後にエラー状態解除なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
+            </summary>
+            <param name="propertyName">エラー解除状態のプロパティ名</param>
+        </member>
+        <member name="M:MvvmHelper.BindableBase.GetErrors(System.String)">
+            <summary>
+            エラー状態プロパティのエラーメッセージ
+            </summary>
+            <param name="propertyName">プロパティ名</param>
+            <returns>指定したプロパティのエラーメッセージ</returns>
+        </member>
+        <member name="E:MvvmHelper.BindableBase.PropertyChanged">
+            <summary>
+            変更通知イベント
+            </summary>
+            <override name="INotifyPropertyChanged"></override>
+        </member>
+        <member name="M:MvvmHelper.BindableBase.RaisePropertyChanged(System.String)">
+            <summary>
+            変更通知イベント起動メソッド
+            </summary>
+            <param name="propertyName">変更通知するプロパティ名</param>
+        </member>
+        <member name="M:MvvmHelper.BindableBase.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            プロパティフィールド代入メソッド
+            </summary>
+            <typeparam name="T">プロパティフィールドの型</typeparam>
+            <param name="storage">プロパティフィールドへの参照</param>
+            <param name="value">プロパティフィールドへの代入値</param>
+            <param name="propertyName">プロパティ名</param>
+            <returns>True=フィールド値が変更された,False=されなかった</returns>
+        </member>
+        <member name="T:MvvmHelper.NavigationServiceEx">
+            <summary>
+            http://sourcechord.hatenablog.com/entry/2016/02/01/003758 WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた
+            </summary>
+        </member>
+        <member name="P:MvvmHelper.NavigationServiceEx.Content">
+            <summary>
+            ページナビゲーションを行う領域となるContentControlを保持するプロパティ
+            </summary>
+        </member>
+        <member name="M:MvvmHelper.NavigationServiceEx.Navigate(System.Windows.FrameworkElement)">
+            <summary>
+            view引数で指定されたインスタンスのページへとナビゲーションを行います。
+            </summary>
+            <param name="view"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MvvmHelper.NavigationServiceEx.Navigate(System.Type)">
+            <summary>
+            viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
+            </summary>
+            <param name="viewType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MvvmHelper.NavigationServiceEx.OnGoToPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            NavigationCommands.GoToPageコマンドに対する応答処理
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:MvvmHelper.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
+            <summary>
+            view引数で指定されたインスタンスのページへとナビゲーションを行います。
+            </summary>
+            <param name="element"></param>
+            <param name="view"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MvvmHelper.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Type)">
+            <summary>
+            viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
+            </summary>
+            <param name="element"></param>
+            <param name="viewType"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Behaviours.FileDragBehaviour">
+            <summary>
+            ファイルのＤ＆Ｄを受け入れるビヘイビア
+            </summary>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.GetMultiSelect(System.Windows.DependencyObject)">
+            <summary>
+            複数ファイルドロップ可能添付プロパティのGetter
+            </summary>
+            <param name="obj"></param>
+            <returns>True=複数可、False=一つのファイルのみ</returns>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.SetMultiSelect(System.Windows.DependencyObject,System.Boolean)">
+            <summary>
+            複数ファイルドロップ可能添付プロパティのSetter
+            </summary>
+            <param name="obj"></param>
+            <param name="value">True=複数可、False=一つのファイルのみ</param>
+        </member>
+        <member name="F:Behaviours.FileDragBehaviour.MultiSelectProperty">
+            <summary>
+            複数ファイルドロップ可能添付プロパティ
+            </summary>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.GetDragFileExt(System.Windows.DependencyObject)">
+            <summary>
+            Ｄ＆Ｄ許可する拡張子をセットする添付プロパティのGetter
+            </summary>
+            <param name="obj"></param>
+            <returns>ドットからの拡張子、コロンセパレータで複数指定可、ワイルドカード指定可</returns>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.SetDragFileExt(System.Windows.DependencyObject,System.String)">
+            <summary>
+            Ｄ＆Ｄ許可する拡張子をセットする添付プロパティのSetter
+            </summary>
+            <param name="obj"></param>
+            <param name="value">ドットからの拡張子、コロンセパレータで複数指定可、ワイルドカード指定可</param>
+        </member>
+        <member name="F:Behaviours.FileDragBehaviour.DragFileExtProperty">
+            <summary>
+            Ｄ＆Ｄ許可する拡張子をセットする添付プロパティ
+            </summary>
+        </member>
+        <member name="F:Behaviours.FileDragBehaviour.FileExtRegex">
+            <summary>
+            DragFileExtの検証用正規表現
+            </summary>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.GetDropCommand(System.Windows.DependencyObject)">
+            <summary>
+            ファイルがドロップされたときに呼び出されるコマンドの添付プロパティのGetter
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.SetDropCommand(System.Windows.DependencyObject,System.Windows.Input.ICommand)">
+            <summary>
+            ファイルがドロップされたときに呼び出されるコマンドの添付プロパティのSetter
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Behaviours.FileDragBehaviour.DropCommandProperty">
+            <summary>
+            ファイルがドロップされたときに呼び出されるコマンドの添付プロパティ
+            </summary>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.Obj_Drop(System.Object,System.Windows.DragEventArgs)">
+            <summary>
+            ドロップ時のイベントハンドラ
+            </summary>
+            <param name="sender">ドロップ先のコントロール</param>
+            <param name="e">ドロップパラメータ</param>
+        </member>
+        <member name="M:Behaviours.FileDragBehaviour.Obj_DragOver(System.Object,System.Windows.DragEventArgs)">
+            <summary>
+            ドラッグ時のイベントハンドラ
+            </summary>
+            <param name="sender">ドラッグ先のコントロール</param>
+            <param name="e">ドラッグパラメータ</param>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -7,23 +7,28 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Input;
+using System.Windows.Media.Animation;
 
 namespace MvvmHelper
 {
     /// <summary>
-    /// http://sourcechord.hatenablog.com/entry/2016/02/01/003758 WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた
+    /// ページナビゲーションを行うクラス
     /// </summary>
+    /// <url name="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</url>
     public class NavigationServiceEx : DependencyObject
     {
         /// <summary>
-        /// ページナビゲーションを行う領域となるContentControlを保持するプロパティ
+        /// ページナビゲーションを行う領域となるContentControlを保持するAccessor
         /// </summary>
         public ContentControl Content
         {
             get { return (ContentControl)GetValue(ContentProperty); }
             set { SetValue(ContentProperty, value); }
         }
-        // Using a DependencyProperty as the backing store for Content.  This enables animation, styling, binding, etc...
+
+        /// <summary>
+        /// ページナビゲーションを行う領域となるContentControlを保持するプロパティ
+        /// </summary>
         public static readonly DependencyProperty ContentProperty = DependencyProperty.Register(
             nameof(Content),
             typeof(ContentControl),
@@ -35,18 +40,25 @@ namespace MvvmHelper
         /// view引数で指定されたインスタンスのページへとナビゲーションを行います。
         /// </summary>
         /// <param name="view"></param>
-        /// <returns></returns>
+        /// <returns>成功True、失敗False</returns>
         public bool Navigate(FrameworkElement view)
         {
-            this.Content.Content = view;
-            return true;
+            try
+            {
+                this.Content.Content = view;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>
         /// viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
         /// </summary>
-        /// <param name="viewType"></param>
-        /// <returns></returns>
+        /// <param name="viewType">遷移するページのType</param>
+        /// <returns>成功True、失敗False</returns>
         public bool Navigate(Type viewType)
         {
             if (viewType == null)
@@ -54,7 +66,6 @@ namespace MvvmHelper
                 this.Navigate((FrameworkElement)null);
                 return false;
             }
-
             var view = Activator.CreateInstance(viewType) as FrameworkElement;
             return this.Navigate(view);
         }
@@ -63,14 +74,13 @@ namespace MvvmHelper
         /// <summary>
         /// NavigationCommands.GoToPageコマンドに対する応答処理
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        /// <param name="sender">未使用</param>
+        /// <param name="e">e.Parameterに遷移するページのType</param>
         private void OnGoToPage(object sender, ExecutedRoutedEventArgs e)
         {
             var nextPage = e.Parameter as Type;
             this.Navigate(nextPage);
         }
-
 
         #region ページナビゲーションを行う領域となるContentControlを指定するための添付プロパティ
         // この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。
@@ -144,6 +154,52 @@ namespace MvvmHelper
         }
         #endregion
 
+        #region ページ遷移時のアニメーション
+        /// <summary>
+        /// ページ遷移時のアニメーション添付プロパティのGetter
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static Storyboard GetStoryboard(DependencyObject obj)
+        {
+            return (Storyboard)obj.GetValue(StartupProperty);
+        }
+
+        /// <summary>
+        /// ページ遷移時のアニメーション添付プロパティのSetter
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
+        public static void SetStoryboard(DependencyObject obj, Storyboard value)
+        {
+            obj.SetValue(StartupProperty, value);
+        }
+
+        /// <summary>
+        /// ページ遷移時のアニメーション添付プロパティ
+        /// </summary>
+        public static readonly DependencyProperty StoryboardProperty = DependencyProperty.RegisterAttached(
+            "Storyboard",
+            typeof(Storyboard),
+            typeof(NavigationServiceEx),
+            new PropertyMetadata(null, OnStoryboardChanged));
+
+        /// <summary>
+        /// ページ遷移時のアニメーション添付プロパティのハンドラ
+        /// </summary>
+        /// <param name="d"></param>
+        /// <param name="e"></param>
+        private static void OnStoryboardChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var element = d as FrameworkElement;
+            var storyboard = e.NewValue as Type;
+
+            if (element != null)
+            {
+
+            }
+        }
+        #endregion
 
         #region 任意のコントロールに対して、NavigationServiceExをアタッチできるようにするための添付プロパティ
         public static NavigationServiceEx GetNavigator(DependencyObject obj)

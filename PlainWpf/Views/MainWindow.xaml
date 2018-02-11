@@ -34,6 +34,7 @@
                 <Button Content="SubPage1-Show" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
                 <Button Content="SubPage1-Close" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
                 <Button Content="SubPage2" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
+                <Button Content="XML" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
             </StackPanel>
         </Grid>
     </Grid>

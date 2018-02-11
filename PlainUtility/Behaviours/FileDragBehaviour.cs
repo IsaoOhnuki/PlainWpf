@@ -152,10 +152,11 @@ namespace Behaviours
             }
             e.Effects = ret ? DragDropEffects.Copy : DragDropEffects.None;
             e.Handled = true;
-            bool? canExecute = GetDropCommand((DependencyObject)sender)?.CanExecute(files.ToArray());
+            var dropCommand = GetDropCommand((DependencyObject)sender);
+            bool? canExecute = dropCommand?.CanExecute(files.ToArray());
             if (!canExecute.HasValue || canExecute.Value)
             {
-                GetDropCommand((DependencyObject)sender).Execute(files.ToArray());
+                dropCommand.Execute(files.ToArray());
             }
         }
 

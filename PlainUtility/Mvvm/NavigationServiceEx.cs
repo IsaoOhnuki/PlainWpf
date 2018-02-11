@@ -9,7 +9,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
-namespace MvvmHelper
+namespace Mvvm
 {
     /// <summary>
     /// ページナビゲーションを行うクラス

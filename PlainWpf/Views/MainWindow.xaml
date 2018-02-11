@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:PlainWpf.Views"
         xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
         xmlns:Views="clr-namespace:PlainWpf.Views"
-        xmlns:MvvmHelper="clr-namespace:MvvmHelper"
+        xmlns:Mvvm="clr-namespace:Mvvm"
         mc:Ignorable="d"
-        MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
-        MvvmHelper:NavigationServiceEx.Startup="{x:Type Views:SubPage1}"
+        Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
+        Mvvm:NavigationServiceEx.Startup="{x:Type Views:SubPage1}"
         Title="{Binding Title}" Height="350" Width="525">
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
@@ -36,10 +36,10 @@
         <ContentControl x:Name="RightContent" Grid.Column="2" Width="Auto"/>
         <Grid x:Name="LeftContent" Grid.Column="0">
             <StackPanel Orientation="Vertical">
-                <Button Content="SubPage1-Show" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
-                <Button Content="SubPage1-Close" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
-                <Button Content="SubPage2" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
-                <Button Content="XML" MvvmHelper:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
+                <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
+                <Button Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
+                <Button Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
             </StackPanel>
         </Grid>
     </Grid>

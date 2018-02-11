@@ -189,133 +189,6 @@
               現在のスレッドの CurrentUICulture プロパティをオーバーライドします。
             </summary>
         </member>
-        <member name="T:MvvmHelper.BindableBase">
-            <summary>
-            ビューモデル等の基底に使うベースクラス
-            </summary>
-            <inherited name="INotifyPropertyChanged">プロパティ変更通知</inherited>
-            <inherited name="INotifyDataErrorInfo">プロパティ検証エラー通知</inherited>
-        </member>
-        <member name="M:MvvmHelper.BindableBase.#ctor">
-            <summary>
-            基底コンストラクタ
-            </summary>
-        </member>
-        <member name="F:MvvmHelper.BindableBase.hasErrors">
-            <summary>
-            検証エラーがあるプロパティ名と検証エラーメッセージのリスト
-            </summary>
-        </member>
-        <member name="P:MvvmHelper.BindableBase.HasErrors">
-            <summary>
-            検証エラー状態
-            </summary>
-            <override name="INotifyDataErrorInfo"></override>
-            <returns>True=エラーあり,False=エラーなし</returns>
-        </member>
-        <member name="E:MvvmHelper.BindableBase.ErrorsChanged">
-            <summary>
-            検証エラー通知イベント
-            </summary>
-            <override name="INotifyDataErrorInfo"></override>
-        </member>
-        <member name="M:MvvmHelper.BindableBase.RaiseErrorsChanged(System.String,System.String)">
-            <summary>
-            プロパティの検証後に呼び出す。検証エラー通知イベント起動メソッド
-            </summary>
-            <override name="INotifyPropertyChanged"></override>
-            <param name="errorMessage">nullまたは空の文字列でエラーなしまたはエラー状態解除、空白文字列または文字列はエラー状態メッセージ</param>
-            <param name="propertyName">エラー状態にあるプロパティ名</param>
-        </member>
-        <member name="M:MvvmHelper.BindableBase.SetError(System.String,System.String)">
-            <summary>
-            プロパティの検証後にエラー状態なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
-            </summary>
-            <param name="errorMessage">エラーメッセージ、メッセージが空なら自動生成</param>
-            <param name="propertyName">エラー状態のプロパティ名</param>
-        </member>
-        <member name="M:MvvmHelper.BindableBase.ResetError(System.String)">
-            <summary>
-            プロパティの検証後にエラー状態解除なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
-            </summary>
-            <param name="propertyName">エラー解除状態のプロパティ名</param>
-        </member>
-        <member name="M:MvvmHelper.BindableBase.GetErrors(System.String)">
-            <summary>
-            エラー状態プロパティのエラーメッセージ
-            </summary>
-            <param name="propertyName">プロパティ名</param>
-            <returns>指定したプロパティのエラーメッセージ</returns>
-        </member>
-        <member name="E:MvvmHelper.BindableBase.PropertyChanged">
-            <summary>
-            変更通知イベント
-            </summary>
-            <override name="INotifyPropertyChanged"></override>
-        </member>
-        <member name="M:MvvmHelper.BindableBase.RaisePropertyChanged(System.String)">
-            <summary>
-            変更通知イベント起動メソッド
-            </summary>
-            <param name="propertyName">変更通知するプロパティ名</param>
-        </member>
-        <member name="M:MvvmHelper.BindableBase.SetProperty``1(``0@,``0,System.String)">
-            <summary>
-            プロパティフィールド代入メソッド
-            </summary>
-            <typeparam name="T">プロパティフィールドの型</typeparam>
-            <param name="storage">プロパティフィールドへの参照</param>
-            <param name="value">プロパティフィールドへの代入値</param>
-            <param name="propertyName">プロパティ名</param>
-            <returns>True=フィールド値が変更された,False=されなかった</returns>
-        </member>
-        <member name="T:MvvmHelper.NavigationServiceEx">
-            <summary>
-            http://sourcechord.hatenablog.com/entry/2016/02/01/003758 WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた
-            </summary>
-        </member>
-        <member name="P:MvvmHelper.NavigationServiceEx.Content">
-            <summary>
-            ページナビゲーションを行う領域となるContentControlを保持するプロパティ
-            </summary>
-        </member>
-        <member name="M:MvvmHelper.NavigationServiceEx.Navigate(System.Windows.FrameworkElement)">
-            <summary>
-            view引数で指定されたインスタンスのページへとナビゲーションを行います。
-            </summary>
-            <param name="view"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MvvmHelper.NavigationServiceEx.Navigate(System.Type)">
-            <summary>
-            viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
-            </summary>
-            <param name="viewType"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MvvmHelper.NavigationServiceEx.OnGoToPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
-            <summary>
-            NavigationCommands.GoToPageコマンドに対する応答処理
-            </summary>
-            <param name="sender"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:MvvmHelper.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
-            <summary>
-            view引数で指定されたインスタンスのページへとナビゲーションを行います。
-            </summary>
-            <param name="element"></param>
-            <param name="view"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MvvmHelper.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Type)">
-            <summary>
-            viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
-            </summary>
-            <param name="element"></param>
-            <param name="viewType"></param>
-            <returns></returns>
-        </member>
         <member name="T:Behaviours.FileDragBehaviour">
             <summary>
             ファイルのＤ＆Ｄを受け入れるビヘイビア
@@ -396,6 +269,165 @@
             </summary>
             <param name="sender">ドラッグ先のコントロール</param>
             <param name="e">ドラッグパラメータ</param>
+        </member>
+        <member name="T:Mvvm.BindableBase">
+            <summary>
+            ビューモデル等の基底に使うベースクラス
+            </summary>
+            <inherited name="INotifyPropertyChanged">プロパティ変更通知</inherited>
+            <inherited name="INotifyDataErrorInfo">プロパティ検証エラー通知</inherited>
+        </member>
+        <member name="M:Mvvm.BindableBase.#ctor">
+            <summary>
+            基底コンストラクタ
+            </summary>
+        </member>
+        <member name="F:Mvvm.BindableBase.hasErrors">
+            <summary>
+            検証エラーがあるプロパティ名と検証エラーメッセージのリスト
+            </summary>
+        </member>
+        <member name="P:Mvvm.BindableBase.HasErrors">
+            <summary>
+            検証エラー状態
+            </summary>
+            <override name="INotifyDataErrorInfo"></override>
+            <returns>True=エラーあり,False=エラーなし</returns>
+        </member>
+        <member name="E:Mvvm.BindableBase.ErrorsChanged">
+            <summary>
+            検証エラー通知イベント
+            </summary>
+            <override name="INotifyDataErrorInfo"></override>
+        </member>
+        <member name="M:Mvvm.BindableBase.RaiseErrorsChanged(System.String,System.String)">
+            <summary>
+            プロパティの検証後に呼び出す。検証エラー通知イベント起動メソッド
+            </summary>
+            <override name="INotifyPropertyChanged"></override>
+            <param name="errorMessage">nullまたは空の文字列でエラーなしまたはエラー状態解除、空白文字列または文字列はエラー状態メッセージ</param>
+            <param name="propertyName">エラー状態にあるプロパティ名</param>
+        </member>
+        <member name="M:Mvvm.BindableBase.SetError(System.String,System.String)">
+            <summary>
+            プロパティの検証後にエラー状態なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
+            </summary>
+            <param name="errorMessage">エラーメッセージ、メッセージが空なら自動生成</param>
+            <param name="propertyName">エラー状態のプロパティ名</param>
+        </member>
+        <member name="M:Mvvm.BindableBase.ResetError(System.String)">
+            <summary>
+            プロパティの検証後にエラー状態解除なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
+            </summary>
+            <param name="propertyName">エラー解除状態のプロパティ名</param>
+        </member>
+        <member name="M:Mvvm.BindableBase.GetErrors(System.String)">
+            <summary>
+            エラー状態プロパティのエラーメッセージ
+            </summary>
+            <param name="propertyName">プロパティ名</param>
+            <returns>指定したプロパティのエラーメッセージ</returns>
+        </member>
+        <member name="E:Mvvm.BindableBase.PropertyChanged">
+            <summary>
+            変更通知イベント
+            </summary>
+            <override name="INotifyPropertyChanged"></override>
+        </member>
+        <member name="M:Mvvm.BindableBase.RaisePropertyChanged(System.String)">
+            <summary>
+            変更通知イベント起動メソッド
+            </summary>
+            <param name="propertyName">変更通知するプロパティ名</param>
+        </member>
+        <member name="M:Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            プロパティフィールド代入メソッド
+            </summary>
+            <typeparam name="T">プロパティフィールドの型</typeparam>
+            <param name="storage">プロパティフィールドへの参照</param>
+            <param name="value">プロパティフィールドへの代入値</param>
+            <param name="propertyName">プロパティ名</param>
+            <returns>True=フィールド値が変更された,False=されなかった</returns>
+        </member>
+        <member name="T:Mvvm.NavigationServiceEx">
+            <summary>
+            ページナビゲーションを行うクラス
+            </summary>
+            <url name="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</url>
+        </member>
+        <member name="P:Mvvm.NavigationServiceEx.Content">
+            <summary>
+            ページナビゲーションを行う領域となるContentControlを保持するAccessor
+            </summary>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.ContentProperty">
+            <summary>
+            ページナビゲーションを行う領域となるContentControlを保持するプロパティ
+            </summary>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.Navigate(System.Windows.FrameworkElement)">
+            <summary>
+            view引数で指定されたインスタンスのページへとナビゲーションを行います。
+            </summary>
+            <param name="view"></param>
+            <returns>成功True、失敗False</returns>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.Navigate(System.Type)">
+            <summary>
+            viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
+            </summary>
+            <param name="viewType">遷移するページのType</param>
+            <returns>成功True、失敗False</returns>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.OnGoToPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            NavigationCommands.GoToPageコマンドに対する応答処理
+            </summary>
+            <param name="sender">未使用</param>
+            <param name="e">e.Parameterに遷移するページのType</param>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.GetStoryboard(System.Windows.DependencyObject)">
+            <summary>
+            ページ遷移時のアニメーション添付プロパティのGetter
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.SetStoryboard(System.Windows.DependencyObject,System.Windows.Media.Animation.Storyboard)">
+            <summary>
+            ページ遷移時のアニメーション添付プロパティのSetter
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.StoryboardProperty">
+            <summary>
+            ページ遷移時のアニメーション添付プロパティ
+            </summary>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.OnStoryboardChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
+            <summary>
+            ページ遷移時のアニメーション添付プロパティのハンドラ
+            </summary>
+            <param name="d"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:Mvvm.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
+            <summary>
+            view引数で指定されたインスタンスのページへとナビゲーションを行います。
+            </summary>
+            <param name="element"></param>
+            <param name="view"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Type)">
+            <summary>
+            viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
+            </summary>
+            <param name="element"></param>
+            <param name="viewType"></param>
+            <returns></returns>
         </member>
         <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
             <summary>

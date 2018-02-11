@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace MvvmHelper
+namespace Mvvm
 {
     public class DelegateCommand : ICommand
     {

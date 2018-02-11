@@ -57,9 +57,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\CsXmlCommentReader.cs" />
-    <Compile Include="MvvmHelper\BindableBase.cs" />
-    <Compile Include="MvvmHelper\DelegateCommand.cs" />
-    <Compile Include="MvvmHelper\NavigationServiceEx.cs" />
     <Compile Include="SingleBootableApp.cs" />
     <Compile Include="ViewModels\SabPage2ViewModel.cs" />
     <Compile Include="ViewModels\SabPage1ViewModel.cs" />

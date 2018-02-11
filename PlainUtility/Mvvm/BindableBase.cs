@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MvvmHelper
+namespace Mvvm
 {
     /// <summary>
     /// ビューモデル等の基底に使うベースクラス

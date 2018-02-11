@@ -14,6 +14,11 @@
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
+    <Window.Resources>
+        <Storyboard x:Key="story">
+            <DoubleAnimation Storyboard.TargetProperty=""/>
+        </Storyboard>
+    </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>

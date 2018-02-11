@@ -259,3 +259,8 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+/PlainWpf/ViewModels/CsXmlCommentReader.cs
+/PlainWpf/ViewModels/XmlTreeViewModel.cs
+/PlainWpf/Views/XmlTreeView.xaml
+/PlainWpf/Views/XmlTreeView.xaml.cs
+/PlainWpf.xml

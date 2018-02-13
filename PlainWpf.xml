@@ -466,27 +466,12 @@
             <param name="propertyName">プロパティ名</param>
             <returns>True=フィールド値が変更された,False=されなかった</returns>
         </member>
-        <member name="T:Mvvm.INavigationContents">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Mvvm.INavigationContents.FromContent">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:Mvvm.INavigationContents.ToContent">
-            <summary>
-            
-            </summary>
-        </member>
         <member name="T:Mvvm.INavigationStory">
             <summary>
             
             </summary>
         </member>
-        <member name="M:Mvvm.INavigationStory.Initialize(Mvvm.INavigationContents,System.Action{System.Windows.FrameworkElement})">
+        <member name="M:Mvvm.INavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
             <summary>
             
             </summary>
@@ -496,7 +481,95 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="T:Mvvm.SimpleWipeNavigationStory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.Spread">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.Narrowed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.SimpleWipeNavigationStory.NavigationMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.SimpleWipeNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            
+            </summary>
+            <param name="fromContent"></param>
+            <param name="toContent"></param>
             <param name="endAnimation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.SimpleWipeNavigationStory.Animate">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.SimpleRaiseNavigationStory">
+            <summary>
+            
+            </summary>
+            <uri name="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</uri>
+        </member>
+        <member name="T:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.SimpleRaiseNavigationStory.NavigationMode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            
+            </summary>
+            <param name="fromContent"></param>
+            <param name="toContent"></param>
+            <param name="endAnimation"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.SimpleRaiseNavigationStory.Animate">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Mvvm.NavigationServiceEx">
             <summary>
@@ -535,6 +608,63 @@
             <param name="sender">未使用</param>
             <param name="e">e.Parameterに遷移するページのType</param>
         </member>
+        <member name="M:Mvvm.NavigationServiceEx.GetNavigationStory(System.Windows.DependencyObject)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.SetNavigationStory(System.Windows.DependencyObject,Mvvm.INavigationStory)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.NavigationStoryProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.GetTarget(System.Windows.DependencyObject)">
+            <summary>
+            この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.SetTarget(System.Windows.DependencyObject,System.Windows.Controls.ContentControl)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.TargetProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Target.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.GetStartup(System.Windows.DependencyObject)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.SetStartup(System.Windows.DependencyObject,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.StartupProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Startup.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
         <member name="M:Mvvm.NavigationServiceEx.GetStoryboard(System.Windows.DependencyObject)">
             <summary>
             ページ遷移時のアニメーション添付プロパティのGetter
@@ -560,6 +690,30 @@
             </summary>
             <param name="d"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.GetNavigator(System.Windows.DependencyObject)">
+            <summary>
+            
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.SetNavigator(System.Windows.DependencyObject,Mvvm.NavigationServiceEx)">
+            <summary>
+            ↓protectedにして外部からは利用できないように。
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.NavigatorProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Navigator.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="T:Mvvm.NavigationServiceExtensions">
+            <summary>
+            
+            </summary>
         </member>
         <member name="M:Mvvm.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
             <summary>

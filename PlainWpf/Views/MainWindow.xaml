@@ -15,9 +15,9 @@
         <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
-        <Storyboard x:Key="story">
-            <DoubleAnimation Storyboard.TargetProperty=""/>
-        </Storyboard>
+        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryBT" NavigationMode="BottomToTop"/>
+        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryLR" NavigationMode="LeftToRight"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryW" NavigationMode="Narrowed"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -32,8 +32,8 @@
                 </Style.Triggers>
             </Style>
         </Grid.Style>-->
-        <ContentControl x:Name="MainContent" Grid.Column="1" Background="Red"/>
-        <ContentControl x:Name="RightContent" Grid.Column="2" Width="Auto"/>
+        <ContentControl x:Name="MainContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryW}" Grid.Column="1" Background="Red"/>
+        <ContentControl x:Name="RightContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryBT}" Grid.Column="2" Width="Auto"/>
         <Grid x:Name="LeftContent" Grid.Column="0">
             <StackPanel Orientation="Vertical">
                 <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>

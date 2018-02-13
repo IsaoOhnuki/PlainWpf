@@ -16,155 +16,289 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
-    public interface INavigationContents
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        FrameworkElement FromContent { get; }
-        /// <summary>
-        /// 
-        /// </summary>
-        FrameworkElement ToContent { get; }
-    }
-
-    /// <summary>
-    /// 
-    /// </summary>
     public interface INavigationStory
     {
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        FrameworkElement Initialize(INavigationContents contents, Action<FrameworkElement> endAnimation);
+        FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent, Action<FrameworkElement> endAnimation);
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="endAnimation"></param>
         void Animate();
     }
-
-    public class SimplNavigationContents : INavigationContents
+    /// <summary>
+    /// 
+    /// </summary>
+    public class SimpleWipeNavigationStory : INavigationStory
     {
-        public SimplNavigationContents(FrameworkElement fromContent, FrameworkElement toContent)
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum WipeNavigationMode
         {
-            this.FromContent = fromContent;
-            this.ToContent = toContent;
-        }
-        public FrameworkElement FromContent { get; private set; }
-        public FrameworkElement ToContent { get; private set; }
-    }
-
-    public class SimpleScrollNavigationStory : INavigationStory
-    {
-        public enum ScrollNavigationMode
-        {
-            RightToLeft,
-            LeftToRight,
-            BottomToTop,
-            TopToBottom
+            /// <summary>
+            /// 
+            /// </summary>
+            Spread,
+            /// <summary>
+            /// 
+            /// </summary>
+            Narrowed,
         }
 
-        // http://techoh.net/wpf-control-storyboard-with-code/ 2分でできるC#コードからWPFのアニメーションを操る方法
-        private Grid storyBoard{ get; set; }
+        private Canvas storyBoard;
         private Action<FrameworkElement> endAnimation;
-        private INavigationContents contents;
-        public ScrollNavigationMode navigationMode { get; private set; }
+        private FrameworkElement fromContent;
+        private FrameworkElement toContent;
+        private ContentControl toContentControl;
+        private ContentControl fromContentControl;
 
-        public SimpleScrollNavigationStory(ScrollNavigationMode navigationMode = ScrollNavigationMode.RightToLeft)
-        {
-            this.navigationMode = navigationMode;
-        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public WipeNavigationMode NavigationMode { get; set; }
 
-        public FrameworkElement Initialize(INavigationContents contents, Action<FrameworkElement> endAnimation)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fromContent"></param>
+        /// <param name="toContent"></param>
+        /// <param name="endAnimation"></param>
+        /// <returns></returns>
+        public FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent, Action<FrameworkElement> endAnimation)
         {
-            this.contents = contents;
+            this.toContent = toContent;
+            if (toContent == null)
+                return null;
+            this.fromContent = fromContent;
             this.endAnimation = endAnimation;
-            storyBoard = new Grid();
-            if (navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.LeftToRight)
-            {
-                storyBoard.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star) });
-                storyBoard.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star) });
-            }
-            else
-            {
-                storyBoard.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star) });
-                storyBoard.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star) });
-            }
+
+            storyBoard = new Canvas();
+            fromContentControl = new ContentControl();
+            toContentControl = new ContentControl();
+            storyBoard.Children.Add(fromContentControl);
+            storyBoard.Children.Add(toContentControl);
+
             return storyBoard as FrameworkElement;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Animate()
         {
-            if (contents.ToContent == null)
+            if (toContent == null)
                 return;
-            if (contents.FromContent == null)
+            if (fromContent == null)
             {
-                endAnimation?.Invoke(contents.ToContent);
+                endAnimation?.Invoke(toContent);
                 return;
             }
 
-            if (navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.LeftToRight)
-            {
-                Grid.SetColumn(contents.FromContent, navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 0 : 1);
-                Grid.SetColumn(contents.ToContent, navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 1 : 0);
-            }
-            else
-            {
-                Grid.SetRow(contents.FromContent, navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 0 : 1);
-                Grid.SetRow(contents.ToContent, navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 1 : 0);
-            }
-            storyBoard.Children.Add(contents.FromContent);
-            storyBoard.Children.Add(contents.ToContent);
+            double width = fromContent.ActualWidth;
+            double height = fromContent.ActualHeight;
+            
+            Canvas.SetLeft(fromContentControl, 0);
+            Canvas.SetTop(fromContentControl, 0);
+            fromContentControl.Width = width;
+            fromContentControl.Height = height;
+
+            Canvas.SetLeft(toContentControl, width / 2);
+            Canvas.SetTop(toContentControl, height / 2);
+            toContentControl.Width = 0;
+            toContentControl.Height = 0;
+
+            fromContentControl.Content = NavigationMode == WipeNavigationMode.Spread ? fromContent : toContent;
+            toContentControl.Content = NavigationMode == WipeNavigationMode.Spread ? toContent : fromContent;
 
             var duration = new Duration(TimeSpan.FromMilliseconds(300));
             Storyboard story = new Storyboard { Duration = duration };
 
-            GridLengthAnimation colLeft = new GridLengthAnimation
+            DoubleAnimation toTop = new DoubleAnimation
             {
-                From = new GridLength(navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star),
-                To = new GridLength(navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star),
+                From = NavigationMode == WipeNavigationMode.Spread ? height / 2 : 0,
+                To = NavigationMode == WipeNavigationMode.Spread ? 0 : height / 2,
                 Duration = duration,
             };
-            if (navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.LeftToRight)
+            DoubleAnimation toLeft = new DoubleAnimation
             {
-                Storyboard.SetTarget(colLeft, storyBoard.ColumnDefinitions[0]);
-                Storyboard.SetTargetProperty(colLeft, new PropertyPath("Width"));
+                From = NavigationMode == WipeNavigationMode.Spread ? width / 2 : 0,
+                To = NavigationMode == WipeNavigationMode.Spread ? 0 : width / 2,
+                Duration = duration,
+            };
+            DoubleAnimation toHeight = new DoubleAnimation
+            {
+                From = NavigationMode == WipeNavigationMode.Spread ? 0 : height,
+                To = NavigationMode == WipeNavigationMode.Spread ? height : 0,
+                Duration = duration,
+            };
+            DoubleAnimation toWidth = new DoubleAnimation
+            {
+                From = NavigationMode == WipeNavigationMode.Spread ? 0 : width,
+                To = NavigationMode == WipeNavigationMode.Spread ? width : 0,
+                Duration = duration,
+            };
+            Storyboard.SetTarget(toTop, toContentControl);
+            Storyboard.SetTargetProperty(toTop, new PropertyPath("(Canvas.Top)"));
+            Storyboard.SetTarget(toLeft, toContentControl);
+            Storyboard.SetTargetProperty(toLeft, new PropertyPath("(Canvas.Left)"));
+            Storyboard.SetTarget(toHeight, toContentControl);
+            Storyboard.SetTargetProperty(toHeight, new PropertyPath("Height"));
+            Storyboard.SetTarget(toWidth, toContentControl);
+            Storyboard.SetTargetProperty(toWidth, new PropertyPath("Width"));
+
+            story.Children.Add(toTop);
+            story.Children.Add(toLeft);
+            story.Children.Add(toWidth);
+            story.Children.Add(toHeight);
+
+            story.Completed += OnStoryCompleted;
+            story.Begin();
+        }
+        private void OnStoryCompleted(object sender, EventArgs e)
+        {
+            storyBoard.Children.Remove(fromContentControl);
+            storyBoard.Children.Remove(toContentControl);
+            toContentControl.Content = null;
+            fromContentControl.Content = null;
+            endAnimation?.Invoke(toContent);
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <uri name="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</uri>
+    public class SimpleRaiseNavigationStory : INavigationStory
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public enum RaiseNavigationMode
+        {
+            /// <summary>
+            /// 
+            /// </summary>
+            RightToLeft,
+            /// <summary>
+            /// 
+            /// </summary>
+            LeftToRight,
+            /// <summary>
+            /// 
+            /// </summary>
+            BottomToTop,
+            /// <summary>
+            /// 
+            /// </summary>
+            TopToBottom
+        }
+
+        private Grid storyBoard;
+        private Action<FrameworkElement> endAnimation;
+        private FrameworkElement fromContent;
+        private FrameworkElement toContent;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public RaiseNavigationMode NavigationMode { get; set; } = RaiseNavigationMode.RightToLeft;
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="fromContent"></param>
+        /// <param name="toContent"></param>
+        /// <param name="endAnimation"></param>
+        /// <returns></returns>
+        public FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent, Action<FrameworkElement> endAnimation)
+        {
+            this.toContent = toContent;
+            if (toContent == null)
+                return null;
+            this.fromContent = fromContent;
+            this.endAnimation = endAnimation;
+            storyBoard = new Grid();
+            if (NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.LeftToRight)
+            {
+                storyBoard.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star) });
+                storyBoard.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star) });
             }
             else
             {
-                Storyboard.SetTarget(colLeft, storyBoard.RowDefinitions[0]);
-                Storyboard.SetTargetProperty(colLeft, new PropertyPath("Height"));
+                storyBoard.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star) });
+                storyBoard.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star) });
             }
-            story.Children.Add(colLeft);
-
-            GridLengthAnimation colRight = new GridLengthAnimation
+            return storyBoard as FrameworkElement;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Animate()
+        {
+            if (toContent == null)
+                return;
+            if (fromContent == null)
             {
-                From = new GridLength(navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star),
-                To = new GridLength(navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star),
+                endAnimation?.Invoke(toContent);
+                return;
+            }
+
+            if (NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.LeftToRight)
+            {
+                Grid.SetColumn(fromContent, NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 0 : 1);
+                Grid.SetColumn(toContent, NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 0);
+            }
+            else
+            {
+                Grid.SetRow(fromContent, NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 0 : 1);
+                Grid.SetRow(toContent, NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 0);
+            }
+            storyBoard.Children.Add(fromContent);
+            storyBoard.Children.Add(toContent);
+
+            var duration = new Duration(TimeSpan.FromMilliseconds(300));
+            Storyboard story = new Storyboard { Duration = duration };
+
+            GridLengthAnimation fromSizeAnimation = new GridLengthAnimation
+            {
+                From = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star),
+                To = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star),
+                Duration = duration,
+            };
+            GridLengthAnimation toSizeAnimation = new GridLengthAnimation
+            {
+                From = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star),
+                To = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star),
                 Duration = duration
             };
-            if (navigationMode == ScrollNavigationMode.RightToLeft || navigationMode == ScrollNavigationMode.LeftToRight)
+            if (NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.LeftToRight)
             {
-                Storyboard.SetTarget(colRight, storyBoard.ColumnDefinitions[1]);
-                Storyboard.SetTargetProperty(colRight, new PropertyPath("Width"));
+                Storyboard.SetTarget(fromSizeAnimation, storyBoard.ColumnDefinitions[0]);
+                Storyboard.SetTargetProperty(fromSizeAnimation, new PropertyPath("Width"));
+                Storyboard.SetTarget(toSizeAnimation, storyBoard.ColumnDefinitions[1]);
+                Storyboard.SetTargetProperty(toSizeAnimation, new PropertyPath("Width"));
             }
             else
             {
-                Storyboard.SetTarget(colRight, storyBoard.RowDefinitions[1]);
-                Storyboard.SetTargetProperty(colRight, new PropertyPath("Height"));
+                Storyboard.SetTarget(fromSizeAnimation, storyBoard.RowDefinitions[0]);
+                Storyboard.SetTargetProperty(fromSizeAnimation, new PropertyPath("Height"));
+                Storyboard.SetTarget(toSizeAnimation, storyBoard.RowDefinitions[1]);
+                Storyboard.SetTargetProperty(toSizeAnimation, new PropertyPath("Height"));
             }
-            story.Children.Add(colRight);
+            story.Children.Add(fromSizeAnimation);
+            story.Children.Add(toSizeAnimation);
 
-            story.Completed += new EventHandler((object sender, EventArgs e) => {
-                storyBoard.Children.Remove(contents.FromContent);
-                storyBoard.Children.Remove(contents.ToContent);
-                contents.FromContent?.ClearValue(Grid.ColumnProperty);
-                contents.ToContent?.ClearValue(Grid.ColumnProperty);
-                endAnimation?.Invoke(contents.ToContent);
-            });
+            story.Completed += OnStoryCompleted;
             story.Begin();
+        }
+        private void OnStoryCompleted(object sender, EventArgs e)
+        {
+            storyBoard.Children.Remove(fromContent);
+            storyBoard.Children.Remove(toContent);
+            fromContent.ClearValue(Grid.ColumnProperty);
+            toContent.ClearValue(Grid.ColumnProperty);
+            endAnimation?.Invoke(toContent);
         }
     }
 
@@ -193,7 +327,7 @@ namespace Mvvm
             new PropertyMetadata(null));
 
         #region ナビゲーションで利用する各種メソッド
-        private void EndAnimation(FrameworkElement contnts)
+        private void OnEndAnimation(FrameworkElement contnts)
         {
             this.Content.Content = contnts;
         }
@@ -206,13 +340,19 @@ namespace Mvvm
         {
             try
             {
-                var story = new SimpleScrollNavigationStory();
-                var contents = new SimplNavigationContents(this.Content.Content as FrameworkElement, view);
-                this.Content.Content = story.Initialize(contents, EndAnimation);
-                story.Animate();
+                var story = GetNavigationStory(this.Content);
+                if (story == null)
+                {
+                    this.Content.Content = view;
+                }
+                else
+                {
+                    this.Content.Content = story.Initialize(this.Content.Content as FrameworkElement, view, OnEndAnimation);
+                    story.Animate();
+                }
                 return true;
             }
-            catch (Exception e)
+            catch
             {
                 return false;
             }
@@ -246,17 +386,56 @@ namespace Mvvm
             this.Navigate(nextPage);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public static INavigationStory GetNavigationStory(DependencyObject obj)
+        {
+            return (INavigationStory)obj.GetValue(NavigationStoryProperty);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
+        public static void SetNavigationStory(DependencyObject obj, INavigationStory value)
+        {
+            obj.SetValue(NavigationStoryProperty, value);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public static readonly DependencyProperty NavigationStoryProperty = DependencyProperty.RegisterAttached(
+            "NavigationStory",
+            typeof(INavigationStory),
+            typeof(NavigationServiceEx),
+            new PropertyMetadata(null, (DependencyObject d, DependencyPropertyChangedEventArgs e) => {
+            }));
+
         #region ページナビゲーションを行う領域となるContentControlを指定するための添付プロパティ
-        // この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。
+        /// <summary>
+        /// この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static ContentControl GetTarget(DependencyObject obj)
         {
             return (ContentControl)obj.GetValue(TargetProperty);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
         public static void SetTarget(DependencyObject obj, ContentControl value)
         {
             obj.SetValue(TargetProperty, value);
         }
-        // Using a DependencyProperty as the backing store for Target.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// Using a DependencyProperty as the backing store for Target.  This enables animation, styling, binding, etc...
+        /// </summary>
         public static readonly DependencyProperty TargetProperty = DependencyProperty.RegisterAttached(
             "Target",
             typeof(ContentControl),
@@ -265,10 +444,9 @@ namespace Mvvm
 
         private static void OnTargetChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var element = d as FrameworkElement;
             var target = e.NewValue as ContentControl;
 
-            if (element != null && target != null)
+            if (d is FrameworkElement element && target != null)
             {
                 // NavigationServiceExのインスタンスを、添付対象のコントロールに付加する。
                 var nav = new NavigationServiceEx();
@@ -290,15 +468,27 @@ namespace Mvvm
         #endregion
 
         #region スタートアップ時に表示するページを指定するための添付プロパティ
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static Type GetStartup(DependencyObject obj)
         {
             return (Type)obj.GetValue(StartupProperty);
         }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
         public static void SetStartup(DependencyObject obj, Type value)
         {
             obj.SetValue(StartupProperty, value);
         }
-        // Using a DependencyProperty as the backing store for Startup.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// Using a DependencyProperty as the backing store for Startup.  This enables animation, styling, binding, etc...
+        /// </summary>
         public static readonly DependencyProperty StartupProperty = DependencyProperty.RegisterAttached(
             "Startup",
             typeof(Type),
@@ -307,10 +497,9 @@ namespace Mvvm
 
         private static void OnStartupChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var element = d as FrameworkElement;
             var startupType = e.NewValue as Type;
 
-            if (element != null && startupType != null)
+            if (d is FrameworkElement element && startupType != null)
             {
                 var nav = NavigationServiceEx.GetNavigator(element);
                 nav?.Navigate(startupType);
@@ -355,10 +544,9 @@ namespace Mvvm
         /// <param name="e"></param>
         private static void OnStoryboardChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            var element = d as FrameworkElement;
             var storyboard = e.NewValue as Type;
 
-            if (element != null)
+            if (d is FrameworkElement element)
             {
 
             }
@@ -366,16 +554,27 @@ namespace Mvvm
         #endregion
 
         #region 任意のコントロールに対して、NavigationServiceExをアタッチできるようにするための添付プロパティ
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
         public static NavigationServiceEx GetNavigator(DependencyObject obj)
         {
             return (NavigationServiceEx)obj.GetValue(NavigatorProperty);
         }
-        // ↓protectedにして外部からは利用できないように。
+        /// <summary>
+        /// ↓protectedにして外部からは利用できないように。
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <param name="value"></param>
         public static void SetNavigator(DependencyObject obj, NavigationServiceEx value)
         {
             obj.SetValue(NavigatorProperty, value);
         }
-        // Using a DependencyProperty as the backing store for Navigator.  This enables animation, styling, binding, etc...
+        /// <summary>
+        /// Using a DependencyProperty as the backing store for Navigator.  This enables animation, styling, binding, etc...
+        /// </summary>
         public static readonly DependencyProperty NavigatorProperty = DependencyProperty.RegisterAttached(
             "Navigator",
             typeof(NavigationServiceEx),
@@ -384,6 +583,9 @@ namespace Mvvm
         #endregion
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public static class NavigationServiceExtensions
     {
         /// <summary>

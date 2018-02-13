@@ -7,7 +7,7 @@
       xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
       xmlns:Behaviours="clr-namespace:Behaviours"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="180" d:DesignWidth="191"
       >
     <UserControl.DataContext>
         <ViewModels:SabPage1ViewModel/>
@@ -27,7 +27,7 @@
                 ReverseValue="5"/>
         </Storyboard>
     </UserControl.Resources>
-    <Canvas>
+    <Canvas Margin="0">
         <Grid x:Name="rect" RenderTransformOrigin="0.5,0.5" Canvas.Left="0" Canvas.Top="0"
               Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}}"
               Height="{Binding ActualHeight, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Canvas}}}">

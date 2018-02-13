@@ -497,7 +497,27 @@
             
             </summary>
         </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalSpread">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.VerticalSpread">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.Narrowed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalNarrowed">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.VerticalNarrowed">
             <summary>
             
             </summary>

@@ -45,8 +45,30 @@ namespace Mvvm
             /// <summary>
             /// 
             /// </summary>
+            HorizontalSpread,
+            /// <summary>
+            /// 
+            /// </summary>
+            VerticalSpread,
+            /// <summary>
+            /// 
+            /// </summary>
             Narrowed,
+            /// <summary>
+            /// 
+            /// </summary>
+            HorizontalNarrowed,
+            /// <summary>
+            /// 
+            /// </summary>
+            VerticalNarrowed,
         }
+
+        private bool IsSpread { get { return NavigationMode == WipeNavigationMode.Spread || NavigationMode == WipeNavigationMode.VerticalSpread || NavigationMode == WipeNavigationMode.HorizontalSpread; } }
+        private bool IsNarrowed { get { return NavigationMode == WipeNavigationMode.Narrowed || NavigationMode == WipeNavigationMode.VerticalNarrowed || NavigationMode == WipeNavigationMode.HorizontalNarrowed; } }
+        private bool IsHorizontal { get { return NavigationMode == WipeNavigationMode.HorizontalSpread || NavigationMode == WipeNavigationMode.HorizontalNarrowed; } }
+        private bool IsVertical { get { return NavigationMode == WipeNavigationMode.VerticalSpread || NavigationMode == WipeNavigationMode.VerticalNarrowed; } }
+        private bool IsFocal { get { return NavigationMode == WipeNavigationMode.Spread || NavigationMode == WipeNavigationMode.Narrowed; } }
 
         private Canvas storyBoard;
         private Action<FrameworkElement> endAnimation;
@@ -101,58 +123,65 @@ namespace Mvvm
             double height = fromContent.ActualHeight;
             
             Canvas.SetLeft(fromContentControl, 0);
-            Canvas.SetTop(fromContentControl, 0);
             fromContentControl.Width = width;
+            Canvas.SetTop(fromContentControl, 0);
             fromContentControl.Height = height;
 
-            Canvas.SetLeft(toContentControl, width / 2);
-            Canvas.SetTop(toContentControl, height / 2);
-            toContentControl.Width = 0;
-            toContentControl.Height = 0;
+            Canvas.SetLeft(toContentControl, IsFocal ? width / 2 : 0);
+            toContentControl.Width = IsFocal ? 0 : width;
+            Canvas.SetTop(toContentControl, IsFocal ? height / 2 : 0);
+            toContentControl.Height = IsFocal ? 0 : height;
 
-            fromContentControl.Content = NavigationMode == WipeNavigationMode.Spread ? fromContent : toContent;
-            toContentControl.Content = NavigationMode == WipeNavigationMode.Spread ? toContent : fromContent;
+            fromContentControl.Content = IsSpread ? fromContent : toContent;
+            toContentControl.Content = IsSpread ? toContent : fromContent;
 
             var duration = new Duration(TimeSpan.FromMilliseconds(300));
             Storyboard story = new Storyboard { Duration = duration };
 
-            DoubleAnimation toTop = new DoubleAnimation
+            if (IsHorizontal || IsFocal)
             {
-                From = NavigationMode == WipeNavigationMode.Spread ? height / 2 : 0,
-                To = NavigationMode == WipeNavigationMode.Spread ? 0 : height / 2,
-                Duration = duration,
-            };
-            DoubleAnimation toLeft = new DoubleAnimation
-            {
-                From = NavigationMode == WipeNavigationMode.Spread ? width / 2 : 0,
-                To = NavigationMode == WipeNavigationMode.Spread ? 0 : width / 2,
-                Duration = duration,
-            };
-            DoubleAnimation toHeight = new DoubleAnimation
-            {
-                From = NavigationMode == WipeNavigationMode.Spread ? 0 : height,
-                To = NavigationMode == WipeNavigationMode.Spread ? height : 0,
-                Duration = duration,
-            };
-            DoubleAnimation toWidth = new DoubleAnimation
-            {
-                From = NavigationMode == WipeNavigationMode.Spread ? 0 : width,
-                To = NavigationMode == WipeNavigationMode.Spread ? width : 0,
-                Duration = duration,
-            };
-            Storyboard.SetTarget(toTop, toContentControl);
-            Storyboard.SetTargetProperty(toTop, new PropertyPath("(Canvas.Top)"));
-            Storyboard.SetTarget(toLeft, toContentControl);
-            Storyboard.SetTargetProperty(toLeft, new PropertyPath("(Canvas.Left)"));
-            Storyboard.SetTarget(toHeight, toContentControl);
-            Storyboard.SetTargetProperty(toHeight, new PropertyPath("Height"));
-            Storyboard.SetTarget(toWidth, toContentControl);
-            Storyboard.SetTargetProperty(toWidth, new PropertyPath("Width"));
+                DoubleAnimation toTop = new DoubleAnimation
+                {
+                    From = IsSpread ? height / 2 : 0,
+                    To = IsSpread ? 0 : height / 2,
+                    Duration = duration,
+                };
+                DoubleAnimation toHeight = new DoubleAnimation
+                {
+                    From = IsSpread ? 0 : height,
+                    To = IsSpread ? height : 0,
+                    Duration = duration,
+                };
+                Storyboard.SetTarget(toTop, toContentControl);
+                Storyboard.SetTargetProperty(toTop, new PropertyPath("(Canvas.Top)"));
+                Storyboard.SetTarget(toHeight, toContentControl);
+                Storyboard.SetTargetProperty(toHeight, new PropertyPath("Height"));
 
-            story.Children.Add(toTop);
-            story.Children.Add(toLeft);
-            story.Children.Add(toWidth);
-            story.Children.Add(toHeight);
+                story.Children.Add(toTop);
+                story.Children.Add(toHeight);
+            }
+            if (IsVertical || IsFocal)
+            {
+                DoubleAnimation toLeft = new DoubleAnimation
+                {
+                    From = IsSpread ? width / 2 : 0,
+                    To = IsSpread ? 0 : width / 2,
+                    Duration = duration,
+                };
+                DoubleAnimation toWidth = new DoubleAnimation
+                {
+                    From = IsSpread ? 0 : width,
+                    To = IsSpread ? width : 0,
+                    Duration = duration,
+                };
+                Storyboard.SetTarget(toLeft, toContentControl);
+                Storyboard.SetTargetProperty(toLeft, new PropertyPath("(Canvas.Left)"));
+                Storyboard.SetTarget(toWidth, toContentControl);
+                Storyboard.SetTargetProperty(toWidth, new PropertyPath("Width"));
+
+                story.Children.Add(toWidth);
+                story.Children.Add(toLeft);
+            }
 
             story.Completed += OnStoryCompleted;
             story.Begin();

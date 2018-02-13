@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Behaviours\FileDragBehaviour.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviours\GridLengthAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NavigationServiceEx.cs" />

@@ -34,8 +34,13 @@
         <ViewModels:SabPage2ViewModel/>
     </UserControl.DataContext>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="138*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="137*"/>
+        </Grid.ColumnDefinitions>
         <!--<Grid RenderTransformOrigin="0.5,0.5">-->
-        <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource HorizontalToVisibilityConverter}}">
+        <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource HorizontalToVisibilityConverter}}" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="40"/>
                 <ColumnDefinition Width="*"/>
@@ -59,7 +64,7 @@
                 <TextBlock Text="X"/>
             </Button>
         </Grid>
-        <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource VerticalToVisibilityConverter}}">
+        <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource VerticalToVisibilityConverter}}" Grid.ColumnSpan="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
@@ -83,5 +88,6 @@
                 <TextBlock Text="X"/>
             </Button>
         </Grid>
+        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Width="20"/>
     </Grid>
 </UserControl>

@@ -270,6 +270,122 @@
             <param name="sender">ドラッグ先のコントロール</param>
             <param name="e">ドラッグパラメータ</param>
         </member>
+        <member name="T:Behaviours.GridLengthAnimation">
+            <summary>
+            Animates a grid length value just like the DoubleAnimation animates a double value
+            </summary>
+        </member>
+        <member name="P:Behaviours.GridLengthAnimation.IsCompleted">
+            <summary>
+            Marks the animation as completed
+            </summary>
+        </member>
+        <member name="P:Behaviours.GridLengthAnimation.ReverseValue">
+            <summary>
+            Sets the reverse value for the second animation
+            </summary>
+        </member>
+        <member name="F:Behaviours.GridLengthAnimation.ReverseValueProperty">
+            <summary>
+            Dependency property. Sets the reverse value for the second animation
+            </summary>
+        </member>
+        <member name="P:Behaviours.GridLengthAnimation.TargetPropertyType">
+            <summary>
+            Returns the type of object to animate
+            </summary>
+        </member>
+        <member name="M:Behaviours.GridLengthAnimation.CreateInstanceCore">
+            <summary>
+            Creates an instance of the animation object
+            </summary>
+            <returns>Returns the instance of the GridLengthAnimation</returns>
+        </member>
+        <member name="F:Behaviours.GridLengthAnimation.FromProperty">
+            <summary>
+            Dependency property for the From property
+            </summary>
+        </member>
+        <member name="P:Behaviours.GridLengthAnimation.From">
+            <summary>
+            CLR Wrapper for the From depenendency property
+            </summary>
+        </member>
+        <member name="F:Behaviours.GridLengthAnimation.ToProperty">
+            <summary>
+            Dependency property for the To property
+            </summary>
+        </member>
+        <member name="P:Behaviours.GridLengthAnimation.To">
+            <summary>
+            CLR Wrapper for the To property
+            </summary>
+        </member>
+        <member name="M:Behaviours.GridLengthAnimation.VerifyAnimationCompletedStatus(System.Windows.Media.Animation.AnimationClock)">
+            <summary>
+            registers to the completed event of the animation clock
+            </summary>
+            <param name="clock">the animation clock to notify completion status</param>
+        </member>
+        <member name="M:Behaviours.GridLengthAnimation.GetCurrentValue(System.Object,System.Object,System.Windows.Media.Animation.AnimationClock)">
+            <summary>
+            Animates the grid let set
+            </summary>
+            <param name="defaultOriginValue">The original value to animate</param>
+            <param name="defaultDestinationValue">The final value</param>
+            <param name="animationClock">The animation clock (timer)</param>
+            <returns>Returns the new grid length to set</returns>
+        </member>
+        <member name="T:Behaviours.ExpanderDoubleAnimation">
+            <summary>
+            Animates a double value 
+            </summary>
+        </member>
+        <member name="F:Behaviours.ExpanderDoubleAnimation.FromProperty">
+            <summary>
+            Dependency property for the From property
+            </summary>
+        </member>
+        <member name="P:Behaviours.ExpanderDoubleAnimation.From">
+            <summary>
+            CLR Wrapper for the From depenendency property
+            </summary>
+        </member>
+        <member name="F:Behaviours.ExpanderDoubleAnimation.ToProperty">
+            <summary>
+            Dependency property for the To property
+            </summary>
+        </member>
+        <member name="P:Behaviours.ExpanderDoubleAnimation.To">
+            <summary>
+            CLR Wrapper for the To property
+            </summary>
+        </member>
+        <member name="P:Behaviours.ExpanderDoubleAnimation.ReverseValue">
+            <summary>
+            Sets the reverse value for the second animation
+            </summary>
+        </member>
+        <member name="F:Behaviours.ExpanderDoubleAnimation.ReverseValueProperty">
+            <summary>
+            Sets the reverse value for the second animation
+            </summary>
+        </member>
+        <member name="M:Behaviours.ExpanderDoubleAnimation.CreateInstanceCore">
+            <summary>
+            Creates an instance of the animation
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Behaviours.ExpanderDoubleAnimation.GetCurrentValueCore(System.Double,System.Double,System.Windows.Media.Animation.AnimationClock)">
+            <summary>
+            Animates the double value
+            </summary>
+            <param name="defaultOriginValue">The original value to animate</param>
+            <param name="defaultDestinationValue">The final value</param>
+            <param name="animationClock">The animation clock (timer)</param>
+            <returns>Returns the new double to set</returns>
+        </member>
         <member name="T:Mvvm.BindableBase">
             <summary>
             ビューモデル等の基底に使うベースクラス
@@ -349,6 +465,38 @@
             <param name="value">プロパティフィールドへの代入値</param>
             <param name="propertyName">プロパティ名</param>
             <returns>True=フィールド値が変更された,False=されなかった</returns>
+        </member>
+        <member name="T:Mvvm.INavigationContents">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.INavigationContents.FromContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.INavigationContents.ToContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.INavigationStory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.INavigationStory.Initialize(Mvvm.INavigationContents,System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.INavigationStory.Animate">
+            <summary>
+            
+            </summary>
+            <param name="endAnimation"></param>
         </member>
         <member name="T:Mvvm.NavigationServiceEx">
             <summary>

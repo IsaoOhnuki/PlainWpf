@@ -81,7 +81,7 @@ namespace PlainWpf.ViewModels
             if (treeViewItem != null)
             {
                 TreeViewItem item = new TreeViewItem();
-                item.Header = "\"" + value + "\"";
+                item.Header = "\"" + value.Trim() + "\"";
                 treeViewItem.Items.Add(item);
             }
         }

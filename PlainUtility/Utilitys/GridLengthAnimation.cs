@@ -4,7 +4,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Media.Animation;
 
-namespace Behaviours
+namespace Utilitys
 {
     /// <summary>
     /// Animates a grid length value just like the DoubleAnimation animates a double value

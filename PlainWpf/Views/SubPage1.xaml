@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:PlainWpf.Views"
       xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
       xmlns:Behaviours="clr-namespace:Behaviours"
+      xmlns:Utilitys="clr-namespace:Utilitys"
       mc:Ignorable="d" 
       d:DesignHeight="180" d:DesignWidth="191"
       >
@@ -18,7 +19,7 @@
             <DoubleAnimation Storyboard.TargetName="rect" Storyboard.TargetProperty="(Canvas.Top)" To="30" Duration="0:0:0.1" />
         </Storyboard>
         <Storyboard x:Key="GridStory">
-            <Behaviours:GridLengthAnimation
+            <Utilitys:GridLengthAnimation
                 Storyboard.TargetProperty="Width"
                 Storyboard.TargetName="row1"
                 From="5*"

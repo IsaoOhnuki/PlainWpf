@@ -1,4 +1,5 @@
 ﻿using Behaviours;
+using Utilitys;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,56 +11,61 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
+using System.Windows.Navigation;
 
-namespace Mvvm
+namespace Utilitys
 {
     /// <summary>
-    /// 
+    /// ページ遷移時のアニメーションを実行するインターフェース
     /// </summary>
     public interface INavigationStory
     {
         /// <summary>
-        /// 
+        /// アニメーション再生の為のイニシャライザ
         /// </summary>
-        /// <returns></returns>
+        /// <param name="fromContent">遷移元ページ</param>
+        /// <param name="toContent">遷移先ページ</param>
+        /// <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+        /// <returns>アニメーションを再生するコンテント</returns>
         FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent, Action<FrameworkElement> endAnimation);
         /// <summary>
-        /// 
+        /// アニメーション再生
         /// </summary>
         void Animate();
     }
     /// <summary>
-    /// 
+    /// シンプルなワイプ系のアニメーション
     /// </summary>
+    /// <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
     public class SimpleWipeNavigationStory : INavigationStory
     {
         /// <summary>
-        /// 
+        /// ワイプアニメーションのタイプ定義
         /// </summary>
         public enum WipeNavigationMode
         {
             /// <summary>
-            /// 
+            /// 遷移先が中心から広がる
             /// </summary>
             Spread,
             /// <summary>
-            /// 
+            /// 遷移先が水平方向に広がる
             /// </summary>
             HorizontalSpread,
             /// <summary>
-            /// 
+            /// 遷移先が垂直方向に広がる
             /// </summary>
             VerticalSpread,
             /// <summary>
-            /// 
+            /// 遷移元が中心に窄まる
             /// </summary>
             Narrowed,
             /// <summary>
-            /// 
+            /// 遷移元が左右から中心に窄まる
             /// </summary>
             HorizontalNarrowed,
             /// <summary>
-            /// 
+            /// 遷移元が上下から中心に窄まる
             /// </summary>
             VerticalNarrowed,
         }
@@ -78,17 +84,21 @@ namespace Mvvm
         private ContentControl fromContentControl;
 
         /// <summary>
-        /// 
+        /// 再生するワイプアニメーションのタイプ
         /// </summary>
         public WipeNavigationMode NavigationMode { get; set; }
+        /// <summary>
+        /// アニメーションの再生時間
+        /// </summary>
+        public Duration Duration { get; set; } = new Duration(new TimeSpan(0, 0, 0, 0, 300));
 
         /// <summary>
-        /// 
+        /// アニメーション再生の為のイニシャライザ
         /// </summary>
-        /// <param name="fromContent"></param>
-        /// <param name="toContent"></param>
-        /// <param name="endAnimation"></param>
-        /// <returns></returns>
+        /// <param name="fromContent">遷移元ページ</param>
+        /// <param name="toContent">遷移先ページ</param>
+        /// <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+        /// <returns>アニメーションを再生するコンテント</returns>
         public FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent, Action<FrameworkElement> endAnimation)
         {
             this.toContent = toContent;
@@ -107,7 +117,7 @@ namespace Mvvm
         }
 
         /// <summary>
-        /// 
+        /// アニメーション再生
         /// </summary>
         public void Animate()
         {
@@ -135,7 +145,7 @@ namespace Mvvm
             fromContentControl.Content = IsSpread ? fromContent : toContent;
             toContentControl.Content = IsSpread ? toContent : fromContent;
 
-            var duration = new Duration(TimeSpan.FromMilliseconds(300));
+            var duration = Duration;
             Storyboard story = new Storyboard { Duration = duration };
 
             if (IsHorizontal || IsFocal)
@@ -196,30 +206,30 @@ namespace Mvvm
         }
     }
     /// <summary>
-    /// 
+    /// シンプルなスライド系のアニメーション
     /// </summary>
-    /// <uri name="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</uri>
+    /// <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
     public class SimpleRaiseNavigationStory : INavigationStory
     {
         /// <summary>
-        /// 
+        /// スライドアニメーションのタイプ定義
         /// </summary>
         public enum RaiseNavigationMode
         {
             /// <summary>
-            /// 
+            /// 遷移先ページが右側からスライド
             /// </summary>
             RightToLeft,
             /// <summary>
-            /// 
+            /// 遷移先ページが左側からスライド
             /// </summary>
             LeftToRight,
             /// <summary>
-            /// 
+            /// 遷移先ページが下側からスライド
             /// </summary>
             BottomToTop,
             /// <summary>
-            /// 
+            /// 遷移先ページが上側からスライド
             /// </summary>
             TopToBottom
         }
@@ -230,16 +240,21 @@ namespace Mvvm
         private FrameworkElement toContent;
 
         /// <summary>
-        /// 
+        /// 再生するスライドアニメーションのタイプ
         /// </summary>
         public RaiseNavigationMode NavigationMode { get; set; } = RaiseNavigationMode.RightToLeft;
         /// <summary>
-        /// 
+        /// アニメーションの再生時間
         /// </summary>
-        /// <param name="fromContent"></param>
-        /// <param name="toContent"></param>
-        /// <param name="endAnimation"></param>
-        /// <returns></returns>
+        public Duration Duration { get; set; } = new Duration(new TimeSpan(0, 0, 0, 0, 300));
+
+        /// <summary>
+        /// アニメーション再生の為のイニシャライザ
+        /// </summary>
+        /// <param name="fromContent">遷移元ページ</param>
+        /// <param name="toContent">遷移先ページ</param>
+        /// <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+        /// <returns>アニメーションを再生するコンテント</returns>
         public FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent, Action<FrameworkElement> endAnimation)
         {
             this.toContent = toContent;
@@ -261,7 +276,7 @@ namespace Mvvm
             return storyBoard as FrameworkElement;
         }
         /// <summary>
-        /// 
+        /// アニメーション再生
         /// </summary>
         public void Animate()
         {
@@ -286,7 +301,7 @@ namespace Mvvm
             storyBoard.Children.Add(fromContent);
             storyBoard.Children.Add(toContent);
 
-            var duration = new Duration(TimeSpan.FromMilliseconds(300));
+            var duration = Duration;
             Storyboard story = new Storyboard { Duration = duration };
 
             GridLengthAnimation fromSizeAnimation = new GridLengthAnimation
@@ -334,13 +349,13 @@ namespace Mvvm
     /// <summary>
     /// ページナビゲーションを行うクラス
     /// </summary>
-    /// <url name="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</url>
+    /// <remarks><a href="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</a></remarks>
     public class NavigationServiceEx : DependencyObject
     {
         /// <summary>
         /// ページナビゲーションを行う領域となるContentControlを保持するAccessor
         /// </summary>
-        public ContentControl Content
+        protected ContentControl Content
         {
             get { return (ContentControl)GetValue(ContentProperty); }
             set { SetValue(ContentProperty, value); }
@@ -349,58 +364,61 @@ namespace Mvvm
         /// <summary>
         /// ページナビゲーションを行う領域となるContentControlを保持するプロパティ
         /// </summary>
-        public static readonly DependencyProperty ContentProperty = DependencyProperty.Register(
+        protected static readonly DependencyProperty ContentProperty = DependencyProperty.Register(
             nameof(Content),
             typeof(ContentControl),
             typeof(NavigationServiceEx),
             new PropertyMetadata(null));
 
         #region ナビゲーションで利用する各種メソッド
-        private void OnEndAnimation(FrameworkElement contnts)
-        {
-            this.Content.Content = contnts;
-        }
         /// <summary>
         /// view引数で指定されたインスタンスのページへとナビゲーションを行います。
         /// </summary>
-        /// <param name="view"></param>
-        /// <returns>成功True、失敗False</returns>
-        public bool Navigate(FrameworkElement view)
+        /// <param name="view">遷移先ページのインスタンス</param>
+        /// <exception cref="Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+        /// <exception cref="Exception">ナビゲーションアニメ内部エラー</exception>
+        public void Navigate(FrameworkElement view)
         {
-            try
+            var story = GetNavigationStory(this.Content);
+            if (story == null)
             {
-                var story = GetNavigationStory(this.Content);
-                if (story == null)
+                this.Content.Content = view;
+            }
+            else
+            {
+                try
                 {
-                    this.Content.Content = view;
+                    this.Content.Content = story.Initialize(this.Content.Content as FrameworkElement, view, x => this.Content.Content = x);
                 }
-                else
+                catch (Exception e)
                 {
-                    this.Content.Content = story.Initialize(this.Content.Content as FrameworkElement, view, OnEndAnimation);
+                    throw new Exception("ナビゲーションアニメイニシャライザ内部エラー", e);
+                }
+                try
+                {
                     story.Animate();
                 }
-                return true;
-            }
-            catch
-            {
-                return false;
+                catch (Exception e)
+                {
+                    throw new Exception("ナビゲーションアニメ内部エラー", e);
+                }
             }
         }
 
         /// <summary>
         /// viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
         /// </summary>
-        /// <param name="viewType">遷移するページのType</param>
-        /// <returns>成功True、失敗False</returns>
-        public bool Navigate(Type viewType)
+        /// <param name="viewType">遷移先ページのType</param>
+        /// <exception cref="Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+        /// <exception cref="Exception">ナビゲーションアニメ内部エラー</exception>
+        public void Navigate(Type viewType)
         {
             if (viewType == null)
             {
                 this.Navigate((FrameworkElement)null);
-                return false;
             }
             var view = Activator.CreateInstance(viewType) as FrameworkElement;
-            return this.Navigate(view);
+            this.Navigate(view);
         }
         #endregion
 
@@ -409,62 +427,66 @@ namespace Mvvm
         /// </summary>
         /// <param name="sender">未使用</param>
         /// <param name="e">e.Parameterに遷移するページのType</param>
+        /// <exception cref="Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+        /// <exception cref="Exception">ナビゲーションアニメ内部エラー</exception>
         private void OnGoToPage(object sender, ExecutedRoutedEventArgs e)
         {
             var nextPage = e.Parameter as Type;
             this.Navigate(nextPage);
         }
 
+        #region ページ遷移時のアニメーション
         /// <summary>
-        /// 
+        /// ページ遷移アニメーションのゲッター
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">添付されたDependencyObject</param>
+        /// <returns>ページ遷移時のアニメーションを実行するインターフェース</returns>
         public static INavigationStory GetNavigationStory(DependencyObject obj)
         {
             return (INavigationStory)obj.GetValue(NavigationStoryProperty);
         }
         /// <summary>
-        /// 
+        /// ページ遷移アニメーションのセッター
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="value"></param>
+        /// <param name="obj">添付されるDependencyObject</param>
+        /// <param name="value">ページ遷移時のアニメーションを実行するインターフェース</param>
         public static void SetNavigationStory(DependencyObject obj, INavigationStory value)
         {
             obj.SetValue(NavigationStoryProperty, value);
         }
         /// <summary>
-        /// 
+        /// ページ遷移時のアニメーションを実行するインターフェースの添付プロパティ
         /// </summary>
         public static readonly DependencyProperty NavigationStoryProperty = DependencyProperty.RegisterAttached(
             "NavigationStory",
             typeof(INavigationStory),
             typeof(NavigationServiceEx),
-            new PropertyMetadata(null, (DependencyObject d, DependencyPropertyChangedEventArgs e) => {
-            }));
+            new PropertyMetadata(null));
+        #endregion
 
         #region ページナビゲーションを行う領域となるContentControlを指定するための添付プロパティ
         /// <summary>
-        /// この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。
+        /// ページ遷移を実現するエリアのゲッター
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">添付されたDependencyObject</param>
+        /// <returns>添付されたContentControl</returns>
         public static ContentControl GetTarget(DependencyObject obj)
         {
             return (ContentControl)obj.GetValue(TargetProperty);
         }
         /// <summary>
-        /// 
+        /// ページ遷移を実現するエリアのセッター
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="value"></param>
+        /// <param name="obj">添付されるDependencyObject</param>
+        /// <param name="value">設定するContentControl</param>
         public static void SetTarget(DependencyObject obj, ContentControl value)
         {
             obj.SetValue(TargetProperty, value);
         }
         /// <summary>
-        /// Using a DependencyProperty as the backing store for Target.  This enables animation, styling, binding, etc...
+        /// ページ遷移を実現するエリア。ContentControlを指定すること。
         /// </summary>
+        /// <remarks>この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。</remarks>
         public static readonly DependencyProperty TargetProperty = DependencyProperty.RegisterAttached(
             "Target",
             typeof(ContentControl),
@@ -498,25 +520,25 @@ namespace Mvvm
 
         #region スタートアップ時に表示するページを指定するための添付プロパティ
         /// <summary>
-        /// 
+        /// 初期ページを指定するプロパティのゲッター
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">添付されたDependencyObject</param>
+        /// <returns>添付された初期ページのType</returns>
         public static Type GetStartup(DependencyObject obj)
         {
             return (Type)obj.GetValue(StartupProperty);
         }
         /// <summary>
-        /// 
+        /// 初期ページを指定するプロパティのセッター
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="value"></param>
+        /// <param name="obj">添付されるDependencyObject</param>
+        /// <param name="value">添付する初期ページのType</param>
         public static void SetStartup(DependencyObject obj, Type value)
         {
             obj.SetValue(StartupProperty, value);
         }
         /// <summary>
-        /// Using a DependencyProperty as the backing store for Startup.  This enables animation, styling, binding, etc...
+        /// 初期ページを指定するプロパティ
         /// </summary>
         public static readonly DependencyProperty StartupProperty = DependencyProperty.RegisterAttached(
             "Startup",
@@ -536,75 +558,29 @@ namespace Mvvm
         }
         #endregion
 
-        #region ページ遷移時のアニメーション
-        /// <summary>
-        /// ページ遷移時のアニメーション添付プロパティのGetter
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
-        public static Storyboard GetStoryboard(DependencyObject obj)
-        {
-            return (Storyboard)obj.GetValue(StartupProperty);
-        }
-
-        /// <summary>
-        /// ページ遷移時のアニメーション添付プロパティのSetter
-        /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="value"></param>
-        public static void SetStoryboard(DependencyObject obj, Storyboard value)
-        {
-            obj.SetValue(StartupProperty, value);
-        }
-
-        /// <summary>
-        /// ページ遷移時のアニメーション添付プロパティ
-        /// </summary>
-        public static readonly DependencyProperty StoryboardProperty = DependencyProperty.RegisterAttached(
-            "Storyboard",
-            typeof(Storyboard),
-            typeof(NavigationServiceEx),
-            new PropertyMetadata(null, OnStoryboardChanged));
-
-        /// <summary>
-        /// ページ遷移時のアニメーション添付プロパティのハンドラ
-        /// </summary>
-        /// <param name="d"></param>
-        /// <param name="e"></param>
-        private static void OnStoryboardChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
-        {
-            var storyboard = e.NewValue as Type;
-
-            if (d is FrameworkElement element)
-            {
-
-            }
-        }
-        #endregion
-
         #region 任意のコントロールに対して、NavigationServiceExをアタッチできるようにするための添付プロパティ
         /// <summary>
-        /// 
+        /// アタッチしたNavigationServiceEx添付プロパティのゲッター
         /// </summary>
-        /// <param name="obj"></param>
-        /// <returns></returns>
+        /// <param name="obj">添付されたDependencyObject</param>
+        /// <returns>添付されたNavigationServiceEx</returns>
         public static NavigationServiceEx GetNavigator(DependencyObject obj)
         {
             return (NavigationServiceEx)obj.GetValue(NavigatorProperty);
         }
         /// <summary>
-        /// ↓protectedにして外部からは利用できないように。
+        /// アタッチしたNavigationServiceEx添付プロパティのセッター
         /// </summary>
-        /// <param name="obj"></param>
-        /// <param name="value"></param>
-        public static void SetNavigator(DependencyObject obj, NavigationServiceEx value)
+        /// <param name="obj">添付されるDependencyObject</param>
+        /// <param name="value">添付するNavigationServiceEx</param>
+        protected static void SetNavigator(DependencyObject obj, NavigationServiceEx value)
         {
             obj.SetValue(NavigatorProperty, value);
         }
         /// <summary>
-        /// Using a DependencyProperty as the backing store for Navigator.  This enables animation, styling, binding, etc...
+        /// 任意のコントロールに対して、NavigationServiceExをアタッチできるようにするための添付プロパティ
         /// </summary>
-        public static readonly DependencyProperty NavigatorProperty = DependencyProperty.RegisterAttached(
+        protected static readonly DependencyProperty NavigatorProperty = DependencyProperty.RegisterAttached(
             "Navigator",
             typeof(NavigationServiceEx),
             typeof(NavigationServiceEx),
@@ -613,32 +589,34 @@ namespace Mvvm
     }
 
     /// <summary>
-    /// 
+    /// ページナビゲートのための拡張メソッド定義クラス
     /// </summary>
     public static class NavigationServiceExtensions
     {
         /// <summary>
         /// view引数で指定されたインスタンスのページへとナビゲーションを行います。
         /// </summary>
-        /// <param name="element"></param>
-        /// <param name="view"></param>
-        /// <returns></returns>
-        public static bool Navigate(this FrameworkElement element, FrameworkElement view)
+        /// <param name="element">ターゲットを添付したFrameworkElement</param>
+        /// <param name="view">遷移先ページ</param>
+        /// <exception cref="Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+        /// <exception cref="Exception">ナビゲーションアニメ内部エラー</exception>
+        public static　void Navigate(this FrameworkElement element, FrameworkElement view)
         {
             var navigator = NavigationServiceEx.GetNavigator(element);
-            return navigator.Navigate(view);
+            navigator.Navigate(view);
         }
 
         /// <summary>
         /// viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
         /// </summary>
-        /// <param name="element"></param>
-        /// <param name="viewType"></param>
-        /// <returns></returns>
-        public static bool Navigate(this FrameworkElement element, Type viewType)
+        /// <param name="element">ターゲットを添付したFrameworkElement</param>
+        /// <param name="viewType">遷移先ページのType</param>
+        /// <exception cref="Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+        /// <exception cref="Exception">ナビゲーションアニメ内部エラー</exception>
+        public static void Navigate(this FrameworkElement element, Type viewType)
         {
             var navigator = NavigationServiceEx.GetNavigator(element);
-            return navigator.Navigate(viewType);
+            navigator.Navigate(viewType);
         }
     }
 }

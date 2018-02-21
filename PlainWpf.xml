@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>XmlCommentFileReader</name>
+        <name>PlainWpf</name>
     </assembly>
     <members>
         <member name="T:PlainWpf.ViewModels.CsXmlCommentReader">
@@ -41,6 +41,12 @@
             <summary>
             
             </summary>
+        </member>
+        <member name="T:PlainWpf.ViewModels.SubPage3ViewModel">
+            <summary>
+            
+            </summary>
+            <seealso cref="!:Mvvm.BindableBase" />
         </member>
         <member name="T:PlainWpf.ViewModels.XmlTreeViewModel">
             <summary>
@@ -125,6 +131,19 @@
             </summary>
         </member>
         <member name="M:PlainWpf.Views.SubPage1.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:PlainWpf.Views.SubPage3">
+            <summary>
+            SubPage3.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            SubPage3
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.SubPage3.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -270,64 +289,64 @@
             <param name="sender">ドラッグ先のコントロール</param>
             <param name="e">ドラッグパラメータ</param>
         </member>
-        <member name="T:Behaviours.GridLengthAnimation">
+        <member name="T:Utilitys.GridLengthAnimation">
             <summary>
             Animates a grid length value just like the DoubleAnimation animates a double value
             </summary>
         </member>
-        <member name="P:Behaviours.GridLengthAnimation.IsCompleted">
+        <member name="P:Utilitys.GridLengthAnimation.IsCompleted">
             <summary>
             Marks the animation as completed
             </summary>
         </member>
-        <member name="P:Behaviours.GridLengthAnimation.ReverseValue">
+        <member name="P:Utilitys.GridLengthAnimation.ReverseValue">
             <summary>
             Sets the reverse value for the second animation
             </summary>
         </member>
-        <member name="F:Behaviours.GridLengthAnimation.ReverseValueProperty">
+        <member name="F:Utilitys.GridLengthAnimation.ReverseValueProperty">
             <summary>
             Dependency property. Sets the reverse value for the second animation
             </summary>
         </member>
-        <member name="P:Behaviours.GridLengthAnimation.TargetPropertyType">
+        <member name="P:Utilitys.GridLengthAnimation.TargetPropertyType">
             <summary>
             Returns the type of object to animate
             </summary>
         </member>
-        <member name="M:Behaviours.GridLengthAnimation.CreateInstanceCore">
+        <member name="M:Utilitys.GridLengthAnimation.CreateInstanceCore">
             <summary>
             Creates an instance of the animation object
             </summary>
             <returns>Returns the instance of the GridLengthAnimation</returns>
         </member>
-        <member name="F:Behaviours.GridLengthAnimation.FromProperty">
+        <member name="F:Utilitys.GridLengthAnimation.FromProperty">
             <summary>
             Dependency property for the From property
             </summary>
         </member>
-        <member name="P:Behaviours.GridLengthAnimation.From">
+        <member name="P:Utilitys.GridLengthAnimation.From">
             <summary>
             CLR Wrapper for the From depenendency property
             </summary>
         </member>
-        <member name="F:Behaviours.GridLengthAnimation.ToProperty">
+        <member name="F:Utilitys.GridLengthAnimation.ToProperty">
             <summary>
             Dependency property for the To property
             </summary>
         </member>
-        <member name="P:Behaviours.GridLengthAnimation.To">
+        <member name="P:Utilitys.GridLengthAnimation.To">
             <summary>
             CLR Wrapper for the To property
             </summary>
         </member>
-        <member name="M:Behaviours.GridLengthAnimation.VerifyAnimationCompletedStatus(System.Windows.Media.Animation.AnimationClock)">
+        <member name="M:Utilitys.GridLengthAnimation.VerifyAnimationCompletedStatus(System.Windows.Media.Animation.AnimationClock)">
             <summary>
             registers to the completed event of the animation clock
             </summary>
             <param name="clock">the animation clock to notify completion status</param>
         </member>
-        <member name="M:Behaviours.GridLengthAnimation.GetCurrentValue(System.Object,System.Object,System.Windows.Media.Animation.AnimationClock)">
+        <member name="M:Utilitys.GridLengthAnimation.GetCurrentValue(System.Object,System.Object,System.Windows.Media.Animation.AnimationClock)">
             <summary>
             Animates the grid let set
             </summary>
@@ -336,48 +355,48 @@
             <param name="animationClock">The animation clock (timer)</param>
             <returns>Returns the new grid length to set</returns>
         </member>
-        <member name="T:Behaviours.ExpanderDoubleAnimation">
+        <member name="T:Utilitys.ExpanderDoubleAnimation">
             <summary>
             Animates a double value 
             </summary>
         </member>
-        <member name="F:Behaviours.ExpanderDoubleAnimation.FromProperty">
+        <member name="F:Utilitys.ExpanderDoubleAnimation.FromProperty">
             <summary>
             Dependency property for the From property
             </summary>
         </member>
-        <member name="P:Behaviours.ExpanderDoubleAnimation.From">
+        <member name="P:Utilitys.ExpanderDoubleAnimation.From">
             <summary>
             CLR Wrapper for the From depenendency property
             </summary>
         </member>
-        <member name="F:Behaviours.ExpanderDoubleAnimation.ToProperty">
+        <member name="F:Utilitys.ExpanderDoubleAnimation.ToProperty">
             <summary>
             Dependency property for the To property
             </summary>
         </member>
-        <member name="P:Behaviours.ExpanderDoubleAnimation.To">
+        <member name="P:Utilitys.ExpanderDoubleAnimation.To">
             <summary>
             CLR Wrapper for the To property
             </summary>
         </member>
-        <member name="P:Behaviours.ExpanderDoubleAnimation.ReverseValue">
+        <member name="P:Utilitys.ExpanderDoubleAnimation.ReverseValue">
             <summary>
             Sets the reverse value for the second animation
             </summary>
         </member>
-        <member name="F:Behaviours.ExpanderDoubleAnimation.ReverseValueProperty">
+        <member name="F:Utilitys.ExpanderDoubleAnimation.ReverseValueProperty">
             <summary>
             Sets the reverse value for the second animation
             </summary>
         </member>
-        <member name="M:Behaviours.ExpanderDoubleAnimation.CreateInstanceCore">
+        <member name="M:Utilitys.ExpanderDoubleAnimation.CreateInstanceCore">
             <summary>
             Creates an instance of the animation
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Behaviours.ExpanderDoubleAnimation.GetCurrentValueCore(System.Double,System.Double,System.Windows.Media.Animation.AnimationClock)">
+        <member name="M:Utilitys.ExpanderDoubleAnimation.GetCurrentValueCore(System.Double,System.Double,System.Windows.Media.Animation.AnimationClock)">
             <summary>
             Animates the double value
             </summary>
@@ -386,37 +405,87 @@
             <param name="animationClock">The animation clock (timer)</param>
             <returns>Returns the new double to set</returns>
         </member>
-        <member name="T:Mvvm.BindableBase">
+        <member name="T:Utilitys.ObjectStack`1">
+            <summary>
+            アンドゥ、リドゥ機能スタック
+            </summary>
+            <typeparam name="T">保持するオブジェクト</typeparam>
+        </member>
+        <member name="P:Utilitys.ObjectStack`1.CanUndo">
+            <summary>
+            Gets a value indicating whether this instance can undo.
+            </summary>
+            <value>
+              <c>true</c> if this instance can undo; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Utilitys.ObjectStack`1.CanRedo">
+            <summary>
+            Gets a value indicating whether this instance can redo.
+            </summary>
+            <value>
+              <c>true</c> if this instance can redo; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:Utilitys.ObjectStack`1.Undo">
+            <summary>
+            Undoes this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilitys.ObjectStack`1.Redo">
+            <summary>
+            Redoes this instance.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Utilitys.ObjectStack`1.Rewind">
+            <summary>
+            ポイント位置までクリアします
+            </summary>
+        </member>
+        <member name="M:Utilitys.ObjectStack`1.Push(`0)">
+            <summary>
+            Pushes the specified t.
+            </summary>
+            <param name="t">The t.</param>
+        </member>
+        <member name="M:Utilitys.ObjectStack`1.Dispose">
+            <summary>
+            Releases unmanaged and - optionally - managed resources.
+            </summary>
+        </member>
+        <member name="T:Utilitys.BindableBase">
             <summary>
             ビューモデル等の基底に使うベースクラス
             </summary>
             <inherited name="INotifyPropertyChanged">プロパティ変更通知</inherited>
             <inherited name="INotifyDataErrorInfo">プロパティ検証エラー通知</inherited>
         </member>
-        <member name="M:Mvvm.BindableBase.#ctor">
+        <member name="M:Utilitys.BindableBase.#ctor">
             <summary>
             基底コンストラクタ
             </summary>
         </member>
-        <member name="F:Mvvm.BindableBase.hasErrors">
+        <member name="F:Utilitys.BindableBase.hasErrors">
             <summary>
             検証エラーがあるプロパティ名と検証エラーメッセージのリスト
             </summary>
         </member>
-        <member name="P:Mvvm.BindableBase.HasErrors">
+        <member name="P:Utilitys.BindableBase.HasErrors">
             <summary>
             検証エラー状態
             </summary>
             <override name="INotifyDataErrorInfo"></override>
             <returns>True=エラーあり,False=エラーなし</returns>
         </member>
-        <member name="E:Mvvm.BindableBase.ErrorsChanged">
+        <member name="E:Utilitys.BindableBase.ErrorsChanged">
             <summary>
             検証エラー通知イベント
             </summary>
             <override name="INotifyDataErrorInfo"></override>
         </member>
-        <member name="M:Mvvm.BindableBase.RaiseErrorsChanged(System.String,System.String)">
+        <member name="M:Utilitys.BindableBase.RaiseErrorsChanged(System.String,System.String)">
             <summary>
             プロパティの検証後に呼び出す。検証エラー通知イベント起動メソッド
             </summary>
@@ -424,39 +493,39 @@
             <param name="errorMessage">nullまたは空の文字列でエラーなしまたはエラー状態解除、空白文字列または文字列はエラー状態メッセージ</param>
             <param name="propertyName">エラー状態にあるプロパティ名</param>
         </member>
-        <member name="M:Mvvm.BindableBase.SetError(System.String,System.String)">
+        <member name="M:Utilitys.BindableBase.SetError(System.String,System.String)">
             <summary>
             プロパティの検証後にエラー状態なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
             </summary>
             <param name="errorMessage">エラーメッセージ、メッセージが空なら自動生成</param>
             <param name="propertyName">エラー状態のプロパティ名</param>
         </member>
-        <member name="M:Mvvm.BindableBase.ResetError(System.String)">
+        <member name="M:Utilitys.BindableBase.ResetError(System.String)">
             <summary>
             プロパティの検証後にエラー状態解除なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
             </summary>
             <param name="propertyName">エラー解除状態のプロパティ名</param>
         </member>
-        <member name="M:Mvvm.BindableBase.GetErrors(System.String)">
+        <member name="M:Utilitys.BindableBase.GetErrors(System.String)">
             <summary>
             エラー状態プロパティのエラーメッセージ
             </summary>
             <param name="propertyName">プロパティ名</param>
             <returns>指定したプロパティのエラーメッセージ</returns>
         </member>
-        <member name="E:Mvvm.BindableBase.PropertyChanged">
+        <member name="E:Utilitys.BindableBase.PropertyChanged">
             <summary>
             変更通知イベント
             </summary>
             <override name="INotifyPropertyChanged"></override>
         </member>
-        <member name="M:Mvvm.BindableBase.RaisePropertyChanged(System.String)">
+        <member name="M:Utilitys.BindableBase.RaisePropertyChanged(System.String)">
             <summary>
             変更通知イベント起動メソッド
             </summary>
             <param name="propertyName">変更通知するプロパティ名</param>
         </member>
-        <member name="M:Mvvm.BindableBase.SetProperty``1(``0@,``0,System.String)">
+        <member name="M:Utilitys.BindableBase.SetProperty``1(``0@,``0,System.String)">
             <summary>
             プロパティフィールド代入メソッド
             </summary>
@@ -466,289 +535,335 @@
             <param name="propertyName">プロパティ名</param>
             <returns>True=フィールド値が変更された,False=されなかった</returns>
         </member>
-        <member name="T:Mvvm.INavigationStory">
+        <member name="T:Utilitys.INavigationStory">
             <summary>
-            
+            ページ遷移時のアニメーションを実行するインターフェース
             </summary>
         </member>
-        <member name="M:Mvvm.INavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
+        <member name="M:Utilitys.INavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
             <summary>
-            
+            アニメーション再生の為のイニシャライザ
             </summary>
-            <returns></returns>
+            <param name="fromContent">遷移元ページ</param>
+            <param name="toContent">遷移先ページ</param>
+            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+            <returns>アニメーションを再生するコンテント</returns>
         </member>
-        <member name="M:Mvvm.INavigationStory.Animate">
+        <member name="M:Utilitys.INavigationStory.Animate">
             <summary>
-            
-            </summary>
-        </member>
-        <member name="T:Mvvm.SimpleWipeNavigationStory">
-            <summary>
-            
+            アニメーション再生
             </summary>
         </member>
-        <member name="T:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode">
+        <member name="T:Utilitys.SimpleWipeNavigationStory">
             <summary>
-            
+            シンプルなワイプ系のアニメーション
+            </summary>
+            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
+        </member>
+        <member name="T:Utilitys.SimpleWipeNavigationStory.WipeNavigationMode">
+            <summary>
+            ワイプアニメーションのタイプ定義
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.Spread">
+        <member name="F:Utilitys.SimpleWipeNavigationStory.WipeNavigationMode.Spread">
             <summary>
-            
+            遷移先が中心から広がる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalSpread">
+        <member name="F:Utilitys.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalSpread">
             <summary>
-            
+            遷移先が水平方向に広がる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.VerticalSpread">
+        <member name="F:Utilitys.SimpleWipeNavigationStory.WipeNavigationMode.VerticalSpread">
             <summary>
-            
+            遷移先が垂直方向に広がる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.Narrowed">
+        <member name="F:Utilitys.SimpleWipeNavigationStory.WipeNavigationMode.Narrowed">
             <summary>
-            
+            遷移元が中心に窄まる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalNarrowed">
+        <member name="F:Utilitys.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalNarrowed">
             <summary>
-            
+            遷移元が左右から中心に窄まる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.VerticalNarrowed">
+        <member name="F:Utilitys.SimpleWipeNavigationStory.WipeNavigationMode.VerticalNarrowed">
             <summary>
-            
+            遷移元が上下から中心に窄まる
             </summary>
         </member>
-        <member name="P:Mvvm.SimpleWipeNavigationStory.NavigationMode">
+        <member name="P:Utilitys.SimpleWipeNavigationStory.NavigationMode">
             <summary>
-            
+            再生するワイプアニメーションのタイプ
             </summary>
         </member>
-        <member name="M:Mvvm.SimpleWipeNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
+        <member name="P:Utilitys.SimpleWipeNavigationStory.Duration">
             <summary>
-            
-            </summary>
-            <param name="fromContent"></param>
-            <param name="toContent"></param>
-            <param name="endAnimation"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Mvvm.SimpleWipeNavigationStory.Animate">
-            <summary>
-            
+            アニメーションの再生時間
             </summary>
         </member>
-        <member name="T:Mvvm.SimpleRaiseNavigationStory">
+        <member name="M:Utilitys.SimpleWipeNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
             <summary>
-            
+            アニメーション再生の為のイニシャライザ
             </summary>
-            <uri name="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</uri>
+            <param name="fromContent">遷移元ページ</param>
+            <param name="toContent">遷移先ページ</param>
+            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+            <returns>アニメーションを再生するコンテント</returns>
         </member>
-        <member name="T:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode">
+        <member name="M:Utilitys.SimpleWipeNavigationStory.Animate">
             <summary>
-            
-            </summary>
-        </member>
-        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
-            <summary>
-            
+            アニメーション再生
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
+        <member name="T:Utilitys.SimpleRaiseNavigationStory">
             <summary>
-            
+            シンプルなスライド系のアニメーション
+            </summary>
+            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
+        </member>
+        <member name="T:Utilitys.SimpleRaiseNavigationStory.RaiseNavigationMode">
+            <summary>
+            スライドアニメーションのタイプ定義
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
+        <member name="F:Utilitys.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
             <summary>
-            
+            遷移先ページが右側からスライド
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
+        <member name="F:Utilitys.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
             <summary>
-            
+            遷移先ページが左側からスライド
             </summary>
         </member>
-        <member name="P:Mvvm.SimpleRaiseNavigationStory.NavigationMode">
+        <member name="F:Utilitys.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
             <summary>
-            
+            遷移先ページが下側からスライド
             </summary>
         </member>
-        <member name="M:Mvvm.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
+        <member name="F:Utilitys.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
             <summary>
-            
-            </summary>
-            <param name="fromContent"></param>
-            <param name="toContent"></param>
-            <param name="endAnimation"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Mvvm.SimpleRaiseNavigationStory.Animate">
-            <summary>
-            
+            遷移先ページが上側からスライド
             </summary>
         </member>
-        <member name="T:Mvvm.NavigationServiceEx">
+        <member name="P:Utilitys.SimpleRaiseNavigationStory.NavigationMode">
+            <summary>
+            再生するスライドアニメーションのタイプ
+            </summary>
+        </member>
+        <member name="P:Utilitys.SimpleRaiseNavigationStory.Duration">
+            <summary>
+            アニメーションの再生時間
+            </summary>
+        </member>
+        <member name="M:Utilitys.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            アニメーション再生の為のイニシャライザ
+            </summary>
+            <param name="fromContent">遷移元ページ</param>
+            <param name="toContent">遷移先ページ</param>
+            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+            <returns>アニメーションを再生するコンテント</returns>
+        </member>
+        <member name="M:Utilitys.SimpleRaiseNavigationStory.Animate">
+            <summary>
+            アニメーション再生
+            </summary>
+        </member>
+        <member name="T:Utilitys.NavigationServiceEx">
             <summary>
             ページナビゲーションを行うクラス
             </summary>
-            <url name="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</url>
+            <remarks><a href="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</a></remarks>
         </member>
-        <member name="P:Mvvm.NavigationServiceEx.Content">
+        <member name="P:Utilitys.NavigationServiceEx.Content">
             <summary>
             ページナビゲーションを行う領域となるContentControlを保持するAccessor
             </summary>
         </member>
-        <member name="F:Mvvm.NavigationServiceEx.ContentProperty">
+        <member name="F:Utilitys.NavigationServiceEx.ContentProperty">
             <summary>
             ページナビゲーションを行う領域となるContentControlを保持するプロパティ
             </summary>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.Navigate(System.Windows.FrameworkElement)">
+        <member name="M:Utilitys.NavigationServiceEx.Navigate(System.Windows.FrameworkElement)">
             <summary>
             view引数で指定されたインスタンスのページへとナビゲーションを行います。
             </summary>
-            <param name="view"></param>
-            <returns>成功True、失敗False</returns>
+            <param name="view">遷移先ページのインスタンス</param>
+            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.Navigate(System.Type)">
+        <member name="M:Utilitys.NavigationServiceEx.Navigate(System.Type)">
             <summary>
             viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
             </summary>
-            <param name="viewType">遷移するページのType</param>
-            <returns>成功True、失敗False</returns>
+            <param name="viewType">遷移先ページのType</param>
+            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.OnGoToPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+        <member name="M:Utilitys.NavigationServiceEx.OnGoToPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
             <summary>
             NavigationCommands.GoToPageコマンドに対する応答処理
             </summary>
             <param name="sender">未使用</param>
             <param name="e">e.Parameterに遷移するページのType</param>
+            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.GetNavigationStory(System.Windows.DependencyObject)">
+        <member name="M:Utilitys.NavigationServiceEx.GetNavigationStory(System.Windows.DependencyObject)">
             <summary>
-            
+            ページ遷移アニメーションのゲッター
             </summary>
-            <param name="obj"></param>
-            <returns></returns>
+            <param name="obj">添付されたDependencyObject</param>
+            <returns>ページ遷移時のアニメーションを実行するインターフェース</returns>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.SetNavigationStory(System.Windows.DependencyObject,Mvvm.INavigationStory)">
+        <member name="M:Utilitys.NavigationServiceEx.SetNavigationStory(System.Windows.DependencyObject,Utilitys.INavigationStory)">
             <summary>
-            
+            ページ遷移アニメーションのセッター
             </summary>
-            <param name="obj"></param>
-            <param name="value"></param>
+            <param name="obj">添付されるDependencyObject</param>
+            <param name="value">ページ遷移時のアニメーションを実行するインターフェース</param>
         </member>
-        <member name="F:Mvvm.NavigationServiceEx.NavigationStoryProperty">
+        <member name="F:Utilitys.NavigationServiceEx.NavigationStoryProperty">
             <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Mvvm.NavigationServiceEx.GetTarget(System.Windows.DependencyObject)">
-            <summary>
-            この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。
-            </summary>
-            <param name="obj"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Mvvm.NavigationServiceEx.SetTarget(System.Windows.DependencyObject,System.Windows.Controls.ContentControl)">
-            <summary>
-            
-            </summary>
-            <param name="obj"></param>
-            <param name="value"></param>
-        </member>
-        <member name="F:Mvvm.NavigationServiceEx.TargetProperty">
-            <summary>
-            Using a DependencyProperty as the backing store for Target.  This enables animation, styling, binding, etc...
+            ページ遷移時のアニメーションを実行するインターフェースの添付プロパティ
             </summary>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.GetStartup(System.Windows.DependencyObject)">
+        <member name="M:Utilitys.NavigationServiceEx.GetTarget(System.Windows.DependencyObject)">
             <summary>
-            
+            ページ遷移を実現するエリアのゲッター
             </summary>
-            <param name="obj"></param>
-            <returns></returns>
+            <param name="obj">添付されたDependencyObject</param>
+            <returns>添付されたContentControl</returns>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.SetStartup(System.Windows.DependencyObject,System.Type)">
+        <member name="M:Utilitys.NavigationServiceEx.SetTarget(System.Windows.DependencyObject,System.Windows.Controls.ContentControl)">
             <summary>
-            
+            ページ遷移を実現するエリアのセッター
             </summary>
-            <param name="obj"></param>
-            <param name="value"></param>
+            <param name="obj">添付されるDependencyObject</param>
+            <param name="value">設定するContentControl</param>
         </member>
-        <member name="F:Mvvm.NavigationServiceEx.StartupProperty">
+        <member name="F:Utilitys.NavigationServiceEx.TargetProperty">
             <summary>
-            Using a DependencyProperty as the backing store for Startup.  This enables animation, styling, binding, etc...
+            ページ遷移を実現するエリア。ContentControlを指定すること。
             </summary>
+            <remarks>この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。</remarks>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.GetStoryboard(System.Windows.DependencyObject)">
+        <member name="M:Utilitys.NavigationServiceEx.GetStartup(System.Windows.DependencyObject)">
             <summary>
-            ページ遷移時のアニメーション添付プロパティのGetter
+            初期ページを指定するプロパティのゲッター
             </summary>
-            <param name="obj"></param>
-            <returns></returns>
+            <param name="obj">添付されたDependencyObject</param>
+            <returns>添付された初期ページのType</returns>
         </member>
-        <member name="M:Mvvm.NavigationServiceEx.SetStoryboard(System.Windows.DependencyObject,System.Windows.Media.Animation.Storyboard)">
+        <member name="M:Utilitys.NavigationServiceEx.SetStartup(System.Windows.DependencyObject,System.Type)">
             <summary>
-            ページ遷移時のアニメーション添付プロパティのSetter
+            初期ページを指定するプロパティのセッター
             </summary>
-            <param name="obj"></param>
-            <param name="value"></param>
+            <param name="obj">添付されるDependencyObject</param>
+            <param name="value">添付する初期ページのType</param>
         </member>
-        <member name="F:Mvvm.NavigationServiceEx.StoryboardProperty">
+        <member name="F:Utilitys.NavigationServiceEx.StartupProperty">
             <summary>
-            ページ遷移時のアニメーション添付プロパティ
-            </summary>
-        </member>
-        <member name="M:Mvvm.NavigationServiceEx.OnStoryboardChanged(System.Windows.DependencyObject,System.Windows.DependencyPropertyChangedEventArgs)">
-            <summary>
-            ページ遷移時のアニメーション添付プロパティのハンドラ
-            </summary>
-            <param name="d"></param>
-            <param name="e"></param>
-        </member>
-        <member name="M:Mvvm.NavigationServiceEx.GetNavigator(System.Windows.DependencyObject)">
-            <summary>
-            
-            </summary>
-            <param name="obj"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Mvvm.NavigationServiceEx.SetNavigator(System.Windows.DependencyObject,Mvvm.NavigationServiceEx)">
-            <summary>
-            ↓protectedにして外部からは利用できないように。
-            </summary>
-            <param name="obj"></param>
-            <param name="value"></param>
-        </member>
-        <member name="F:Mvvm.NavigationServiceEx.NavigatorProperty">
-            <summary>
-            Using a DependencyProperty as the backing store for Navigator.  This enables animation, styling, binding, etc...
+            初期ページを指定するプロパティ
             </summary>
         </member>
-        <member name="T:Mvvm.NavigationServiceExtensions">
+        <member name="M:Utilitys.NavigationServiceEx.GetNavigator(System.Windows.DependencyObject)">
             <summary>
-            
+            アタッチしたNavigationServiceEx添付プロパティのゲッター
+            </summary>
+            <param name="obj">添付されたDependencyObject</param>
+            <returns>添付されたNavigationServiceEx</returns>
+        </member>
+        <member name="M:Utilitys.NavigationServiceEx.SetNavigator(System.Windows.DependencyObject,Utilitys.NavigationServiceEx)">
+            <summary>
+            アタッチしたNavigationServiceEx添付プロパティのセッター
+            </summary>
+            <param name="obj">添付されるDependencyObject</param>
+            <param name="value">添付するNavigationServiceEx</param>
+        </member>
+        <member name="F:Utilitys.NavigationServiceEx.NavigatorProperty">
+            <summary>
+            任意のコントロールに対して、NavigationServiceExをアタッチできるようにするための添付プロパティ
             </summary>
         </member>
-        <member name="M:Mvvm.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
+        <member name="T:Utilitys.NavigationServiceExtensions">
+            <summary>
+            ページナビゲートのための拡張メソッド定義クラス
+            </summary>
+        </member>
+        <member name="M:Utilitys.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
             <summary>
             view引数で指定されたインスタンスのページへとナビゲーションを行います。
             </summary>
-            <param name="element"></param>
-            <param name="view"></param>
-            <returns></returns>
+            <param name="element">ターゲットを添付したFrameworkElement</param>
+            <param name="view">遷移先ページ</param>
+            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
-        <member name="M:Mvvm.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Type)">
+        <member name="M:Utilitys.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Type)">
             <summary>
             viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
             </summary>
-            <param name="element"></param>
-            <param name="viewType"></param>
+            <param name="element">ターゲットを添付したFrameworkElement</param>
+            <param name="viewType">遷移先ページのType</param>
+            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
+            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
+        </member>
+        <member name="T:Extensions.JapaneseDateTimeExtensions">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Extensions.JapaneseDateTimeExtensions.NewJpYear(System.DateTime,System.Int32,System.String,System.String,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="startDay"></param>
+            <param name="offsetOfYear"></param>
+            <param name="longJpYear"></param>
+            <param name="middleJpYear"></param>
+            <param name="shortJpYear"></param>
+        </member>
+        <member name="M:Extensions.JapaneseDateTimeExtensions.ToLongJpWeekDay(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+            <returns>日曜日 ～ 土曜日</returns>
+        </member>
+        <member name="M:Extensions.JapaneseDateTimeExtensions.ToShortJpWeekDay(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+            <returns>日 ～ 土</returns>
+        </member>
+        <member name="M:Extensions.JapaneseDateTimeExtensions.ToLongJpYearString(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.JapaneseDateTimeExtensions.ToMiddleJpYearString(System.DateTime)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Extensions.JapaneseDateTimeExtensions.ToShortJpYearString(System.DateTime,System.String)">
+            <summary>
+            
+            </summary>
+            <param name="dateTime"></param>
+            <param name="separater"></param>
             <returns></returns>
         </member>
         <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">

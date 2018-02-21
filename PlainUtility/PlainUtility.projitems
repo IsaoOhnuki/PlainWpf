@@ -11,13 +11,15 @@
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
     <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Utilitys\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Behaviours\FileDragBehaviour.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Behaviours\GridLengthAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindableBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NavigationServiceEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviours\OpenFileDialogBehaviour.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ObjectStack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\JapaneseDateTimeExtensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\BindableBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\NavigationServiceEx.cs" />
   </ItemGroup>
 </Project>

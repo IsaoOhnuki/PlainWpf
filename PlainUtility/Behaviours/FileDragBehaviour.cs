@@ -150,7 +150,7 @@ namespace Behaviours
                     }
                 }
             }
-            e.Effects = ret ? DragDropEffects.Copy : DragDropEffects.None;
+            e.Effects = ret ? e.AllowedEffects & DragDropEffects.Copy : DragDropEffects.None;
             e.Handled = true;
             bool? canExecute = GetDropCommand((DependencyObject)sender)?.CanExecute(files.ToArray());
             if (!canExecute.HasValue || canExecute.Value)

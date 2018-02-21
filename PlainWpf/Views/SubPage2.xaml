@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:PlainWpf.Views"
       xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="300" d:DesignWidth="300" Background="#FF00FF51"
       >
     <UserControl.Resources>
         <ViewModels:OrientationHorizontalToVisibilityConverter x:Key="HorizontalToVisibilityConverter"/>
@@ -33,61 +33,30 @@
     <UserControl.DataContext>
         <ViewModels:SabPage2ViewModel/>
     </UserControl.DataContext>
-    <Grid>
+    <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource HorizontalToVisibilityConverter}}" Grid.ColumnSpan="3">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="138*"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="137*"/>
+            <ColumnDefinition Width="40"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="40"/>
         </Grid.ColumnDefinitions>
-        <!--<Grid RenderTransformOrigin="0.5,0.5">-->
-        <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource HorizontalToVisibilityConverter}}" Grid.ColumnSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="40"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="40"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="20"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="20"/>
-            </Grid.RowDefinitions>
-            <Button Grid.Column="0" Grid.Row="0">
-                <TextBlock Text="A"/>
-            </Button>
-            <Button Grid.Column="2" Grid.Row="0">
-                <TextBlock Text="B"/>
-            </Button>
-            <Button Grid.Column="0" Grid.Row="2">
-                <TextBlock Text="C"/>
-            </Button>
-            <Button Grid.Column="2" Grid.Row="2" Command="{Binding OrientationChangeCommand}">
-                <TextBlock Text="X"/>
-            </Button>
-        </Grid>
-        <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource VerticalToVisibilityConverter}}" Grid.ColumnSpan="3">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="20"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="20"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="40"/>
-            </Grid.RowDefinitions>
-            <Button Grid.Column="0" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
-                <TextBlock Text="A"/>
-            </Button>
-            <Button Grid.Column="0" Grid.Row="0" RenderTransformOrigin="0.5,0.5">
-                <TextBlock Text="B"/>
-            </Button>
-            <Button Grid.Column="2" Grid.Row="2" RenderTransformOrigin="0.5,0.5">
-                <TextBlock Text="C"/>
-            </Button>
-            <Button Grid.Column="2" Grid.Row="0" Command="{Binding OrientationChangeCommand}">
-                <TextBlock Text="X"/>
-            </Button>
-        </Grid>
-        <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" Margin="0" Width="20"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Grid.Row="0">
+            <TextBlock Text="A"/>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="0">
+            <TextBlock Text="B"/>
+        </Button>
+        <Button Grid.Column="0" Grid.Row="2">
+            <TextBlock Text="C"/>
+        </Button>
+        <Button Grid.Column="2" Grid.Row="2" Command="{Binding OrientationChangeCommand}">
+            <TextBlock Text="X"/>
+        </Button>
+        <Button Content="Button" Command="{Binding Command}" IsEnabled="{Binding CanCommand}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="75"/>
+        <CheckBox Content="CheckBox" IsChecked="{Binding CanCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="72,83,0,0" Grid.Row="1" VerticalAlignment="Top"/>
     </Grid>
 </UserControl>

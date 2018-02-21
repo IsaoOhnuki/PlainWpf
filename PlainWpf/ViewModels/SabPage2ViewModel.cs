@@ -1,4 +1,4 @@
-﻿using Mvvm;
+﻿using Utilitys;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -35,6 +35,15 @@ namespace PlainWpf.ViewModels
                 }
             });
         }
+
+        private bool canCommand;
+        public bool CanCommand
+        {
+            get { return canCommand; }
+            set { SetProperty(ref canCommand, value); }
+        }
+
+        public DelegateCommand Command { get; set; }
     }
 
     public class OrientationToBooleanConverter : IValueConverter

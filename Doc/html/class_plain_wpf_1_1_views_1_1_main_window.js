@@ -1,0 +1,26 @@
+var class_plain_wpf_1_1_views_1_1_main_window =
+[
+    [ "MainWindow", "class_plain_wpf_1_1_views_1_1_main_window.html#a56b932741ba2915f72b9b45854dbc08e", null ],
+    [ "_CreateDelegate", "class_plain_wpf_1_1_views_1_1_main_window.html#acf892155574c4024d6cbc170c3b2ef44", null ],
+    [ "_CreateDelegate", "class_plain_wpf_1_1_views_1_1_main_window.html#acf892155574c4024d6cbc170c3b2ef44", null ],
+    [ "_CreateDelegate", "class_plain_wpf_1_1_views_1_1_main_window.html#acf892155574c4024d6cbc170c3b2ef44", null ],
+    [ "_CreateDelegate", "class_plain_wpf_1_1_views_1_1_main_window.html#acf892155574c4024d6cbc170c3b2ef44", null ],
+    [ "InitializeComponent", "class_plain_wpf_1_1_views_1_1_main_window.html#a1a09905ee403678d5433fccac4339bbd", null ],
+    [ "InitializeComponent", "class_plain_wpf_1_1_views_1_1_main_window.html#a1a09905ee403678d5433fccac4339bbd", null ],
+    [ "InitializeComponent", "class_plain_wpf_1_1_views_1_1_main_window.html#a1a09905ee403678d5433fccac4339bbd", null ],
+    [ "InitializeComponent", "class_plain_wpf_1_1_views_1_1_main_window.html#a1a09905ee403678d5433fccac4339bbd", null ],
+    [ "AnimeType", "class_plain_wpf_1_1_views_1_1_main_window.html#a63c1a481eec6cd0a136e0208d17615d2", null ],
+    [ "LeftContent", "class_plain_wpf_1_1_views_1_1_main_window.html#a8bc4aa61e7bb17da1385432e8714e956", null ],
+    [ "MainContent", "class_plain_wpf_1_1_views_1_1_main_window.html#a6a9154686b5c4e93b45695ec2037c613", null ],
+    [ "n1", "class_plain_wpf_1_1_views_1_1_main_window.html#afaa32eb33c1ac8a963b4de5bc3a6ad8f", null ],
+    [ "n10", "class_plain_wpf_1_1_views_1_1_main_window.html#a95e3e2252c90b04e340f0ced542c3b9d", null ],
+    [ "n2", "class_plain_wpf_1_1_views_1_1_main_window.html#aba7a77dc592534efdb2daab187575e34", null ],
+    [ "n3", "class_plain_wpf_1_1_views_1_1_main_window.html#a59778073132f4cc56118ab950f9ba03d", null ],
+    [ "n4", "class_plain_wpf_1_1_views_1_1_main_window.html#a3b66f380ae718c84fb75eafaeb0f8cf3", null ],
+    [ "n5", "class_plain_wpf_1_1_views_1_1_main_window.html#a22fde30b0023f87d40f835c80e2d2684", null ],
+    [ "n6", "class_plain_wpf_1_1_views_1_1_main_window.html#a69ebe96c526c45b550c46682092d79b9", null ],
+    [ "n7", "class_plain_wpf_1_1_views_1_1_main_window.html#a93ebd082d4eec4ad5a13bdb093623a6b", null ],
+    [ "n8", "class_plain_wpf_1_1_views_1_1_main_window.html#aa0acda7e82fdd008ce7315e485e47ec8", null ],
+    [ "n9", "class_plain_wpf_1_1_views_1_1_main_window.html#af866736ff2785ff170fee8abd521f2b9", null ],
+    [ "RightContent", "class_plain_wpf_1_1_views_1_1_main_window.html#ae28ddfc6fa883083de711df56377f7b8", null ]
+];

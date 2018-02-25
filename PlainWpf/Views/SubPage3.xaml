@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PlainWpf.Views.SubPage3"
+﻿<UserControl
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -7,23 +7,104 @@
              xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions" 
              xmlns:local="clr-namespace:PlainWpf.Views"
              xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
+             xmlns:Controls="clr-namespace:Controls"
+             xmlns:Converters="clr-namespace:Converters"
+             xmlns:Behaviors="clr-namespace:Behaviors"
+             x:Class="PlainWpf.Views.SubPage3"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <i:Interaction.Triggers>
-        <ei:PropertyChangedTrigger Binding="{Binding Path=IsError}">
+             d:DesignHeight="508" d:DesignWidth="660">
+    <!--<i:Interaction.Triggers>
+        <ei:PropertyChangedTrigger Binding="{Binding IsError}">
             <i:Interaction.Behaviors>
                 <ei:ConditionBehavior>
                     <ei:ConditionalExpression>
-                        <ei:ComparisonCondition LeftOperand="{Binding Path=IsError}" RightOperand="True" />
+                        <ei:ComparisonCondition LeftOperand="{Binding IsError}" RightOperand="True" />
                     </ei:ConditionalExpression>
                 </ei:ConditionBehavior>
             </i:Interaction.Behaviors>
             <ei:ChangePropertyAction TargetObject="{Binding ElementName=rectangle}" PropertyName="Fill" Value="Red" />
         </ei:PropertyChangedTrigger>
-    </i:Interaction.Triggers>
+    </i:Interaction.Triggers>-->
+    <UserControl.Resources>
+        <Converters:DateTimeToJpSumpleStringConverter x:Key="DateTimeToJpSumpleStringConverter"/>
+        <Converters:DateTimeToJpShortDateStringConverter x:Key="DateTimeToJpShortDateStringConverter"/>
+        <Converters:DateTimeToJpLongDateStringConverter x:Key="DateTimeToJpLongDateStringConverter"/>
+        <Converters:DateTimeToJpDateStringConverter x:Key="DateTimeToJpDateStringConverter"/>
+        <Converters:DateTimeToJpTimeStringConverter x:Key="DateTimeToJpTimeStringConverter"/>
+        <Converters:DateTimeToJpLongTimeStringConverter x:Key="DateTimeToJpLongTimeStringConverter"/>
+        <Controls:ColorPlusToBrushConverter x:Key="ColorPlusToBrushConverter"/>
+        <Controls:ColorPlusToColorConverter x:Key="ColorPlusToColorConverter"/>
+        <Controls:ColorPlusToStringConverter x:Key="ColorPlusToStringConverter"/>
+        <Controls:ColorPlusToTextBrushConverter x:Key="ColorPlusToTextBrushConverter"/>
+        <Converters:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
+        <Converters:DateTimeToDateStringConverter x:Key="DateTimeToDateStringConverter"/>
+        <Converters:DateTimeToShortDateStringConverter x:Key="DateTimeToShortDateStringConverter"/>
+        <Converters:DateTimeToLongTimeStringConverter x:Key="DateTimeToLongTimeStringConverter"/>
+        <Converters:DateTimeToTimeStringConverter x:Key="DateTimeToTimeStringConverter"/>
+    </UserControl.Resources>
     <UserControl.DataContext>
         <ViewModels:SubPage3ViewModel/>
     </UserControl.DataContext>
-    <Grid>
+    <Grid Background="{Binding ElementName=ColorSelector, Path=SelectedColor, Converter={StaticResource ColorToBrushConverter}}">
+        <Controls:ColorSelector x:Name="ColorSelector" Height="100" Margin="20,23,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
+        <Label Content="{Binding ElementName=ColorSelector, Path=TextName}" HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top"
+               Foreground="{Binding ElementName=ColorSelector, Path=TextColor, Converter={StaticResource ColorToBrushConverter}}"/>
+        <Label Content="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToStringConverter}}"
+               Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
+               Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
+               HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top"/>
+        <Button Content="Button" Command="{Binding NowCommand}" HorizontalAlignment="Left" Margin="20,78,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpSumpleStringConverter}}" HorizontalAlignment="Left" Margin="154,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+               Foreground="{Binding ElementName=ColorSelector, Path=TextColor, Converter={StaticResource ColorToBrushConverter}}"
+                   />
+        <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpShortDateStringConverter}}" HorizontalAlignment="Left" Margin="350,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+               Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
+               Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
+                   />
+        <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpDateStringConverter}}" HorizontalAlignment="Left" Margin="350,44,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+               Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
+               Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
+                   />
+        <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpLongDateStringConverter}}" HorizontalAlignment="Left" Margin="350,65,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+               Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
+               Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
+                   />
+        <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpTimeStringConverter}}" HorizontalAlignment="Left" Margin="350,85,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+               Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
+               Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
+                   />
+        <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpLongTimeStringConverter}}" HorizontalAlignment="Left" Margin="350,106,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+               Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
+               Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
+                   />
+        <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToDateStringConverter}}" HorizontalAlignment="Left" Margin="350,127,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+            Foreground="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}, ElementName=ColorSelector}"
+            Background="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}, ElementName=ColorSelector}"
+                   />
+        <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToLongTimeStringConverter}}" HorizontalAlignment="Left" Margin="350,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+            Foreground="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}, ElementName=ColorSelector}"
+            Background="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}, ElementName=ColorSelector}"
+                   />
+        <TextBox Text="{Binding Now, Converter={StaticResource DateTimeToShortDateStringConverter}, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="350,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+            Foreground="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}, ElementName=ColorSelector}"
+            Background="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}, ElementName=ColorSelector}"
+                   />
+        <TextBox Text="{Binding Now, Converter={StaticResource DateTimeToTimeStringConverter}}" HorizontalAlignment="Left" Margin="350,192,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+            Foreground="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}, ElementName=ColorSelector}"
+            Background="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}, ElementName=ColorSelector}"
+                   />
+        <TextBox Text="{Binding Now, StringFormat=yyyy-MM-dd, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="350,232,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
+            Foreground="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}, ElementName=ColorSelector}"
+            Background="{Binding SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}, ElementName=ColorSelector}"
+            Behaviors:AlwaysOverrideBehavior.AlwaysOverride="True">
+            <!--<TextBox.Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Behaviors:AlwaysOverrideBehavior.AlwaysOverride" Value="True"/>
+                </Style>
+            </TextBox.Style>-->
+            <!--<i:Interaction.Behaviors>
+                --><!--<Behaviors:InputFormingTextBoxBehavior MatchString="####-##-##"/>--><!--
+            </i:Interaction.Behaviors>-->
+        </TextBox>
     </Grid>
 </UserControl>

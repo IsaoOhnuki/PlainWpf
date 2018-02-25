@@ -35,17 +35,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Microsoft.Expression.Interactions.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Remoting" />
-    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\System.Windows.Interactivity.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -69,6 +61,7 @@
     <Compile Include="ViewModels\SabPage2ViewModel.cs" />
     <Compile Include="ViewModels\SabPage1ViewModel.cs" />
     <Compile Include="ViewModels\SubPage3ViewModel.cs" />
+    <Compile Include="ViewModels\SubPage4ViewModel.cs" />
     <Compile Include="ViewModels\XmlTreeViewModel.cs" />
     <Compile Include="Views\SubPage2.xaml.cs">
       <DependentUpon>SubPage2.xaml</DependentUpon>
@@ -78,6 +71,9 @@
     </Compile>
     <Compile Include="Views\SubPage3.xaml.cs">
       <DependentUpon>SubPage3.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SubPage4.xaml.cs">
+      <DependentUpon>SubPage4.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\XmlTreeView.xaml.cs">
       <DependentUpon>XmlTreeView.xaml</DependentUpon>
@@ -104,6 +100,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SubPage3.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SubPage4.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -140,9 +140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="..\PlainUtility\PlainUtility.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

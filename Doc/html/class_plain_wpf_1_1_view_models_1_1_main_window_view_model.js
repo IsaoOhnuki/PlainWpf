@@ -1,0 +1,6 @@
+var class_plain_wpf_1_1_view_models_1_1_main_window_view_model =
+[
+    [ "MainWindowViewModel", "class_plain_wpf_1_1_view_models_1_1_main_window_view_model.html#af27e93ddf0ae67fff78ba89292b479e3", null ],
+    [ "SubPage1ShowCommand", "class_plain_wpf_1_1_view_models_1_1_main_window_view_model.html#a79796333cc17305be6b857a2c0a07f89", null ],
+    [ "Title", "class_plain_wpf_1_1_view_models_1_1_main_window_view_model.html#a4aa6aac22100d6d866ee50fe3279ac23", null ]
+];

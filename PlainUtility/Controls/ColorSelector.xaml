@@ -1,0 +1,20 @@
+﻿<UserControl x:Class="Controls.ColorSelector"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:local="clr-namespace:Controls"
+             mc:Ignorable="d"
+             d:DesignWidth="200">
+    <UserControl.Resources>
+        <!--<local:ColorPlusToBrushConverter x:Key="ColorPlusToBrushConverter"/>-->
+        <!--<local:ColorPlusToColorConverter x:Key="ColorPlusToColorConverter"/>-->
+    </UserControl.Resources>
+    <ComboBox x:Name="comboBox" DockPanel.Dock="Top" ItemsSource="{Binding ColorEnum}" SelectedItem="{Binding SelectedColorPlus, Mode=TwoWay}" HorizontalContentAlignment="Stretch" VerticalAlignment="Top">
+        <ComboBox.ItemTemplate>
+            <DataTemplate>
+                <Label Content="{Binding Name}" Background="{Binding Name}" Foreground="{Binding TextColorName}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"/>
+            </DataTemplate>
+        </ComboBox.ItemTemplate>
+    </ComboBox>
+</UserControl>

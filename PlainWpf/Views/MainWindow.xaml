@@ -6,26 +6,26 @@
         xmlns:local="clr-namespace:PlainWpf.Views"
         xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
         xmlns:Views="clr-namespace:PlainWpf.Views"
-        xmlns:Utilitys="clr-namespace:Utilitys"
+        xmlns:Mvvm="clr-namespace:Mvvm"
         mc:Ignorable="d"
-        Utilitys:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
-        Utilitys:NavigationServiceEx.Startup="{x:Type Views:SubPage1}"
-        Title="{Binding Title}" Height="342.271" Width="651.972" Background="#FF002EFF">
+        Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
+        Mvvm:NavigationServiceEx.Startup="{x:Type Views:SubPage1}"
+        Title="{Binding Title}" Height="400.271" Width="736.972" Background="#FF002EFF">
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
         <NullableBoolConverter x:Key="NullableBoolConverter"/>
-        <Utilitys:SimpleRaiseNavigationStory x:Key="StoryRL" NavigationMode="RightToLeft" Duration="0:0:0.5"/>
-        <Utilitys:SimpleRaiseNavigationStory x:Key="StoryLR" NavigationMode="LeftToRight"/>
-        <Utilitys:SimpleRaiseNavigationStory x:Key="StoryBT" NavigationMode="BottomToTop"/>
-        <Utilitys:SimpleRaiseNavigationStory x:Key="StoryTB" NavigationMode="TopToBottom"/>
-        <Utilitys:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="Narrowed"/>
-        <Utilitys:SimpleWipeNavigationStory x:Key="StoryHN" NavigationMode="HorizontalNarrowed"/>
-        <Utilitys:SimpleWipeNavigationStory x:Key="StoryVN" NavigationMode="VerticalNarrowed"/>
-        <Utilitys:SimpleWipeNavigationStory x:Key="StoryS" NavigationMode="Spread"/>
-        <Utilitys:SimpleWipeNavigationStory x:Key="StoryHS" NavigationMode="HorizontalSpread"/>
-        <Utilitys:SimpleWipeNavigationStory x:Key="StoryVS" NavigationMode="VerticalSpread"/>
+        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryRL" NavigationMode="RightToLeft" Duration="0:0:0.5"/>
+        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryLR" NavigationMode="LeftToRight"/>
+        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryBT" NavigationMode="BottomToTop"/>
+        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryTB" NavigationMode="TopToBottom"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="Narrowed" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHN" NavigationMode="HorizontalNarrowed"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVN" NavigationMode="VerticalNarrowed"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryS" NavigationMode="Spread"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHS" NavigationMode="HorizontalSpread"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVS" NavigationMode="VerticalSpread"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -45,47 +45,49 @@
                 <Style TargetType="ContentControl">
                     <Style.Triggers>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n1">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryRL}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryRL}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n2">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryLR}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryLR}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n3">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryBT}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryBT}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n4">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryTB}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryTB}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n5">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryN}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryN}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n6">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryVN}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryVN}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n7">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryHN}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryHN}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n8">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryS}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryS}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n9">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryVS}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryVS}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n10">
-                            <Setter Property="Utilitys:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryHS}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryHS}"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <ContentControl x:Name="RightContent" Utilitys:NavigationServiceEx.NavigationStory="{StaticResource StoryBT}" Grid.Column="2" Width="Auto"/>
+        <ContentControl x:Name="RightContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryBT}" Grid.Column="2" Width="Auto"/>
         <Grid x:Name="LeftContent" Grid.Column="0">
             <StackPanel Orientation="Vertical">
-                <Button Content="SubPage1-Show" Utilitys:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
-                <Button Content="SubPage1-Close" Utilitys:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
-                <Button Content="SubPage1" Utilitys:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
-                <Button Content="SubPage2" Utilitys:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
-                <Button Content="XML" Utilitys:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
+                <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
+                <Button Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
+                <Button Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage3}"/>
+                <Button Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage4}"/>
+                <Button Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
                 <ListBox x:Name="AnimeType">
                     <ListBox.Items>
                         <ListBoxItem Name="n1" Content="RightToLeft"/>

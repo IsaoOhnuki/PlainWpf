@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PlainWpf.Views"
       xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
-      xmlns:Behaviours="clr-namespace:Behaviours"
+      xmlns:Behaviors="clr-namespace:Behaviors"
       xmlns:Utilitys="clr-namespace:Utilitys"
       mc:Ignorable="d" 
       d:DesignHeight="180" d:DesignWidth="191"
@@ -41,8 +41,8 @@
                 <ColumnDefinition Width="1*" Name="row1"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Label Content="Label" Behaviours:FileDragBehaviour.DragFileExt=".csv:.lnk" Behaviours:FileDragBehaviour.MultiSelect="True" Behaviours:FileDragBehaviour.DropCommand="{Binding DragDropCommand}" Grid.Column="0" Background="HotPink" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
-            <Label Content="Label" Behaviours:FileDragBehaviour.DragFileExt=".txt" Behaviours:FileDragBehaviour.MultiSelect="True" Behaviours:FileDragBehaviour.DropCommand="{Binding DragDropCommand}" Grid.Column="1"  Background="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Label" Behaviors:FileDragBehavior.DragFileExt=".csv:.lnk" Behaviors:FileDragBehavior.MultiSelect="True" Behaviors:FileDragBehavior.DropCommand="{Binding DragDropCommand}" Grid.Column="0" Background="HotPink" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
+            <Label Content="Label" Behaviors:FileDragBehavior.DragFileExt=".txt" Behaviors:FileDragBehavior.MultiSelect="True" Behaviors:FileDragBehavior.DropCommand="{Binding DragDropCommand}" Grid.Column="1"  Background="Orange" HorizontalContentAlignment="Center" VerticalContentAlignment="Center"/>
         </Grid>
     </Canvas>
 </UserControl>

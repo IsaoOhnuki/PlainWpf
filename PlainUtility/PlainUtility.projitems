@@ -9,17 +9,30 @@
     <Import_RootNamespace>PlainUtility</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Controls\" />
-    <Folder Include="$(MSBuildThisFileDirectory)Converters\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Behaviours\FileDragBehaviour.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\AlwaysOverrideBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\FileDragBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\FormatTextInputBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.xaml.cs">
+      <DependentUpon>ColorSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimeToJpStringsConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimeToStringsConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions\VagueStringToMatchLikePattern.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NotifyBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Behaviours\OpenFileDialogBehaviour.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ObjectStack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\JapaneseDateTimeExtensions.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\BindableBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\DelegateCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\NavigationServiceEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindableBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NavigationServiceEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\PathBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 </Project>

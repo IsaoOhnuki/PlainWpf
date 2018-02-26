@@ -205,6 +205,19 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:PlainWpf.Views.ViewBoxTest">
+            <summary>
+            ViewBoxTest.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            ViewBoxTest
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.ViewBoxTest.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:PlainWpf.Views.XmlTreeView">
             <summary>
             XmlTreeView.xaml の相互作用ロジック
@@ -568,6 +581,20 @@
             The jp culture.
             </value>
         </member>
+        <member name="M:Extensions.JapaneseDateTimeExtensions.ToJpHistoryString(System.DateTime)">
+            <summary>
+            Jps the year string.
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <returns>ⅩⅩ(元号)</returns>
+        </member>
+        <member name="M:Extensions.JapaneseDateTimeExtensions.ToUsHistoryString(System.DateTime)">
+            <summary>
+            To the jp short year string.
+            </summary>
+            <param name="dateTime">The date time.</param>
+            <returns>西暦</returns>
+        </member>
         <member name="M:Extensions.JapaneseDateTimeExtensions.ToJpYearString(System.DateTime)">
             <summary>
             Jps the year string.
@@ -738,6 +765,19 @@
             <param name="propertyName">プロパティ名</param>
             <returns>指定したプロパティのエラーメッセージ</returns>
         </member>
+        <member name="T:Mvvm.INotifyNavigationStory">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.INotifyNavigationStory.IsAnimation">
+            <summary>
+            アニメーション再生中であることの通知
+            </summary>
+            <value>
+            true アニメーション再生中
+            </value>
+        </member>
         <member name="T:Mvvm.INavigationStory">
             <summary>
             ページ遷移時のアニメーションを実行するインターフェース
@@ -768,7 +808,7 @@
             ワイプアニメーションのタイプ定義
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.Spread">
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.CenterSpread">
             <summary>
             遷移先が中心から広がる
             </summary>
@@ -783,7 +823,27 @@
             遷移先が垂直方向に広がる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.Narrowed">
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.LeftHorizontalSpread">
+            <summary>
+            遷移先が左から右に水平方向に広がる
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.RightHorizontalSpread">
+            <summary>
+            遷移先が右から左に水平方向に広がる
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.TopVerticalSpread">
+            <summary>
+            遷移先が上から下に垂直方向に広がる
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.BottomVerticalSpread">
+            <summary>
+            遷移先が下から上に垂直方向に広がる
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.CenterNarrowed">
             <summary>
             遷移元が中心に窄まる
             </summary>
@@ -796,6 +856,26 @@
         <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.VerticalNarrowed">
             <summary>
             遷移元が上下から中心に窄まる
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.LeftHorizontalNarrowed">
+            <summary>
+            遷移元が左から右に水平方向に窄まる
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.RightHorizontalNarrowed">
+            <summary>
+            遷移元が右から左に水平方向に窄まる
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.TopVerticalNarrowed">
+            <summary>
+            遷移元が上から下に垂直方向に窄まる
+            </summary>
+        </member>
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.BottomVerticalNarrowed">
+            <summary>
+            遷移元が下から上に垂直方向に窄まる
             </summary>
         </member>
         <member name="P:Mvvm.SimpleWipeNavigationStory.NavigationMode">
@@ -818,61 +898,6 @@
             <returns>アニメーションを再生するコンテント</returns>
         </member>
         <member name="M:Mvvm.SimpleWipeNavigationStory.Animate">
-            <summary>
-            アニメーション再生
-            </summary>
-        </member>
-        <member name="T:Mvvm.SimpleRaiseNavigationStory">
-            <summary>
-            シンプルなスライド系のアニメーション
-            </summary>
-            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
-        </member>
-        <member name="T:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode">
-            <summary>
-            スライドアニメーションのタイプ定義
-            </summary>
-        </member>
-        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
-            <summary>
-            遷移先ページが右側からスライド
-            </summary>
-        </member>
-        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
-            <summary>
-            遷移先ページが左側からスライド
-            </summary>
-        </member>
-        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
-            <summary>
-            遷移先ページが下側からスライド
-            </summary>
-        </member>
-        <member name="F:Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
-            <summary>
-            遷移先ページが上側からスライド
-            </summary>
-        </member>
-        <member name="P:Mvvm.SimpleRaiseNavigationStory.NavigationMode">
-            <summary>
-            再生するスライドアニメーションのタイプ
-            </summary>
-        </member>
-        <member name="P:Mvvm.SimpleRaiseNavigationStory.Duration">
-            <summary>
-            アニメーションの再生時間
-            </summary>
-        </member>
-        <member name="M:Mvvm.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
-            <summary>
-            アニメーション再生の為のイニシャライザ
-            </summary>
-            <param name="fromContent">遷移元ページ</param>
-            <param name="toContent">遷移先ページ</param>
-            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
-            <returns>アニメーションを再生するコンテント</returns>
-        </member>
-        <member name="M:Mvvm.SimpleRaiseNavigationStory.Animate">
             <summary>
             アニメーション再生
             </summary>
@@ -1017,6 +1042,61 @@
             <param name="viewType">遷移先ページのType</param>
             <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
             <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
+        </member>
+        <member name="T:PlainUtility.Mvvm.SimpleRaiseNavigationStory">
+            <summary>
+            シンプルなスライド系のアニメーション
+            </summary>
+            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
+        </member>
+        <member name="T:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode">
+            <summary>
+            スライドアニメーションのタイプ定義
+            </summary>
+        </member>
+        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
+            <summary>
+            遷移先ページが右側からスライド
+            </summary>
+        </member>
+        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
+            <summary>
+            遷移先ページが左側からスライド
+            </summary>
+        </member>
+        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
+            <summary>
+            遷移先ページが下側からスライド
+            </summary>
+        </member>
+        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
+            <summary>
+            遷移先ページが上側からスライド
+            </summary>
+        </member>
+        <member name="P:PlainUtility.Mvvm.SimpleRaiseNavigationStory.NavigationMode">
+            <summary>
+            再生するスライドアニメーションのタイプ
+            </summary>
+        </member>
+        <member name="P:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Duration">
+            <summary>
+            アニメーションの再生時間
+            </summary>
+        </member>
+        <member name="M:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            アニメーション再生の為のイニシャライザ
+            </summary>
+            <param name="fromContent">遷移元ページ</param>
+            <param name="toContent">遷移先ページ</param>
+            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+            <returns>アニメーションを再生するコンテント</returns>
+        </member>
+        <member name="M:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Animate">
+            <summary>
+            アニメーション再生
+            </summary>
         </member>
         <member name="T:Utilitys.GridLengthAnimation">
             <summary>

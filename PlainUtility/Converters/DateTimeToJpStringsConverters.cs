@@ -23,6 +23,36 @@ namespace Converters
     }
 
     [ValueConversion(typeof(DateTime), typeof(string))]
+    public class DateTimeToJpHistoryStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var val = (DateTime)value;
+            return val.ToJpHistoryString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [ValueConversion(typeof(DateTime), typeof(string))]
+    public class DateTimeToUsHistoryStringConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            var val = (DateTime)value;
+            return val.ToUsHistoryString();
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    [ValueConversion(typeof(DateTime), typeof(string))]
     public class DateTimeToJpYearStringConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

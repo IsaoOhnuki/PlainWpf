@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimeToStringsConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\VagueStringToMatchLikePattern.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NotifyBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleRaiseNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ObjectStack.cs" />

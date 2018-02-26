@@ -12,10 +12,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Navigation;
-using Utilitys;
+using System.ComponentModel;
 
 namespace Mvvm
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    public interface INotifyNavigationStory
+    {
+        /// <summary>
+        /// アニメーション再生中であることの通知
+        /// </summary>
+        /// <value>
+        /// true アニメーション再生中
+        /// </value>
+        bool IsAnimation { get; set; }
+    }
     /// <summary>
     /// ページ遷移時のアニメーションを実行するインターフェース
     /// </summary>
@@ -40,6 +53,20 @@ namespace Mvvm
     /// <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
     public class SimpleWipeNavigationStory : INavigationStory
     {
+        private enum WipeNavigationModeCheck
+        {
+            Direction = 1,
+            Spread = 0,
+            Narrowed = 1,
+            Horizontal = 2,
+            Vertical = 4,
+            Posision = 8 + 16 + 32,
+            Center = 8,
+            Left = 16,
+            Right = 16 + 8,
+            Top = 32,
+            Bottom = 32 + 8,
+        }
         /// <summary>
         /// ワイプアニメーションのタイプ定義
         /// </summary>
@@ -48,34 +75,70 @@ namespace Mvvm
             /// <summary>
             /// 遷移先が中心から広がる
             /// </summary>
-            Spread,
+            CenterSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Center,
             /// <summary>
             /// 遷移先が水平方向に広がる
             /// </summary>
-            HorizontalSpread,
+            HorizontalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Center,
             /// <summary>
             /// 遷移先が垂直方向に広がる
             /// </summary>
-            VerticalSpread,
+            VerticalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Center,
+            /// <summary>
+            /// 遷移先が左から右に水平方向に広がる
+            /// </summary>
+            LeftHorizontalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Left,
+            /// <summary>
+            /// 遷移先が右から左に水平方向に広がる
+            /// </summary>
+            RightHorizontalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Right,
+            /// <summary>
+            /// 遷移先が上から下に垂直方向に広がる
+            /// </summary>
+            TopVerticalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Top,
+            /// <summary>
+            /// 遷移先が下から上に垂直方向に広がる
+            /// </summary>
+            BottomVerticalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Bottom,
             /// <summary>
             /// 遷移元が中心に窄まる
             /// </summary>
-            Narrowed,
+            CenterNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Center,
             /// <summary>
             /// 遷移元が左右から中心に窄まる
             /// </summary>
-            HorizontalNarrowed,
+            HorizontalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Center,
             /// <summary>
             /// 遷移元が上下から中心に窄まる
             /// </summary>
-            VerticalNarrowed,
+            VerticalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Center,
+            /// <summary>
+            /// 遷移元が左から右に水平方向に窄まる
+            /// </summary>
+            LeftHorizontalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Left,
+            /// <summary>
+            /// 遷移元が右から左に水平方向に窄まる
+            /// </summary>
+            RightHorizontalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Right,
+            /// <summary>
+            /// 遷移元が上から下に垂直方向に窄まる
+            /// </summary>
+            TopVerticalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Top,
+            /// <summary>
+            /// 遷移元が下から上に垂直方向に窄まる
+            /// </summary>
+            BottomVerticalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Bottom,
         }
 
-        private bool IsSpread { get { return NavigationMode == WipeNavigationMode.Spread || NavigationMode == WipeNavigationMode.VerticalSpread || NavigationMode == WipeNavigationMode.HorizontalSpread; } }
-        private bool IsNarrowed { get { return NavigationMode == WipeNavigationMode.Narrowed || NavigationMode == WipeNavigationMode.VerticalNarrowed || NavigationMode == WipeNavigationMode.HorizontalNarrowed; } }
-        private bool IsHorizontal { get { return NavigationMode == WipeNavigationMode.HorizontalSpread || NavigationMode == WipeNavigationMode.HorizontalNarrowed; } }
-        private bool IsVertical { get { return NavigationMode == WipeNavigationMode.VerticalSpread || NavigationMode == WipeNavigationMode.VerticalNarrowed; } }
-        private bool IsFocal { get { return NavigationMode == WipeNavigationMode.Spread || NavigationMode == WipeNavigationMode.Narrowed; } }
+        private bool IsSpread { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Direction) != WipeNavigationModeCheck.Narrowed; } }
+        private bool IsNarrowed { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Direction) == WipeNavigationModeCheck.Narrowed; } }
+        private bool IsHorizontal { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Horizontal) == WipeNavigationModeCheck.Horizontal; } }
+        private bool IsVertical { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Vertical) == WipeNavigationModeCheck.Vertical; } }
+        private bool IsCenter { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Posision) == WipeNavigationModeCheck.Center; } }
+        private bool IsLeft { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Posision) == WipeNavigationModeCheck.Left; } }
+        private bool IsRight { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Posision) == WipeNavigationModeCheck.Right; } }
+        private bool IsTop { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Posision) == WipeNavigationModeCheck.Top; } }
+        private bool IsBottom { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Posision) == WipeNavigationModeCheck.Bottom; } }
 
         private Canvas storyBoard;
         private Action<FrameworkElement> endAnimation;
@@ -115,7 +178,9 @@ namespace Mvvm
             toContentControl = new ContentControl();
             fromViewbox = new Viewbox { Stretch = Stretch.Fill, Child = fromContentControl };
             toViewbox = new Viewbox { Stretch = Stretch.Fill, Child = toContentControl };
+            // 裏画面
             storyBoard.Children.Add(fromViewbox);
+            // 表画面
             storyBoard.Children.Add(toViewbox);
 
             return storyBoard as FrameworkElement;
@@ -134,75 +199,121 @@ namespace Mvvm
                 return;
             }
 
+            Logger.Write(LogType.Debug, "WipeNavigationMode" + NavigationMode.ToString());
+
+            // 現在のサイズ
             double width = fromContent.ActualWidth;
             double height = fromContent.ActualHeight;
 
-            Logger.Write(LogType.Debug, "WipeNavigationMode" + NavigationMode.ToString());
-
-            Canvas.SetLeft(fromViewbox, 0);
-            fromViewbox.Width = width;
-            Canvas.SetTop(fromViewbox, 0);
-            fromViewbox.Height = height;
-
-            Canvas.SetLeft(toViewbox, IsFocal ? width / 2 : 0);
-            toViewbox.Width = IsFocal ? 0 : width;
-            Canvas.SetTop(toViewbox, IsFocal ? height / 2 : 0);
-            toViewbox.Height = IsFocal ? 0 : height;
-
+            // コンテンツサイズViewboxが基準に使う
             fromContentControl.Width = width;
             fromContentControl.Height = height;
             toContentControl.Width = width;
             toContentControl.Height = height;
 
+            // 遷移元のサイズ
+            Canvas.SetLeft(fromViewbox, 0);
+            fromViewbox.Width = width;
+            Canvas.SetTop(fromViewbox, 0);
+            fromViewbox.Height = height;
+
+            // 遷移先のサイズ
+            Canvas.SetLeft(toViewbox, IsNarrowed || IsVertical || IsLeft ? 0 : IsCenter ? width / 2 : width);
+            toViewbox.Width = IsNarrowed || IsVertical ? width : IsHorizontal || IsCenter ? 0 : width;
+            Canvas.SetTop(toViewbox, IsNarrowed || IsHorizontal || IsTop ? 0 : IsCenter ? height / 2 : height);
+            toViewbox.Height = IsNarrowed || IsHorizontal ? height : IsVertical || IsCenter ? 0 : height;
+
+            // Spread系なら裏が元画面、Narrowed系なら表が元画面
             fromContentControl.Content = IsSpread ? fromContent : toContent;
             toContentControl.Content = IsSpread ? toContent : fromContent;
 
             var duration = Duration;
             Storyboard story = new Storyboard { Duration = duration };
 
-            if (IsHorizontal || IsFocal)
+            if (IsLeft || IsRight || IsTop|| IsBottom)
             {
-                DoubleAnimation toTop = new DoubleAnimation
+                DoubleAnimation fromLeft = new DoubleAnimation
                 {
-                    From = IsSpread ? height / 2 : 0,
-                    To = IsSpread ? 0 : height / 2,
+                    From = Canvas.GetLeft(fromViewbox),
+                    To = IsLeft ? width : Canvas.GetLeft(fromViewbox),
                     Duration = duration,
                 };
-                DoubleAnimation toHeight = new DoubleAnimation
+                Storyboard.SetTarget(fromLeft, fromViewbox);
+                Storyboard.SetTargetProperty(fromLeft, new PropertyPath("(Canvas.Left)"));
+                story.Children.Add(fromLeft);
+                DoubleAnimation fromWidth = new DoubleAnimation
                 {
-                    From = IsSpread ? 0 : height,
-                    To = IsSpread ? height : 0,
+                    From = fromViewbox.Width,
+                    To = IsLeft || IsRight ? 0: width,
                     Duration = duration,
                 };
-                Storyboard.SetTarget(toTop, toViewbox);
-                Storyboard.SetTargetProperty(toTop, new PropertyPath("(Canvas.Top)"));
-                Storyboard.SetTarget(toHeight, toViewbox);
-                Storyboard.SetTargetProperty(toHeight, new PropertyPath("Height"));
-
-                story.Children.Add(toTop);
-                story.Children.Add(toHeight);
+                Storyboard.SetTarget(fromWidth, fromViewbox);
+                Storyboard.SetTargetProperty(fromWidth, new PropertyPath("Width"));
+                story.Children.Add(fromWidth);
+                DoubleAnimation fromTop = new DoubleAnimation
+                {
+                    From = Canvas.GetTop(fromViewbox),
+                    To = IsTop ? height : Canvas.GetTop(fromViewbox),
+                    Duration = duration,
+                };
+                Storyboard.SetTarget(fromTop, fromViewbox);
+                Storyboard.SetTargetProperty(fromTop, new PropertyPath("(Canvas.Top)"));
+                story.Children.Add(fromTop);
+                DoubleAnimation fromHeight = new DoubleAnimation
+                {
+                    From = fromViewbox.Height,
+                    To = IsTop || IsBottom ? 0 : height,
+                    Duration = duration,
+                };
+                Storyboard.SetTarget(fromHeight, fromViewbox);
+                Storyboard.SetTargetProperty(fromHeight, new PropertyPath("Height"));
+                story.Children.Add(fromHeight);
             }
-            if (IsVertical || IsFocal)
-            {
-                DoubleAnimation toLeft = new DoubleAnimation
-                {
-                    From = IsSpread ? width / 2 : 0,
-                    To = IsSpread ? 0 : width / 2,
-                    Duration = duration,
-                };
-                DoubleAnimation toWidth = new DoubleAnimation
-                {
-                    From = IsSpread ? 0 : width,
-                    To = IsSpread ? width : 0,
-                    Duration = duration,
-                };
-                Storyboard.SetTarget(toLeft, toViewbox);
-                Storyboard.SetTargetProperty(toLeft, new PropertyPath("(Canvas.Left)"));
-                Storyboard.SetTarget(toWidth, toViewbox);
-                Storyboard.SetTargetProperty(toWidth, new PropertyPath("Width"));
 
-                story.Children.Add(toWidth);
-                story.Children.Add(toLeft);
+            DoubleAnimation toLeft = new DoubleAnimation
+            {
+                From = Canvas.GetLeft(toViewbox),
+                To = IsSpread || IsVertical || IsLeft ? 0 : IsCenter ? width / 2 : width,
+                Duration = duration,
+            };
+            DoubleAnimation toWidth = new DoubleAnimation
+            {
+                From = toViewbox.Width,
+                To = IsSpread || IsVertical ? width : 0,
+                Duration = duration,
+            };
+            DoubleAnimation toTop = new DoubleAnimation
+            {
+                From = Canvas.GetTop(toViewbox),
+                To = IsSpread || IsHorizontal || IsTop ? 0 : IsCenter ? height / 2 : height,
+                Duration = duration,
+            };
+            DoubleAnimation toHeight = new DoubleAnimation
+            {
+                From = toViewbox.Height,
+                To = IsSpread || IsHorizontal ? height : 0,
+                Duration = duration,
+            };
+            Storyboard.SetTarget(toLeft, toViewbox);
+            Storyboard.SetTargetProperty(toLeft, new PropertyPath("(Canvas.Left)"));
+            Storyboard.SetTarget(toWidth, toViewbox);
+            Storyboard.SetTargetProperty(toWidth, new PropertyPath("Width"));
+            Storyboard.SetTarget(toTop, toViewbox);
+            Storyboard.SetTargetProperty(toTop, new PropertyPath("(Canvas.Top)"));
+            Storyboard.SetTarget(toHeight, toViewbox);
+            Storyboard.SetTargetProperty(toHeight, new PropertyPath("Height"));
+            story.Children.Add(toLeft);
+            story.Children.Add(toWidth);
+            story.Children.Add(toTop);
+            story.Children.Add(toHeight);
+
+            if (fromContent is INotifyNavigationStory)
+            {
+                ((INotifyNavigationStory)fromContent).IsAnimation = true;
+            }
+            if (toContent is INotifyNavigationStory)
+            {
+                ((INotifyNavigationStory)toContent).IsAnimation = true;
             }
 
             story.Completed += OnStoryCompleted;
@@ -217,148 +328,16 @@ namespace Mvvm
             toContentControl.Content = null;
             fromContentControl.Content = null;
             endAnimation?.Invoke(toContent);
-        }
-    }
-    /// <summary>
-    /// シンプルなスライド系のアニメーション
-    /// </summary>
-    /// <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
-    public class SimpleRaiseNavigationStory : INavigationStory
-    {
-        /// <summary>
-        /// スライドアニメーションのタイプ定義
-        /// </summary>
-        public enum RaiseNavigationMode
-        {
-            /// <summary>
-            /// 遷移先ページが右側からスライド
-            /// </summary>
-            RightToLeft,
-            /// <summary>
-            /// 遷移先ページが左側からスライド
-            /// </summary>
-            LeftToRight,
-            /// <summary>
-            /// 遷移先ページが下側からスライド
-            /// </summary>
-            BottomToTop,
-            /// <summary>
-            /// 遷移先ページが上側からスライド
-            /// </summary>
-            TopToBottom
-        }
-
-        private Grid storyBoard;
-        private Action<FrameworkElement> endAnimation;
-        private FrameworkElement fromContent;
-        private FrameworkElement toContent;
-
-        /// <summary>
-        /// 再生するスライドアニメーションのタイプ
-        /// </summary>
-        public RaiseNavigationMode NavigationMode { get; set; } = RaiseNavigationMode.RightToLeft;
-        /// <summary>
-        /// アニメーションの再生時間
-        /// </summary>
-        public Duration Duration { get; set; } = new Duration(new TimeSpan(0, 0, 0, 0, 300));
-
-        /// <summary>
-        /// アニメーション再生の為のイニシャライザ
-        /// </summary>
-        /// <param name="fromContent">遷移元ページ</param>
-        /// <param name="toContent">遷移先ページ</param>
-        /// <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
-        /// <returns>アニメーションを再生するコンテント</returns>
-        public FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent, Action<FrameworkElement> endAnimation)
-        {
-            this.toContent = toContent;
-            if (toContent == null)
-                return null;
-            this.fromContent = fromContent;
-            this.endAnimation = endAnimation;
-            storyBoard = new Grid();
-            if (NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.LeftToRight)
+            if (fromContent is INotifyNavigationStory)
             {
-                storyBoard.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star) });
-                storyBoard.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star) });
+                ((INotifyNavigationStory)fromContent).IsAnimation = false;
             }
-            else
+            if (toContent is INotifyNavigationStory)
             {
-                storyBoard.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star) });
-                storyBoard.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star) });
+                ((INotifyNavigationStory)toContent).IsAnimation = false;
             }
-            return storyBoard as FrameworkElement;
-        }
-        /// <summary>
-        /// アニメーション再生
-        /// </summary>
-        public void Animate()
-        {
-            if (toContent == null)
-                return;
-            if (fromContent == null)
-            {
-                endAnimation?.Invoke(toContent);
-                return;
-            }
-
-            Logger.Write(LogType.Debug, "RaiseNavigationMode" + NavigationMode.ToString());
-
-            if (NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.LeftToRight)
-            {
-                Grid.SetColumn(fromContent, NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 0 : 1);
-                Grid.SetColumn(toContent, NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 0);
-            }
-            else
-            {
-                Grid.SetRow(fromContent, NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 0 : 1);
-                Grid.SetRow(toContent, NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 0);
-            }
-            storyBoard.Children.Add(fromContent);
-            storyBoard.Children.Add(toContent);
-
-            var duration = Duration;
-            Storyboard story = new Storyboard { Duration = duration };
-
-            GridLengthAnimation fromSizeAnimation = new GridLengthAnimation
-            {
-                From = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star),
-                To = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star),
-                Duration = duration,
-            };
-            GridLengthAnimation toSizeAnimation = new GridLengthAnimation
-            {
-                From = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 1 : 100, GridUnitType.Star),
-                To = new GridLength(NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.BottomToTop ? 100 : 1, GridUnitType.Star),
-                Duration = duration
-            };
-            if (NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.LeftToRight)
-            {
-                Storyboard.SetTarget(fromSizeAnimation, storyBoard.ColumnDefinitions[0]);
-                Storyboard.SetTargetProperty(fromSizeAnimation, new PropertyPath("Width"));
-                Storyboard.SetTarget(toSizeAnimation, storyBoard.ColumnDefinitions[1]);
-                Storyboard.SetTargetProperty(toSizeAnimation, new PropertyPath("Width"));
-            }
-            else
-            {
-                Storyboard.SetTarget(fromSizeAnimation, storyBoard.RowDefinitions[0]);
-                Storyboard.SetTargetProperty(fromSizeAnimation, new PropertyPath("Height"));
-                Storyboard.SetTarget(toSizeAnimation, storyBoard.RowDefinitions[1]);
-                Storyboard.SetTargetProperty(toSizeAnimation, new PropertyPath("Height"));
-            }
-            story.Children.Add(fromSizeAnimation);
-            story.Children.Add(toSizeAnimation);
-
-            story.Completed += OnStoryCompleted;
-            story.Begin();
-        }
-        private void OnStoryCompleted(object sender, EventArgs e)
-        {
-            storyBoard.Children.Remove(fromContent);
-            storyBoard.Children.Remove(toContent);
-            fromContent.ClearValue(Grid.ColumnProperty);
-            toContent.ClearValue(Grid.ColumnProperty);
-            endAnimation?.Invoke(toContent);
+            fromContent = null;
+            toContent = null;
         }
     }
 
@@ -368,6 +347,8 @@ namespace Mvvm
     /// <remarks><a href="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</a></remarks>
     public class NavigationServiceEx : DependencyObject
     {
+        private static bool CanNavigation { get; set; } = true;
+
         /// <summary>
         /// ページナビゲーションを行う領域となるContentControlを保持するAccessor
         /// </summary>
@@ -396,29 +377,45 @@ namespace Mvvm
         public void Navigate(FrameworkElement view)
         {
             var story = GetNavigationStory(this.Content);
-            if (story == null)
+            if (CanNavigation)
             {
-                this.Content.Content = view;
-            }
-            else
-            {
-                try
+                if (story == null)
                 {
-                    this.Content.Content = story.Initialize(this.Content.Content as FrameworkElement, view, x => this.Content.Content = x);
+                    this.Content.Content = view;
                 }
-                catch (Exception e)
+                else
                 {
-                    Logger.Write(e);
-                    throw new Exception("ナビゲーションアニメイニシャライザ内部エラー", e);
-                }
-                try
-                {
-                    story.Animate();
-                }
-                catch (Exception e)
-                {
-                    Logger.Write(e);
-                    throw new Exception("ナビゲーションアニメ内部エラー", e);
+                    CanNavigation = false;
+                    FrameworkElement animationElement;
+                    try
+                    {
+                        animationElement = story.Initialize(this.Content.Content as FrameworkElement, view,
+                            x =>
+                            {
+                                this.Content.Content = x;
+                                CanNavigation = true;
+                            });
+                    }
+                    catch (Exception e)
+                    {
+                        animationElement = view;
+                        CanNavigation = true;
+                        Logger.Write(e, "ナビゲーションアニメイニシャライザ内部エラー");
+                    }
+                    this.Content.Content = animationElement;
+                    if (!animationElement.Equals(view))
+                    {
+                        try
+                        {
+                            story.Animate();
+                        }
+                        catch (Exception e)
+                        {
+                            this.Content.Content = view;
+                            CanNavigation = true;
+                            Logger.Write(e, "ナビゲーションアニメ内部エラー");
+                        }
+                    }
                 }
             }
         }

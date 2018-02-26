@@ -75,6 +75,9 @@
     <Compile Include="Views\SubPage4.xaml.cs">
       <DependentUpon>SubPage4.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewBoxTest.xaml.cs">
+      <DependentUpon>ViewBoxTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\XmlTreeView.xaml.cs">
       <DependentUpon>XmlTreeView.xaml</DependentUpon>
     </Compile>
@@ -104,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SubPage4.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewBoxTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

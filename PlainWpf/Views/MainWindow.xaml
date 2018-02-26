@@ -16,16 +16,20 @@
     </Window.DataContext>
     <Window.Resources>
         <NullableBoolConverter x:Key="NullableBoolConverter"/>
-        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryRL" NavigationMode="RightToLeft" Duration="0:0:0.5"/>
-        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryLR" NavigationMode="LeftToRight"/>
-        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryBT" NavigationMode="BottomToTop"/>
-        <Mvvm:SimpleRaiseNavigationStory x:Key="StoryTB" NavigationMode="TopToBottom"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="Narrowed" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="CenterNarrowed"/>
         <Mvvm:SimpleWipeNavigationStory x:Key="StoryHN" NavigationMode="HorizontalNarrowed"/>
         <Mvvm:SimpleWipeNavigationStory x:Key="StoryVN" NavigationMode="VerticalNarrowed"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryS" NavigationMode="Spread"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryS" NavigationMode="CenterSpread"/>
         <Mvvm:SimpleWipeNavigationStory x:Key="StoryHS" NavigationMode="HorizontalSpread"/>
         <Mvvm:SimpleWipeNavigationStory x:Key="StoryVS" NavigationMode="VerticalSpread"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryNHR" NavigationMode="RightHorizontalNarrowed"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryNHL" NavigationMode="LeftHorizontalNarrowed"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryNVT" NavigationMode="TopVerticalNarrowed"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryNVB" NavigationMode="BottomVerticalNarrowed"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StorySHR" NavigationMode="RightHorizontalSpread"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StorySHL" NavigationMode="LeftHorizontalSpread"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StorySVT" NavigationMode="TopVerticalSpread"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StorySVB" NavigationMode="BottomVerticalSpread"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -44,41 +48,53 @@
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
                     <Style.Triggers>
-                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n1">
-                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryRL}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n2">
-                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryLR}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n3">
-                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryBT}"/>
-                        </DataTrigger>
-                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n4">
-                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryTB}"/>
-                        </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n5">
                             <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryN}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n6">
-                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryVN}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryHN}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n7">
-                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryHN}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryVN}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n8">
                             <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryS}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n9">
-                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryVS}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryHS}"/>
                         </DataTrigger>
                         <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n10">
-                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryHS}"/>
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryVS}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n11">
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryNHL}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n12">
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryNHR}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n13">
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryNVT}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n14">
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StoryNVB}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n15">
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StorySHL}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n16">
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StorySHR}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n17">
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StorySVT}"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedItem.Name, ElementName=AnimeType}" Value="n18">
+                            <Setter Property="Mvvm:NavigationServiceEx.NavigationStory" Value="{StaticResource StorySVB}"/>
                         </DataTrigger>
                     </Style.Triggers>
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <ContentControl x:Name="RightContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryBT}" Grid.Column="2" Width="Auto"/>
+        <ContentControl x:Name="RightContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryS}" Grid.Column="2" Width="Auto"/>
         <Grid x:Name="LeftContent" Grid.Column="0">
             <StackPanel Orientation="Vertical">
                 <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
@@ -88,18 +104,23 @@
                 <Button Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage3}"/>
                 <Button Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage4}"/>
                 <Button Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
+                <Button Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:ViewBoxTest}"/>
                 <ListBox x:Name="AnimeType">
                     <ListBox.Items>
-                        <ListBoxItem Name="n1" Content="RightToLeft"/>
-                        <ListBoxItem Name="n2" Content="LeftToRight"/>
-                        <ListBoxItem Name="n3" Content="BottomToTop"/>
-                        <ListBoxItem Name="n4" Content="TopToBottom"/>
                         <ListBoxItem Name="n5" Content="Narrowed"/>
                         <ListBoxItem Name="n6" Content="HorizontalNarrowed"/>
                         <ListBoxItem Name="n7" Content="VerticalNarrowed"/>
                         <ListBoxItem Name="n8" Content="Spread"/>
                         <ListBoxItem Name="n9" Content="HorizontalSpread"/>
                         <ListBoxItem Name="n10" Content="VerticalSpread"/>
+                        <ListBoxItem Name="n11" Content="LeftHorizontalNarrowed"/>
+                        <ListBoxItem Name="n12" Content="RightHorizontalNarrowed"/>
+                        <ListBoxItem Name="n13" Content="TopVerticalNarrowed"/>
+                        <ListBoxItem Name="n14" Content="BottomVerticalNarrowed"/>
+                        <ListBoxItem Name="n15" Content="LeftHorizontalSpread"/>
+                        <ListBoxItem Name="n16" Content="RightHorizontalSpread"/>
+                        <ListBoxItem Name="n17" Content="TopVerticalSpread"/>
+                        <ListBoxItem Name="n18" Content="BottomVerticalSpread"/>
                     </ListBox.Items>
                 </ListBox>
             </StackPanel>

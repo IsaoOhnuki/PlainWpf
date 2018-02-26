@@ -36,6 +36,24 @@ namespace Extensions
         /// Jps the year string.
         /// </summary>
         /// <param name="dateTime">The date time.</param>
+        /// <returns>ⅩⅩ(元号)</returns>
+        public static string ToJpHistoryString(this DateTime dateTime)
+        {
+            return dateTime.ToString("gg", JpCulture);;
+        }
+        /// <summary>
+        /// To the jp short year string.
+        /// </summary>
+        /// <param name="dateTime">The date time.</param>
+        /// <returns>西暦</returns>
+        public static string ToUsHistoryString(this DateTime dateTime)
+        {
+            return dateTime.ToString("gg");
+        }
+        /// <summary>
+        /// Jps the year string.
+        /// </summary>
+        /// <param name="dateTime">The date time.</param>
         /// <returns>元号XX年</returns>
         public static string ToJpYearString(this DateTime dateTime)
         {
@@ -132,7 +150,9 @@ namespace Extensions
         {
             var now = dateTime;
             return format?
+                .Replace("{JJ}", now.ToJpHistoryString())
                 .Replace("{JY}", now.ToJpYearString())
+                .Replace("{UU}", now.ToUsHistoryString())
                 .Replace("{UY}", now.ToUsYearString())
                 .Replace("{JM}", now.ToJpMonthString())
                 .Replace("{JD}", now.ToJpDateString())
@@ -160,7 +180,9 @@ namespace Extensions
         public static string ToJpSumpleString(this DateTime dateTime)
         {
             string format = "{xx} <- format string replace.\r\n" +
+                "xx : JJ ({JJ})" + "\r\n" +       // JJ(平成)
                 "xx : JY ({JY})" + "\r\n" +       // JY(平成30年)
+                "xx : UU ({UU})" + "\r\n" +       // UY(西暦)
                 "xx : UY ({UY})" + "\r\n" +       // UY(西暦2018年)
                 "xx : JM ({JM})" + "\r\n" +       // JM(02月)
                 "xx : JD ({JD})" + "\r\n" +       // JD(23日)

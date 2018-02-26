@@ -53,7 +53,7 @@
                Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
                Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
                HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top"/>
-        <Button Content="Button" Command="{Binding NowCommand}" HorizontalAlignment="Left" Margin="20,78,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Now!" Command="{Binding NowCommand}" HorizontalAlignment="Left" Margin="20,78,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpSumpleStringConverter}}" HorizontalAlignment="Left" Margin="154,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
                Foreground="{Binding ElementName=ColorSelector, Path=TextColor, Converter={StaticResource ColorToBrushConverter}}"
                    />

@@ -81,8 +81,10 @@ namespace Mvvm
         private Action<FrameworkElement> endAnimation;
         private FrameworkElement fromContent;
         private FrameworkElement toContent;
-        private ContentControl toContentControl;
         private ContentControl fromContentControl;
+        private ContentControl toContentControl;
+        private Viewbox fromViewbox;
+        private Viewbox toViewbox;
 
         /// <summary>
         /// 再生するワイプアニメーションのタイプ
@@ -111,8 +113,10 @@ namespace Mvvm
             storyBoard = new Canvas();
             fromContentControl = new ContentControl();
             toContentControl = new ContentControl();
-            storyBoard.Children.Add(fromContentControl);
-            storyBoard.Children.Add(toContentControl);
+            fromViewbox = new Viewbox { Stretch = Stretch.Fill, Child = fromContentControl };
+            toViewbox = new Viewbox { Stretch = Stretch.Fill, Child = toContentControl };
+            storyBoard.Children.Add(fromViewbox);
+            storyBoard.Children.Add(toViewbox);
 
             return storyBoard as FrameworkElement;
         }
@@ -135,15 +139,20 @@ namespace Mvvm
 
             Logger.Write(LogType.Debug, "WipeNavigationMode" + NavigationMode.ToString());
 
-            Canvas.SetLeft(fromContentControl, 0);
-            fromContentControl.Width = width;
-            Canvas.SetTop(fromContentControl, 0);
-            fromContentControl.Height = height;
+            Canvas.SetLeft(fromViewbox, 0);
+            fromViewbox.Width = width;
+            Canvas.SetTop(fromViewbox, 0);
+            fromViewbox.Height = height;
 
-            Canvas.SetLeft(toContentControl, IsFocal ? width / 2 : 0);
-            toContentControl.Width = IsFocal ? 0 : width;
-            Canvas.SetTop(toContentControl, IsFocal ? height / 2 : 0);
-            toContentControl.Height = IsFocal ? 0 : height;
+            Canvas.SetLeft(toViewbox, IsFocal ? width / 2 : 0);
+            toViewbox.Width = IsFocal ? 0 : width;
+            Canvas.SetTop(toViewbox, IsFocal ? height / 2 : 0);
+            toViewbox.Height = IsFocal ? 0 : height;
+
+            fromContentControl.Width = width;
+            fromContentControl.Height = height;
+            toContentControl.Width = width;
+            toContentControl.Height = height;
 
             fromContentControl.Content = IsSpread ? fromContent : toContent;
             toContentControl.Content = IsSpread ? toContent : fromContent;
@@ -165,9 +174,9 @@ namespace Mvvm
                     To = IsSpread ? height : 0,
                     Duration = duration,
                 };
-                Storyboard.SetTarget(toTop, toContentControl);
+                Storyboard.SetTarget(toTop, toViewbox);
                 Storyboard.SetTargetProperty(toTop, new PropertyPath("(Canvas.Top)"));
-                Storyboard.SetTarget(toHeight, toContentControl);
+                Storyboard.SetTarget(toHeight, toViewbox);
                 Storyboard.SetTargetProperty(toHeight, new PropertyPath("Height"));
 
                 story.Children.Add(toTop);
@@ -187,9 +196,9 @@ namespace Mvvm
                     To = IsSpread ? width : 0,
                     Duration = duration,
                 };
-                Storyboard.SetTarget(toLeft, toContentControl);
+                Storyboard.SetTarget(toLeft, toViewbox);
                 Storyboard.SetTargetProperty(toLeft, new PropertyPath("(Canvas.Left)"));
-                Storyboard.SetTarget(toWidth, toContentControl);
+                Storyboard.SetTarget(toWidth, toViewbox);
                 Storyboard.SetTargetProperty(toWidth, new PropertyPath("Width"));
 
                 story.Children.Add(toWidth);
@@ -201,8 +210,10 @@ namespace Mvvm
         }
         private void OnStoryCompleted(object sender, EventArgs e)
         {
-            storyBoard.Children.Remove(fromContentControl);
-            storyBoard.Children.Remove(toContentControl);
+            storyBoard.Children.Remove(fromViewbox);
+            storyBoard.Children.Remove(toViewbox);
+            fromViewbox.Child = null;
+            toViewbox.Child = null;
             toContentControl.Content = null;
             fromContentControl.Content = null;
             endAnimation?.Invoke(toContent);

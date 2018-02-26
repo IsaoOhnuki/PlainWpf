@@ -823,26 +823,6 @@
             遷移先が垂直方向に広がる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.LeftHorizontalSpread">
-            <summary>
-            遷移先が左から右に水平方向に広がる
-            </summary>
-        </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.RightHorizontalSpread">
-            <summary>
-            遷移先が右から左に水平方向に広がる
-            </summary>
-        </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.TopVerticalSpread">
-            <summary>
-            遷移先が上から下に垂直方向に広がる
-            </summary>
-        </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.BottomVerticalSpread">
-            <summary>
-            遷移先が下から上に垂直方向に広がる
-            </summary>
-        </member>
         <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.CenterNarrowed">
             <summary>
             遷移元が中心に窄まる
@@ -858,24 +838,24 @@
             遷移元が上下から中心に窄まる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.LeftHorizontalNarrowed">
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.LeftToHorizontal">
             <summary>
-            遷移元が左から右に水平方向に窄まる
+            遷移先が左から右に水平方向に広がる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.RightHorizontalNarrowed">
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.RightToHorizontal">
             <summary>
-            遷移元が右から左に水平方向に窄まる
+            遷移先が右から左に水平方向に広がる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.TopVerticalNarrowed">
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.TopToVertical">
             <summary>
-            遷移元が上から下に垂直方向に窄まる
+            遷移先が上から下に垂直方向に広がる
             </summary>
         </member>
-        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.BottomVerticalNarrowed">
+        <member name="F:Mvvm.SimpleWipeNavigationStory.WipeNavigationMode.BottomToVertical">
             <summary>
-            遷移元が下から上に垂直方向に窄まる
+            遷移先が下から上に垂直方向に広がる
             </summary>
         </member>
         <member name="P:Mvvm.SimpleWipeNavigationStory.NavigationMode">
@@ -981,6 +961,14 @@
             ページ遷移を実現するエリア。ContentControlを指定すること。
             </summary>
             <remarks>この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。</remarks>
+        </member>
+        <member name="P:Mvvm.NavigationServiceEx.CanNavigation">
+            <summary>
+            ナビゲーション可能であることのフラグ
+            </summary>
+            <value>
+              <c>true</c> if this instance can navigation; otherwise, <c>false</c>.
+            </value>
         </member>
         <member name="M:Mvvm.NavigationServiceEx.GetStartup(System.Windows.DependencyObject)">
             <summary>

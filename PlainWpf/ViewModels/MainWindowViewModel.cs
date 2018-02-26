@@ -18,14 +18,21 @@ namespace PlainWpf.ViewModels
             set { SetProperty(ref title, value); }
         }
 
-        public DelegateCommand SubPage1ShowCommand { get; set; }
+        private bool appEnabled;
+        public bool AppEnabled
+        {
+            get { return appEnabled; }
+            set { SetProperty(ref appEnabled, value); }
+        }
 
         public MainWindowViewModel()
         {
             Title = "012";
-            SubPage1ShowCommand = new DelegateCommand(() => {
-                
+            MavigateAnimation = new DelegateCommand<bool>(animation => {
+                AppEnabled = !animation;
             });
         }
+
+        public DelegateCommand<bool> MavigateAnimation { get; private set; }
     }
 }

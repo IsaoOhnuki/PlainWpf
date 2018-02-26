@@ -55,17 +55,17 @@ namespace Mvvm
     {
         private enum WipeNavigationModeCheck
         {
-            Direction = 1,
-            Spread = 0,
-            Narrowed = 1,
-            Horizontal = 2,
-            Vertical = 4,
-            Posision = 8 + 16 + 32,
-            Center = 8,
-            Left = 16,
-            Right = 16 + 8,
-            Top = 32,
-            Bottom = 32 + 8,
+            Direction = 3,
+            Spread = 1,
+            Narrowed = 2,
+            Horizontal = 4,
+            Vertical = 8,
+            Center = 16,
+            Left = 0,
+            Right = 32,
+            Top = 64,
+            Bottom = 64 + 32,
+            Posision = 16 + 32 + 64,
         }
         /// <summary>
         /// ワイプアニメーションのタイプ定義
@@ -85,22 +85,6 @@ namespace Mvvm
             /// </summary>
             VerticalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Center,
             /// <summary>
-            /// 遷移先が左から右に水平方向に広がる
-            /// </summary>
-            LeftHorizontalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Left,
-            /// <summary>
-            /// 遷移先が右から左に水平方向に広がる
-            /// </summary>
-            RightHorizontalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Right,
-            /// <summary>
-            /// 遷移先が上から下に垂直方向に広がる
-            /// </summary>
-            TopVerticalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Top,
-            /// <summary>
-            /// 遷移先が下から上に垂直方向に広がる
-            /// </summary>
-            BottomVerticalSpread = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Bottom,
-            /// <summary>
             /// 遷移元が中心に窄まる
             /// </summary>
             CenterNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Center,
@@ -113,24 +97,24 @@ namespace Mvvm
             /// </summary>
             VerticalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Center,
             /// <summary>
-            /// 遷移元が左から右に水平方向に窄まる
+            /// 遷移先が左から右に水平方向に広がる
             /// </summary>
-            LeftHorizontalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Left,
+            LeftToHorizontal = WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Left,
             /// <summary>
-            /// 遷移元が右から左に水平方向に窄まる
+            /// 遷移先が右から左に水平方向に広がる
             /// </summary>
-            RightHorizontalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Right,
+            RightToHorizontal = WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Right,
             /// <summary>
-            /// 遷移元が上から下に垂直方向に窄まる
+            /// 遷移先が上から下に垂直方向に広がる
             /// </summary>
-            TopVerticalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Top,
+            TopToVertical = WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Top,
             /// <summary>
-            /// 遷移元が下から上に垂直方向に窄まる
+            /// 遷移先が下から上に垂直方向に広がる
             /// </summary>
-            BottomVerticalNarrowed = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Bottom,
+            BottomToVertical = WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Bottom,
         }
 
-        private bool IsSpread { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Direction) != WipeNavigationModeCheck.Narrowed; } }
+        private bool IsSpread { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Direction) == WipeNavigationModeCheck.Spread; } }
         private bool IsNarrowed { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Direction) == WipeNavigationModeCheck.Narrowed; } }
         private bool IsHorizontal { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Horizontal) == WipeNavigationModeCheck.Horizontal; } }
         private bool IsVertical { get { return ((WipeNavigationModeCheck)NavigationMode & WipeNavigationModeCheck.Vertical) == WipeNavigationModeCheck.Vertical; } }
@@ -218,94 +202,128 @@ namespace Mvvm
             fromViewbox.Height = height;
 
             // 遷移先のサイズ
-            Canvas.SetLeft(toViewbox, IsNarrowed || IsVertical || IsLeft ? 0 : IsCenter ? width / 2 : width);
-            toViewbox.Width = IsNarrowed || IsVertical ? width : IsHorizontal || IsCenter ? 0 : width;
-            Canvas.SetTop(toViewbox, IsNarrowed || IsHorizontal || IsTop ? 0 : IsCenter ? height / 2 : height);
-            toViewbox.Height = IsNarrowed || IsHorizontal ? height : IsVertical || IsCenter ? 0 : height;
+            if (IsCenter)
+            {
+                Canvas.SetLeft(toViewbox, IsNarrowed || IsVertical ? 0 : width / 2);
+                toViewbox.Width = IsNarrowed || IsVertical ? width : 0;
+                Canvas.SetTop(toViewbox, IsNarrowed || IsHorizontal ? 0 : height / 2);
+                toViewbox.Height = IsNarrowed || IsHorizontal ? height : 0;
+            }
+            else
+            {
+                Canvas.SetLeft(toViewbox, IsLeft || IsTop || IsBottom ? 0 : width);
+                toViewbox.Width = IsTop || IsBottom ? width : 0;
+                Canvas.SetTop(toViewbox, IsTop || IsLeft || IsRight ? 0 : height);
+                toViewbox.Height = IsLeft || IsRight ? height : 0;
+            }
 
             // Spread系なら裏が元画面、Narrowed系なら表が元画面
-            fromContentControl.Content = IsSpread ? fromContent : toContent;
-            toContentControl.Content = IsSpread ? toContent : fromContent;
+            fromContentControl.Content = IsSpread || !IsNarrowed ? fromContent : toContent;
+            toContentControl.Content = IsSpread || !IsNarrowed ? toContent : fromContent;
 
             var duration = Duration;
             Storyboard story = new Storyboard { Duration = duration };
 
-            if (IsLeft || IsRight || IsTop|| IsBottom)
+            if (IsLeft || IsRight || IsTop || IsBottom)
             {
                 DoubleAnimation fromLeft = new DoubleAnimation
                 {
                     From = Canvas.GetLeft(fromViewbox),
-                    To = IsLeft ? width : Canvas.GetLeft(fromViewbox),
+                    To = IsLeft ? width : 0,
                     Duration = duration,
                 };
-                Storyboard.SetTarget(fromLeft, fromViewbox);
-                Storyboard.SetTargetProperty(fromLeft, new PropertyPath("(Canvas.Left)"));
-                story.Children.Add(fromLeft);
+                if (fromLeft.From != fromLeft.To)
+                {
+                    Storyboard.SetTarget(fromLeft, fromViewbox);
+                    Storyboard.SetTargetProperty(fromLeft, new PropertyPath("(Canvas.Left)"));
+                    story.Children.Add(fromLeft);
+                }
                 DoubleAnimation fromWidth = new DoubleAnimation
                 {
                     From = fromViewbox.Width,
-                    To = IsLeft || IsRight ? 0: width,
+                    To = IsLeft || IsRight ? 0 : width,
                     Duration = duration,
                 };
-                Storyboard.SetTarget(fromWidth, fromViewbox);
-                Storyboard.SetTargetProperty(fromWidth, new PropertyPath("Width"));
-                story.Children.Add(fromWidth);
+                if (fromWidth.From != fromWidth.To)
+                {
+                    Storyboard.SetTarget(fromWidth, fromViewbox);
+                    Storyboard.SetTargetProperty(fromWidth, new PropertyPath("Width"));
+                    story.Children.Add(fromWidth);
+                }
                 DoubleAnimation fromTop = new DoubleAnimation
                 {
                     From = Canvas.GetTop(fromViewbox),
-                    To = IsTop ? height : Canvas.GetTop(fromViewbox),
+                    To = IsTop ? height : 0,
                     Duration = duration,
                 };
-                Storyboard.SetTarget(fromTop, fromViewbox);
-                Storyboard.SetTargetProperty(fromTop, new PropertyPath("(Canvas.Top)"));
-                story.Children.Add(fromTop);
+                if (fromTop.From != fromTop.To)
+                {
+                    Storyboard.SetTarget(fromTop, fromViewbox);
+                    Storyboard.SetTargetProperty(fromTop, new PropertyPath("(Canvas.Top)"));
+                    story.Children.Add(fromTop);
+                }
                 DoubleAnimation fromHeight = new DoubleAnimation
                 {
                     From = fromViewbox.Height,
                     To = IsTop || IsBottom ? 0 : height,
                     Duration = duration,
                 };
-                Storyboard.SetTarget(fromHeight, fromViewbox);
-                Storyboard.SetTargetProperty(fromHeight, new PropertyPath("Height"));
-                story.Children.Add(fromHeight);
+                if (fromHeight.From != fromHeight.To)
+                {
+                    Storyboard.SetTarget(fromHeight, fromViewbox);
+                    Storyboard.SetTargetProperty(fromHeight, new PropertyPath("Height"));
+                    story.Children.Add(fromHeight);
+                }
             }
 
             DoubleAnimation toLeft = new DoubleAnimation
             {
                 From = Canvas.GetLeft(toViewbox),
-                To = IsSpread || IsVertical || IsLeft ? 0 : IsCenter ? width / 2 : width,
+                To = IsSpread || IsVertical || IsLeft || IsRight ? 0 : IsCenter ? width / 2 : width,
                 Duration = duration,
             };
+            if (toLeft.From != toLeft.To)
+            {
+                Storyboard.SetTarget(toLeft, toViewbox);
+                Storyboard.SetTargetProperty(toLeft, new PropertyPath("(Canvas.Left)"));
+                story.Children.Add(toLeft);
+            }
             DoubleAnimation toWidth = new DoubleAnimation
             {
                 From = toViewbox.Width,
-                To = IsSpread || IsVertical ? width : 0,
+                To = IsSpread || IsVertical || IsLeft || IsRight ? width : 0,
                 Duration = duration,
             };
+            if (toWidth.From != toWidth.To)
+            {
+                Storyboard.SetTarget(toWidth, toViewbox);
+                Storyboard.SetTargetProperty(toWidth, new PropertyPath("Width"));
+                story.Children.Add(toWidth);
+            }
             DoubleAnimation toTop = new DoubleAnimation
             {
                 From = Canvas.GetTop(toViewbox),
-                To = IsSpread || IsHorizontal || IsTop ? 0 : IsCenter ? height / 2 : height,
+                To = IsSpread || IsHorizontal || IsTop || IsBottom ? 0 : IsCenter ? height / 2 : height,
                 Duration = duration,
             };
+            if (toTop.From != toTop.To)
+            {
+                Storyboard.SetTarget(toTop, toViewbox);
+                Storyboard.SetTargetProperty(toTop, new PropertyPath("(Canvas.Top)"));
+                story.Children.Add(toTop);
+            }
             DoubleAnimation toHeight = new DoubleAnimation
             {
                 From = toViewbox.Height,
-                To = IsSpread || IsHorizontal ? height : 0,
+                To = IsSpread || IsHorizontal || IsTop || IsBottom ? height : 0,
                 Duration = duration,
             };
-            Storyboard.SetTarget(toLeft, toViewbox);
-            Storyboard.SetTargetProperty(toLeft, new PropertyPath("(Canvas.Left)"));
-            Storyboard.SetTarget(toWidth, toViewbox);
-            Storyboard.SetTargetProperty(toWidth, new PropertyPath("Width"));
-            Storyboard.SetTarget(toTop, toViewbox);
-            Storyboard.SetTargetProperty(toTop, new PropertyPath("(Canvas.Top)"));
-            Storyboard.SetTarget(toHeight, toViewbox);
-            Storyboard.SetTargetProperty(toHeight, new PropertyPath("Height"));
-            story.Children.Add(toLeft);
-            story.Children.Add(toWidth);
-            story.Children.Add(toTop);
-            story.Children.Add(toHeight);
+            if (toHeight.From != toHeight.To)
+            {
+                Storyboard.SetTarget(toHeight, toViewbox);
+                Storyboard.SetTargetProperty(toHeight, new PropertyPath("Height"));
+                story.Children.Add(toHeight);
+            }
 
             if (fromContent is INotifyNavigationStory)
             {
@@ -347,8 +365,6 @@ namespace Mvvm
     /// <remarks><a href="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</a></remarks>
     public class NavigationServiceEx : DependencyObject
     {
-        private static bool CanNavigation { get; set; } = true;
-
         /// <summary>
         /// ページナビゲーションを行う領域となるContentControlを保持するAccessor
         /// </summary>
@@ -536,6 +552,14 @@ namespace Mvvm
             }
         }
         #endregion
+
+        /// <summary>
+        /// ナビゲーション可能であることのフラグ
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance can navigation; otherwise, <c>false</c>.
+        /// </value>
+        private static bool CanNavigation { get; set; } = true;
 
         #region スタートアップ時に表示するページを指定するための添付プロパティ
         /// <summary>

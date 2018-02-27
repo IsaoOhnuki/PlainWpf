@@ -652,6 +652,39 @@
             <param name="dateTime">The date time.</param>
             <returns>サンプル出力</returns>
         </member>
+        <member name="T:Mvvm.AsyncCommand`1">
+            <summary>
+            
+            </summary>
+            <remarks>
+            <a href="https://msdn.microsoft.com/ja-jp/magazine/dn630647.aspx">非同期 MVVM アプリケーションのパターン: コマンド</a>
+            </remarks>
+            <typeparam name="TResult">The type of the result.</typeparam>
+        </member>
+        <member name="T:Mvvm.AsyncCommand">
+            <summary>
+            
+            </summary>
+            <remarks>
+            <a href="https://msdn.microsoft.com/ja-jp/magazine/dn630647.aspx">非同期 MVVM アプリケーションのパターン: コマンド</a>
+            </remarks>
+        </member>
+        <member name="T:Mvvm.AsyncCommandBase">
+            <summary>
+            
+            </summary>
+            <remarks>
+            <a href="https://msdn.microsoft.com/ja-jp/magazine/dn630647.aspx">非同期 MVVM アプリケーションのパターン: コマンド</a>
+            </remarks>
+        </member>
+        <member name="T:Mvvm.IAsyncCommand">
+            <summary>
+            
+            </summary>
+            <remarks>
+            <a href="https://msdn.microsoft.com/ja-jp/magazine/dn630647.aspx">非同期 MVVM アプリケーションのパターン: コマンド</a>
+            </remarks>
+        </member>
         <member name="T:Mvvm.Message">
             <summary>
             
@@ -856,6 +889,20 @@
         <member name="M:Mvvm.NavigationServiceEx.OnGoToPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
             <summary>
             NavigationCommands.GoToPageコマンドに対する応答処理
+            </summary>
+            <param name="sender">未使用</param>
+            <param name="e">e.Parameterに遷移するページのType</param>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.OnPreviousPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            NavigationCommands.PreviousPageコマンドに対する応答処理
+            </summary>
+            <param name="sender">未使用</param>
+            <param name="e">e.Parameterに遷移するページのType</param>
+        </member>
+        <member name="M:Mvvm.NavigationServiceEx.OnNextPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
+            <summary>
+            NavigationCommands.NextPageコマンドに対する応答処理
             </summary>
             <param name="sender">未使用</param>
             <param name="e">e.Parameterに遷移するページのType</param>
@@ -1205,24 +1252,18 @@
             Reflashes this instance.
             </summary>
         </member>
-        <member name="T:Utilitys.ObjectStack`1">
+        <member name="T:Utilitys.HistoryStack`1">
             <summary>
             アンドゥ、リドゥ機能スタック
             </summary>
             <typeparam name="T">保持するオブジェクト</typeparam>
         </member>
-        <member name="M:Utilitys.ObjectStack`1.#ctor">
+        <member name="M:Utilitys.HistoryStack`1.#ctor">
             <summary>
-            Initializes a new instance of the <see cref="T:Utilitys.ObjectStack`1"/> class.
+            Initializes a new instance of the <see cref="T:Utilitys.HistoryStack`1"/> class.
             </summary>
         </member>
-        <member name="M:Utilitys.ObjectStack`1.#ctor(`0)">
-            <summary>
-            Initializes a new instance of the <see cref="T:Utilitys.ObjectStack`1"/> class.
-            </summary>
-            <param name="firstObject">The first.</param>
-        </member>
-        <member name="P:Utilitys.ObjectStack`1.CanUndo">
+        <member name="P:Utilitys.HistoryStack`1.CanUndo">
             <summary>
             Gets a value indicating whether this instance can undo.
             </summary>
@@ -1230,7 +1271,7 @@
               <c>true</c> if this instance can undo; otherwise, <c>false</c>.
             </value>
         </member>
-        <member name="P:Utilitys.ObjectStack`1.CanRedo">
+        <member name="P:Utilitys.HistoryStack`1.CanRedo">
             <summary>
             Gets a value indicating whether this instance can redo.
             </summary>
@@ -1238,38 +1279,40 @@
               <c>true</c> if this instance can redo; otherwise, <c>false</c>.
             </value>
         </member>
-        <member name="M:Utilitys.ObjectStack`1.Undo">
+        <member name="M:Utilitys.HistoryStack`1.Undo">
             <summary>
             Undoes this instance.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Utilitys.ObjectStack`1.Redo">
+        <member name="M:Utilitys.HistoryStack`1.Redo">
             <summary>
             Redoes this instance.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:Utilitys.ObjectStack`1.RewindAll">
-            <summary>
-            全てクリアします
-            </summary>
-        </member>
-        <member name="M:Utilitys.ObjectStack`1.Rewind">
-            <summary>
-            ポイント位置までクリアします
-            </summary>
-        </member>
-        <member name="M:Utilitys.ObjectStack`1.Push(`0)">
+        <member name="M:Utilitys.HistoryStack`1.Push(`0)">
             <summary>
             Pushes the specified t.
             </summary>
             <param name="t">The t.</param>
         </member>
-        <member name="M:Utilitys.ObjectStack`1.Dispose">
+        <member name="M:Utilitys.HistoryStack`1.Rewind">
+            <summary>
+            ポイント位置までクリアします
+            </summary>
+        </member>
+        <member name="M:Utilitys.HistoryStack`1.Dispose">
             <summary>
             Releases unmanaged and - optionally - managed resources.
             </summary>
+        </member>
+        <member name="T:Utilitys.NotifyTaskCompletion`1">
+            <summary>
+            
+            </summary>
+            <remarks><a href="https://msdn.microsoft.com/magazine/dn605875">非同期 MVVM アプリケーションのパターン: データ バインド</a></remarks>
+            <typeparam name="TResult">The type of the result.</typeparam>
         </member>
         <member name="T:Utilitys.PathBuilder">
             <summary>

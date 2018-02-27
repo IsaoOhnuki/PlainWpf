@@ -33,15 +33,83 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-        <!--<Grid.Style>
-            <Style TargetType="{x:Type ColumnDefinition}">
-                <Style.Triggers>
-                    <DataTrigger />
-                </Style.Triggers>
-            </Style>
-        </Grid.Style>-->
+        <Grid x:Name="LeftContent" Grid.Column="0">
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="{Binding ActualWidth, ElementName=MainContent}" ContentStringFormat="ActualWidth={0}" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.BrowseBack">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActualWidth, ElementName=MainContent, Converter={StaticResource DoubleComparisonToBooleanConverter}, ConverterParameter={}{500@800}}" Value="True">
+                                        <Setter Property="Background" Value="HotPink"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Content="{Binding ActualWidth, ElementName=MainContent}" ContentStringFormat="ActualWidth={0}" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.BrowseForward">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActualWidth, ElementName=MainContent, Converter={StaticResource DoubleComparisonToBooleanConverter}, ConverterParameter={}{500@800}}" Value="True">
+                                        <Setter Property="Background" Value="ForestGreen"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="{Binding ActualWidth, ElementName=MainContent}" ContentStringFormat="ActualWidth={0}" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.BrowseBack">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActualWidth, ElementName=MainContent, Converter={StaticResource DoubleComparisonToBooleanConverter}, ConverterParameter={}{500@800}}" Value="False">
+                                        <Setter Property="Background" Value="HotPink"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                    <Button Content="{Binding ActualWidth, ElementName=MainContent}" ContentStringFormat="ActualWidth={0}" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.BrowseForward">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ActualWidth, ElementName=MainContent, Converter={StaticResource DoubleComparisonToBooleanConverter}, ConverterParameter={}{500@800}}" Value="False">
+                                        <Setter Property="Background" Value="ForestGreen"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Button.Style>
+                    </Button>
+                </StackPanel>
+                <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
+                <Button Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
+                <Button Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage3}"/>
+                <Button Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage4}"/>
+                <Button Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
+                <Button Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:ViewBoxTest}"/>
+                <ListBox x:Name="AnimeType" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListBox.Items>
+                        <ListBoxItem Name="n5" Content="Narrowed"/>
+                        <ListBoxItem Name="n6" Content="HorizontalNarrowed"/>
+                        <ListBoxItem Name="n7" Content="VerticalNarrowed"/>
+                        <ListBoxItem Name="n8" Content="Spread"/>
+                        <ListBoxItem Name="n9" Content="HorizontalSpread"/>
+                        <ListBoxItem Name="n10" Content="VerticalSpread"/>
+                        <ListBoxItem Name="n11" Content="LeftToHorizontal"/>
+                        <ListBoxItem Name="n12" Content="RightToHorizontal"/>
+                        <ListBoxItem Name="n13" Content="TopToVertical"/>
+                        <ListBoxItem Name="n14" Content="BottomToVertical"/>
+                    </ListBox.Items>
+                </ListBox>
+            </StackPanel>
+        </Grid>
+        <ContentControl x:Name="RightContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryS}" Grid.Column="2" Width="Auto"/>
         <ContentControl x:Name="MainContent" Grid.Column="1" Background="Red">
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
@@ -80,43 +148,5 @@
                 </Style>
             </ContentControl.Style>
         </ContentControl>
-        <ContentControl x:Name="RightContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryS}" Grid.Column="2" Width="Auto"/>
-        <Grid x:Name="LeftContent" Grid.Column="0">
-            <StackPanel Orientation="Vertical">
-                <Button Content="{Binding ActualWidth, ElementName=MainContent}" ContentStringFormat="ActualWidth={0}">
-                    <Button.Style>
-                        <Style TargetType="Button">
-                            <Style.Triggers>
-                                <DataTrigger Binding="{Binding ActualWidth, ElementName=MainContent, Converter={StaticResource DoubleComparisonToBooleanConverter}, ConverterParameter={}{500@800}}" Value="True">
-                                    <Setter Property="Background" Value="HotPink"/>
-                                </DataTrigger>
-                            </Style.Triggers>
-                        </Style>
-                    </Button.Style>
-                </Button>
-                <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
-                <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
-                <Button Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
-                <Button Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
-                <Button Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage3}"/>
-                <Button Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage4}"/>
-                <Button Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
-                <Button Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:ViewBoxTest}"/>
-                <ListBox x:Name="AnimeType" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                    <ListBox.Items>
-                        <ListBoxItem Name="n5" Content="Narrowed"/>
-                        <ListBoxItem Name="n6" Content="HorizontalNarrowed"/>
-                        <ListBoxItem Name="n7" Content="VerticalNarrowed"/>
-                        <ListBoxItem Name="n8" Content="Spread"/>
-                        <ListBoxItem Name="n9" Content="HorizontalSpread"/>
-                        <ListBoxItem Name="n10" Content="VerticalSpread"/>
-                        <ListBoxItem Name="n11" Content="LeftToHorizontal"/>
-                        <ListBoxItem Name="n12" Content="RightToHorizontal"/>
-                        <ListBoxItem Name="n13" Content="TopToVertical"/>
-                        <ListBoxItem Name="n14" Content="BottomToVertical"/>
-                    </ListBox.Items>
-                </ListBox>
-            </StackPanel>
-        </Grid>
     </Grid>
 </Window>

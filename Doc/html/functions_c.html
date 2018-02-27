@@ -90,20 +90,26 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 <div class="textblock">全クラスメンバ一覧です。各メンバが属するクラスへのリンクがあります。</div>
 
 <h3><a id="index_c"></a>- c -</h3><ul>
+<li>CancelCommand
+: <a class="el" href="class_mvvm_1_1_async_command.html#a89ee1a835b29e11d2e291ea092293592">Mvvm.AsyncCommand&lt; TResult &gt;</a>
+</li>
 <li>CanCommand
 : <a class="el" href="class_plain_wpf_1_1_view_models_1_1_sab_page2_view_model.html#afd23aa0e81ffe077ea60470abd929407">PlainWpf.ViewModels.SabPage2ViewModel</a>
 </li>
 <li>CanExecute()
-: <a class="el" href="class_mvvm_1_1_delegate_command.html#a94c4bb59e16760ce339d754e1f8f09a6">Mvvm.DelegateCommand&lt; T &gt;</a>
+: <a class="el" href="class_mvvm_1_1_async_command.html#abe7ed269f5ee6dbd038e31279d006930">Mvvm.AsyncCommand&lt; TResult &gt;</a>
+, <a class="el" href="class_mvvm_1_1_async_command_base.html#aba01d05a4eb7813e54d1fe7fc5950820">Mvvm.AsyncCommandBase</a>
+, <a class="el" href="class_mvvm_1_1_delegate_command.html#a94c4bb59e16760ce339d754e1f8f09a6">Mvvm.DelegateCommand&lt; T &gt;</a>
 </li>
 <li>CanExecuteChanged
-: <a class="el" href="class_mvvm_1_1_delegate_command.html#a60fae98a75adba2b224ed9ada9f01c98">Mvvm.DelegateCommand&lt; T &gt;</a>
+: <a class="el" href="class_mvvm_1_1_async_command_base.html#a72a9aa4cd09978d925ebd9cee8e3fba9">Mvvm.AsyncCommandBase</a>
+, <a class="el" href="class_mvvm_1_1_delegate_command.html#a60fae98a75adba2b224ed9ada9f01c98">Mvvm.DelegateCommand&lt; T &gt;</a>
 </li>
 <li>CanRedo
-: <a class="el" href="class_utilitys_1_1_object_stack.html#a3f47c87870dd50cbbb24a67053f37565">Utilitys.ObjectStack&lt; T &gt;</a>
+: <a class="el" href="class_utilitys_1_1_history_stack.html#a468609c5f8e7222f6bb663f6043dabf7">Utilitys.HistoryStack&lt; T &gt;</a>
 </li>
 <li>CanUndo
-: <a class="el" href="class_utilitys_1_1_object_stack.html#aed959fafe5b2c5f34005ba907dc8abaf">Utilitys.ObjectStack&lt; T &gt;</a>
+: <a class="el" href="class_utilitys_1_1_history_stack.html#a33196c741a9886833d466767be176d01">Utilitys.HistoryStack&lt; T &gt;</a>
 </li>
 <li>Color
 : <a class="el" href="class_utilitys_1_1_color_plus.html#a4316a3e22ca7792107c208cb1a9b31b4">Utilitys.ColorPlus</a>
@@ -117,6 +123,9 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 <li>ColorSelector()
 : <a class="el" href="class_controls_1_1_color_selector.html#a5b0660929834364b0e19bf346dc6dec1">Controls.ColorSelector</a>
 , <a class="el" href="class_plain_wpf_1_1_views_1_1_sub_page3.html#a0bc43c47ccd133e679f2656aee9cb550">PlainWpf.Views.SubPage3</a>
+</li>
+<li>ColorStrength()
+: <a class="el" href="class_utilitys_1_1_color_plus.html#afcd1f08f25370794485f0f3bd48be30c">Utilitys.ColorPlus</a>
 </li>
 <li>ColorToBrightness()
 : <a class="el" href="class_utilitys_1_1_color_plus.html#afa95ccd03dd0522507ee45e5095142d5">Utilitys.ColorPlus</a>
@@ -132,12 +141,6 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 </li>
 <li>ColorToSaturation()
 : <a class="el" href="class_utilitys_1_1_color_plus.html#a4500bc5138db73844f6e5d7a0f2dc7d3">Utilitys.ColorPlus</a>
-</li>
-<li>ColorToStrength()
-: <a class="el" href="class_utilitys_1_1_color_plus.html#a8223e5daea03f17431f658f2111d9d1c">Utilitys.ColorPlus</a>
-</li>
-<li>ColorToValue()
-: <a class="el" href="class_utilitys_1_1_color_plus.html#a79fc8bfddad0c0d0aabeb02e6e134cbc">Utilitys.ColorPlus</a>
 </li>
 <li>comboBox
 : <a class="el" href="class_controls_1_1_color_selector.html#ad6a08af5756a93f217802ca970473a8f">Controls.ColorSelector</a>
@@ -210,6 +213,12 @@ $(document).ready(function(){initNavTree('functions_c.html','');});
 , <a class="el" href="class_plain_wpf_1_1_view_models_1_1_orientation_horizontal_to_visibility_converter.html#a61d119c97fc055886b83b6a9f17f5a92">PlainWpf.ViewModels.OrientationHorizontalToVisibilityConverter</a>
 , <a class="el" href="class_plain_wpf_1_1_view_models_1_1_orientation_to_boolean_converter.html#a6c3a741c18d93cdd1cdbbb3b13d4e457">PlainWpf.ViewModels.OrientationToBooleanConverter</a>
 , <a class="el" href="class_plain_wpf_1_1_view_models_1_1_orientation_vertical_to_visibility_converter.html#a4ceeeb05775847a43f1498e352b4d3b4">PlainWpf.ViewModels.OrientationVerticalToVisibilityConverter</a>
+</li>
+<li>Create()
+: <a class="el" href="class_mvvm_1_1_async_command.html#a0d118a1a34a5ddf824e18e430c565af5">Mvvm.AsyncCommand&lt; TResult &gt;</a>
+</li>
+<li>Create&lt; TResult &gt;()
+: <a class="el" href="class_mvvm_1_1_async_command.html#ac766819ffd4436c4598efb772f1aba9c">Mvvm.AsyncCommand&lt; TResult &gt;</a>
 </li>
 <li>CreateDelegate()
 : <a class="el" href="class_xaml_generated_namespace_1_1_generated_internal_type_helper.html#a8ec4c37e82d9f4e867e9655f4eac3a78">XamlGeneratedNamespace.GeneratedInternalTypeHelper</a>

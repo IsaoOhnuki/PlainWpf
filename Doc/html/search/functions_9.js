@@ -1,5 +1,8 @@
 var searchData=
 [
-  ['navigate',['Navigate',['../class_mvvm_1_1_navigation_service_ex.html#a18cf69d9e00ca42532373a374a8ce1f9',1,'Mvvm.NavigationServiceEx.Navigate(FrameworkElement view)'],['../class_mvvm_1_1_navigation_service_ex.html#a9c8bc349f08188718d6f7afb5c48b8da',1,'Mvvm.NavigationServiceEx.Navigate(Type viewType)'],['../class_mvvm_1_1_navigation_service_extensions.html#a2412f0cadb192becf6eeab65e0f8ebd0',1,'Mvvm.NavigationServiceExtensions.Navigate(this FrameworkElement element, FrameworkElement view)'],['../class_mvvm_1_1_navigation_service_extensions.html#ae5476ba46a3179407ff226356dfca5d6',1,'Mvvm.NavigationServiceExtensions.Navigate(this FrameworkElement element, Type viewType)']]],
-  ['nowcommandaction',['NowCommandAction',['../class_plain_wpf_1_1_view_models_1_1_sub_page3_view_model.html#ac36dd540b74e926c7c9f3abb20bc753b',1,'PlainWpf::ViewModels::SubPage3ViewModel']]]
+  ['main',['Main',['../class_plain_wpf_1_1_app.html#ab4524dcc4684b02d9a01984a940d4f4d',1,'PlainWpf.App.Main()'],['../class_plain_wpf_1_1_app.html#ab4524dcc4684b02d9a01984a940d4f4d',1,'PlainWpf.App.Main()'],['../class_plain_wpf_1_1_app.html#ab4524dcc4684b02d9a01984a940d4f4d',1,'PlainWpf.App.Main()'],['../class_plain_wpf_1_1_app.html#ab4524dcc4684b02d9a01984a940d4f4d',1,'PlainWpf.App.Main()']]],
+  ['mainwindow',['MainWindow',['../class_plain_wpf_1_1_views_1_1_main_window.html#a56b932741ba2915f72b9b45854dbc08e',1,'PlainWpf::Views::MainWindow']]],
+  ['mainwindowviewmodel',['MainWindowViewModel',['../class_plain_wpf_1_1_view_models_1_1_main_window_view_model.html#af27e93ddf0ae67fff78ba89292b479e3',1,'PlainWpf::ViewModels::MainWindowViewModel']]],
+  ['matchpossiblestringtounmatchstring',['MatchPossibleStringToUnMatchString',['../class_extensions_1_1_regex_string_extensions.html#a312b045717e11641950572ec0ebc457a',1,'Extensions::RegexStringExtensions']]],
+  ['message',['Message',['../class_mvvm_1_1_message.html#a21a0d0883615e7ac331c5ad0d11d9c64',1,'Mvvm::Message']]]
 ];

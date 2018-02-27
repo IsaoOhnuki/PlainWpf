@@ -32,7 +32,12 @@ var hierarchy =
     [ "Behaviors.FormatTextInputBehavior", "class_behaviors_1_1_format_text_input_behavior.html", null ],
     [ "ICommand", null, [
       [ "Mvvm.DelegateCommand< T >", "class_mvvm_1_1_delegate_command.html", null ],
-      [ "Mvvm.DelegateCommand< T >", "class_mvvm_1_1_delegate_command.html", null ]
+      [ "Mvvm.DelegateCommand< T >", "class_mvvm_1_1_delegate_command.html", null ],
+      [ "Mvvm.IAsyncCommand", "interface_mvvm_1_1_i_async_command.html", [
+        [ "Mvvm.AsyncCommandBase", "class_mvvm_1_1_async_command_base.html", [
+          [ "Mvvm.AsyncCommand< TResult >", "class_mvvm_1_1_async_command.html", null ]
+        ] ]
+      ] ]
     ] ],
     [ "IComponentConnector", null, [
       [ "Controls.ColorSelector", "class_controls_1_1_color_selector.html", null ],
@@ -69,7 +74,7 @@ var hierarchy =
       [ "PlainWpf.Views.XmlTreeView", "class_plain_wpf_1_1_views_1_1_xml_tree_view.html", null ]
     ] ],
     [ "IDisposable", null, [
-      [ "Utilitys.ObjectStack< T >", "class_utilitys_1_1_object_stack.html", null ]
+      [ "Utilitys.HistoryStack< T >", "class_utilitys_1_1_history_stack.html", null ]
     ] ],
     [ "Mvvm.INavigationStory", "interface_mvvm_1_1_i_navigation_story.html", [
       [ "Mvvm.SimpleWipeNavigationStory", "class_mvvm_1_1_simple_wipe_navigation_story.html", null ],
@@ -87,12 +92,14 @@ var hierarchy =
     ] ],
     [ "INotifyPropertyChanged", null, [
       [ "Controls.ColorSelector", "class_controls_1_1_color_selector.html", null ],
+      [ "Mvvm.AsyncCommand< TResult >", "class_mvvm_1_1_async_command.html", null ],
       [ "Utilitys.NotifyBase", "class_utilitys_1_1_notify_base.html", [
         [ "Mvvm.BindableBase", "class_mvvm_1_1_bindable_base.html", null ],
         [ "Utilitys.ColorPlus", "class_utilitys_1_1_color_plus.html", null ],
-        [ "Utilitys.ObjectStack< T >", "class_utilitys_1_1_object_stack.html", null ],
+        [ "Utilitys.HistoryStack< T >", "class_utilitys_1_1_history_stack.html", null ],
         [ "Utilitys.PathBuilder", "class_utilitys_1_1_path_builder.html", null ]
-      ] ]
+      ] ],
+      [ "Utilitys.NotifyTaskCompletion< TResult >", "class_utilitys_1_1_notify_task_completion.html", null ]
     ] ],
     [ "InternalTypeHelper", null, [
       [ "XamlGeneratedNamespace.GeneratedInternalTypeHelper", "class_xaml_generated_namespace_1_1_generated_internal_type_helper.html", null ],
@@ -182,13 +189,13 @@ var hierarchy =
       [ "PlainWpf.Views.ViewBoxTest", "class_plain_wpf_1_1_views_1_1_view_box_test.html", null ]
     ] ],
     [ "Window", null, [
+      [ "PlainWpf.Views.MainWindow", "class_plain_wpf_1_1_views_1_1_main_window.html", null ]
+    ] ],
+    [ "Window", null, [
       [ "PlainWpf.MainWindow", "class_plain_wpf_1_1_main_window.html", null ],
       [ "PlainWpf.Views.MainWindow", "class_plain_wpf_1_1_views_1_1_main_window.html", null ],
       [ "PlainWpf.Views.MainWindow", "class_plain_wpf_1_1_views_1_1_main_window.html", null ],
       [ "PlainWpf.Views.MainWindow", "class_plain_wpf_1_1_views_1_1_main_window.html", null ],
-      [ "PlainWpf.Views.MainWindow", "class_plain_wpf_1_1_views_1_1_main_window.html", null ]
-    ] ],
-    [ "Window", null, [
       [ "PlainWpf.Views.MainWindow", "class_plain_wpf_1_1_views_1_1_main_window.html", null ]
     ] ]
 ];

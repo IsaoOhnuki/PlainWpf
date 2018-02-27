@@ -7,12 +7,15 @@ var dir_270ff05b68a1d5962d3b7c49aa3ad970 =
       [ "GridLengthAnimation", "class_utilitys_1_1_grid_length_animation.html", "class_utilitys_1_1_grid_length_animation" ],
       [ "ExpanderDoubleAnimation", "class_utilitys_1_1_expander_double_animation.html", "class_utilitys_1_1_expander_double_animation" ]
     ] ],
+    [ "HistoryStack.cs", "_history_stack_8cs.html", [
+      [ "HistoryStack", "class_utilitys_1_1_history_stack.html", "class_utilitys_1_1_history_stack" ]
+    ] ],
     [ "Logger.cs", "_logger_8cs.html", "_logger_8cs" ],
     [ "NotifyBase.cs", "_notify_base_8cs.html", [
       [ "NotifyBase", "class_utilitys_1_1_notify_base.html", "class_utilitys_1_1_notify_base" ]
     ] ],
-    [ "ObjectStack.cs", "_object_stack_8cs.html", [
-      [ "ObjectStack", "class_utilitys_1_1_object_stack.html", "class_utilitys_1_1_object_stack" ]
+    [ "NotifyTaskCompletion.cs", "_notify_task_completion_8cs.html", [
+      [ "NotifyTaskCompletion", "class_utilitys_1_1_notify_task_completion.html", "class_utilitys_1_1_notify_task_completion" ]
     ] ],
     [ "PathBuilder.cs", "_path_builder_8cs.html", [
       [ "PathBuilder", "class_utilitys_1_1_path_builder.html", "class_utilitys_1_1_path_builder" ]

@@ -2,6 +2,8 @@ var searchData=
 [
   ['targetproperty',['TargetProperty',['../class_mvvm_1_1_navigation_service_ex.html#a6090eb1a353f9e84045ee90e579b0632',1,'Mvvm::NavigationServiceEx']]],
   ['targetpropertytype',['TargetPropertyType',['../class_utilitys_1_1_grid_length_animation.html#a0f789ab61c00655e83f6c44c4c0f693c',1,'Utilitys::GridLengthAnimation']]],
+  ['task',['Task',['../class_utilitys_1_1_notify_task_completion.html#abd997a9ada01f4dec0bcfc4db51b1e93',1,'Utilitys::NotifyTaskCompletion']]],
+  ['taskcompletion',['TaskCompletion',['../class_utilitys_1_1_notify_task_completion.html#a737237f54e5750d5404f0dbdd9c6bbd6',1,'Utilitys::NotifyTaskCompletion']]],
   ['temporarygeneratedfile_5f036c0b5b_2d1481_2d4323_2d8d20_2d8f5adcb23d92_2ecs',['TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs',['../_debug_2_temporary_generated_file__036_c0_b5_b-1481-4323-8_d20-8_f5_a_d_c_b23_d92_8cs.html',1,'(大域名前空間)'],['../_release_2_temporary_generated_file__036_c0_b5_b-1481-4323-8_d20-8_f5_a_d_c_b23_d92_8cs.html',1,'(大域名前空間)']]],
   ['temporarygeneratedfile_5f5937a670_2d0e60_2d4077_2d877b_2df7221da3dda1_2ecs',['TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs',['../_debug_2_temporary_generated_file__5937a670-0e60-4077-877b-f7221da3dda1_8cs.html',1,'(大域名前空間)'],['../_release_2_temporary_generated_file__5937a670-0e60-4077-877b-f7221da3dda1_8cs.html',1,'(大域名前空間)']]],
   ['temporarygeneratedfile_5fe7a71f73_2d0f8d_2d4b9b_2db56e_2d8e70b10bc5d3_2ecs',['TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs',['../_debug_2_temporary_generated_file___e7_a71_f73-0_f8_d-4_b9_b-_b56_e-8_e70_b10_b_c5_d3_8cs.html',1,'(大域名前空間)'],['../_release_2_temporary_generated_file___e7_a71_f73-0_f8_d-4_b9_b-_b56_e-8_e70_b10_b_c5_d3_8cs.html',1,'(大域名前空間)']]],

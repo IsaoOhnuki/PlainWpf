@@ -24,6 +24,8 @@ var searchData=
   ['navigatorproperty',['NavigatorProperty',['../class_mvvm_1_1_navigation_service_ex.html#ac0e7a0e81156cee0e4282b4f1bf1f8fa',1,'Mvvm::NavigationServiceEx']]],
   ['notifybase',['NotifyBase',['../class_utilitys_1_1_notify_base.html',1,'Utilitys']]],
   ['notifybase_2ecs',['NotifyBase.cs',['../_notify_base_8cs.html',1,'']]],
+  ['notifytaskcompletion',['NotifyTaskCompletion',['../class_utilitys_1_1_notify_task_completion.html',1,'Utilitys.NotifyTaskCompletion&lt; TResult &gt;'],['../class_utilitys_1_1_notify_task_completion.html#a9d5d9be13eab6fba109b5d323fc4a60d',1,'Utilitys.NotifyTaskCompletion.NotifyTaskCompletion()']]],
+  ['notifytaskcompletion_2ecs',['NotifyTaskCompletion.cs',['../_notify_task_completion_8cs.html',1,'']]],
   ['now',['Now',['../class_plain_wpf_1_1_view_models_1_1_sub_page3_view_model.html#a2df0e71aa115fefc4df61dde9c032076',1,'PlainWpf::ViewModels::SubPage3ViewModel']]],
   ['nowcommand',['NowCommand',['../class_plain_wpf_1_1_view_models_1_1_sub_page3_view_model.html#a9804ea517bf4a3fa480999d62f09a9ef',1,'PlainWpf::ViewModels::SubPage3ViewModel']]],
   ['nowcommandaction',['NowCommandAction',['../class_plain_wpf_1_1_view_models_1_1_sub_page3_view_model.html#ac36dd540b74e926c7c9f3abb20bc753b',1,'PlainWpf::ViewModels::SubPage3ViewModel']]]

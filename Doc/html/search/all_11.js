@@ -33,6 +33,7 @@ var searchData=
   ['singlebootableapp_2ecs',['SingleBootableApp.cs',['../_single_bootable_app_8cs.html',1,'']]],
   ['startupfile',['StartupFile',['../class_utilitys_1_1_single_bootable_app.html#a7483d808b8d0bf4e5f309c38e95dae1b',1,'Utilitys::SingleBootableApp']]],
   ['startupproperty',['StartupProperty',['../class_mvvm_1_1_navigation_service_ex.html#a35b31ff93753357a04f2620d9dc43d87',1,'Mvvm::NavigationServiceEx']]],
+  ['status',['Status',['../class_utilitys_1_1_notify_task_completion.html#a15210d0565b190137e841659d49b2d44',1,'Utilitys::NotifyTaskCompletion']]],
   ['subpage1',['SubPage1',['../class_plain_wpf_1_1_views_1_1_sub_page1.html',1,'PlainWpf.Views.SubPage1'],['../class_plain_wpf_1_1_views_1_1_sub_page1.html#a98ddad3a9e9eb6905373f66fa951b718',1,'PlainWpf.Views.SubPage1.SubPage1()']]],
   ['subpage1_20_2d_20コピー_2eg_2ei_2ecs',['SubPage1 - コピー.g.i.cs',['../_sub_page1_01-_01_xE3_x82_xB3_xE3_x83_x94_xE3_x83_xBC_8g_8i_8cs.html',1,'']]],
   ['subpage1_2eg_2ecs',['SubPage1.g.cs',['../_debug_2_views_2_sub_page1_8g_8cs.html',1,'(大域名前空間)'],['../_release_2_views_2_sub_page1_8g_8cs.html',1,'(大域名前空間)']]],

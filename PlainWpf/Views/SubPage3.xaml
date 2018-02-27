@@ -48,14 +48,14 @@
     <Grid Background="{Binding ElementName=ColorSelector, Path=SelectedColor, Converter={StaticResource ColorToBrushConverter}}">
         <Controls:ColorSelector x:Name="ColorSelector" Height="100" Margin="20,23,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
         <Label Content="{Binding ElementName=ColorSelector, Path=TextName}" HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top"
-               Foreground="{Binding ElementName=ColorSelector, Path=TextColor}"/>
+               Foreground="{Binding ElementName=ColorSelector, Path=TextColor, Converter={StaticResource ColorToBrushConverter}}"/>
         <Label Content="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToStringConverter}}"
                Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
                Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
                HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top"/>
         <Button Content="Now!" Command="{Binding NowCommand}" HorizontalAlignment="Left" Margin="20,78,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpSumpleStringConverter}}" HorizontalAlignment="Left" Margin="154,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-               Foreground="{Binding ElementName=ColorSelector, Path=TextColor}"
+               Foreground="{Binding ElementName=ColorSelector, Path=TextColor, Converter={StaticResource ColorToBrushConverter}}"
                    />
         <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpShortDateStringConverter}}" HorizontalAlignment="Left" Margin="350,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
                Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"

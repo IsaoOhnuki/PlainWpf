@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger',['Logger',['../class_utilitys_1_1_logger.html',1,'Utilitys']]]
+  ['japanesedatetimeextensions',['JapaneseDateTimeExtensions',['../class_extensions_1_1_japanese_date_time_extensions.html',1,'Extensions']]]
 ];

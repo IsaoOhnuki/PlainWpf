@@ -41,6 +41,8 @@ namespace Mvvm
     /// <remarks><a href="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</a></remarks>
     public class NavigationServiceEx : DependencyObject
     {
+        private HistoryStack<FrameworkElement> pageStack { get; set; } = new HistoryStack<FrameworkElement>();
+
         /// <summary>
         /// ページナビゲーションを行う領域となるContentControlを保持するAccessor
         /// </summary>
@@ -72,6 +74,7 @@ namespace Mvvm
                 if (story == null)
                 {
                     this.Content.Content = view;
+                    pageStack.Push(view);
                 }
                 else
                 {
@@ -88,7 +91,11 @@ namespace Mvvm
                         Logger.Write(e, "ナビゲーションアニメイニシャライザ内部エラー");
                     }
                     this.Content.Content = animationElement;
-                    if (!animationElement.Equals(view))
+                    if (animationElement == null || animationElement.Equals(view))
+                    {
+                        CanNavigation = true;
+                    }
+                    else
                     {
                         try
                         {
@@ -133,6 +140,26 @@ namespace Mvvm
         {
             var nextPage = e.Parameter as Type;
             this.Navigate(nextPage);
+        }
+
+        /// <summary>
+        /// NavigationCommands.PreviousPageコマンドに対する応答処理
+        /// </summary>
+        /// <param name="sender">未使用</param>
+        /// <param name="e">e.Parameterに遷移するページのType</param>
+        private void OnPreviousPage(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Navigate(pageStack.Undo());
+        }
+
+        /// <summary>
+        /// NavigationCommands.NextPageコマンドに対する応答処理
+        /// </summary>
+        /// <param name="sender">未使用</param>
+        /// <param name="e">e.Parameterに遷移するページのType</param>
+        private void OnNextPage(object sender, ExecutedRoutedEventArgs e)
+        {
+            this.Navigate(pageStack.Redo());
         }
 
         #region ページ遷移時のアニメーション
@@ -208,6 +235,8 @@ namespace Mvvm
 
                 // ナビゲーション用のコマンドバインディング
                 element.CommandBindings.Add(new CommandBinding(NavigationCommands.GoToPage, nav.OnGoToPage));
+                element.CommandBindings.Add(new CommandBinding(NavigationCommands.BrowseBack, nav.OnPreviousPage));
+                element.CommandBindings.Add(new CommandBinding(NavigationCommands.BrowseForward, nav.OnNextPage));
 
                 var startup = NavigationServiceEx.GetStartup(element);
                 if (startup != null)

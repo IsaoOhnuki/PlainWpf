@@ -22,6 +22,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleComparisonToBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntComparisonToBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\VagueStringToMatchLikePattern.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\AsyncCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Messenger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleWipeNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ColorPlus.cs" />
@@ -29,11 +30,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleRaiseNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\Logger.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ObjectStack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\HistoryStack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\JapaneseDateTimeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindableBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NavigationServiceEx.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\NotifyTaskCompletion.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\PathBuilder.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\SingleBootableApp.cs" />
   </ItemGroup>

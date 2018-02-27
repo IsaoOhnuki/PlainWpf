@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['objectstack_2ecs',['ObjectStack.cs',['../_object_stack_8cs.html',1,'']]],
-  ['openfiledialogbehavior_2ecs',['OpenFileDialogBehavior.cs',['../_open_file_dialog_behavior_8cs.html',1,'']]]
+  ['navigationserviceex_2ecs',['NavigationServiceEx.cs',['../_navigation_service_ex_8cs.html',1,'']]],
+  ['notifybase_2ecs',['NotifyBase.cs',['../_notify_base_8cs.html',1,'']]],
+  ['notifytaskcompletion_2ecs',['NotifyTaskCompletion.cs',['../_notify_task_completion_8cs.html',1,'']]]
 ];

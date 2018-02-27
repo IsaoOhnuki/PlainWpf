@@ -13,7 +13,7 @@ var searchData=
   ['onpropertychanged',['OnPropertyChanged',['../class_behaviors_1_1_input_forming_text_box_behavior.html#a88d22dce3c2cc2c481a4c0fffd03d22b',1,'Behaviors.InputFormingTextBoxBehavior.OnPropertyChanged()'],['../class_utilitys_1_1_notify_base.html#ab6f1deee19f0e350fbc8da8d20d83541',1,'Utilitys.NotifyBase.OnPropertyChanged()']]],
   ['onstartup',['OnStartup',['../class_utilitys_1_1_single_bootable_app.html#a203f6438f27c78f6036af8353ef9fa7d',1,'Utilitys::SingleBootableApp']]],
   ['onunhandledexception',['OnUnhandledException',['../class_utilitys_1_1_single_bootable_app.html#ac3ac66436ab675491fe60167fa735b3b',1,'Utilitys::SingleBootableApp']]],
-  ['operator_20color',['operator Color',['../class_controls_1_1_color_selector_1_1_color_plus.html#a8338bedd0d69c0d0698cd3b9ba4bba6f',1,'Controls::ColorSelector::ColorPlus']]],
-  ['operator_20colorplus',['operator ColorPlus',['../class_controls_1_1_color_selector_1_1_color_plus.html#a0718770ea5a105ef2271ebf04cb56f54',1,'Controls::ColorSelector::ColorPlus']]],
-  ['operator_20string',['operator string',['../class_controls_1_1_color_selector_1_1_color_plus.html#ad82da0d10dab8004981b97198988cc61',1,'Controls::ColorSelector::ColorPlus']]]
+  ['operator_20color',['operator Color',['../class_utilitys_1_1_color_plus.html#aea117dddf7c903b7bc1e7a6fa10a1a2c',1,'Utilitys::ColorPlus']]],
+  ['operator_20colorplus',['operator ColorPlus',['../class_utilitys_1_1_color_plus.html#a11cb257cbc71570e0c1749ec7cc0afaf',1,'Utilitys::ColorPlus']]],
+  ['operator_20string',['operator string',['../class_utilitys_1_1_color_plus.html#aafdeb4362b685dc9ae2309f1ebe8056a',1,'Utilitys::ColorPlus']]]
 ];

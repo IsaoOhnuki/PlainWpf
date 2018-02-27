@@ -1,15 +1,7 @@
 var class_controls_1_1_color_selector =
 [
-    [ "ColorPlus", "class_controls_1_1_color_selector_1_1_color_plus.html", "class_controls_1_1_color_selector_1_1_color_plus" ],
     [ "ColorSelector", "class_controls_1_1_color_selector.html#a5b0660929834364b0e19bf346dc6dec1", null ],
-    [ "BackColorToTextColor", "class_controls_1_1_color_selector.html#a4a328c3c14631579b12c7ec254c708ca", null ],
-    [ "ColorToBrightness", "class_controls_1_1_color_selector.html#a75d117a46f524a75629f19d3005aa9da", null ],
     [ "ColorToGray", "class_controls_1_1_color_selector.html#a05c245a3a8d707a88805f3eb6e47e900", null ],
-    [ "ColorToHue", "class_controls_1_1_color_selector.html#a1350bd0a20fce87d8d5ba78275b7ca1d", null ],
-    [ "ColorToLightness", "class_controls_1_1_color_selector.html#afbcd90dd53e6bb57612eda482bb9f509", null ],
-    [ "ColorToSaturation", "class_controls_1_1_color_selector.html#a80ba8e5bd5cfc4bebdb37636aba1cc47", null ],
-    [ "ColorToStrength", "class_controls_1_1_color_selector.html#a3c3ad8a69e29d502a97a9e02ffcf3399", null ],
-    [ "ColorToValue", "class_controls_1_1_color_selector.html#a3854e5439b244ef8ea6cb227d5dfd2d5", null ],
     [ "InitializeComponent", "class_controls_1_1_color_selector.html#a60f9a7f34fb841ce4c3a178665757703", null ],
     [ "InitializeComponent", "class_controls_1_1_color_selector.html#a60f9a7f34fb841ce4c3a178665757703", null ],
     [ "InitializeComponent", "class_controls_1_1_color_selector.html#a60f9a7f34fb841ce4c3a178665757703", null ],

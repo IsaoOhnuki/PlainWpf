@@ -35,10 +35,37 @@ namespace Utilitys
         /// <param name="firstObject">The first.</param>
         public ObjectStack(T firstObject)
         {
-            basePoint = 1;
+            basePoint = 0;
             stackPoint = basePoint;
             stack = new List<T>();
-            stack.Add(firstObject);
+            FirstObject = firstObject;
+        }
+
+        /// <summary>
+        /// Gets or sets the first object.
+        /// </summary>
+        /// <value>
+        /// The first object.
+        /// </value>
+        public T FirstObject
+        {
+            get
+            {
+                if (basePoint == 1)
+                    return stack[0];
+                else
+                    return default(T);
+            }
+            set
+            {
+                if (basePoint == stack.Count)
+                {
+                    basePoint = 0;
+                    RewindAll();
+                    basePoint = 1;
+                    stack.Add(value);
+                }
+            }
         }
 
         /// <summary>

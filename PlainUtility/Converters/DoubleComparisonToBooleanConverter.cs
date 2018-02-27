@@ -8,20 +8,30 @@ using System.Windows.Data;
 namespace Converters
 {
     /// <summary>
-    /// 
+    /// 数値を比較して一致以外でもTrueとなる数値&lt;-&gt;Booleanコンバーター
+    /// <br/>
+    /// xamlで Converter=DoubleComparisonToBooleanConverter, ConverterParameter={}{100=&lt;=200} のようにConverterParameterで指定する。
     /// </summary>
     /// <remarks>
+    /// 左値、右値どちらかがない場合、そちら側の比較はTrueとなる。どちらもない場合はFalse。
+    /// <br/>
+    /// また、左値&lt;右値を期待した動作となる。
+    /// <br/>
+    /// 構文
+    /// <br/>
     /// <i>left double</i>&lt;|=&lt;|&lt;=|=&lt;=<i>right double</i>
     /// <br/>
-    /// <b>&lt;</b> (<i>left double</i> == null ? true : <i>left double</i> &lt; value) &amp;&amp; (<i>right double</i> == null ? true : value &lt; <i>right double</i>)
+    /// &lt; (<i>left double</i> == null ? true : <i>left double</i> &lt; value) &amp;&amp; (<i>right double</i> == null ? true : value &lt; <i>right double</i>)
     /// <br/>
-    /// <b>=&lt;</b> (<i>left double</i> == null ? true : <i>left double</i> &lt;= value) &amp;&amp; (<i>right double</i> == null ? true : value &lt; <i>right double</i>)
+    /// =&lt; (<i>left double</i> == null ? true : <i>left double</i> &lt;= value) &amp;&amp; (<i>right double</i> == null ? true : value &lt; <i>right double</i>)
     /// <br/>
-    /// <b>&lt;=</b> (<i>left double</i> == null ? true : <i>left double</i> &lt; value) &amp;&amp; (<i>right double</i> == null ? true : value &lt;= <i>right double</i>)
+    /// &lt;= (<i>left double</i> == null ? true : <i>left double</i> &lt; value) &amp;&amp; (<i>right double</i> == null ? true : value &lt;= <i>right double</i>)
     /// <br/>
-    /// <b>=&lt;=</b> (<i>left double</i> == null ? true : <i>left double</i> &lt;= value) &amp;&amp; (<i>right double</i> == null ? true : value &lt;= <i>right double</i>)
+    /// =&lt;= (<i>left double</i> == null ? true : <i>left double</i> &lt;= value) &amp;&amp; (<i>right double</i> == null ? true : value &lt;= <i>right double</i>)
     /// <br/>
-    /// '<b>&lt;</b>' is hassle at xaml. replaces at '<b>@</b>'.
+    /// '&lt;'はxamlでの指定が面倒なので'@'でも可能。
+    /// <br/>
+    /// ConvertBackはnullを返す。
     /// </remarks>
     [ValueConversion(typeof(double), typeof(bool))]
     public class DoubleComparisonToBooleanConverter : IValueConverter
@@ -54,7 +64,7 @@ namespace Converters
                         else
                             return val < second;
                     }
-                    else
+                    else if (paraL && paraR)
                     {
                         if (preEqual && postEqual)
                             return first <= val && val <= second;
@@ -72,7 +82,6 @@ namespace Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            //throw new NotImplementedException();
             return null;
         }
     }

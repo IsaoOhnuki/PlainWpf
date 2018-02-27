@@ -95,7 +95,8 @@ $(document).ready(function(){initNavTree('class_converters_1_1_double_comparison
 </div><!--header-->
 <div class="contents">
 
-<p> 
+<p>数値を比較して一致以外でもTrueとなる数値&lt;-&gt;Booleanコンバーター <br />
+ xamlで Converter=<a class="el" href="class_converters_1_1_double_comparison_to_boolean_converter.html" title="数値を比較して一致以外でもTrueとなる数値&lt;-&gt;Booleanコンバーター   xamlで Converter=DoubleComparisonToB...">DoubleComparisonToBooleanConverter</a>, ConverterParameter={}{100=&lt;=200} のようにConverterParameterで指定する。  
  <a href="class_converters_1_1_double_comparison_to_boolean_converter.html#details">[詳解]</a></p>
 <div class="dynheader">
 Converters.DoubleComparisonToBooleanConverter の継承関係図</div>
@@ -114,11 +115,18 @@ Converters.DoubleComparisonToBooleanConverter の継承関係図</div>
 <tr class="separator:ae61534c401a6fda31cd251fd69089dda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock"><p><em>left double</em>&lt;|=&lt;|&lt;=|=&lt;=<em>right double</em> <br />
- <b>&lt;</b> (<em>left double</em> == null ? true : <em>left double</em> &lt; value) &amp;&amp; (<em>right double</em> == null ? true : value &lt; <em>right double</em>) <br />
- <b>=&lt;</b> (<em>left double</em> == null ? true : <em>left double</em> &lt;= value) &amp;&amp; (<em>right double</em> == null ? true : value &lt; <em>right double</em>) <br />
- <b>&lt;=</b> (<em>left double</em> == null ? true : <em>left double</em> &lt; value) &amp;&amp; (<em>right double</em> == null ? true : value &lt;= <em>right double</em>) <br />
- <b>=&lt;=</b> (<em>left double</em> == null ? true : <em>left double</em> &lt;= value) &amp;&amp; (<em>right double</em> == null ? true : value &lt;= <em>right double</em>) '&lt;' is hassle at xaml. replaces at '@'. </p>
+<div class="textblock"><p>数値を比較して一致以外でもTrueとなる数値&lt;-&gt;Booleanコンバーター <br />
+ xamlで Converter=<a class="el" href="class_converters_1_1_double_comparison_to_boolean_converter.html" title="数値を比較して一致以外でもTrueとなる数値&lt;-&gt;Booleanコンバーター   xamlで Converter=DoubleComparisonToB...">DoubleComparisonToBooleanConverter</a>, ConverterParameter={}{100=&lt;=200} のようにConverterParameterで指定する。 </p>
+<p>左値、右値どちらかがない場合、そちら側の比較はTrueとなる。どちらもない場合はFalse。 <br />
+ また、左値&lt;右値を期待した動作となる。 <br />
+ 構文 <br />
+ <em>left double</em>&lt;|=&lt;|&lt;=|=&lt;=<em>right double</em> <br />
+ &lt; (<em>left double</em> == null ? true : <em>left double</em> &lt; value) &amp;&amp; (<em>right double</em> == null ? true : value &lt; <em>right double</em>) <br />
+ =&lt; (<em>left double</em> == null ? true : <em>left double</em> &lt;= value) &amp;&amp; (<em>right double</em> == null ? true : value &lt; <em>right double</em>) <br />
+ &lt;= (<em>left double</em> == null ? true : <em>left double</em> &lt; value) &amp;&amp; (<em>right double</em> == null ? true : value &lt;= <em>right double</em>) <br />
+ =&lt;= (<em>left double</em> == null ? true : <em>left double</em> &lt;= value) &amp;&amp; (<em>right double</em> == null ? true : value &lt;= <em>right double</em>) <br />
+ '&lt;'はxamlでの指定が面倒なので'@'でも可能。 <br />
+ ConvertBackはnullを返す。 </p>
 </div><h2 class="groupheader">メソッド詳解</h2>
 <a id="a07a0b0e2a0fef0a5cc43a86fde130271"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a07a0b0e2a0fef0a5cc43a86fde130271">&#9670;&nbsp;</a></span>Convert()</h2>

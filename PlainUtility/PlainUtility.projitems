@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.xaml.cs">
       <DependentUpon>ColorSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\ForColorPlusConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimeToJpStringsConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimeToStringsConverters.cs" />
@@ -23,6 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\VagueStringToMatchLikePattern.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Messenger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleWipeNavigationStory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ColorPlus.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\NotifyBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleRaiseNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />

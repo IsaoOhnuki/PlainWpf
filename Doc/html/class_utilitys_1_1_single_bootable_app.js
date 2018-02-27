@@ -7,5 +7,5 @@ var class_utilitys_1_1_single_bootable_app =
     [ "OnStartup", "class_utilitys_1_1_single_bootable_app.html#a203f6438f27c78f6036af8353ef9fa7d", null ],
     [ "OnUnhandledException", "class_utilitys_1_1_single_bootable_app.html#ac3ac66436ab675491fe60167fa735b3b", null ],
     [ "ApplicationName", "class_utilitys_1_1_single_bootable_app.html#ac858d0f01beb9a6f6c679d691265ea8f", null ],
-    [ "StartupPath", "class_utilitys_1_1_single_bootable_app.html#aa56c57f7f7ec4ea480ea4808b6360c11", null ]
+    [ "StartupFile", "class_utilitys_1_1_single_bootable_app.html#a7483d808b8d0bf4e5f309c38e95dae1b", null ]
 ];

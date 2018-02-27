@@ -77,7 +77,6 @@ var hierarchy =
     ] ],
     [ "INotifyDataErrorInfo", null, [
       [ "Mvvm.BindableBase", "class_mvvm_1_1_bindable_base.html", [
-        [ "Controls.ColorSelector.ColorPlus", "class_controls_1_1_color_selector_1_1_color_plus.html", null ],
         [ "PlainWpf.ViewModels.MainWindowViewModel", "class_plain_wpf_1_1_view_models_1_1_main_window_view_model.html", null ],
         [ "PlainWpf.ViewModels.SabPage1ViewModel", "class_plain_wpf_1_1_view_models_1_1_sab_page1_view_model.html", null ],
         [ "PlainWpf.ViewModels.SabPage2ViewModel", "class_plain_wpf_1_1_view_models_1_1_sab_page2_view_model.html", null ],
@@ -90,6 +89,7 @@ var hierarchy =
       [ "Controls.ColorSelector", "class_controls_1_1_color_selector.html", null ],
       [ "Utilitys.NotifyBase", "class_utilitys_1_1_notify_base.html", [
         [ "Mvvm.BindableBase", "class_mvvm_1_1_bindable_base.html", null ],
+        [ "Utilitys.ColorPlus", "class_utilitys_1_1_color_plus.html", null ],
         [ "Utilitys.ObjectStack< T >", "class_utilitys_1_1_object_stack.html", null ],
         [ "Utilitys.PathBuilder", "class_utilitys_1_1_path_builder.html", null ]
       ] ]
@@ -101,10 +101,10 @@ var hierarchy =
       [ "XamlGeneratedNamespace.GeneratedInternalTypeHelper", "class_xaml_generated_namespace_1_1_generated_internal_type_helper.html", null ]
     ] ],
     [ "IValueConverter", null, [
-      [ "Controls.ColorPlusToBrushConverter", "class_controls_1_1_color_plus_to_brush_converter.html", null ],
-      [ "Controls.ColorPlusToColorConverter", "class_controls_1_1_color_plus_to_color_converter.html", null ],
-      [ "Controls.ColorPlusToStringConverter", "class_controls_1_1_color_plus_to_string_converter.html", null ],
-      [ "Controls.ColorPlusToTextBrushConverter", "class_controls_1_1_color_plus_to_text_brush_converter.html", null ],
+      [ "Converters.ColorPlusToBrushConverter", "class_converters_1_1_color_plus_to_brush_converter.html", null ],
+      [ "Converters.ColorPlusToColorConverter", "class_converters_1_1_color_plus_to_color_converter.html", null ],
+      [ "Converters.ColorPlusToStringConverter", "class_converters_1_1_color_plus_to_string_converter.html", null ],
+      [ "Converters.ColorPlusToTextBrushConverter", "class_converters_1_1_color_plus_to_text_brush_converter.html", null ],
       [ "Converters.ColorToBrushConverter", "class_converters_1_1_color_to_brush_converter.html", null ],
       [ "Converters.DateTimeToDateStringConverter", "class_converters_1_1_date_time_to_date_string_converter.html", null ],
       [ "Converters.DateTimeToJpDateStringConverter", "class_converters_1_1_date_time_to_jp_date_string_converter.html", null ],
@@ -125,7 +125,7 @@ var hierarchy =
       [ "Converters.DateTimeToUsHistoryStringConverter", "class_converters_1_1_date_time_to_us_history_string_converter.html", null ],
       [ "Converters.DateTimeToUsYearStringConverter", "class_converters_1_1_date_time_to_us_year_string_converter.html", null ],
       [ "Converters.DoubleComparisonToBooleanConverter", "class_converters_1_1_double_comparison_to_boolean_converter.html", null ],
-      [ "Converters.IntComparisonToBooleanConverter", "class_converters_1_1_int_comparison_to_boolean_converter.html", null ],
+      [ "Converters.IntegerComparisonToBooleanConverter", "class_converters_1_1_integer_comparison_to_boolean_converter.html", null ],
       [ "PlainWpf.ViewModels.OrientationHorizontalToVisibilityConverter", "class_plain_wpf_1_1_view_models_1_1_orientation_horizontal_to_visibility_converter.html", null ],
       [ "PlainWpf.ViewModels.OrientationToBooleanConverter", "class_plain_wpf_1_1_view_models_1_1_orientation_to_boolean_converter.html", null ],
       [ "PlainWpf.ViewModels.OrientationVerticalToVisibilityConverter", "class_plain_wpf_1_1_view_models_1_1_orientation_vertical_to_visibility_converter.html", null ]

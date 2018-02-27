@@ -30,7 +30,7 @@ namespace Utilitys
         /// <value>
         /// The startup path.
         /// </value>
-        public PathBuilder StartupPath { get; private set; }
+        public PathBuilder StartupFile { get; private set; }
 
         /// <summary>
         /// Gets the name of the application.
@@ -48,7 +48,7 @@ namespace Utilitys
             ApplicationName = this.GetType().Assembly.GetName().ToString();
             mutex = new System.Threading.Mutex(false, ApplicationName);
 
-            StartupPath = new PathBuilder { FullPath = System.AppDomain.CurrentDomain.BaseDirectory };
+            StartupFile = new PathBuilder { FilePath = System.AppDomain.CurrentDomain.BaseDirectory, FileName = System.AppDomain.CurrentDomain.FriendlyName };
         }
 
         /// <summary>

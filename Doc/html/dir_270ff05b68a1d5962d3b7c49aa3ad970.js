@@ -1,5 +1,8 @@
 var dir_270ff05b68a1d5962d3b7c49aa3ad970 =
 [
+    [ "ColorPlus.cs", "_color_plus_8cs.html", [
+      [ "ColorPlus", "class_utilitys_1_1_color_plus.html", "class_utilitys_1_1_color_plus" ]
+    ] ],
     [ "GridLengthAnimation.cs", "_grid_length_animation_8cs.html", [
       [ "GridLengthAnimation", "class_utilitys_1_1_grid_length_animation.html", "class_utilitys_1_1_grid_length_animation" ],
       [ "ExpanderDoubleAnimation", "class_utilitys_1_1_expander_double_animation.html", "class_utilitys_1_1_expander_double_animation" ]

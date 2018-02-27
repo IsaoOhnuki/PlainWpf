@@ -8,23 +8,33 @@ using System.Windows.Data;
 namespace Converters
 {
     /// <summary>
-    /// 
+    /// 数値を比較して一致以外でもTrueとなる数値&lt;-&gt;Booleanコンバーター
+    /// <br/>
+    /// xamlで Converter=IntegerComparisonToBooleanConverter, ConverterParameter={}{100=&lt;=200} のようにConverterParameterで指定する。
     /// </summary>
     /// <remarks>
-    /// <i>left integer</i>&lt;|=&lt;|&lt;=|=&lt;=<i>right integer</i>
+    /// 左値、右値どちらかがない場合、そちら側の比較はTrueとなる。どちらもない場合はFalse。
     /// <br/>
-    /// <b>&lt;</b> (<i>left integer</i> == null ? true : <i>left integer</i> &lt; value) &amp;&amp; (<i>right integer</i> == null ? true : value &lt; <i>right integer</i>)
+    /// また、左値&lt;右値を期待した動作となる。
     /// <br/>
-    /// <b>=&lt;</b> (<i>left integer</i> == null ? true : <i>left integer</i> &lt;= value) &amp;&amp; (<i>right integer</i> == null ? true : value &lt; <i>right integer</i>)
+    /// 構文
     /// <br/>
-    /// <b>&lt;=</b> (<i>left integer</i> == null ? true : <i>left integer</i> &lt; value) &amp;&amp; (<i>right integer</i> == null ? true : value &lt;= <i>right integer</i>)
+    /// <i>left int</i>&lt;|=&lt;|&lt;=|=&lt;=<i>right int</i>
     /// <br/>
-    /// <b>=&lt;=</b> (<i>left integer</i> == null ? true : <i>left integer</i> &lt;= value) &amp;&amp; (<i>right integer</i> == null ? true : value &lt;= <i>right integer</i>)
+    /// &lt; (<i>left int</i> == null ? true : <i>left int</i> &lt; value) &amp;&amp; (<i>right int</i> == null ? true : value &lt; <i>right int</i>)
     /// <br/>
-    /// '<b>&lt;</b>' is hassle at xaml. replaces at '<b>@</b>'.
+    /// =&lt; (<i>left int</i> == null ? true : <i>left int</i> &lt;= value) &amp;&amp; (<i>right int</i> == null ? true : value &lt; <i>right int</i>)
+    /// <br/>
+    /// &lt;= (<i>left int</i> == null ? true : <i>left int</i> &lt; value) &amp;&amp; (<i>right int</i> == null ? true : value &lt;= <i>right int</i>)
+    /// <br/>
+    /// =&lt;= (<i>left int</i> == null ? true : <i>left int</i> &lt;= value) &amp;&amp; (<i>right int</i> == null ? true : value &lt;= <i>right int</i>)
+    /// <br/>
+    /// '&lt;'はxamlでの指定が面倒なので'@'でも可能。
+    /// <br/>
+    /// ConvertBackはnullを返す。
     /// </remarks>
     [ValueConversion(typeof(int), typeof(bool))]
-    public class IntComparisonToBooleanConverter : IValueConverter
+    public class IntegerComparisonToBooleanConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

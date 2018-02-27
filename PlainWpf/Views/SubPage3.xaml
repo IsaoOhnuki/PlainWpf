@@ -32,10 +32,10 @@
         <Converters:DateTimeToJpDateStringConverter x:Key="DateTimeToJpDateStringConverter"/>
         <Converters:DateTimeToJpTimeStringConverter x:Key="DateTimeToJpTimeStringConverter"/>
         <Converters:DateTimeToJpLongTimeStringConverter x:Key="DateTimeToJpLongTimeStringConverter"/>
-        <Controls:ColorPlusToBrushConverter x:Key="ColorPlusToBrushConverter"/>
-        <Controls:ColorPlusToColorConverter x:Key="ColorPlusToColorConverter"/>
-        <Controls:ColorPlusToStringConverter x:Key="ColorPlusToStringConverter"/>
-        <Controls:ColorPlusToTextBrushConverter x:Key="ColorPlusToTextBrushConverter"/>
+        <Converters:ColorPlusToBrushConverter x:Key="ColorPlusToBrushConverter"/>
+        <Converters:ColorPlusToColorConverter x:Key="ColorPlusToColorConverter"/>
+        <Converters:ColorPlusToStringConverter x:Key="ColorPlusToStringConverter"/>
+        <Converters:ColorPlusToTextBrushConverter x:Key="ColorPlusToTextBrushConverter"/>
         <Converters:ColorToBrushConverter x:Key="ColorToBrushConverter"/>
         <Converters:DateTimeToDateStringConverter x:Key="DateTimeToDateStringConverter"/>
         <Converters:DateTimeToShortDateStringConverter x:Key="DateTimeToShortDateStringConverter"/>
@@ -48,14 +48,14 @@
     <Grid Background="{Binding ElementName=ColorSelector, Path=SelectedColor, Converter={StaticResource ColorToBrushConverter}}">
         <Controls:ColorSelector x:Name="ColorSelector" Height="100" Margin="20,23,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="100"/>
         <Label Content="{Binding ElementName=ColorSelector, Path=TextName}" HorizontalAlignment="Left" Margin="20,120,0,0" VerticalAlignment="Top"
-               Foreground="{Binding ElementName=ColorSelector, Path=TextColor, Converter={StaticResource ColorToBrushConverter}}"/>
+               Foreground="{Binding ElementName=ColorSelector, Path=TextColor}"/>
         <Label Content="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToStringConverter}}"
                Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"
                Background="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToTextBrushConverter}}"
                HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top"/>
         <Button Content="Now!" Command="{Binding NowCommand}" HorizontalAlignment="Left" Margin="20,78,0,0" VerticalAlignment="Top" Width="75"/>
         <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpSumpleStringConverter}}" HorizontalAlignment="Left" Margin="154,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
-               Foreground="{Binding ElementName=ColorSelector, Path=TextColor, Converter={StaticResource ColorToBrushConverter}}"
+               Foreground="{Binding ElementName=ColorSelector, Path=TextColor}"
                    />
         <TextBlock Text="{Binding Now, Converter={StaticResource DateTimeToJpShortDateStringConverter}}" HorizontalAlignment="Left" Margin="350,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top"
                Foreground="{Binding ElementName=ColorSelector, Path=SelectedColorPlus, Converter={StaticResource ColorPlusToBrushConverter}}"

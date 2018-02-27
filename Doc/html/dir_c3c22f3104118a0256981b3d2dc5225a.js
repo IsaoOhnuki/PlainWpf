@@ -28,7 +28,13 @@ var dir_c3c22f3104118a0256981b3d2dc5225a =
     [ "DoubleComparisonToBooleanConverter.cs", "_double_comparison_to_boolean_converter_8cs.html", [
       [ "DoubleComparisonToBooleanConverter", "class_converters_1_1_double_comparison_to_boolean_converter.html", "class_converters_1_1_double_comparison_to_boolean_converter" ]
     ] ],
+    [ "ForColorPlusConverters.cs", "_for_color_plus_converters_8cs.html", [
+      [ "ColorPlusToStringConverter", "class_converters_1_1_color_plus_to_string_converter.html", "class_converters_1_1_color_plus_to_string_converter" ],
+      [ "ColorPlusToColorConverter", "class_converters_1_1_color_plus_to_color_converter.html", "class_converters_1_1_color_plus_to_color_converter" ],
+      [ "ColorPlusToBrushConverter", "class_converters_1_1_color_plus_to_brush_converter.html", "class_converters_1_1_color_plus_to_brush_converter" ],
+      [ "ColorPlusToTextBrushConverter", "class_converters_1_1_color_plus_to_text_brush_converter.html", "class_converters_1_1_color_plus_to_text_brush_converter" ]
+    ] ],
     [ "IntComparisonToBooleanConverter.cs", "_int_comparison_to_boolean_converter_8cs.html", [
-      [ "IntComparisonToBooleanConverter", "class_converters_1_1_int_comparison_to_boolean_converter.html", "class_converters_1_1_int_comparison_to_boolean_converter" ]
+      [ "IntegerComparisonToBooleanConverter", "class_converters_1_1_integer_comparison_to_boolean_converter.html", "class_converters_1_1_integer_comparison_to_boolean_converter" ]
     ] ]
 ];

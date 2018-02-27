@@ -95,7 +95,7 @@ $(document).ready(function(){initNavTree('class_converters_1_1_int_comparison_to
 </div><!--header-->
 <div class="contents">
 
-<p> 
+<p>数値を比較して一致以外でもTrueとなる数値&lt;-&gt;Booleanコンバーター  
  <a href="class_converters_1_1_int_comparison_to_boolean_converter.html#details">[詳解]</a></p>
 <div class="dynheader">
 Converters.IntComparisonToBooleanConverter の継承関係図</div>
@@ -114,11 +114,14 @@ Converters.IntComparisonToBooleanConverter の継承関係図</div>
 <tr class="separator:aeff11402fe088763462c39d77d271567"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
-<div class="textblock"><p><em>left integer</em>&lt;|=&lt;|&lt;=|=&lt;=<em>right integer</em> <br />
- <b>&lt;</b> (<em>left integer</em> == null ? true : <em>left integer</em> &lt; value) &amp;&amp; (<em>right integer</em> == null ? true : value &lt; <em>right integer</em>) <br />
- <b>=&lt;</b> (<em>left integer</em> == null ? true : <em>left integer</em> &lt;= value) &amp;&amp; (<em>right integer</em> == null ? true : value &lt; <em>right integer</em>) <br />
- <b>&lt;=</b> (<em>left integer</em> == null ? true : <em>left integer</em> &lt; value) &amp;&amp; (<em>right integer</em> == null ? true : value &lt;= <em>right integer</em>) <br />
- <b>=&lt;=</b> (<em>left integer</em> == null ? true : <em>left integer</em> &lt;= value) &amp;&amp; (<em>right integer</em> == null ? true : value &lt;= <em>right integer</em>) '&lt;' is hassle at xaml. replaces at '@'. </p>
+<div class="textblock"><p>数値を比較して一致以外でもTrueとなる数値&lt;-&gt;Booleanコンバーター </p>
+<p><em>left double</em>&lt;|=&lt;|&lt;=|=&lt;=<em>right double</em> <br />
+ &lt; (<em>left double</em> == null ? true : <em>left double</em> &lt; value) &amp;&amp; (<em>right double</em> == null ? true : value &lt; <em>right double</em>) <br />
+ =&lt; (<em>left double</em> == null ? true : <em>left double</em> &lt;= value) &amp;&amp; (<em>right double</em> == null ? true : value &lt; <em>right double</em>) <br />
+ &lt;= (<em>left double</em> == null ? true : <em>left double</em> &lt; value) &amp;&amp; (<em>right double</em> == null ? true : value &lt;= <em>right double</em>) <br />
+ =&lt;= (<em>left double</em> == null ? true : <em>left double</em> &lt;= value) &amp;&amp; (<em>right double</em> == null ? true : value &lt;= <em>right double</em>) <br />
+ '&lt;' is hassle at xaml. replaces at '@'. <br />
+ ConvertBackはnullを返す </p>
 </div><h2 class="groupheader">メソッド詳解</h2>
 <a id="a3a1663a6927e9c209bac865f31ccf998"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a3a1663a6927e9c209bac865f31ccf998">&#9670;&nbsp;</a></span>Convert()</h2>

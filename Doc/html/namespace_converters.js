@@ -1,5 +1,9 @@
 var namespace_converters =
 [
+    [ "ColorPlusToBrushConverter", "class_converters_1_1_color_plus_to_brush_converter.html", "class_converters_1_1_color_plus_to_brush_converter" ],
+    [ "ColorPlusToColorConverter", "class_converters_1_1_color_plus_to_color_converter.html", "class_converters_1_1_color_plus_to_color_converter" ],
+    [ "ColorPlusToStringConverter", "class_converters_1_1_color_plus_to_string_converter.html", "class_converters_1_1_color_plus_to_string_converter" ],
+    [ "ColorPlusToTextBrushConverter", "class_converters_1_1_color_plus_to_text_brush_converter.html", "class_converters_1_1_color_plus_to_text_brush_converter" ],
     [ "ColorToBrushConverter", "class_converters_1_1_color_to_brush_converter.html", "class_converters_1_1_color_to_brush_converter" ],
     [ "DateTimeToDateStringConverter", "class_converters_1_1_date_time_to_date_string_converter.html", "class_converters_1_1_date_time_to_date_string_converter" ],
     [ "DateTimeToJpDateStringConverter", "class_converters_1_1_date_time_to_jp_date_string_converter.html", "class_converters_1_1_date_time_to_jp_date_string_converter" ],
@@ -20,5 +24,5 @@ var namespace_converters =
     [ "DateTimeToUsHistoryStringConverter", "class_converters_1_1_date_time_to_us_history_string_converter.html", "class_converters_1_1_date_time_to_us_history_string_converter" ],
     [ "DateTimeToUsYearStringConverter", "class_converters_1_1_date_time_to_us_year_string_converter.html", "class_converters_1_1_date_time_to_us_year_string_converter" ],
     [ "DoubleComparisonToBooleanConverter", "class_converters_1_1_double_comparison_to_boolean_converter.html", "class_converters_1_1_double_comparison_to_boolean_converter" ],
-    [ "IntComparisonToBooleanConverter", "class_converters_1_1_int_comparison_to_boolean_converter.html", "class_converters_1_1_int_comparison_to_boolean_converter" ]
+    [ "IntegerComparisonToBooleanConverter", "class_converters_1_1_integer_comparison_to_boolean_converter.html", "class_converters_1_1_integer_comparison_to_boolean_converter" ]
 ];

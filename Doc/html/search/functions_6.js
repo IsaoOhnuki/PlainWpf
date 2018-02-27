@@ -7,7 +7,7 @@ var searchData=
   ['getdropcommand',['GetDropCommand',['../class_behaviors_1_1_file_drag_behavior.html#ab8abc4a3940bcd7417882e0f2f309312',1,'Behaviors::FileDragBehavior']]],
   ['geterrors',['GetErrors',['../class_mvvm_1_1_bindable_base.html#aa4b1531f80c86d064d6c1246bdda73b2',1,'Mvvm::BindableBase']]],
   ['getformattext',['GetFormatText',['../class_behaviors_1_1_format_text_input_behavior.html#a42acc852bf9a8d7b712fca1a5e9a8c92',1,'Behaviors::FormatTextInputBehavior']]],
-  ['gethashcode',['GetHashCode',['../class_controls_1_1_color_selector_1_1_color_plus.html#aa27433d9251a52e495a551d67898c50f',1,'Controls::ColorSelector::ColorPlus']]],
+  ['gethashcode',['GetHashCode',['../class_utilitys_1_1_color_plus.html#a1f179d274c5bf69ee786f64d85136c02',1,'Utilitys::ColorPlus']]],
   ['getmultiselect',['GetMultiSelect',['../class_behaviors_1_1_file_drag_behavior.html#a3891bc593e3fbff3ee7c50d706f3e774',1,'Behaviors::FileDragBehavior']]],
   ['getnavigationstory',['GetNavigationStory',['../class_mvvm_1_1_navigation_service_ex.html#afefc3df19a311952e7f0212470af296d',1,'Mvvm::NavigationServiceEx']]],
   ['getnavigator',['GetNavigator',['../class_mvvm_1_1_navigation_service_ex.html#a16aa012162974ffe32be2f6b6412aa9e',1,'Mvvm::NavigationServiceEx']]],

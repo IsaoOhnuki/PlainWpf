@@ -9,5 +9,6 @@ var namespace_plain_wpf_1_1_view_models =
     [ "SabPage1ViewModel", "class_plain_wpf_1_1_view_models_1_1_sab_page1_view_model.html", "class_plain_wpf_1_1_view_models_1_1_sab_page1_view_model" ],
     [ "SabPage2ViewModel", "class_plain_wpf_1_1_view_models_1_1_sab_page2_view_model.html", "class_plain_wpf_1_1_view_models_1_1_sab_page2_view_model" ],
     [ "SubPage3ViewModel", "class_plain_wpf_1_1_view_models_1_1_sub_page3_view_model.html", "class_plain_wpf_1_1_view_models_1_1_sub_page3_view_model" ],
+    [ "SubPage4ViewModel", "class_plain_wpf_1_1_view_models_1_1_sub_page4_view_model.html", "class_plain_wpf_1_1_view_models_1_1_sub_page4_view_model" ],
     [ "XmlTreeViewModel", "class_plain_wpf_1_1_view_models_1_1_xml_tree_view_model.html", "class_plain_wpf_1_1_view_models_1_1_xml_tree_view_model" ]
 ];

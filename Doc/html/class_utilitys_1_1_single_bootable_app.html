@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>PlainWpf: Utilitys.SingleBootableApp クラス</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+  $(document).ready(initResizable);
+/* @license-end */</script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">PlainWpf
+   &#160;<span id="projectnumber">1.0</span>
+   </div>
+   <div id="projectbrief">PlainWpf</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 構築: Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'検索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','検索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(document).ready(function(){initNavTree('class_utilitys_1_1_single_bootable_app.html','');});
+/* @license-end */
+</script>
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">クラス</a> &#124;
+<a href="#pub-methods">公開メンバ関数</a> &#124;
+<a href="#pro-methods">限定公開メンバ関数</a> &#124;
+<a href="#properties">プロパティ</a> &#124;
+<a href="class_utilitys_1_1_single_bootable_app-members.html">全メンバ一覧</a>  </div>
+  <div class="headertitle">
+<div class="title">Utilitys.SingleBootableApp クラス</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p>WPFアプリケーション基底クラス<br />
+ スタートアップクラスAppの基底クラスApplicationと差し替えて使う、xamlの基底クラスも差し替える<br />
+ 2重起動防止機能<br />
+ <a class="el" href="class_utilitys_1_1_single_bootable_app.html#af7a5bbff4ff1303f23651a43eebc0335" title="Called when [constructor]. ">OnConstructor</a>をオーバーライドしてアプリケーションの開始処理を行える<br />
+ <a class="el" href="class_utilitys_1_1_single_bootable_app.html#ac2ef31f8815835d8699f8f3b9e7c4a4f" title="Called when [destructor]. ">OnDestructor</a>をオーバーライドしてアプリケーションの終了処理を行える<br />
+ <a class="el" href="class_utilitys_1_1_single_bootable_app.html#ac3ac66436ab675491fe60167fa735b3b" title="Called when [unhandled exception]. ">OnUnhandledException</a>をオーバーライドしてキャッチされなかった例外処理を行える<br />
+  
+ <a href="class_utilitys_1_1_single_bootable_app.html#details">[詳解]</a></p>
+<div class="dynheader">
+Utilitys.SingleBootableApp の継承関係図</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="class_utilitys_1_1_single_bootable_app.png" usemap="#Utilitys.SingleBootableApp_map" alt=""/>
+  <map id="Utilitys.SingleBootableApp_map" name="Utilitys.SingleBootableApp_map">
+<area href="class_plain_wpf_1_1_app.html" title="App.xaml の相互作用ロジック " alt="PlainWpf.App" shape="rect" coords="0,112,159,136"/>
+<area href="class_plain_wpf_1_1_app.html" title="App.xaml の相互作用ロジック " alt="PlainWpf.App" shape="rect" coords="169,112,328,136"/>
+</map>
+ </div></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+公開メンバ関数</h2></td></tr>
+<tr class="memitem:a77d373115763b90f767fd80a37dcfbc6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilitys_1_1_single_bootable_app.html#a77d373115763b90f767fd80a37dcfbc6">SingleBootableApp</a> ()</td></tr>
+<tr class="memdesc:a77d373115763b90f767fd80a37dcfbc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes a new instance of the <a class="el" href="class_utilitys_1_1_single_bootable_app.html" title="WPFアプリケーション基底クラス  スタートアップクラスAppの基底クラスApplicationと差し替えて使う、xamlの...">SingleBootableApp</a> class.  <a href="#a77d373115763b90f767fd80a37dcfbc6">[詳解]</a><br /></td></tr>
+<tr class="separator:a77d373115763b90f767fd80a37dcfbc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3ac66436ab675491fe60167fa735b3b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilitys_1_1_single_bootable_app.html#ac3ac66436ab675491fe60167fa735b3b">OnUnhandledException</a> (Exception e, ref int errorCode)</td></tr>
+<tr class="memdesc:ac3ac66436ab675491fe60167fa735b3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when [unhandled exception].  <a href="#ac3ac66436ab675491fe60167fa735b3b">[詳解]</a><br /></td></tr>
+<tr class="separator:ac3ac66436ab675491fe60167fa735b3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7a5bbff4ff1303f23651a43eebc0335"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilitys_1_1_single_bootable_app.html#af7a5bbff4ff1303f23651a43eebc0335">OnConstructor</a> ()</td></tr>
+<tr class="memdesc:af7a5bbff4ff1303f23651a43eebc0335"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when [constructor].  <a href="#af7a5bbff4ff1303f23651a43eebc0335">[詳解]</a><br /></td></tr>
+<tr class="separator:af7a5bbff4ff1303f23651a43eebc0335"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac2ef31f8815835d8699f8f3b9e7c4a4f"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilitys_1_1_single_bootable_app.html#ac2ef31f8815835d8699f8f3b9e7c4a4f">OnDestructor</a> ()</td></tr>
+<tr class="memdesc:ac2ef31f8815835d8699f8f3b9e7c4a4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Called when [destructor].  <a href="#ac2ef31f8815835d8699f8f3b9e7c4a4f">[詳解]</a><br /></td></tr>
+<tr class="separator:ac2ef31f8815835d8699f8f3b9e7c4a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+限定公開メンバ関数</h2></td></tr>
+<tr class="memitem:a203f6438f27c78f6036af8353ef9fa7d"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilitys_1_1_single_bootable_app.html#a203f6438f27c78f6036af8353ef9fa7d">OnStartup</a> (StartupEventArgs e)</td></tr>
+<tr class="memdesc:a203f6438f27c78f6036af8353ef9fa7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">二重起動防止の処理を行い、<a class="el" href="class_utilitys_1_1_single_bootable_app.html#af7a5bbff4ff1303f23651a43eebc0335" title="Called when [constructor]. ">OnConstructor()</a>を呼び出す<br />
+ E:System.Windows.Application.Startup イベントを発生させます。  <a href="#a203f6438f27c78f6036af8353ef9fa7d">[詳解]</a><br /></td></tr>
+<tr class="separator:a203f6438f27c78f6036af8353ef9fa7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d6c12345f85870578ae7bad9f618101"><td class="memItemLeft" align="right" valign="top">override void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilitys_1_1_single_bootable_app.html#a5d6c12345f85870578ae7bad9f618101">OnExit</a> (ExitEventArgs e)</td></tr>
+<tr class="memdesc:a5d6c12345f85870578ae7bad9f618101"><td class="mdescLeft">&#160;</td><td class="mdescRight">E:System.Windows.Application.Exit イベントを発生させます。  <a href="#a5d6c12345f85870578ae7bad9f618101">[詳解]</a><br /></td></tr>
+<tr class="separator:a5d6c12345f85870578ae7bad9f618101"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
+プロパティ</h2></td></tr>
+<tr class="memitem:aa56c57f7f7ec4ea480ea4808b6360c11"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_utilitys_1_1_path_builder.html">PathBuilder</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilitys_1_1_single_bootable_app.html#aa56c57f7f7ec4ea480ea4808b6360c11">StartupPath</a><code> [get]</code></td></tr>
+<tr class="memdesc:aa56c57f7f7ec4ea480ea4808b6360c11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the startup path.  <a href="#aa56c57f7f7ec4ea480ea4808b6360c11">[詳解]</a><br /></td></tr>
+<tr class="separator:aa56c57f7f7ec4ea480ea4808b6360c11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac858d0f01beb9a6f6c679d691265ea8f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_utilitys_1_1_single_bootable_app.html#ac858d0f01beb9a6f6c679d691265ea8f">ApplicationName</a><code> [get]</code></td></tr>
+<tr class="memdesc:ac858d0f01beb9a6f6c679d691265ea8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the name of the application.  <a href="#ac858d0f01beb9a6f6c679d691265ea8f">[詳解]</a><br /></td></tr>
+<tr class="separator:ac858d0f01beb9a6f6c679d691265ea8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">詳解</h2>
+<div class="textblock"><p>WPFアプリケーション基底クラス<br />
+ スタートアップクラスAppの基底クラスApplicationと差し替えて使う、xamlの基底クラスも差し替える<br />
+ 2重起動防止機能<br />
+ <a class="el" href="class_utilitys_1_1_single_bootable_app.html#af7a5bbff4ff1303f23651a43eebc0335" title="Called when [constructor]. ">OnConstructor</a>をオーバーライドしてアプリケーションの開始処理を行える<br />
+ <a class="el" href="class_utilitys_1_1_single_bootable_app.html#ac2ef31f8815835d8699f8f3b9e7c4a4f" title="Called when [destructor]. ">OnDestructor</a>をオーバーライドしてアプリケーションの終了処理を行える<br />
+ <a class="el" href="class_utilitys_1_1_single_bootable_app.html#ac3ac66436ab675491fe60167fa735b3b" title="Called when [unhandled exception]. ">OnUnhandledException</a>をオーバーライドしてキャッチされなかった例外処理を行える<br />
+ </p>
+<p><a href="http://kisuke0303.sakura.ne.jp/blog/?p=182">WPF で二重起動を防止する</a><br />
+ <a href="http://www.geocities.jp/litorud/WPF.html#9">二重起動を防止し、起動中のウィンドウをアクティブにする</a></p>
+</div><h2 class="groupheader">構築子と解体子</h2>
+<a id="a77d373115763b90f767fd80a37dcfbc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a77d373115763b90f767fd80a37dcfbc6">&#9670;&nbsp;</a></span>SingleBootableApp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Utilitys.SingleBootableApp.SingleBootableApp </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Initializes a new instance of the <a class="el" href="class_utilitys_1_1_single_bootable_app.html" title="WPFアプリケーション基底クラス  スタートアップクラスAppの基底クラスApplicationと差し替えて使う、xamlの...">SingleBootableApp</a> class. </p>
+
+</div>
+</div>
+<h2 class="groupheader">メソッド詳解</h2>
+<a id="af7a5bbff4ff1303f23651a43eebc0335"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7a5bbff4ff1303f23651a43eebc0335">&#9670;&nbsp;</a></span>OnConstructor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Utilitys.SingleBootableApp.OnConstructor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when [constructor]. </p>
+
+</div>
+</div>
+<a id="ac2ef31f8815835d8699f8f3b9e7c4a4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac2ef31f8815835d8699f8f3b9e7c4a4f">&#9670;&nbsp;</a></span>OnDestructor()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Utilitys.SingleBootableApp.OnDestructor </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when [destructor]. </p>
+
+</div>
+</div>
+<a id="a5d6c12345f85870578ae7bad9f618101"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d6c12345f85870578ae7bad9f618101">&#9670;&nbsp;</a></span>OnExit()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void Utilitys.SingleBootableApp.OnExit </td>
+          <td>(</td>
+          <td class="paramtype">ExitEventArgs&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>E:System.Windows.Application.Exit イベントを発生させます。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>イベント データを格納している T:System.Windows.ExitEventArgs。</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a203f6438f27c78f6036af8353ef9fa7d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a203f6438f27c78f6036af8353ef9fa7d">&#9670;&nbsp;</a></span>OnStartup()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">override void Utilitys.SingleBootableApp.OnStartup </td>
+          <td>(</td>
+          <td class="paramtype">StartupEventArgs&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>二重起動防止の処理を行い、<a class="el" href="class_utilitys_1_1_single_bootable_app.html#af7a5bbff4ff1303f23651a43eebc0335" title="Called when [constructor]. ">OnConstructor()</a>を呼び出す<br />
+ E:System.Windows.Application.Startup イベントを発生させます。 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>イベント データを格納している T:System.Windows.StartupEventArgs。</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ac3ac66436ab675491fe60167fa735b3b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3ac66436ab675491fe60167fa735b3b">&#9670;&nbsp;</a></span>OnUnhandledException()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Utilitys.SingleBootableApp.OnUnhandledException </td>
+          <td>(</td>
+          <td class="paramtype">Exception&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">ref int&#160;</td>
+          <td class="paramname"><em>errorCode</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Called when [unhandled exception]. </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>The e.</td></tr>
+    <tr><td class="paramname">errorCode</td><td>The error code.</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">プロパティ詳解</h2>
+<a id="ac858d0f01beb9a6f6c679d691265ea8f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac858d0f01beb9a6f6c679d691265ea8f">&#9670;&nbsp;</a></span>ApplicationName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Utilitys.SingleBootableApp.ApplicationName</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the name of the application. </p>
+<p>The name of the application. </p>
+
+</div>
+</div>
+<a id="aa56c57f7f7ec4ea480ea4808b6360c11"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa56c57f7f7ec4ea480ea4808b6360c11">&#9670;&nbsp;</a></span>StartupPath</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_utilitys_1_1_path_builder.html">PathBuilder</a> Utilitys.SingleBootableApp.StartupPath</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gets the startup path. </p>
+<p>The startup path. </p>
+
+</div>
+</div>
+<hr/>このクラス詳解は次のファイルから抽出されました:<ul>
+<li>C:/Users/isao/Documents/GitRepos/PlainWpf/PlainUtility/Utilitys/<a class="el" href="_single_bootable_app_8cs.html">SingleBootableApp.cs</a></li>
+</ul>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="namespace_utilitys.html">Utilitys</a></li><li class="navelem"><a class="el" href="class_utilitys_1_1_single_bootable_app.html">SingleBootableApp</a></li>
+    <li class="footer">構築:
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.14 </li>
+  </ul>
+</div>
+</body>
+</html>

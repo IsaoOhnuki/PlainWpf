@@ -27,6 +27,18 @@ var dir_61a81d7004520da2289460b8644b60cc =
     [ "SubPage3.g.i.cs", "_debug_2_views_2_sub_page3_8g_8i_8cs.html", [
       [ "SubPage3", "class_plain_wpf_1_1_views_1_1_sub_page3.html", "class_plain_wpf_1_1_views_1_1_sub_page3" ]
     ] ],
+    [ "SubPage4.g.cs", "_debug_2_views_2_sub_page4_8g_8cs.html", [
+      [ "SubPage4", "class_plain_wpf_1_1_views_1_1_sub_page4.html", "class_plain_wpf_1_1_views_1_1_sub_page4" ]
+    ] ],
+    [ "SubPage4.g.i.cs", "_debug_2_views_2_sub_page4_8g_8i_8cs.html", [
+      [ "SubPage4", "class_plain_wpf_1_1_views_1_1_sub_page4.html", "class_plain_wpf_1_1_views_1_1_sub_page4" ]
+    ] ],
+    [ "ViewBoxTest.g.cs", "_view_box_test_8g_8cs.html", [
+      [ "ViewBoxTest", "class_plain_wpf_1_1_views_1_1_view_box_test.html", "class_plain_wpf_1_1_views_1_1_view_box_test" ]
+    ] ],
+    [ "ViewBoxTest.g.i.cs", "_view_box_test_8g_8i_8cs.html", [
+      [ "ViewBoxTest", "class_plain_wpf_1_1_views_1_1_view_box_test.html", "class_plain_wpf_1_1_views_1_1_view_box_test" ]
+    ] ],
     [ "XmlTreeView.g.cs", "_debug_2_views_2_xml_tree_view_8g_8cs.html", [
       [ "XmlTreeView", "class_plain_wpf_1_1_views_1_1_xml_tree_view.html", "class_plain_wpf_1_1_views_1_1_xml_tree_view" ]
     ] ],

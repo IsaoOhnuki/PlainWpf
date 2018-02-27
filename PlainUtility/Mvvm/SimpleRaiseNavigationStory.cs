@@ -39,7 +39,6 @@ namespace PlainUtility.Mvvm
         }
 
         private Grid storyBoard;
-        private Action<FrameworkElement> endAnimation;
         private FrameworkElement fromContent;
         private FrameworkElement toContent;
 
@@ -57,15 +56,13 @@ namespace PlainUtility.Mvvm
         /// </summary>
         /// <param name="fromContent">遷移元ページ</param>
         /// <param name="toContent">遷移先ページ</param>
-        /// <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
         /// <returns>アニメーションを再生するコンテント</returns>
-        public FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent, Action<FrameworkElement> endAnimation)
+        public FrameworkElement Initialize(FrameworkElement fromContent, FrameworkElement toContent)
         {
             this.toContent = toContent;
             if (toContent == null)
                 return null;
             this.fromContent = fromContent;
-            this.endAnimation = endAnimation;
             storyBoard = new Grid();
             if (NavigationMode == RaiseNavigationMode.RightToLeft || NavigationMode == RaiseNavigationMode.LeftToRight)
             {
@@ -82,7 +79,8 @@ namespace PlainUtility.Mvvm
         /// <summary>
         /// アニメーション再生
         /// </summary>
-        public void Animate()
+        /// <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+        public void Animate(Action<FrameworkElement> endAnimation)
         {
             if (toContent == null)
                 return;
@@ -139,16 +137,14 @@ namespace PlainUtility.Mvvm
             story.Children.Add(fromSizeAnimation);
             story.Children.Add(toSizeAnimation);
 
-            story.Completed += OnStoryCompleted;
+            story.Completed += (sender, e) => {
+                storyBoard.Children.Remove(fromContent);
+                storyBoard.Children.Remove(toContent);
+                fromContent.ClearValue(Grid.ColumnProperty);
+                toContent.ClearValue(Grid.ColumnProperty);
+                endAnimation?.Invoke(toContent);
+            };
             story.Begin();
-        }
-        private void OnStoryCompleted(object sender, EventArgs e)
-        {
-            storyBoard.Children.Remove(fromContent);
-            storyBoard.Children.Remove(toContent);
-            fromContent.ClearValue(Grid.ColumnProperty);
-            toContent.ClearValue(Grid.ColumnProperty);
-            endAnimation?.Invoke(toContent);
         }
     }
 }

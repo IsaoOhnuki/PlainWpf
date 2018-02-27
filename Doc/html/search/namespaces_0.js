@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['behaviours',['Behaviours',['../namespace_behaviours.html',1,'']]]
+  ['behaviors',['Behaviors',['../namespace_behaviors.html',1,'']]]
 ];

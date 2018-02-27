@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['resourcemanager',['ResourceManager',['../class_plain_wpf_1_1_properties_1_1_resources.html#a0cfad83c4fca1424ebeafadfa7c9e0fb',1,'PlainWpf::Properties::Resources']]],
-  ['reversevalue',['ReverseValue',['../class_utilitys_1_1_grid_length_animation.html#a4d76cc987099295992cd11f899ae732f',1,'Utilitys.GridLengthAnimation.ReverseValue()'],['../class_utilitys_1_1_expander_double_animation.html#ae5acaf1da088336dc2060e89a8d9cd29',1,'Utilitys.ExpanderDoubleAnimation.ReverseValue()']]]
+  ['matchstring',['MatchString',['../class_behaviors_1_1_input_forming_text_box_behavior.html#a442a9121d628546230a05a1d731ba87b',1,'Behaviors::InputFormingTextBoxBehavior']]],
+  ['mavigateanimation',['MavigateAnimation',['../class_plain_wpf_1_1_view_models_1_1_main_window_view_model.html#a845195d2615ce9780dafca2c80a035f2',1,'PlainWpf::ViewModels::MainWindowViewModel']]]
 ];

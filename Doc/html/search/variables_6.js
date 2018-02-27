@@ -2,6 +2,10 @@ var searchData=
 [
   ['n1',['n1',['../class_plain_wpf_1_1_views_1_1_main_window.html#afaa32eb33c1ac8a963b4de5bc3a6ad8f',1,'PlainWpf::Views::MainWindow']]],
   ['n10',['n10',['../class_plain_wpf_1_1_views_1_1_main_window.html#a95e3e2252c90b04e340f0ced542c3b9d',1,'PlainWpf::Views::MainWindow']]],
+  ['n11',['n11',['../class_plain_wpf_1_1_views_1_1_main_window.html#a92acc6f02804bc7ec15da58026cd3ab4',1,'PlainWpf::Views::MainWindow']]],
+  ['n12',['n12',['../class_plain_wpf_1_1_views_1_1_main_window.html#afd873003d017e69ece063351669be079',1,'PlainWpf::Views::MainWindow']]],
+  ['n13',['n13',['../class_plain_wpf_1_1_views_1_1_main_window.html#ae30e39d458e6a3ac037e7691104ebfad',1,'PlainWpf::Views::MainWindow']]],
+  ['n14',['n14',['../class_plain_wpf_1_1_views_1_1_main_window.html#a783018d4123a4e30db4e4615b68ad1f4',1,'PlainWpf::Views::MainWindow']]],
   ['n2',['n2',['../class_plain_wpf_1_1_views_1_1_main_window.html#aba7a77dc592534efdb2daab187575e34',1,'PlainWpf::Views::MainWindow']]],
   ['n3',['n3',['../class_plain_wpf_1_1_views_1_1_main_window.html#a59778073132f4cc56118ab950f9ba03d',1,'PlainWpf::Views::MainWindow']]],
   ['n4',['n4',['../class_plain_wpf_1_1_views_1_1_main_window.html#a3b66f380ae718c84fb75eafaeb0f8cf3',1,'PlainWpf::Views::MainWindow']]],

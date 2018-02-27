@@ -12,7 +12,7 @@ namespace PlainWpf.ViewModels
     {
         public SubPage4ViewModel()
         {
-            pathBuilder = new PathBuilder();
+            pathBuilder = new PathBuilder(((SingleBootableApp)App.Current).StartupPath.FullPath);
             pathBuilder.PropertyChanged += PathBuilder_PropertyChanged;
         }
 

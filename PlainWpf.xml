@@ -68,91 +68,6 @@
             
             </summary>
         </member>
-        <member name="T:PlainWpf.SingleBootableApp">
-            <summary>
-            WPFアプリケーション基底クラス<br/>
-            スタートアップクラスAppの基底クラスApplicationと差し替えて使う、xamlの基底クラスも差し替える<br/>
-            2重起動防止機能<br/>
-            <see cref="M:PlainWpf.SingleBootableApp.OnConstructor"/>をオーバーライドしてアプリケーションの開始処理を行える<br/>
-            <see cref="M:PlainWpf.SingleBootableApp.OnDestructor"/>をオーバーライドしてアプリケーションの終了処理を行える<br/>
-            <see cref="M:PlainWpf.SingleBootableApp.OnUnhandledException(System.Exception,System.Int32@)"/>をオーバーライドしてキャッチされなかった例外処理を行える<br/>
-            </summary>
-            <remarks><a href="http://kisuke0303.sakura.ne.jp/blog/?p=182">WPF で二重起動を防止する</a><br/>
-            <a href="http://www.geocities.jp/litorud/WPF.html#9">二重起動を防止し、起動中のウィンドウをアクティブにする</a></remarks>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:PlainWpf.SingleBootableApp"/> class.
-            </summary>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.OnStartup(System.Windows.StartupEventArgs)">
-            <summary>
-            二重起動防止の処理を行い、<see cref="M:PlainWpf.SingleBootableApp.OnConstructor"/>を呼び出す<br/>
-              <see cref="E:System.Windows.Application.Startup" /> イベントを発生させます。
-            </summary>
-            <param name="e">イベント データを格納している <see cref="T:System.Windows.StartupEventArgs" />。</param>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.SingleBootableApp_DispatcherUnhandledException(System.Object,System.Windows.Threading.DispatcherUnhandledExceptionEventArgs)">
-            <summary>
-            キャッチされなかった例外のハンドラ、<see cref="M:PlainWpf.SingleBootableApp.OnUnhandledException(System.Exception,System.Int32@)"/>をコールして終了コードを拾得する
-            </summary>
-            <param name="sender">The source of the event.</param>
-            <param name="e">The <see cref="T:System.Windows.Threading.DispatcherUnhandledExceptionEventArgs"/> instance containing the event data.</param>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.OnUnhandledException(System.Exception,System.Int32@)">
-            <summary>
-            Called when [unhandled exception].
-            </summary>
-            <param name="e">The e.</param>
-            <param name="errorCode">The error code.</param>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.OnConstructor">
-            <summary>
-            Called when [constructor].
-            </summary>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.OnDestructor">
-            <summary>
-            Called when [destructor].
-            </summary>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.OnExit(System.Windows.ExitEventArgs)">
-            <summary>
-              <see cref="E:System.Windows.Application.Exit" /> イベントを発生させます。
-            </summary>
-            <param name="e">イベント データを格納している <see cref="T:System.Windows.ExitEventArgs" />。</param>
-        </member>
-        <member name="F:PlainWpf.SingleBootableApp.applicationId">
-            <summary>
-            実際はUUIDなどが良い。
-            </summary>
-        </member>
-        <member name="F:PlainWpf.SingleBootableApp.appName">
-            <summary>
-            コンストラクタでアプリケーション名を習得
-            </summary>
-        </member>
-        <member name="F:PlainWpf.SingleBootableApp.mutex">
-            <summary>
-            起動フラグ用ミューテックス
-            アプリケーション名使用
-            </summary>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.DoubleBootCheckAndRegist">
-            <summary>
-            スタートアップ時のミューテックスのチェックと拾得
-            </summary>
-        </member>
-        <member name="M:PlainWpf.SingleBootableApp.DoubleBootRelease">
-            <summary>
-            終了時のミューテックスの解放
-            </summary>
-        </member>
-        <member name="T:PlainWpf.SingleBootableApp.IpcHandler">
-            <summary>
-            IPC用ハンドラ
-            </summary>
-        </member>
         <member name="T:PlainWpf.Views.SubPage2">
             <summary>
             SubPage1.xaml の相互作用ロジック
@@ -555,6 +470,42 @@
             convert source error : source is not 'System.String'
             </exception>
         </member>
+        <member name="T:Converters.DoubleComparisonToBooleanConverter">
+            <summary>
+            
+            </summary>
+            <remarks>
+            <i>left double</i>&lt;|=&lt;|&lt;=|=&lt;=<i>right double</i>
+            <br/>
+            <b>&lt;</b> (<i>left double</i> == null ? true : <i>left double</i> &lt; value) &amp;&amp; (<i>right double</i> == null ? true : value &lt; <i>right double</i>)
+            <br/>
+            <b>=&lt;</b> (<i>left double</i> == null ? true : <i>left double</i> &lt;= value) &amp;&amp; (<i>right double</i> == null ? true : value &lt; <i>right double</i>)
+            <br/>
+            <b>&lt;=</b> (<i>left double</i> == null ? true : <i>left double</i> &lt; value) &amp;&amp; (<i>right double</i> == null ? true : value &lt;= <i>right double</i>)
+            <br/>
+            <b>=&lt;=</b> (<i>left double</i> == null ? true : <i>left double</i> &lt;= value) &amp;&amp; (<i>right double</i> == null ? true : value &lt;= <i>right double</i>)
+            <br/>
+            '<b>&lt;</b>' is hassle at xaml. replaces at '<b>@</b>'.
+            </remarks>
+        </member>
+        <member name="T:Converters.IntComparisonToBooleanConverter">
+            <summary>
+            
+            </summary>
+            <remarks>
+            <i>left integer</i>&lt;|=&lt;|&lt;=|=&lt;=<i>right integer</i>
+            <br/>
+            <b>&lt;</b> (<i>left integer</i> == null ? true : <i>left integer</i> &lt; value) &amp;&amp; (<i>right integer</i> == null ? true : value &lt; <i>right integer</i>)
+            <br/>
+            <b>=&lt;</b> (<i>left integer</i> == null ? true : <i>left integer</i> &lt;= value) &amp;&amp; (<i>right integer</i> == null ? true : value &lt; <i>right integer</i>)
+            <br/>
+            <b>&lt;=</b> (<i>left integer</i> == null ? true : <i>left integer</i> &lt; value) &amp;&amp; (<i>right integer</i> == null ? true : value &lt;= <i>right integer</i>)
+            <br/>
+            <b>=&lt;=</b> (<i>left integer</i> == null ? true : <i>left integer</i> &lt;= value) &amp;&amp; (<i>right integer</i> == null ? true : value &lt;= <i>right integer</i>)
+            <br/>
+            '<b>&lt;</b>' is hassle at xaml. replaces at '<b>@</b>'.
+            </remarks>
+        </member>
         <member name="T:Extensions.RegexStringExtensions">
             <summary>
             正規表現パターン用String拡張関数
@@ -680,122 +631,16 @@
             <param name="dateTime">The date time.</param>
             <returns>サンプル出力</returns>
         </member>
-        <member name="T:Mvvm.NotifyBase">
-            <summary>
-            ビューモデル等の基底に使うベースクラス
-            </summary>
-        </member>
-        <member name="E:Mvvm.NotifyBase.PropertyChanged">
-            <summary>
-            変更通知イベント
-            </summary>
-            <override name="INotifyPropertyChanged"></override>
-        </member>
-        <member name="M:Mvvm.NotifyBase.OnPropertyChanged(System.String)">
-            <summary>
-            変更通知イベント起動メソッド
-            </summary>
-            <param name="propertyName">変更通知するプロパティ名</param>
-        </member>
-        <member name="M:Mvvm.NotifyBase.SetProperty``1(``0@,``0,System.String)">
-            <summary>
-            プロパティフィールド代入メソッド
-            </summary>
-            <typeparam name="T">プロパティフィールドの型</typeparam>
-            <param name="storage">プロパティフィールドへの参照</param>
-            <param name="value">プロパティフィールドへの代入値</param>
-            <param name="propertyName">プロパティ名</param>
-            <returns>True=フィールド値が変更された,False=されなかった</returns>
-        </member>
-        <member name="T:Mvvm.BindableBase">
-            <summary>
-            ビューモデル等の基底に使うベースクラス
-            </summary>
-            <inherited name="INotifyPropertyChanged">プロパティ変更通知</inherited>
-            <inherited name="INotifyDataErrorInfo">プロパティ検証エラー通知</inherited>
-        </member>
-        <member name="M:Mvvm.BindableBase.#ctor">
-            <summary>
-            基底コンストラクタ
-            </summary>
-        </member>
-        <member name="F:Mvvm.BindableBase.hasErrors">
-            <summary>
-            検証エラーがあるプロパティ名と検証エラーメッセージのリスト
-            </summary>
-        </member>
-        <member name="P:Mvvm.BindableBase.HasErrors">
-            <summary>
-            検証エラー状態
-            </summary>
-            <override name="INotifyDataErrorInfo"></override>
-            <returns>True=エラーあり,False=エラーなし</returns>
-        </member>
-        <member name="E:Mvvm.BindableBase.ErrorsChanged">
-            <summary>
-            検証エラー通知イベント
-            </summary>
-            <override name="INotifyDataErrorInfo"></override>
-        </member>
-        <member name="M:Mvvm.BindableBase.OnErrorsChanged(System.String,System.String)">
-            <summary>
-            プロパティの検証後に呼び出す。検証エラー通知イベント起動メソッド
-            </summary>
-            <override name="INotifyPropertyChanged"></override>
-            <param name="errorMessage">nullまたは空の文字列でエラーなしまたはエラー状態解除、空白文字列または文字列はエラー状態メッセージ</param>
-            <param name="propertyName">エラー状態にあるプロパティ名</param>
-        </member>
-        <member name="M:Mvvm.BindableBase.SetError(System.String,System.String)">
-            <summary>
-            プロパティの検証後にエラー状態なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
-            </summary>
-            <param name="errorMessage">エラーメッセージ、メッセージが空なら自動生成</param>
-            <param name="propertyName">エラー状態のプロパティ名</param>
-        </member>
-        <member name="M:Mvvm.BindableBase.ResetError(System.String)">
-            <summary>
-            プロパティの検証後にエラー状態解除なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
-            </summary>
-            <param name="propertyName">エラー解除状態のプロパティ名</param>
-        </member>
-        <member name="M:Mvvm.BindableBase.GetErrors(System.String)">
-            <summary>
-            エラー状態プロパティのエラーメッセージ
-            </summary>
-            <param name="propertyName">プロパティ名</param>
-            <returns>指定したプロパティのエラーメッセージ</returns>
-        </member>
-        <member name="T:Mvvm.INotifyNavigationStory">
+        <member name="T:Mvvm.Message">
             <summary>
             
             </summary>
-        </member>
-        <member name="P:Mvvm.INotifyNavigationStory.IsAnimation">
-            <summary>
-            アニメーション再生中であることの通知
-            </summary>
-            <value>
-            true アニメーション再生中
-            </value>
-        </member>
-        <member name="T:Mvvm.INavigationStory">
-            <summary>
-            ページ遷移時のアニメーションを実行するインターフェース
-            </summary>
-        </member>
-        <member name="M:Mvvm.INavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
-            <summary>
-            アニメーション再生の為のイニシャライザ
-            </summary>
-            <param name="fromContent">遷移元ページ</param>
-            <param name="toContent">遷移先ページ</param>
-            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
-            <returns>アニメーションを再生するコンテント</returns>
-        </member>
-        <member name="M:Mvvm.INavigationStory.Animate">
-            <summary>
-            アニメーション再生
-            </summary>
+            <remarks><a href="http://gushwell.ldblog.jp/archives/52146779.html">MVVM：Messengerを理解するために自作してみた(1)</a></remarks>
+            <remarks><a href="http://gushwell.ldblog.jp/archives/52146816.html">MVVM：Messengerを理解するために自作してみた(2)</a></remarks>
+            <remarks><a href="http://gushwell.ldblog.jp/archives/52146951.html">MVVM：Messengerを理解するために自作してみた(3)</a></remarks>
+            <remarks><a href="http://gushwell.ldblog.jp/archives/52146964.html">MVVM:Messenger + Behaviorを理解するために自作してみた(1)</a></remarks>
+            <remarks><a href="http://gushwell.ldblog.jp/archives/52146967.html">MVVM:Messenger + Behaviorを理解するために自作してみた(2)</a></remarks>
+            <remarks><a href="http://gushwell.ldblog.jp/archives/52152996.html">MVVM:Messenger + Behaviorを理解するために自作してみた(3)</a></remarks>
         </member>
         <member name="T:Mvvm.SimpleWipeNavigationStory">
             <summary>
@@ -868,7 +713,84 @@
             アニメーションの再生時間
             </summary>
         </member>
-        <member name="M:Mvvm.SimpleWipeNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
+        <member name="M:Mvvm.SimpleWipeNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
+            <summary>
+            アニメーション再生の為のイニシャライザ
+            </summary>
+            <param name="fromContent">遷移元ページ</param>
+            <param name="toContent">遷移先ページ</param>
+            <returns>アニメーションを再生するコンテント</returns>
+        </member>
+        <member name="M:Mvvm.SimpleWipeNavigationStory.Animate(System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            アニメーション再生
+            </summary>
+            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+        </member>
+        <member name="T:Mvvm.BindableBase">
+            <summary>
+            ビューモデル等の基底に使うベースクラス
+            </summary>
+            <inherited name="INotifyPropertyChanged">プロパティ変更通知</inherited>
+            <inherited name="INotifyDataErrorInfo">プロパティ検証エラー通知</inherited>
+        </member>
+        <member name="M:Mvvm.BindableBase.#ctor">
+            <summary>
+            基底コンストラクタ
+            </summary>
+        </member>
+        <member name="F:Mvvm.BindableBase.hasErrors">
+            <summary>
+            検証エラーがあるプロパティ名と検証エラーメッセージのリスト
+            </summary>
+        </member>
+        <member name="P:Mvvm.BindableBase.HasErrors">
+            <summary>
+            検証エラー状態
+            </summary>
+            <override name="INotifyDataErrorInfo"></override>
+            <returns>True=エラーあり,False=エラーなし</returns>
+        </member>
+        <member name="E:Mvvm.BindableBase.ErrorsChanged">
+            <summary>
+            検証エラー通知イベント
+            </summary>
+            <override name="INotifyDataErrorInfo"></override>
+        </member>
+        <member name="M:Mvvm.BindableBase.OnErrorsChanged(System.String,System.String)">
+            <summary>
+            プロパティの検証後に呼び出す。検証エラー通知イベント起動メソッド
+            </summary>
+            <override name="INotifyPropertyChanged"></override>
+            <param name="errorMessage">nullまたは空の文字列でエラーなしまたはエラー状態解除、空白文字列または文字列はエラー状態メッセージ</param>
+            <param name="propertyName">エラー状態にあるプロパティ名</param>
+        </member>
+        <member name="M:Mvvm.BindableBase.SetError(System.String,System.String)">
+            <summary>
+            プロパティの検証後にエラー状態なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
+            </summary>
+            <param name="errorMessage">エラーメッセージ、メッセージが空なら自動生成</param>
+            <param name="propertyName">エラー状態のプロパティ名</param>
+        </member>
+        <member name="M:Mvvm.BindableBase.ResetError(System.String)">
+            <summary>
+            プロパティの検証後にエラー状態解除なら呼び出す。検証エラー通知イベント起動メソッドを呼び出す
+            </summary>
+            <param name="propertyName">エラー解除状態のプロパティ名</param>
+        </member>
+        <member name="M:Mvvm.BindableBase.GetErrors(System.String)">
+            <summary>
+            エラー状態プロパティのエラーメッセージ
+            </summary>
+            <param name="propertyName">プロパティ名</param>
+            <returns>指定したプロパティのエラーメッセージ</returns>
+        </member>
+        <member name="T:Mvvm.INavigationStory">
+            <summary>
+            ページ遷移時のアニメーションを実行するインターフェース
+            </summary>
+        </member>
+        <member name="M:Mvvm.INavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
             <summary>
             アニメーション再生の為のイニシャライザ
             </summary>
@@ -877,7 +799,7 @@
             <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
             <returns>アニメーションを再生するコンテント</returns>
         </member>
-        <member name="M:Mvvm.SimpleWipeNavigationStory.Animate">
+        <member name="M:Mvvm.INavigationStory.Animate(System.Action{System.Windows.FrameworkElement})">
             <summary>
             アニメーション再生
             </summary>
@@ -903,16 +825,12 @@
             view引数で指定されたインスタンスのページへとナビゲーションを行います。
             </summary>
             <param name="view">遷移先ページのインスタンス</param>
-            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
-            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
         <member name="M:Mvvm.NavigationServiceEx.Navigate(System.Type)">
             <summary>
             viewType引数で指定された型のインスタンスを生成し、そのインスタンスのページへとナビゲーションを行います。
             </summary>
             <param name="viewType">遷移先ページのType</param>
-            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
-            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
         <member name="M:Mvvm.NavigationServiceEx.OnGoToPage(System.Object,System.Windows.Input.ExecutedRoutedEventArgs)">
             <summary>
@@ -920,8 +838,6 @@
             </summary>
             <param name="sender">未使用</param>
             <param name="e">e.Parameterに遷移するページのType</param>
-            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
-            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
         <member name="M:Mvvm.NavigationServiceEx.GetNavigationStory(System.Windows.DependencyObject)">
             <summary>
@@ -1019,8 +935,6 @@
             </summary>
             <param name="element">ターゲットを添付したFrameworkElement</param>
             <param name="view">遷移先ページ</param>
-            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
-            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
         <member name="M:Mvvm.NavigationServiceExtensions.Navigate(System.Windows.FrameworkElement,System.Type)">
             <summary>
@@ -1028,63 +942,33 @@
             </summary>
             <param name="element">ターゲットを添付したFrameworkElement</param>
             <param name="viewType">遷移先ページのType</param>
-            <exception cref="T:System.Exception">ナビゲーションアニメイニシャライザ内部エラー</exception>
-            <exception cref="T:System.Exception">ナビゲーションアニメ内部エラー</exception>
         </member>
-        <member name="T:PlainUtility.Mvvm.SimpleRaiseNavigationStory">
+        <member name="T:Utilitys.NotifyBase">
             <summary>
-            シンプルなスライド系のアニメーション
-            </summary>
-            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
-        </member>
-        <member name="T:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode">
-            <summary>
-            スライドアニメーションのタイプ定義
+            ビューモデル等の基底に使うベースクラス
             </summary>
         </member>
-        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
+        <member name="E:Utilitys.NotifyBase.PropertyChanged">
             <summary>
-            遷移先ページが右側からスライド
+            変更通知イベント
             </summary>
+            <override name="INotifyPropertyChanged"></override>
         </member>
-        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
+        <member name="M:Utilitys.NotifyBase.OnPropertyChanged(System.String)">
             <summary>
-            遷移先ページが左側からスライド
+            変更通知イベント起動メソッド
             </summary>
+            <param name="propertyName">変更通知するプロパティ名</param>
         </member>
-        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
+        <member name="M:Utilitys.NotifyBase.SetProperty``1(``0@,``0,System.String)">
             <summary>
-            遷移先ページが下側からスライド
+            プロパティフィールド代入メソッド
             </summary>
-        </member>
-        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
-            <summary>
-            遷移先ページが上側からスライド
-            </summary>
-        </member>
-        <member name="P:PlainUtility.Mvvm.SimpleRaiseNavigationStory.NavigationMode">
-            <summary>
-            再生するスライドアニメーションのタイプ
-            </summary>
-        </member>
-        <member name="P:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Duration">
-            <summary>
-            アニメーションの再生時間
-            </summary>
-        </member>
-        <member name="M:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement,System.Action{System.Windows.FrameworkElement})">
-            <summary>
-            アニメーション再生の為のイニシャライザ
-            </summary>
-            <param name="fromContent">遷移元ページ</param>
-            <param name="toContent">遷移先ページ</param>
-            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
-            <returns>アニメーションを再生するコンテント</returns>
-        </member>
-        <member name="M:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Animate">
-            <summary>
-            アニメーション再生
-            </summary>
+            <typeparam name="T">プロパティフィールドの型</typeparam>
+            <param name="storage">プロパティフィールドへの参照</param>
+            <param name="value">プロパティフィールドへの代入値</param>
+            <param name="propertyName">プロパティ名</param>
+            <returns>True=フィールド値が変更された,False=されなかった</returns>
         </member>
         <member name="T:Utilitys.GridLengthAnimation">
             <summary>
@@ -1425,6 +1309,157 @@
             フルパス指定コンストラクタ
             </summary>
             <param name="fullPath"><see cref="P:Utilitys.PathBuilder.FullPath"/></param>
+        </member>
+        <member name="T:Utilitys.SingleBootableApp">
+            <summary>
+            WPFアプリケーション基底クラス<br/>
+            スタートアップクラスAppの基底クラスApplicationと差し替えて使う、xamlの基底クラスも差し替える<br/>
+            2重起動防止機能<br/>
+            <see cref="M:Utilitys.SingleBootableApp.OnConstructor"/>をオーバーライドしてアプリケーションの開始処理を行える<br/>
+            <see cref="M:Utilitys.SingleBootableApp.OnDestructor"/>をオーバーライドしてアプリケーションの終了処理を行える<br/>
+            <see cref="M:Utilitys.SingleBootableApp.OnUnhandledException(System.Exception,System.Int32@)"/>をオーバーライドしてキャッチされなかった例外処理を行える<br/>
+            </summary>
+            <remarks><a href="http://kisuke0303.sakura.ne.jp/blog/?p=182">WPF で二重起動を防止する</a><br/>
+            <a href="http://www.geocities.jp/litorud/WPF.html#9">二重起動を防止し、起動中のウィンドウをアクティブにする</a></remarks>
+        </member>
+        <member name="P:Utilitys.SingleBootableApp.StartupPath">
+            <summary>
+            Gets the startup path.
+            </summary>
+            <value>
+            The startup path.
+            </value>
+        </member>
+        <member name="P:Utilitys.SingleBootableApp.ApplicationName">
+            <summary>
+            Gets the name of the application.
+            </summary>
+            <value>
+            The name of the application.
+            </value>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Utilitys.SingleBootableApp"/> class.
+            </summary>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.OnStartup(System.Windows.StartupEventArgs)">
+            <summary>
+            二重起動防止の処理を行い、<see cref="M:Utilitys.SingleBootableApp.OnConstructor"/>を呼び出す<br/>
+              <see cref="E:System.Windows.Application.Startup" /> イベントを発生させます。
+            </summary>
+            <param name="e">イベント データを格納している <see cref="T:System.Windows.StartupEventArgs" />。</param>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.SingleBootableApp_DispatcherUnhandledException(System.Object,System.Windows.Threading.DispatcherUnhandledExceptionEventArgs)">
+            <summary>
+            キャッチされなかった例外のハンドラ、<see cref="M:Utilitys.SingleBootableApp.OnUnhandledException(System.Exception,System.Int32@)"/>をコールして終了コードを拾得する
+            </summary>
+            <param name="sender">The source of the event.</param>
+            <param name="e">The <see cref="T:System.Windows.Threading.DispatcherUnhandledExceptionEventArgs"/> instance containing the event data.</param>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.OnUnhandledException(System.Exception,System.Int32@)">
+            <summary>
+            Called when [unhandled exception].
+            </summary>
+            <param name="e">The e.</param>
+            <param name="errorCode">The error code.</param>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.OnConstructor">
+            <summary>
+            Called when [constructor].
+            </summary>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.OnDestructor">
+            <summary>
+            Called when [destructor].
+            </summary>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.OnExit(System.Windows.ExitEventArgs)">
+            <summary>
+              <see cref="E:System.Windows.Application.Exit" /> イベントを発生させます。
+            </summary>
+            <param name="e">イベント データを格納している <see cref="T:System.Windows.ExitEventArgs" />。</param>
+        </member>
+        <member name="F:Utilitys.SingleBootableApp.applicationId">
+            <summary>
+            実際はUUIDなどが良い。
+            </summary>
+        </member>
+        <member name="F:Utilitys.SingleBootableApp.mutex">
+            <summary>
+            起動フラグ用ミューテックス
+            アプリケーション名使用
+            </summary>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.DoubleBootCheckAndRegist">
+            <summary>
+            スタートアップ時のミューテックスのチェックと拾得
+            </summary>
+        </member>
+        <member name="M:Utilitys.SingleBootableApp.DoubleBootRelease">
+            <summary>
+            終了時のミューテックスの解放
+            </summary>
+        </member>
+        <member name="T:Utilitys.SingleBootableApp.IpcHandler">
+            <summary>
+            IPC用ハンドラ
+            </summary>
+        </member>
+        <member name="T:PlainUtility.Mvvm.SimpleRaiseNavigationStory">
+            <summary>
+            シンプルなスライド系のアニメーション
+            </summary>
+            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
+        </member>
+        <member name="T:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode">
+            <summary>
+            スライドアニメーションのタイプ定義
+            </summary>
+        </member>
+        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
+            <summary>
+            遷移先ページが右側からスライド
+            </summary>
+        </member>
+        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
+            <summary>
+            遷移先ページが左側からスライド
+            </summary>
+        </member>
+        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
+            <summary>
+            遷移先ページが下側からスライド
+            </summary>
+        </member>
+        <member name="F:PlainUtility.Mvvm.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
+            <summary>
+            遷移先ページが上側からスライド
+            </summary>
+        </member>
+        <member name="P:PlainUtility.Mvvm.SimpleRaiseNavigationStory.NavigationMode">
+            <summary>
+            再生するスライドアニメーションのタイプ
+            </summary>
+        </member>
+        <member name="P:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Duration">
+            <summary>
+            アニメーションの再生時間
+            </summary>
+        </member>
+        <member name="M:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
+            <summary>
+            アニメーション再生の為のイニシャライザ
+            </summary>
+            <param name="fromContent">遷移元ページ</param>
+            <param name="toContent">遷移先ページ</param>
+            <returns>アニメーションを再生するコンテント</returns>
+        </member>
+        <member name="M:PlainUtility.Mvvm.SimpleRaiseNavigationStory.Animate(System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            アニメーション再生
+            </summary>
+            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
         </member>
         <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
             <summary>

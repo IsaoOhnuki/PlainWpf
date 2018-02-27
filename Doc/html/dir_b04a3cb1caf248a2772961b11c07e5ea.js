@@ -7,6 +7,12 @@ var dir_b04a3cb1caf248a2772961b11c07e5ea =
     [ "App.g.i.cs", "_release_2_app_8g_8i_8cs.html", [
       [ "App", "class_plain_wpf_1_1_app.html", "class_plain_wpf_1_1_app" ]
     ] ],
+    [ "ColorSelector.g.cs", "_release_2_color_selector_8g_8cs.html", [
+      [ "ColorSelector", "class_controls_1_1_color_selector.html", "class_controls_1_1_color_selector" ]
+    ] ],
+    [ "ColorSelector.g.i.cs", "_release_2_color_selector_8g_8i_8cs.html", [
+      [ "ColorSelector", "class_controls_1_1_color_selector.html", "class_controls_1_1_color_selector" ]
+    ] ],
     [ "GeneratedInternalTypeHelper.g.cs", "_release_2_generated_internal_type_helper_8g_8cs.html", [
       [ "GeneratedInternalTypeHelper", "class_xaml_generated_namespace_1_1_generated_internal_type_helper.html", "class_xaml_generated_namespace_1_1_generated_internal_type_helper" ]
     ] ],

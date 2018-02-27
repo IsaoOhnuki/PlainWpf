@@ -5,5 +5,6 @@ var searchData=
   ['errorschanged',['ErrorsChanged',['../class_mvvm_1_1_bindable_base.html#ad98473c1bd34fd758fb5d8a7384a859a',1,'Mvvm::BindableBase']]],
   ['execute',['Execute',['../class_mvvm_1_1_delegate_command.html#aee5ddc7221b6ed0a7cdf26b48cf81ed6',1,'Mvvm.DelegateCommand.Execute(object parameter)'],['../class_mvvm_1_1_delegate_command.html#aee5ddc7221b6ed0a7cdf26b48cf81ed6',1,'Mvvm.DelegateCommand.Execute(object parameter)']]],
   ['expanderdoubleanimation',['ExpanderDoubleAnimation',['../class_utilitys_1_1_expander_double_animation.html',1,'Utilitys']]],
+  ['extension',['Extension',['../class_utilitys_1_1_path_builder.html#a3a43ab1396bf0c6c4866ccafec36d95e',1,'Utilitys.PathBuilder.Extension()'],['../class_plain_wpf_1_1_view_models_1_1_sub_page4_view_model.html#a2b3bfade5cc79707206c00cba738277c',1,'PlainWpf.ViewModels.SubPage4ViewModel.Extension()']]],
   ['extensions',['Extensions',['../namespace_extensions.html',1,'']]]
 ];

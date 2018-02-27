@@ -1,9 +1,10 @@
-﻿<local:SingleBootableApp x:Class="PlainWpf.App"
+﻿<Utilitys:SingleBootableApp x:Class="PlainWpf.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:PlainWpf"
+             xmlns:Utilitys="clr-namespace:Utilitys"
              StartupUri="Views/MainWindow.xaml">
-    <local:SingleBootableApp.Resources>
+    <Utilitys:SingleBootableApp.Resources>
          
-    </local:SingleBootableApp.Resources>
-</local:SingleBootableApp>
+    </Utilitys:SingleBootableApp.Resources>
+</Utilitys:SingleBootableApp>

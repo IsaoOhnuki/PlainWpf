@@ -57,7 +57,6 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModels\CsXmlCommentReader.cs" />
-    <Compile Include="SingleBootableApp.cs" />
     <Compile Include="ViewModels\SabPage2ViewModel.cs" />
     <Compile Include="ViewModels\SabPage1ViewModel.cs" />
     <Compile Include="ViewModels\SubPage3ViewModel.cs" />

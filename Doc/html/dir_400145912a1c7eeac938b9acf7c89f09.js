@@ -6,8 +6,5 @@ var dir_400145912a1c7eeac938b9acf7c89f09 =
     [ "Views", "dir_82ddfa8c0c246b57f3af98d6394112c8.html", "dir_82ddfa8c0c246b57f3af98d6394112c8" ],
     [ "App.xaml.cs", "_app_8xaml_8cs.html", [
       [ "App", "class_plain_wpf_1_1_app.html", "class_plain_wpf_1_1_app" ]
-    ] ],
-    [ "SingleBootableApp.cs", "_single_bootable_app_8cs.html", [
-      [ "SingleBootableApp", "class_plain_wpf_1_1_single_bootable_app.html", "class_plain_wpf_1_1_single_bootable_app" ]
     ] ]
 ];

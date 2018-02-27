@@ -19,6 +19,9 @@ var dir_cd10734f0d3753c0af72d23c91e713ca =
     [ "SubPage3ViewModel.cs", "_sub_page3_view_model_8cs.html", [
       [ "SubPage3ViewModel", "class_plain_wpf_1_1_view_models_1_1_sub_page3_view_model.html", "class_plain_wpf_1_1_view_models_1_1_sub_page3_view_model" ]
     ] ],
+    [ "SubPage4ViewModel.cs", "_sub_page4_view_model_8cs.html", [
+      [ "SubPage4ViewModel", "class_plain_wpf_1_1_view_models_1_1_sub_page4_view_model.html", "class_plain_wpf_1_1_view_models_1_1_sub_page4_view_model" ]
+    ] ],
     [ "XmlTreeViewModel.cs", "_xml_tree_view_model_8cs.html", [
       [ "XmlTreeViewModel", "class_plain_wpf_1_1_view_models_1_1_xml_tree_view_model.html", "class_plain_wpf_1_1_view_models_1_1_xml_tree_view_model" ]
     ] ]

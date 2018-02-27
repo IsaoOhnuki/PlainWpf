@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['objectstack_2ecs',['ObjectStack.cs',['../_object_stack_8cs.html',1,'']]],
-  ['openfiledialogbehaviour_2ecs',['OpenFileDialogBehaviour.cs',['../_open_file_dialog_behaviour_8cs.html',1,'']]]
+  ['navigationserviceex_2ecs',['NavigationServiceEx.cs',['../_navigation_service_ex_8cs.html',1,'']]],
+  ['notifybase_2ecs',['NotifyBase.cs',['../_notify_base_8cs.html',1,'']]]
 ];

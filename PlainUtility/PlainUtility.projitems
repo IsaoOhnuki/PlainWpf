@@ -18,8 +18,12 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimeToJpStringsConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimeToStringsConverters.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleComparisonToBooleanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converters\IntComparisonToBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\VagueStringToMatchLikePattern.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NotifyBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\Messenger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleWipeNavigationStory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\NotifyBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleRaiseNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\Logger.cs" />
@@ -29,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DelegateCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NavigationServiceEx.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\PathBuilder.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\SingleBootableApp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Page Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.xaml">

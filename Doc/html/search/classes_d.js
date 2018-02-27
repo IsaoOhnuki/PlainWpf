@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['resources',['Resources',['../class_plain_wpf_1_1_properties_1_1_resources.html',1,'PlainWpf::Properties']]]
+  ['pathbuilder',['PathBuilder',['../class_utilitys_1_1_path_builder.html',1,'Utilitys']]]
 ];

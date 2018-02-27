@@ -12,6 +12,8 @@ var class_controls_1_1_color_selector =
     [ "ColorToValue", "class_controls_1_1_color_selector.html#a3854e5439b244ef8ea6cb227d5dfd2d5", null ],
     [ "InitializeComponent", "class_controls_1_1_color_selector.html#a60f9a7f34fb841ce4c3a178665757703", null ],
     [ "InitializeComponent", "class_controls_1_1_color_selector.html#a60f9a7f34fb841ce4c3a178665757703", null ],
+    [ "InitializeComponent", "class_controls_1_1_color_selector.html#a60f9a7f34fb841ce4c3a178665757703", null ],
+    [ "InitializeComponent", "class_controls_1_1_color_selector.html#a60f9a7f34fb841ce4c3a178665757703", null ],
     [ "comboBox", "class_controls_1_1_color_selector.html#ad6a08af5756a93f217802ca970473a8f", null ],
     [ "SelectedColorPlusProperty", "class_controls_1_1_color_selector.html#a19f746c3dc51e7868762074ac549b2d5", null ],
     [ "SelectedColorProperty", "class_controls_1_1_color_selector.html#aa734bc9775c547b152f3a439ad1af2ae", null ],

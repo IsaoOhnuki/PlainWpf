@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['logger_2ecs',['Logger.cs',['../_logger_8cs.html',1,'']]]
+  ['japanesedatetimeextensions_2ecs',['JapaneseDateTimeExtensions.cs',['../_japanese_date_time_extensions_8cs.html',1,'']]]
 ];

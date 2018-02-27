@@ -112,13 +112,18 @@ Mvvm.SimpleWipeNavigationStory の継承関係図</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 公開型</h2></td></tr>
 <tr class="memitem:ae88c498718e974aca403a4e5986cbb1a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1a">WipeNavigationMode</a> { <br />
-&#160;&#160;<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa180bc3b1c5619aaef40e803f49921012">WipeNavigationMode.Spread</a>, 
-<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aaf6b8f4891b6285c130046ce0f584c4b1">WipeNavigationMode.HorizontalSpread</a>, 
-<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aafaed33e8c89cf6116557e0e7be405720">WipeNavigationMode.VerticalSpread</a>, 
-<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa2e69e481658c660843bd57172d371f67">WipeNavigationMode.Narrowed</a>, 
+&#160;&#160;<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aac56fabaa0fbf826b6f41c0c6cc4e5258">WipeNavigationMode.CenterSpread</a> = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Center, 
+<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aaf6b8f4891b6285c130046ce0f584c4b1">WipeNavigationMode.HorizontalSpread</a> = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Center, 
+<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aafaed33e8c89cf6116557e0e7be405720">WipeNavigationMode.VerticalSpread</a> = WipeNavigationModeCheck.Spread | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Center, 
+<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aacc66b52ee10c75b9622840522ba57d23">WipeNavigationMode.CenterNarrowed</a> = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Center, 
 <br />
-&#160;&#160;<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa0a4a0e23cf1637515be9f10c55ce7d31">WipeNavigationMode.HorizontalNarrowed</a>, 
-<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa8d3b574b4cd7157d1cdbc82bd2f37c1d">WipeNavigationMode.VerticalNarrowed</a>
+&#160;&#160;<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa0a4a0e23cf1637515be9f10c55ce7d31">WipeNavigationMode.HorizontalNarrowed</a> = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Center, 
+<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa8d3b574b4cd7157d1cdbc82bd2f37c1d">WipeNavigationMode.VerticalNarrowed</a> = WipeNavigationModeCheck.Narrowed | WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Center, 
+<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa421976577b505de5fb51d30fcef94ebd">WipeNavigationMode.LeftToHorizontal</a> = WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Left, 
+<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa793195fc3debbfd7e5eaf08530ff7c74">WipeNavigationMode.RightToHorizontal</a> = WipeNavigationModeCheck.Horizontal | WipeNavigationModeCheck.Right, 
+<br />
+&#160;&#160;<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa671c4c711ecb9c8d906f8a9516984678">WipeNavigationMode.TopToVertical</a> = WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Top, 
+<a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1aa85b1b3c1ff4e5b6abddd3f2eb99d030b">WipeNavigationMode.BottomToVertical</a> = WipeNavigationModeCheck.Vertical | WipeNavigationModeCheck.Bottom
 <br />
  }</td></tr>
 <tr class="memdesc:ae88c498718e974aca403a4e5986cbb1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">ワイプアニメーションのタイプ定義  <a href="class_mvvm_1_1_simple_wipe_navigation_story.html#ae88c498718e974aca403a4e5986cbb1a">[詳解]</a><br /></td></tr>
@@ -126,12 +131,12 @@ Mvvm.SimpleWipeNavigationStory の継承関係図</div>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 公開メンバ関数</h2></td></tr>
-<tr class="memitem:ad5a460eb20d7fc36893490fd9d732505"><td class="memItemLeft" align="right" valign="top">FrameworkElement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ad5a460eb20d7fc36893490fd9d732505">Initialize</a> (FrameworkElement fromContent, FrameworkElement toContent, Action&lt; FrameworkElement &gt; endAnimation)</td></tr>
-<tr class="memdesc:ad5a460eb20d7fc36893490fd9d732505"><td class="mdescLeft">&#160;</td><td class="mdescRight">アニメーション再生の為のイニシャライザ  <a href="#ad5a460eb20d7fc36893490fd9d732505">[詳解]</a><br /></td></tr>
-<tr class="separator:ad5a460eb20d7fc36893490fd9d732505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a227d1e86fdf615a4734328385cb05a43"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#a227d1e86fdf615a4734328385cb05a43">Animate</a> ()</td></tr>
-<tr class="memdesc:a227d1e86fdf615a4734328385cb05a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">アニメーション再生  <a href="#a227d1e86fdf615a4734328385cb05a43">[詳解]</a><br /></td></tr>
-<tr class="separator:a227d1e86fdf615a4734328385cb05a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3738cef0a533406f8aeda62f25555a87"><td class="memItemLeft" align="right" valign="top">FrameworkElement&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#a3738cef0a533406f8aeda62f25555a87">Initialize</a> (FrameworkElement fromContent, FrameworkElement toContent)</td></tr>
+<tr class="memdesc:a3738cef0a533406f8aeda62f25555a87"><td class="mdescLeft">&#160;</td><td class="mdescRight">アニメーション再生の為のイニシャライザ  <a href="#a3738cef0a533406f8aeda62f25555a87">[詳解]</a><br /></td></tr>
+<tr class="separator:a3738cef0a533406f8aeda62f25555a87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8c934ffc576bff1acfebe6c9c1a4bf9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mvvm_1_1_simple_wipe_navigation_story.html#ad8c934ffc576bff1acfebe6c9c1a4bf9">Animate</a> (Action&lt; FrameworkElement &gt; endAnimation)</td></tr>
+<tr class="memdesc:ad8c934ffc576bff1acfebe6c9c1a4bf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">アニメーション再生  <a href="#ad8c934ffc576bff1acfebe6c9c1a4bf9">[詳解]</a><br /></td></tr>
+<tr class="separator:ad8c934ffc576bff1acfebe6c9c1a4bf9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 プロパティ</h2></td></tr>
@@ -168,25 +173,33 @@ Mvvm.SimpleWipeNavigationStory の継承関係図</div>
 
 <p>ワイプアニメーションのタイプ定義 </p>
 <table class="fieldtable">
-<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aa180bc3b1c5619aaef40e803f49921012"></a>Spread&#160;</td><td class="fielddoc"><p>遷移先が中心から広がる </p>
+<tr><th colspan="2">列挙値</th></tr><tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aac56fabaa0fbf826b6f41c0c6cc4e5258"></a>CenterSpread&#160;</td><td class="fielddoc"><p>遷移先が中心から広がる </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aaf6b8f4891b6285c130046ce0f584c4b1"></a>HorizontalSpread&#160;</td><td class="fielddoc"><p>遷移先が水平方向に広がる </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aafaed33e8c89cf6116557e0e7be405720"></a>VerticalSpread&#160;</td><td class="fielddoc"><p>遷移先が垂直方向に広がる </p>
 </td></tr>
-<tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aa2e69e481658c660843bd57172d371f67"></a>Narrowed&#160;</td><td class="fielddoc"><p>遷移元が中心に窄まる </p>
+<tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aacc66b52ee10c75b9622840522ba57d23"></a>CenterNarrowed&#160;</td><td class="fielddoc"><p>遷移元が中心に窄まる </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aa0a4a0e23cf1637515be9f10c55ce7d31"></a>HorizontalNarrowed&#160;</td><td class="fielddoc"><p>遷移元が左右から中心に窄まる </p>
 </td></tr>
 <tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aa8d3b574b4cd7157d1cdbc82bd2f37c1d"></a>VerticalNarrowed&#160;</td><td class="fielddoc"><p>遷移元が上下から中心に窄まる </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aa421976577b505de5fb51d30fcef94ebd"></a>LeftToHorizontal&#160;</td><td class="fielddoc"><p>遷移先が左から右に水平方向に広がる </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aa793195fc3debbfd7e5eaf08530ff7c74"></a>RightToHorizontal&#160;</td><td class="fielddoc"><p>遷移先が右から左に水平方向に広がる </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aa671c4c711ecb9c8d906f8a9516984678"></a>TopToVertical&#160;</td><td class="fielddoc"><p>遷移先が上から下に垂直方向に広がる </p>
+</td></tr>
+<tr><td class="fieldname"><a id="ae88c498718e974aca403a4e5986cbb1aa85b1b3c1ff4e5b6abddd3f2eb99d030b"></a>BottomToVertical&#160;</td><td class="fielddoc"><p>遷移先が下から上に垂直方向に広がる </p>
 </td></tr>
 </table>
 
 </div>
 </div>
 <h2 class="groupheader">メソッド詳解</h2>
-<a id="a227d1e86fdf615a4734328385cb05a43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a227d1e86fdf615a4734328385cb05a43">&#9670;&nbsp;</a></span>Animate()</h2>
+<a id="ad8c934ffc576bff1acfebe6c9c1a4bf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8c934ffc576bff1acfebe6c9c1a4bf9">&#9670;&nbsp;</a></span>Animate()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -194,20 +207,27 @@ Mvvm.SimpleWipeNavigationStory の継承関係図</div>
         <tr>
           <td class="memname">void Mvvm.SimpleWipeNavigationStory.Animate </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">Action&lt; FrameworkElement &gt;&#160;</td>
+          <td class="paramname"><em>endAnimation</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>アニメーション再生 </p>
+<dl class="params"><dt>引数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">endAnimation</td><td>アニメーション終了時のイベントハンドラ</td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p><a class="el" href="interface_mvvm_1_1_i_navigation_story.html#af80c5f0c82ae8aee3aff7ddbfb56f8b3">Mvvm.INavigationStory</a>を実装しています。</p>
+<p><a class="el" href="interface_mvvm_1_1_i_navigation_story.html#aa2559603ed1df48a0b8c8b163c4d819a">Mvvm.INavigationStory</a>を実装しています。</p>
 
 </div>
 </div>
-<a id="ad5a460eb20d7fc36893490fd9d732505"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad5a460eb20d7fc36893490fd9d732505">&#9670;&nbsp;</a></span>Initialize()</h2>
+<a id="a3738cef0a533406f8aeda62f25555a87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3738cef0a533406f8aeda62f25555a87">&#9670;&nbsp;</a></span>Initialize()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -222,13 +242,7 @@ Mvvm.SimpleWipeNavigationStory の継承関係図</div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">FrameworkElement&#160;</td>
-          <td class="paramname"><em>toContent</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">Action&lt; FrameworkElement &gt;&#160;</td>
-          <td class="paramname"><em>endAnimation</em>&#160;</td>
+          <td class="paramname"><em>toContent</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -243,13 +257,12 @@ Mvvm.SimpleWipeNavigationStory の継承関係図</div>
   <table class="params">
     <tr><td class="paramname">fromContent</td><td>遷移元ページ</td></tr>
     <tr><td class="paramname">toContent</td><td>遷移先ページ</td></tr>
-    <tr><td class="paramname">endAnimation</td><td>アニメーション終了時のイベントハンドラ</td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>戻り値</dt><dd>アニメーションを再生するコンテント</dd></dl>
 
-<p><a class="el" href="interface_mvvm_1_1_i_navigation_story.html#a7fa8b6e68f7ff10951118f813e9b721b">Mvvm.INavigationStory</a>を実装しています。</p>
+<p><a class="el" href="interface_mvvm_1_1_i_navigation_story.html#a327e71cc988084c17aa25c5da39235ac">Mvvm.INavigationStory</a>を実装しています。</p>
 
 </div>
 </div>
@@ -303,7 +316,7 @@ Mvvm.SimpleWipeNavigationStory の継承関係図</div>
 </div>
 </div>
 <hr/>このクラス詳解は次のファイルから抽出されました:<ul>
-<li>C:/Users/isao/Documents/GitRepos/PlainWpf/PlainUtility/Mvvm/<a class="el" href="_navigation_service_ex_8cs.html">NavigationServiceEx.cs</a></li>
+<li>C:/Users/isao/Documents/GitRepos/PlainWpf/PlainUtility/Mvvm/<a class="el" href="_simple_wipe_navigation_story_8cs.html">SimpleWipeNavigationStory.cs</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

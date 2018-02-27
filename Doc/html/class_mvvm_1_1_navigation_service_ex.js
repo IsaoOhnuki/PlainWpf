@@ -15,5 +15,6 @@ var class_mvvm_1_1_navigation_service_ex =
     [ "NavigatorProperty", "class_mvvm_1_1_navigation_service_ex.html#ac0e7a0e81156cee0e4282b4f1bf1f8fa", null ],
     [ "StartupProperty", "class_mvvm_1_1_navigation_service_ex.html#a35b31ff93753357a04f2620d9dc43d87", null ],
     [ "TargetProperty", "class_mvvm_1_1_navigation_service_ex.html#a6090eb1a353f9e84045ee90e579b0632", null ],
+    [ "CanNavigation", "class_mvvm_1_1_navigation_service_ex.html#aa198c6ba43152b49595a7bee2dc5e7eb", null ],
     [ "Content", "class_mvvm_1_1_navigation_service_ex.html#ae3939e5e619b92119497ec37ae311579", null ]
 ];

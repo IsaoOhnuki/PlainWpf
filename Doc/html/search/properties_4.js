@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['haserrors',['HasErrors',['../class_mvvm_1_1_bindable_base.html#a39beb8b8bb0ee2590660b0963baebb38',1,'Mvvm::BindableBase']]],
-  ['hue',['Hue',['../class_controls_1_1_color_selector_1_1_color_plus.html#a19f404c48c50ff967dc4236e05d3b959',1,'Controls::ColorSelector::ColorPlus']]]
+  ['extension',['Extension',['../class_utilitys_1_1_path_builder.html#a3a43ab1396bf0c6c4866ccafec36d95e',1,'Utilitys.PathBuilder.Extension()'],['../class_plain_wpf_1_1_view_models_1_1_sub_page4_view_model.html#a2b3bfade5cc79707206c00cba738277c',1,'PlainWpf.ViewModels.SubPage4ViewModel.Extension()']]]
 ];

@@ -24,6 +24,12 @@ var dir_21481e4a1b2d88cf7a53c886742b1862 =
     [ "SubPage3.g.i.cs", "_release_2_views_2_sub_page3_8g_8i_8cs.html", [
       [ "SubPage3", "class_plain_wpf_1_1_views_1_1_sub_page3.html", "class_plain_wpf_1_1_views_1_1_sub_page3" ]
     ] ],
+    [ "SubPage4.g.cs", "_release_2_views_2_sub_page4_8g_8cs.html", [
+      [ "SubPage4", "class_plain_wpf_1_1_views_1_1_sub_page4.html", "class_plain_wpf_1_1_views_1_1_sub_page4" ]
+    ] ],
+    [ "SubPage4.g.i.cs", "_release_2_views_2_sub_page4_8g_8i_8cs.html", [
+      [ "SubPage4", "class_plain_wpf_1_1_views_1_1_sub_page4.html", "class_plain_wpf_1_1_views_1_1_sub_page4" ]
+    ] ],
     [ "XmlTreeView.g.cs", "_release_2_views_2_xml_tree_view_8g_8cs.html", [
       [ "XmlTreeView", "class_plain_wpf_1_1_views_1_1_xml_tree_view.html", "class_plain_wpf_1_1_views_1_1_xml_tree_view" ]
     ] ],

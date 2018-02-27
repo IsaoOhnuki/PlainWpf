@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:PlainWpf.Views"
         xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
         xmlns:Views="clr-namespace:PlainWpf.Views"
+        xmlns:Converters="clr-namespace:Converters"
         xmlns:Mvvm="clr-namespace:Mvvm"
         mc:Ignorable="d"
         Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
@@ -15,17 +16,18 @@
         <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
     <Window.Resources>
+        <Converters:DoubleComparisonToBooleanConverter x:Key="DoubleComparisonToBooleanConverter"/>
         <NullableBoolConverter x:Key="NullableBoolConverter"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="CenterNarrowed"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHN" NavigationMode="HorizontalNarrowed"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVN" NavigationMode="VerticalNarrowed"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryS" NavigationMode="CenterSpread"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHS" NavigationMode="HorizontalSpread"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVS" NavigationMode="VerticalSpread"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHR" NavigationMode="RightToHorizontal"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHL" NavigationMode="LeftToHorizontal"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVT" NavigationMode="TopToVertical"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVB" NavigationMode="BottomToVertical"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="CenterNarrowed" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHN" NavigationMode="HorizontalNarrowed" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVN" NavigationMode="VerticalNarrowed" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryS" NavigationMode="CenterSpread" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHS" NavigationMode="HorizontalSpread" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVS" NavigationMode="VerticalSpread" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHR" NavigationMode="RightToHorizontal" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHL" NavigationMode="LeftToHorizontal" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVT" NavigationMode="TopToVertical" Duration="0:0:1"/>
+        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVB" NavigationMode="BottomToVertical" Duration="0:0:1"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -81,6 +83,17 @@
         <ContentControl x:Name="RightContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryS}" Grid.Column="2" Width="Auto"/>
         <Grid x:Name="LeftContent" Grid.Column="0">
             <StackPanel Orientation="Vertical">
+                <Button Content="{Binding ActualWidth, ElementName=MainContent}">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding ActualWidth, ElementName=MainContent, Converter={StaticResource DoubleComparisonToBooleanConverter}, ConverterParameter={}{500@800}}" Value="true">
+                                    <Setter Property="Background" Value="HotPink"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+                </Button>
                 <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
                 <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
                 <Button Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>

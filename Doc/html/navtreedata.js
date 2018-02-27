@@ -37,7 +37,7 @@ var NAVTREE =
       [ "クラス階層", "hierarchy.html", "hierarchy" ],
       [ "クラスメンバ", "functions.html", [
         [ "全て", "functions.html", "functions_dup" ],
-        [ "関数", "functions_func.html", null ],
+        [ "関数", "functions_func.html", "functions_func" ],
         [ "変数", "functions_vars.html", null ],
         [ "列挙型", "functions_enum.html", null ],
         [ "プロパティ", "functions_prop.html", null ],
@@ -52,8 +52,9 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_app_8xaml_8cs.html",
-"class_plain_wpf_1_1_view_models_1_1_orientation_vertical_to_visibility_converter.html#a6b7aa96328596036680aa25a48203cdb"
+"_always_override_behavior_8cs.html",
+"class_extensions_1_1_regex_string_extensions.html",
+"class_utilitys_1_1_notify_base.html#a9cae92052cdd726b8ab7d7f09dc0eafa"
 ];
 
 var SYNCONMSG = 'クリックで同期表示が無効になります';

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Utilitys;
 
-namespace PlainWpf
+namespace Utilitys
 {
     /// <summary>
     /// WPFアプリケーション基底クラス<br/>
@@ -25,12 +25,30 @@ namespace PlainWpf
     public class SingleBootableApp : Application
     {
         /// <summary>
+        /// Gets the startup path.
+        /// </summary>
+        /// <value>
+        /// The startup path.
+        /// </value>
+        public PathBuilder StartupPath { get; private set; }
+
+        /// <summary>
+        /// Gets the name of the application.
+        /// </summary>
+        /// <value>
+        /// The name of the application.
+        /// </value>
+        public string ApplicationName { get; private set; }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="SingleBootableApp"/> class.
         /// </summary>
         public SingleBootableApp()
         {
-            appName = this.GetType().Assembly.GetName().ToString();
-            mutex = new System.Threading.Mutex(false, appName);
+            ApplicationName = this.GetType().Assembly.GetName().ToString();
+            mutex = new System.Threading.Mutex(false, ApplicationName);
+
+            StartupPath = new PathBuilder { FullPath = System.AppDomain.CurrentDomain.BaseDirectory };
         }
 
         /// <summary>
@@ -76,6 +94,7 @@ namespace PlainWpf
         /// </summary>
         public virtual void OnConstructor()
         {
+            Logger.Write(LogType.Debug, ApplicationName + " application starting.");
             Logger.Write(LogType.Information, "application start.");
 
             DoubleBootCheckAndRegist();
@@ -114,10 +133,6 @@ namespace PlainWpf
         /// </summary>
         const string applicationId = "00000000-0000-0000-0000-000000000000";
         /// <summary>
-        /// コンストラクタでアプリケーション名を習得
-        /// </summary>
-        private string appName;
-        /// <summary>
         /// 起動フラグ用ミューテックス
         /// アプリケーション名使用
         /// </summary>
@@ -130,13 +145,13 @@ namespace PlainWpf
             // ミューテックスの所有権を要求
             if (!mutex.WaitOne(0, false))
             {
-                MessageBox.Show(appName + " は既に起動しています。", "二重起動防止", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                MessageBox.Show(ApplicationName + " は既に起動しています。", "二重起動防止", MessageBoxButton.OK, MessageBoxImage.Exclamation);
 
                 // 起動されているアプリの表示
                 ChannelServices.RegisterChannel(new IpcClientChannel(), true);
-                ((IpcHandler)Activator.GetObject(typeof(IpcHandler), "ipc://" + applicationId + "/" + appName)).Handle();
+                ((IpcHandler)Activator.GetObject(typeof(IpcHandler), "ipc://" + applicationId + "/" + ApplicationName)).Handle();
 
-                Logger.Write(LogType.Information, "application starting duplication.");
+                Logger.Write(LogType.Debug, "application starting duplication.");
 
                 // 既に起動しているため終了させる
                 mutex.Close();
@@ -147,7 +162,7 @@ namespace PlainWpf
             {
                 // セマフォの登録
                 ChannelServices.RegisterChannel(new IpcServerChannel(applicationId), true);
-                RemotingServices.Marshal(new IpcHandler(), appName, typeof(IpcHandler));
+                RemotingServices.Marshal(new IpcHandler(), ApplicationName, typeof(IpcHandler));
             }
         }
         /// <summary>

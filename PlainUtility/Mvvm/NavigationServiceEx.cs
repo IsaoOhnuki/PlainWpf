@@ -53,6 +53,26 @@ namespace Mvvm
         }
 
         /// <summary>
+        /// Gets or sets a value indicating whether [history tracing animation].
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if [history tracing animation]; otherwise, <c>false</c>.
+        /// </value>
+        public bool HistoryTracingAnimation
+        {
+            get { return (bool)(Content.GetValue(HistoryTracingAnimationProperty)); }
+            set { Content.SetValue(HistoryTracingAnimationProperty, value); }
+        }
+        /// <summary>
+        /// The history tracing animation property
+        /// </summary>
+        public static readonly DependencyProperty HistoryTracingAnimationProperty = DependencyProperty.RegisterAttached(
+            nameof(HistoryTracingAnimation),
+            typeof(bool),
+            typeof(NavigationServiceEx),
+            new PropertyMetadata(default(bool)));
+
+        /// <summary>
         /// Gets or sets a value indicating whether this instance can navigation.
         /// </summary>
         /// <value>
@@ -60,8 +80,8 @@ namespace Mvvm
         /// </value>
         public bool CanNavigation
         {
-            get { return (bool)(Content == null ? false : Content.GetValue(CanNavigationProperty)); }
-            set { Content?.SetValue(CanNavigationProperty, value); }
+            get { return (bool)(Content.GetValue(CanNavigationProperty)); }
+            set { Content.SetValue(CanNavigationProperty, value); }
         }
         /// <summary>
         /// The can navigation property
@@ -80,8 +100,8 @@ namespace Mvvm
         /// </value>
         public bool CanUndo
         {
-            get { return (bool)(Content == null ? false : Content.GetValue(CanUndoProperty)); }
-            set { Content?.SetValue(CanUndoProperty, value); }
+            get { return (bool)(Content.GetValue(CanUndoProperty)); }
+            set { Content.SetValue(CanUndoProperty, value); }
         }
         /// <summary>
         /// The can undo property
@@ -100,8 +120,8 @@ namespace Mvvm
         /// </value>
         public bool CanRedo
         {
-            get { return (bool)(Content == null ? false : Content.GetValue(CanRedoProperty)); }
-            set { Content?.SetValue(CanRedoProperty, value); }
+            get { return (bool)(Content.GetValue(CanRedoProperty)); }
+            set { Content.SetValue(CanRedoProperty, value); }
         }
         /// <summary>
         /// The can redo property
@@ -152,7 +172,7 @@ namespace Mvvm
             if (CanNavigation)
             {
                 CanNavigation = false;
-                if (story == null)
+                if (story == null || (!HistoryTracingAnimation && historyTrace))
                 {
                     this.Content.Content = view;
                     if (!historyTrace)

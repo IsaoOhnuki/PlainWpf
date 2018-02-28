@@ -41,7 +41,87 @@ namespace Mvvm
     /// <remarks><a href="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</a></remarks>
     public class NavigationServiceEx : DependencyObject
     {
-        private HistoryStack<FrameworkElement> pageStack { get; set; } = new HistoryStack<FrameworkElement>();
+        private static Dictionary<FrameworkElement, HistoryStack<FrameworkElement>> pageStacks = new Dictionary<FrameworkElement, HistoryStack<FrameworkElement>>();
+        protected HistoryStack<FrameworkElement> PageStack
+        {
+            get { return pageStacks[Content]; }
+            set
+            {
+                if (!pageStacks.ContainsKey(Content))
+                    pageStacks[Content] = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance can navigation.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance can navigation; otherwise, <c>false</c>.
+        /// </value>
+        public bool CanNavigation
+        {
+            get { return (bool)(Content == null ? false : Content.GetValue(CanNavigationProperty)); }
+            set { Content?.SetValue(CanNavigationProperty, value); }
+        }
+        /// <summary>
+        /// The can navigation property
+        /// </summary>
+        public static readonly DependencyProperty CanNavigationProperty = DependencyProperty.RegisterAttached(
+            nameof(CanNavigation),
+            typeof(bool),
+            typeof(NavigationServiceEx),
+            new PropertyMetadata(defaultValue: true));
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance can undo.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance can undo; otherwise, <c>false</c>.
+        /// </value>
+        public bool CanUndo
+        {
+            get { return (bool)(Content == null ? false : Content.GetValue(CanUndoProperty)); }
+            set { Content?.SetValue(CanUndoProperty, value); }
+        }
+        /// <summary>
+        /// The can undo property
+        /// </summary>
+        public static readonly DependencyProperty CanUndoProperty = DependencyProperty.RegisterAttached(
+            nameof(CanUndo),
+            typeof(bool),
+            typeof(NavigationServiceEx),
+            new PropertyMetadata(default(bool)));
+
+        /// <summary>
+        /// Gets or sets a value indicating whether this instance can redo.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance can redo; otherwise, <c>false</c>.
+        /// </value>
+        public bool CanRedo
+        {
+            get { return (bool)(Content == null ? false : Content.GetValue(CanRedoProperty)); }
+            set { Content?.SetValue(CanRedoProperty, value); }
+        }
+        /// <summary>
+        /// The can redo property
+        /// </summary>
+        public static readonly DependencyProperty CanRedoProperty = DependencyProperty.RegisterAttached(
+            nameof(CanRedo),
+            typeof(bool),
+            typeof(NavigationServiceEx),
+            new PropertyMetadata(default(bool)));
+
+        //protected HistoryStack<FrameworkElement> PageStack
+        //{
+        //    get { return (HistoryStack<FrameworkElement>)Content.GetValue(PageStackProperty); }
+        //    set { Content.SetValue(PageStackProperty , value); }
+        //}
+        //protected static readonly DependencyProperty PageStackProperty = DependencyProperty.RegisterAttached(
+        //    nameof(PageStack),
+        //    typeof(HistoryStack<FrameworkElement>),
+        //    typeof(NavigationServiceEx),
+        //    new PropertyMetadata(null));
 
         /// <summary>
         /// ページナビゲーションを行う領域となるContentControlを保持するAccessor
@@ -71,14 +151,21 @@ namespace Mvvm
             var story = GetNavigationStory(this.Content);
             if (CanNavigation)
             {
+                CanNavigation = false;
                 if (story == null)
                 {
                     this.Content.Content = view;
-                    pageStack.Push(view);
+                    if (!historyTrace)
+                    {
+                        PageStack.Push(view);
+                        CanUndo = PageStack.CanUndo;
+                        CanRedo = PageStack.CanRedo;
+                    }
+                    historyTrace = false;
+                    CanNavigation = true;
                 }
                 else
                 {
-                    CanNavigation = false;
                     FrameworkElement animationElement;
                     try
                     {
@@ -87,23 +174,48 @@ namespace Mvvm
                     catch (Exception e)
                     {
                         animationElement = view;
+                        if (!historyTrace)
+                        {
+                            PageStack.Push(view);
+                            CanUndo = PageStack.CanUndo;
+                            CanRedo = PageStack.CanRedo;
+                        }
+                        historyTrace = false;
                         CanNavigation = true;
                         Logger.Write(e, "ナビゲーションアニメイニシャライザ内部エラー");
                     }
                     this.Content.Content = animationElement;
                     if (animationElement == null || animationElement.Equals(view))
                     {
+                        historyTrace = false;
                         CanNavigation = true;
                     }
                     else
                     {
                         try
                         {
-                            story.Animate(x => { this.Content.Content = x; CanNavigation = true; });
+                            story.Animate(x => {
+                                this.Content.Content = x;
+                                if (!historyTrace)
+                                {
+                                    PageStack.Push(x);
+                                    CanUndo = PageStack.CanUndo;
+                                    CanRedo = PageStack.CanRedo;
+                                }
+                                historyTrace = false;
+                                CanNavigation = true;
+                            });
                         }
                         catch (Exception e)
                         {
                             this.Content.Content = view;
+                            if (!historyTrace)
+                            {
+                                PageStack.Push(view);
+                                CanUndo = PageStack.CanUndo;
+                                CanRedo = PageStack.CanRedo;
+                            }
+                            historyTrace = false;
                             CanNavigation = true;
                             Logger.Write(e, "ナビゲーションアニメ内部エラー");
                         }
@@ -121,7 +233,6 @@ namespace Mvvm
             if (viewType == null)
             {
                 this.Navigate((FrameworkElement)null);
-                throw new Exception();
             }
             else
             {
@@ -142,6 +253,7 @@ namespace Mvvm
             this.Navigate(nextPage);
         }
 
+        private bool historyTrace;
         /// <summary>
         /// NavigationCommands.PreviousPageコマンドに対する応答処理
         /// </summary>
@@ -149,7 +261,13 @@ namespace Mvvm
         /// <param name="e">e.Parameterに遷移するページのType</param>
         private void OnPreviousPage(object sender, ExecutedRoutedEventArgs e)
         {
-            this.Navigate(pageStack.Undo());
+            if (PageStack.CanUndo)
+            {
+                historyTrace = true;
+                this.Navigate(PageStack.Undo());
+                CanUndo = PageStack.CanUndo;
+                CanRedo = PageStack.CanRedo;
+            }
         }
 
         /// <summary>
@@ -159,7 +277,13 @@ namespace Mvvm
         /// <param name="e">e.Parameterに遷移するページのType</param>
         private void OnNextPage(object sender, ExecutedRoutedEventArgs e)
         {
-            this.Navigate(pageStack.Redo());
+            if (PageStack.CanRedo)
+            {
+                historyTrace = true;
+                this.Navigate(PageStack.Redo());
+                CanUndo = PageStack.CanUndo;
+                CanRedo = PageStack.CanRedo;
+            }
         }
 
         #region ページ遷移時のアニメーション
@@ -233,6 +357,8 @@ namespace Mvvm
                 // ContentプロパティとTargetをバインドしておく。
                 BindingOperations.SetBinding(nav, NavigationServiceEx.ContentProperty, new Binding() { Source = target });
 
+                nav.PageStack = new HistoryStack<FrameworkElement>();
+
                 // ナビゲーション用のコマンドバインディング
                 element.CommandBindings.Add(new CommandBinding(NavigationCommands.GoToPage, nav.OnGoToPage));
                 element.CommandBindings.Add(new CommandBinding(NavigationCommands.BrowseBack, nav.OnPreviousPage));
@@ -246,14 +372,6 @@ namespace Mvvm
             }
         }
         #endregion
-
-        /// <summary>
-        /// ナビゲーション可能であることのフラグ
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if this instance can navigation; otherwise, <c>false</c>.
-        /// </value>
-        private static bool CanNavigation { get; set; } = true;
 
         #region スタートアップ時に表示するページを指定するための添付プロパティ
         /// <summary>

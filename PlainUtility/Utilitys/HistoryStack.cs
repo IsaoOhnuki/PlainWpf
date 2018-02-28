@@ -23,7 +23,7 @@ namespace Utilitys
         /// </summary>
         public HistoryStack()
         {
-            stackPoint = 0;
+            stackPoint = -1;
             stack = new List<T>();
         }
 
@@ -83,6 +83,7 @@ namespace Utilitys
             {
                 Rewind();
                 stack.Add(t);
+                ++stackPoint;
                 OnPropertyChanged(nameof(CanUndo));
                 OnPropertyChanged(nameof(CanRedo));
             }
@@ -92,7 +93,7 @@ namespace Utilitys
         /// </summary>
         private void Rewind()
         {
-            while (stackPoint < stack.Count)
+            while (CanRedo)
             {
                 var tt = stack[stack.Count - 1];
                 if (tt is IDisposable)

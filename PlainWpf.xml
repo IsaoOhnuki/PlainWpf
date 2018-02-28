@@ -675,6 +675,8 @@
             </summary>
             <remarks>
             <a href="https://msdn.microsoft.com/ja-jp/magazine/dn630647.aspx">非同期 MVVM アプリケーションのパターン: コマンド</a>
+            <a href="http://ufcpp.net/study/csharp/MiscEventSubscribe.html">【雑記】イベントの購読とその解除</a>
+            <a href="https://qiita.com/Temarin/items/43396f85890c5acb5b30">IDisposableをまとめる方法</a>
             </remarks>
         </member>
         <member name="T:Mvvm.IAsyncCommand">
@@ -864,6 +866,45 @@
             </summary>
             <remarks><a href="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</a></remarks>
         </member>
+        <member name="P:Mvvm.NavigationServiceEx.CanNavigation">
+            <summary>
+            Gets or sets a value indicating whether this instance can navigation.
+            </summary>
+            <value>
+              <c>true</c> if this instance can navigation; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.CanNavigationProperty">
+            <summary>
+            The can navigation property
+            </summary>
+        </member>
+        <member name="P:Mvvm.NavigationServiceEx.CanUndo">
+            <summary>
+            Gets or sets a value indicating whether this instance can undo.
+            </summary>
+            <value>
+              <c>true</c> if this instance can undo; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.CanUndoProperty">
+            <summary>
+            The can undo property
+            </summary>
+        </member>
+        <member name="P:Mvvm.NavigationServiceEx.CanRedo">
+            <summary>
+            Gets or sets a value indicating whether this instance can redo.
+            </summary>
+            <value>
+              <c>true</c> if this instance can redo; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:Mvvm.NavigationServiceEx.CanRedoProperty">
+            <summary>
+            The can redo property
+            </summary>
+        </member>
         <member name="P:Mvvm.NavigationServiceEx.Content">
             <summary>
             ページナビゲーションを行う領域となるContentControlを保持するAccessor
@@ -945,14 +986,6 @@
             ページ遷移を実現するエリア。ContentControlを指定すること。
             </summary>
             <remarks>この添付プロパティで指定した値は、NavigationServiceEx.Contentプロパティとバインドして同期するようにして扱う。</remarks>
-        </member>
-        <member name="P:Mvvm.NavigationServiceEx.CanNavigation">
-            <summary>
-            ナビゲーション可能であることのフラグ
-            </summary>
-            <value>
-              <c>true</c> if this instance can navigation; otherwise, <c>false</c>.
-            </value>
         </member>
         <member name="M:Mvvm.NavigationServiceEx.GetStartup(System.Windows.DependencyObject)">
             <summary>

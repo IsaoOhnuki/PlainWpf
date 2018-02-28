@@ -18,6 +18,7 @@
     <Window.Resources>
         <Converters:DoubleComparisonToBooleanConverter x:Key="DoubleComparisonToBooleanConverter"/>
         <NullableBoolConverter x:Key="NullableBoolConverter"/>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
         <Mvvm:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="CenterNarrowed" Duration="0:0:1"/>
         <Mvvm:SimpleWipeNavigationStory x:Key="StoryHN" NavigationMode="HorizontalNarrowed" Duration="0:0:1"/>
         <Mvvm:SimpleWipeNavigationStory x:Key="StoryVN" NavigationMode="VerticalNarrowed" Duration="0:0:1"/>
@@ -42,6 +43,19 @@
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Style.Triggers>
+                                    <DataTrigger Binding="{Binding (Mvvm:NavigationServiceEx.CanUndo), Mode=OneWay, ElementName=MainContent}" Value="false">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Value="false">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding (Mvvm:NavigationServiceEx.CanUndo), Mode=OneWay, ElementName=MainContent}" Value="true"/>
+                                            <Condition Binding="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Value="true"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                    </MultiDataTrigger>
                                     <DataTrigger Binding="{Binding ActualWidth, ElementName=MainContent, Converter={StaticResource DoubleComparisonToBooleanConverter}, ConverterParameter={}{500@800}}" Value="True">
                                         <Setter Property="Background" Value="HotPink"/>
                                     </DataTrigger>
@@ -53,6 +67,19 @@
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Style.Triggers>
+                                    <DataTrigger Binding="{Binding (Mvvm:NavigationServiceEx.CanRedo), Mode=OneWay, ElementName=MainContent}" Value="false">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <DataTrigger Binding="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Value="false">
+                                        <Setter Property="IsEnabled" Value="False"/>
+                                    </DataTrigger>
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding (Mvvm:NavigationServiceEx.CanRedo), Mode=OneWay, ElementName=MainContent}" Value="true"/>
+                                            <Condition Binding="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Value="true"/>
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="IsEnabled" Value="True"/>
+                                    </MultiDataTrigger>
                                     <DataTrigger Binding="{Binding ActualWidth, ElementName=MainContent, Converter={StaticResource DoubleComparisonToBooleanConverter}, ConverterParameter={}{500@800}}" Value="True">
                                         <Setter Property="Background" Value="ForestGreen"/>
                                     </DataTrigger>
@@ -87,12 +114,12 @@
                 </StackPanel>
                 <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
                 <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
-                <Button Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
-                <Button Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
-                <Button Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage3}"/>
-                <Button Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage4}"/>
-                <Button Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
-                <Button Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:ViewBoxTest}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage3}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage4}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:ViewBoxTest}"/>
                 <ListBox x:Name="AnimeType" ScrollViewer.VerticalScrollBarVisibility="Visible">
                     <ListBox.Items>
                         <ListBoxItem Name="n5" Content="Narrowed"/>

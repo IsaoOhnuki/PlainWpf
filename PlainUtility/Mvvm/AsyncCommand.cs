@@ -144,6 +144,8 @@ namespace Mvvm
     /// </summary>
     /// <remarks>
     /// <a href="https://msdn.microsoft.com/ja-jp/magazine/dn630647.aspx">非同期 MVVM アプリケーションのパターン: コマンド</a>
+    /// <a href="http://ufcpp.net/study/csharp/MiscEventSubscribe.html">【雑記】イベントの購読とその解除</a>
+    /// <a href="https://qiita.com/Temarin/items/43396f85890c5acb5b30">IDisposableをまとめる方法</a>
     /// </remarks>
     public abstract class AsyncCommandBase : IAsyncCommand
     {

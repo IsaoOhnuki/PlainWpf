@@ -9,6 +9,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Mvvm;
+using System.Windows.Input;
+using System.ComponentModel;
 
 namespace PlainWpf.ViewModels
 {
@@ -44,7 +46,59 @@ namespace PlainWpf.ViewModels
             set { SetProperty(ref canCommand, value); }
         }
 
-        public DelegateCommand Command { get; set; }
+        private string _name;
+        public string Name
+        {
+            get { return _name; }
+            set
+            {
+                _name = value;
+                OnPropertyChanged("Name");
+            }
+        }
+
+        private bool IsOk
+        {
+            get { return !string.IsNullOrWhiteSpace(Name); }
+        }
+
+        private ICommand _helloCommand;
+        public ICommand Hello
+        {
+            get
+            {
+                if (_helloCommand == null)
+                {
+                    _helloCommand = new DelegateCommand(
+                        () => this.HelloAction(),
+                        () => this.IsOk);
+                }
+                return _helloCommand;
+            }
+        }
+
+        public void HelloAction()
+        {
+            var msg = new DialogBoxMessage(this);
+            msg.Message = Name + "さん、こんにちは。";
+            msg.Button = MessageBoxButton.YesNo;
+            Messenger.Default.Send(this, msg);
+            if (msg.Result == MessageBoxResult.Yes)
+            {
+                Name = "";
+            }
+        }
+        //#region INotifyPropertyChanged メンバ
+
+        //public event PropertyChangedEventHandler PropertyChanged;
+
+        //protected void OnPropertyChanged(string propertyName)
+        //{
+        //    PropertyChangedEventHandler handler = this.PropertyChanged;
+        //    if (handler != null)
+        //        handler(this, new PropertyChangedEventArgs(propertyName));
+        //}
+        //#endregion
     }
 
     public class OrientationToBooleanConverter : IValueConverter

@@ -5,9 +5,20 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PlainWpf.Views"
       xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
+      xmlns:Mvvm="clr-namespace:Mvvm"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300" Background="#FF00FF51"
       >
+    <UserControl.DataContext>
+        <ViewModels:SabPage2ViewModel/>
+    </UserControl.DataContext>
+    <Mvvm:MessengerBehavior.Actions>
+        <Mvvm:ActionCollection>
+            <Mvvm:DialogBoxAction />
+            <!--<Mvvm:OpenDialogAction />-->
+            <!--<Mvvm:SaveDialogAction />-->
+        </Mvvm:ActionCollection>
+    </Mvvm:MessengerBehavior.Actions>
     <UserControl.Resources>
         <ViewModels:OrientationHorizontalToVisibilityConverter x:Key="HorizontalToVisibilityConverter"/>
         <ViewModels:OrientationVerticalToVisibilityConverter x:Key="VerticalToVisibilityConverter"/>
@@ -30,9 +41,6 @@
             </Style.Triggers>
         </Style>
     </UserControl.Resources>
-    <UserControl.DataContext>
-        <ViewModels:SabPage2ViewModel/>
-    </UserControl.DataContext>
     <Grid RenderTransformOrigin="0.5,0.5" Visibility="{Binding Orientation, Converter={StaticResource HorizontalToVisibilityConverter}}" Grid.ColumnSpan="3">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="40"/>
@@ -56,7 +64,8 @@
         <Button Grid.Column="2" Grid.Row="2" Command="{Binding OrientationChangeCommand}">
             <TextBlock Text="X"/>
         </Button>
-        <Button Content="Button" Command="{Binding Command}" IsEnabled="{Binding CanCommand}" Grid.Column="1" HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Center" Width="75"/>
-        <CheckBox Content="CheckBox" IsChecked="{Binding CanCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="72,83,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <Button Content="Button" Command="{Binding Hello}" IsEnabled="{Binding CanCommand}" Grid.Column="1" HorizontalAlignment="Left" Grid.Row="1" VerticalAlignment="Top" Width="75" Margin="36,79,0,0"/>
+        <CheckBox Content="CheckBox" IsChecked="{Binding CanCommand}" Grid.Column="1" HorizontalAlignment="Left" Margin="36,36,0,0" Grid.Row="1" VerticalAlignment="Top"/>
+        <TextBox Text="{Binding Path=Name, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="36,134,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </UserControl>

@@ -4,12 +4,30 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlainWpf.Views"
+             xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
+             xmlns:Mvvm="clr-namespace:Mvvm"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
+    <Mvvm:MessengerService.Requests>
+        <Mvvm:RequestCollection>
+            <Mvvm:Request TypeOfRecipientView="{x:Type local:UserControl1}" MessageType="{x:Type ViewModels:UserControl1Message}"/>
+            <Mvvm:OkDialogRequest/>
+            <Mvvm:OkCancelDialogRequest/>
+            <Mvvm:YesNoCancelDialogRequest/>
+        </Mvvm:RequestCollection>
+    </Mvvm:MessengerService.Requests>
+    <UserControl.DataContext>
+        <ViewModels:ViewBoxTestViewModel/>
+    </UserControl.DataContext>
     <ContentControl>
-        <Viewbox OpacityMask="Red" Width="100" Height="200" >
+        <Viewbox OpacityMask="Red" Width="300" Height="300" >
             <ContentControl Width="300" Height="300">
-                <Button Content="Button" Margin="51,51,57,60"/>
+                <StackPanel Orientation="Vertical">
+                    <Button Content="Window" Command="{Binding ShowWindowCommand}"/>
+                    <Button Content="OkDialog" Command="{Binding ShowOkDialogCommand}"/>
+                    <Button Content="OkCancelDialog" Command="{Binding ShowOkCancelDialogCommand}"/>
+                    <Button Content="YesNoCancelDialog" Command="{Binding ShowYesNoCancelDialogCommand}"/>
+                </StackPanel>
             </ContentControl>
         </Viewbox>
     </ContentControl>

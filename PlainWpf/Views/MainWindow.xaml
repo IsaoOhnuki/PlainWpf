@@ -5,13 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlainWpf.Views"
         xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
-        xmlns:Views="clr-namespace:PlainWpf.Views"
         xmlns:Converters="clr-namespace:Converters"
         xmlns:Mvvm="clr-namespace:Mvvm"
         mc:Ignorable="d"
+        Mvvm:NavigationServiceEx.Startup="{x:Type local:SubPage1}"
         Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
-        Mvvm:NavigationServiceEx.Startup="{x:Type Views:SubPage1}"
-        Title="{Binding Title}" Height="400.271" Width="736.972" Background="#FF002EFF">
+        Title="{Binding Title}" Height="400" Width="736" Background="#FF002EFF">
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
@@ -112,14 +111,14 @@
                         </Button.Style>
                     </Button>
                 </StackPanel>
-                <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
+                <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage1}"/>
                 <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage1}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage2}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage3}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:SubPage4}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:XmlTreeView}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type Views:ViewBoxTest}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage1}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage2}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage3}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage4}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:XmlTreeView}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:ViewBoxTest}"/>
                 <ListBox x:Name="AnimeType" ScrollViewer.VerticalScrollBarVisibility="Visible">
                     <ListBox.Items>
                         <ListBoxItem Name="n5" Content="Narrowed"/>

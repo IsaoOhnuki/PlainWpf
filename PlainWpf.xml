@@ -133,6 +133,19 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:PlainWpf.Views.UserControl1">
+            <summary>
+            Window1.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            UserControl1
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.UserControl1.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:PlainWpf.Views.XmlTreeView">
             <summary>
             XmlTreeView.xaml の相互作用ロジック
@@ -686,6 +699,510 @@
             <remarks>
             <a href="https://msdn.microsoft.com/ja-jp/magazine/dn630647.aspx">非同期 MVVM アプリケーションのパターン: コマンド</a>
             </remarks>
+        </member>
+        <member name="T:Mvvm.ConfirmationDialogType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.ConfirmationDialogType.Ok">
+            <summary>
+            The ok
+            </summary>
+        </member>
+        <member name="F:Mvvm.ConfirmationDialogType.OkCancel">
+            <summary>
+            The ok cancel
+            </summary>
+        </member>
+        <member name="F:Mvvm.ConfirmationDialogType.YesNoCancel">
+            <summary>
+            The yes no cancel
+            </summary>
+        </member>
+        <member name="T:Mvvm.ConfirmationDialogResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.ConfirmationDialogResult.None">
+            <summary>
+            The none
+            </summary>
+        </member>
+        <member name="F:Mvvm.ConfirmationDialogResult.Ok">
+            <summary>
+            The ok
+            </summary>
+        </member>
+        <member name="F:Mvvm.ConfirmationDialogResult.Cancel">
+            <summary>
+            The cancel
+            </summary>
+        </member>
+        <member name="F:Mvvm.ConfirmationDialogResult.Yes">
+            <summary>
+            The yes
+            </summary>
+        </member>
+        <member name="F:Mvvm.ConfirmationDialogResult.No">
+            <summary>
+            The no
+            </summary>
+        </member>
+        <member name="T:Mvvm.ConfirmationDialogRequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogRequestMessage.Button1Text">
+            <summary>
+            Gets or sets the button1 text.
+            </summary>
+            <value>
+            The button1 text.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogRequestMessage.Button2Text">
+            <summary>
+            Gets or sets the button2 text.
+            </summary>
+            <value>
+            The button2 text.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogRequestMessage.Button3Text">
+            <summary>
+            Gets or sets the button3 text.
+            </summary>
+            <value>
+            The button3 text.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogRequestMessage.ConfirmationDialogResult">
+            <summary>
+            Gets or sets the confirmation dialog result.
+            </summary>
+            <value>
+            The confirmation dialog result.
+            </value>
+        </member>
+        <member name="T:Mvvm.OkDialogContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.OkDialogContent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Mvvm.OkDialogContent"/> class.
+            </summary>
+        </member>
+        <member name="T:Mvvm.OkDialogRequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.OkDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.OkDialogRequest.TypeOfRecipientView">
+            <summary>
+            Gets the type of recipient view.
+            </summary>
+            <value>
+            The type of recipient view.
+            </value>
+        </member>
+        <member name="P:Mvvm.OkDialogRequest.MessageType">
+            <summary>
+            Gets the type of the message.
+            </summary>
+            <value>
+            The type of the message.
+            </value>
+        </member>
+        <member name="T:Mvvm.OkCancelDialogContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.OkCancelDialogContent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Mvvm.OkCancelDialogContent"/> class.
+            </summary>
+        </member>
+        <member name="T:Mvvm.OkCancelDialogRequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.OkCancelDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.OkCancelDialogRequest.TypeOfRecipientView">
+            <summary>
+            Gets the type of recipient view.
+            </summary>
+            <value>
+            The type of recipient view.
+            </value>
+        </member>
+        <member name="P:Mvvm.OkCancelDialogRequest.MessageType">
+            <summary>
+            Gets the type of the message.
+            </summary>
+            <value>
+            The type of the message.
+            </value>
+        </member>
+        <member name="T:Mvvm.YesNoCancelDialogContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.YesNoCancelDialogContent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Mvvm.YesNoCancelDialogContent"/> class.
+            </summary>
+        </member>
+        <member name="T:Mvvm.YesNoCancelDialogRequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.YesNoCancelDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.YesNoCancelDialogRequest.TypeOfRecipientView">
+            <summary>
+            Gets the type of recipient view.
+            </summary>
+            <value>
+            The type of recipient view.
+            </value>
+        </member>
+        <member name="P:Mvvm.YesNoCancelDialogRequest.MessageType">
+            <summary>
+            Gets the type of the message.
+            </summary>
+            <value>
+            The type of the message.
+            </value>
+        </member>
+        <member name="T:Mvvm.RecipientView">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.RecipientView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Mvvm.RecipientView"/> class.
+            </summary>
+        </member>
+        <member name="P:Mvvm.RecipientView.Closer">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Mvvm.RecipientView"/> is closer.
+            </summary>
+            <value>
+              <c>true</c> if closer; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="F:Mvvm.RecipientView.CloserProperty">
+            <summary>
+            The closer property
+            </summary>
+        </member>
+        <member name="T:Mvvm.ConfirmationDialogContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.ConfirmationDialogContent.#ctor(Mvvm.ConfirmationDialogType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Mvvm.ConfirmationDialogContent"/> class.
+            </summary>
+            <param name="dialogType">Type of the dialog.</param>
+        </member>
+        <member name="T:Mvvm.ConfirmationDialogContentViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Closer">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:Mvvm.ConfirmationDialogContentViewModel"/> is closer.
+            </summary>
+            <value>
+              <c>true</c> if closer; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Text">
+            <summary>
+            Gets the text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button1Command">
+            <summary>
+            Gets the button1 command.
+            </summary>
+            <value>
+            The button1 command.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button2Command">
+            <summary>
+            Gets the button2 command.
+            </summary>
+            <value>
+            The button2 command.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button3Command">
+            <summary>
+            Gets the button3 command.
+            </summary>
+            <value>
+            The button3 command.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button1Text">
+            <summary>
+            Gets the button1 text.
+            </summary>
+            <value>
+            The button1 text.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button2Text">
+            <summary>
+            Gets the button2 text.
+            </summary>
+            <value>
+            The button2 text.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button3Text">
+            <summary>
+            Gets the button3 text.
+            </summary>
+            <value>
+            The button3 text.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button1Visibility">
+            <summary>
+            Gets the button1 visibility.
+            </summary>
+            <value>
+            The button1 visibility.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button2Visibility">
+            <summary>
+            Gets the button2 visibility.
+            </summary>
+            <value>
+            The button2 visibility.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Button3Visibility">
+            <summary>
+            Gets the button3 visibility.
+            </summary>
+            <value>
+            The button3 visibility.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.RequestMessage">
+            <summary>
+            Gets or sets the request message.
+            </summary>
+            <value>
+            The request message.
+            </value>
+        </member>
+        <member name="P:Mvvm.ConfirmationDialogContentViewModel.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>
+            The message.
+            </value>
+        </member>
+        <member name="M:Mvvm.ConfirmationDialogContentViewModel.#ctor(Mvvm.ConfirmationDialogType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Mvvm.ConfirmationDialogContentViewModel"/> class.
+            </summary>
+            <param name="dialogType">Type of the dialog.</param>
+        </member>
+        <member name="T:Mvvm.MessengerService">
+            <summary>
+            
+            </summary>
+            <remarks>
+            <a href="http://gushwell.ldblog.jp/archives/52146779.html">MVVM：Messengerを理解するために自作してみた(1)</a><br/>
+            <a href="http://gushwell.ldblog.jp/archives/52146816.html">MVVM：Messengerを理解するために自作してみた(2)</a><br/>
+            <a href="http://gushwell.ldblog.jp/archives/52146951.html">MVVM：Messengerを理解するために自作してみた(3)</a><br/>
+            <a href="http://gushwell.ldblog.jp/archives/52146964.html">MVVM:Messenger + Behaviorを理解するために自作してみた(1)</a><br/>
+            <a href="http://gushwell.ldblog.jp/archives/52146967.html">MVVM:Messenger + Behaviorを理解するために自作してみた(2)</a><br/>
+            <a href="http://gushwell.ldblog.jp/archives/52152996.html">MVVM:Messenger + Behaviorを理解するために自作してみた(3)</a><br/>
+            </remarks>
+        </member>
+        <member name="P:Mvvm.MessengerService.Requests">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.MessengerService.DataContext">
+            <summary>
+            Gets or sets the data context.
+            </summary>
+            <value>
+            The data context.
+            </value>
+        </member>
+        <member name="P:Mvvm.MessengerService.TargetView">
+            <summary>
+            Gets or sets the target.
+            </summary>
+            <value>
+            The target.
+            </value>
+        </member>
+        <member name="M:Mvvm.MessengerService.GetMessenger(System.Windows.DependencyObject)">
+            <summary>
+            Gets the messenger.
+            </summary>
+            <param name="obj">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.MessengerService.SetMessenger(System.Windows.DependencyObject,Mvvm.MessengerService)">
+            <summary>
+            Sets the messenger.
+            </summary>
+            <param name="obj">The object.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="F:Mvvm.MessengerService.MessengerProperty">
+            <summary>
+            The messenger property
+            </summary>
+        </member>
+        <member name="M:Mvvm.MessengerService.GetRequests(System.Windows.FrameworkElement)">
+            <summary>
+            
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Mvvm.MessengerService.SetRequests(System.Windows.FrameworkElement,System.Collections.Generic.IEnumerable{Mvvm.IRequest})">
+            <summary>
+            
+            </summary>
+            <param name="target"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:Mvvm.MessengerService.RequestsProperty">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.MessengerService.SendMessage(System.Type,Mvvm.IMessage)">
+            <summary>
+            
+            </summary>
+            <param name="typeOfViewModel"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Mvvm.RequestCollection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.IMessageRecipient">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.IMessageRecipient.Message">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.IMessageRecipient.Closer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.IMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.IMessage.Title">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.IMessage.Content">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.RequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.RequestMessage.Title">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.RequestMessage.Content">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.IRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.IRequest.TypeOfRecipientView">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.IRequest.MessageType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Mvvm.Request">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.Request.TypeOfRecipientView">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.Request.MessageType">
+            <summary>
+            
+            </summary>
         </member>
         <member name="T:Mvvm.Message">
             <summary>

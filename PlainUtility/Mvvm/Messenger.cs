@@ -7,6 +7,11 @@ using System.Windows.Controls;
 
 namespace Mvvm
 {
+    public interface IViewAction
+    {
+        void Register(FrameworkElement recipient);
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -91,13 +96,6 @@ namespace Mvvm
 
     public class MessengerBehavior
     {
-        public static readonly DependencyProperty ActionsProperty =
-            DependencyProperty.RegisterAttached(
-                "Actions",
-                typeof(ActionCollection),
-                typeof(MessengerBehavior),
-                new PropertyMetadata(null, OnActionsPropertyChanged));
-
         public static ActionCollection GetActions(Control target)
         {
             return (ActionCollection)target.GetValue(ActionsProperty);
@@ -108,8 +106,7 @@ namespace Mvvm
             target.SetValue(ActionsProperty, value);
         }
 
-        private static void OnActionsPropertyChanged(DependencyObject sender,
-                              DependencyPropertyChangedEventArgs e)
+        private static void OnActionsPropertyChanged(DependencyObject sender, DependencyPropertyChangedEventArgs e)
         {
             Control window = sender as Control;
             if (window == null)
@@ -118,5 +115,11 @@ namespace Mvvm
                 return;
             ((ActionCollection)e.NewValue).RegisterAll(window);
         }
+
+        public static readonly DependencyProperty ActionsProperty = DependencyProperty.RegisterAttached(
+                "Actions",
+                typeof(ActionCollection),
+                typeof(MessengerBehavior),
+                new PropertyMetadata(null, OnActionsPropertyChanged));
     }
 }

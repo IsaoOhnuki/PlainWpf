@@ -6,11 +6,6 @@ using System.Windows;
 
 namespace Mvvm
 {
-    public interface IViewAction
-    {
-        void Register(FrameworkElement recipient);
-    }
-
     public class DialogBoxAction : IViewAction
     {
         private static void ShowMessage(DialogBoxMessage msg)

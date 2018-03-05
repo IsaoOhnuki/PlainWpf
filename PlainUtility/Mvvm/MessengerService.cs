@@ -6,6 +6,7 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace Mvvm
 {
@@ -163,10 +164,11 @@ namespace Mvvm
                 MessengerService msgr = MessengerService.GetMessenger(element);
                 if (msgr == null)
                 {
-                    // 添付対象のコントロールを、MessengerServiceのインスタンスに付加する。
-                    msgr = new MessengerService { TargetView = element };
+                    msgr = new MessengerService();
                     // MessengerServiceのインスタンスを、添付対象のコントロールに付加する。
                     MessengerService.SetMessenger(element, msgr);
+                    // 添付対象のコントロールを、MessengerServiceのインスタンスに付加する。
+                    msgr.TargetView = element;
                 }
                 // DataContextがあればKeyに、なければMessengerServiceのインスタンスをKeyに。
                 foreach (var val in (IEnumerable<IRequest>)e.NewValue)
@@ -191,10 +193,39 @@ namespace Mvvm
                 if (view is FrameworkElement element && element.DataContext is IMessageRecipient recipient)
                 {
                     recipient.Message = message;
-                    var window = new Window { Content = element, Owner = Application.Current.MainWindow
-                        , Title = message.Title
-                        , SizeToContent = SizeToContent.WidthAndHeight
-                        , VerticalContentAlignment = VerticalAlignment.Stretch, HorizontalContentAlignment = HorizontalAlignment.Stretch };
+                    Window window;
+                    if (request is PopupWindowRequest popup)
+                    {
+                        window = new Window
+                        {
+                            Content = element,
+                            Owner = Application.Current.MainWindow,
+                            Title = message.Title,
+                            Icon = popup.Icon,
+                            WindowStyle = popup.WindowStyle,
+                            WindowState = popup.WindowState,
+                            ResizeMode = popup.ResizeMode,
+                            SizeToContent = popup.SizeToContent,
+                            WindowStartupLocation = popup.WindowStartupLocation,
+                            VerticalContentAlignment = VerticalAlignment.Stretch,
+                            HorizontalContentAlignment = HorizontalAlignment.Stretch
+                        };
+                    }
+                    else
+                    {
+                        window = new Window
+                        {
+                            Content = element,
+                            Owner = Application.Current.MainWindow,
+                            Title = message.Title,
+                            WindowStyle = WindowStyle.SingleBorderWindow,
+                            WindowState = WindowState.Normal,
+                            ResizeMode = ResizeMode.CanResize,
+                            SizeToContent = SizeToContent.Manual,
+                            VerticalContentAlignment = VerticalAlignment.Stretch,
+                            HorizontalContentAlignment = HorizontalAlignment.Stretch
+                        };
+                    }
                     window.ShowDialog();
                 }
             }
@@ -312,11 +343,12 @@ namespace Mvvm
 
     public class PopupWindowRequest : Request
     {
-        public new bool WindowContent { get; set; } = true;
-        public WindowStyle WindowStyle { get; set; }
-        public WindowState WindowState { get; set; }
-        public ResizeMode ResizeMode { get; set; }
-        public SizeToContent SizeToContent { get; set; }
+        public ImageSource Icon { get; set; }
+        public WindowStyle WindowStyle { get; set; } = WindowStyle.SingleBorderWindow;
+        public WindowState WindowState { get; set; } = WindowState.Normal;
+        public ResizeMode ResizeMode { get; set; } = ResizeMode.CanResize;
+        public SizeToContent SizeToContent { get; set; } = SizeToContent.Manual;
+        public WindowStartupLocation WindowStartupLocation { get; set; } = WindowStartupLocation.Manual;
         public double Width { get; set; }
         public double MinWidth { get; set; }
         public double MaxWidth { get; set; }

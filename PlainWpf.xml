@@ -787,6 +787,16 @@
             The confirmation dialog result.
             </value>
         </member>
+        <member name="T:Mvvm.ConfirmationDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.ConfirmationDialogRequest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Mvvm.ConfirmationDialogRequest"/> class.
+            </summary>
+        </member>
         <member name="T:Mvvm.OkDialogContent">
             <summary>
             
@@ -807,21 +817,10 @@
             
             </summary>
         </member>
-        <member name="P:Mvvm.OkDialogRequest.TypeOfRecipientView">
+        <member name="M:Mvvm.OkDialogRequest.#ctor">
             <summary>
-            Gets the type of recipient view.
+            Initializes a new instance of the <see cref="T:Mvvm.OkDialogRequest"/> class.
             </summary>
-            <value>
-            The type of recipient view.
-            </value>
-        </member>
-        <member name="P:Mvvm.OkDialogRequest.MessageType">
-            <summary>
-            Gets the type of the message.
-            </summary>
-            <value>
-            The type of the message.
-            </value>
         </member>
         <member name="T:Mvvm.OkCancelDialogContent">
             <summary>
@@ -843,21 +842,10 @@
             
             </summary>
         </member>
-        <member name="P:Mvvm.OkCancelDialogRequest.TypeOfRecipientView">
+        <member name="M:Mvvm.OkCancelDialogRequest.#ctor">
             <summary>
-            Gets the type of recipient view.
+            Initializes a new instance of the <see cref="T:Mvvm.OkCancelDialogRequest"/> class.
             </summary>
-            <value>
-            The type of recipient view.
-            </value>
-        </member>
-        <member name="P:Mvvm.OkCancelDialogRequest.MessageType">
-            <summary>
-            Gets the type of the message.
-            </summary>
-            <value>
-            The type of the message.
-            </value>
         </member>
         <member name="T:Mvvm.YesNoCancelDialogContent">
             <summary>
@@ -879,21 +867,10 @@
             
             </summary>
         </member>
-        <member name="P:Mvvm.YesNoCancelDialogRequest.TypeOfRecipientView">
+        <member name="M:Mvvm.YesNoCancelDialogRequest.#ctor">
             <summary>
-            Gets the type of recipient view.
+            Initializes a new instance of the <see cref="T:Mvvm.YesNoCancelDialogRequest"/> class.
             </summary>
-            <value>
-            The type of recipient view.
-            </value>
-        </member>
-        <member name="P:Mvvm.YesNoCancelDialogRequest.MessageType">
-            <summary>
-            Gets the type of the message.
-            </summary>
-            <value>
-            The type of the message.
-            </value>
         </member>
         <member name="T:Mvvm.RecipientView">
             <summary>

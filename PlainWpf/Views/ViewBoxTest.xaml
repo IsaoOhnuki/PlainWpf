@@ -10,7 +10,7 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Mvvm:MessengerService.Requests>
         <Mvvm:RequestCollection>
-            <Mvvm:Request TypeOfRecipientView="{x:Type local:UserControl1}" MessageType="{x:Type ViewModels:UserControl1Message}"/>
+            <Mvvm:PopupWindowRequest TypeOfRecipientView="{x:Type local:UserControl1}" MessageType="{x:Type ViewModels:UserControl1Message}"/>
             <Mvvm:OkDialogRequest/>
             <Mvvm:OkCancelDialogRequest/>
             <Mvvm:YesNoCancelDialogRequest/>

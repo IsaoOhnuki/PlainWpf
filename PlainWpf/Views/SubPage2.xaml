@@ -10,17 +10,14 @@
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300" Background="#FF00FF51"
       >
+    <Mvvm:MessengerService.Requests>
+        <Mvvm:RequestCollection>
+            <Mvvm:OkCancelDialogRequest/>
+        </Mvvm:RequestCollection>
+    </Mvvm:MessengerService.Requests>
     <UserControl.DataContext>
-        <ViewModels:SabPage2ViewModel/>
+        <ViewModels:SubPage2ViewModel/>
     </UserControl.DataContext>
-    <Mvvm:MessengerBehavior.Actions>
-        <Mvvm:ActionCollection>
-            <Mvvm:DialogBoxAction />
-            <!--<Mvvm:OpenDialogAction />-->
-            <!--<Mvvm:SaveDialogAction />-->
-        </Mvvm:ActionCollection>
-    </Mvvm:MessengerBehavior.Actions>
-    
     <UserControl.Resources>
         <ViewModels:OrientationHorizontalToVisibilityConverter x:Key="HorizontalToVisibilityConverter"/>
         <ViewModels:OrientationVerticalToVisibilityConverter x:Key="VerticalToVisibilityConverter"/>

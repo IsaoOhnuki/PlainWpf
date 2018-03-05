@@ -14,7 +14,7 @@ using System.ComponentModel;
 
 namespace PlainWpf.ViewModels
 {
-    public class SabPage2ViewModel : BindableBase
+    public class SubPage2ViewModel : BindableBase
     {
         private Orientation orientation;
         public Orientation Orientation
@@ -25,7 +25,7 @@ namespace PlainWpf.ViewModels
 
         public DelegateCommand OrientationChangeCommand { get; set; }
 
-        public SabPage2ViewModel()
+        public SubPage2ViewModel()
         {
             OrientationChangeCommand = new DelegateCommand(() => {
                 if (Orientation == Orientation.Horizontal)
@@ -79,11 +79,8 @@ namespace PlainWpf.ViewModels
 
         public void HelloAction()
         {
-            var msg = new DialogBoxMessage(this);
-            msg.Message = Name + "さん、こんにちは。";
-            msg.Button = MessageBoxButton.YesNo;
-            Messenger.Default.Send(this, msg);
-            if (msg.Result == MessageBoxResult.Yes)
+            var result = MessengerService.SendMessage(typeof(SubPage2ViewModel), new OkCancelDialogRequestMessage { Title = "", Content = Name + "さん、こんにちは。" });
+            if (((OkCancelDialogRequestMessage)result).ConfirmationDialogResult == ConfirmationDialogResult.Ok)
             {
                 Name = "";
             }

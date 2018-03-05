@@ -89,6 +89,29 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
+    public class ConfirmationDialogRequest : PopupWindowRequest
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfirmationDialogRequest"/> class.
+        /// </summary>
+        public ConfirmationDialogRequest()
+        {
+            WindowStyle = WindowStyle.ToolWindow;
+            WindowState = WindowState.Normal;
+            ResizeMode = ResizeMode.NoResize;
+            SizeToContent = SizeToContent.WidthAndHeight;
+            WindowStartupLocation = WindowStartupLocation.CenterOwner;
+            //Width;
+            //MinWidth;
+            //MaxWidth;
+            //Height;
+            //MinHeight;
+            //MaxHeight;
+        }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
     public class OkDialogContent : ConfirmationDialogContent
     {
         /// <summary>
@@ -109,22 +132,16 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
-    public class OkDialogRequest : IRequest
+    public class OkDialogRequest : ConfirmationDialogRequest
     {
         /// <summary>
-        /// Gets the type of recipient view.
+        /// Initializes a new instance of the <see cref="OkDialogRequest"/> class.
         /// </summary>
-        /// <value>
-        /// The type of recipient view.
-        /// </value>
-        public Type TypeOfRecipientView => typeof(OkDialogContent);
-        /// <summary>
-        /// Gets the type of the message.
-        /// </summary>
-        /// <value>
-        /// The type of the message.
-        /// </value>
-        public Type MessageType => typeof(OkDialogRequestMessage);
+        public OkDialogRequest()
+        {
+            TypeOfRecipientView = typeof(OkDialogContent);
+            MessageType = typeof(OkDialogRequestMessage);
+        }
     }
     /// <summary>
     /// 
@@ -149,22 +166,16 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
-    public class OkCancelDialogRequest : IRequest
+    public class OkCancelDialogRequest : ConfirmationDialogRequest
     {
         /// <summary>
-        /// Gets the type of recipient view.
+        /// Initializes a new instance of the <see cref="OkCancelDialogRequest"/> class.
         /// </summary>
-        /// <value>
-        /// The type of recipient view.
-        /// </value>
-        public Type TypeOfRecipientView => typeof(OkCancelDialogContent);
-        /// <summary>
-        /// Gets the type of the message.
-        /// </summary>
-        /// <value>
-        /// The type of the message.
-        /// </value>
-        public Type MessageType => typeof(OkCancelDialogRequestMessage);
+        public OkCancelDialogRequest()
+        {
+            TypeOfRecipientView = typeof(OkCancelDialogContent);
+            MessageType = typeof(OkCancelDialogRequestMessage);
+        }
     }
     /// <summary>
     /// 
@@ -189,22 +200,16 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
-    public class YesNoCancelDialogRequest : IRequest
+    public class YesNoCancelDialogRequest : ConfirmationDialogRequest
     {
         /// <summary>
-        /// Gets the type of recipient view.
+        /// Initializes a new instance of the <see cref="YesNoCancelDialogRequest"/> class.
         /// </summary>
-        /// <value>
-        /// The type of recipient view.
-        /// </value>
-        public Type TypeOfRecipientView => typeof(YesNoCancelDialogContent);
-        /// <summary>
-        /// Gets the type of the message.
-        /// </summary>
-        /// <value>
-        /// The type of the message.
-        /// </value>
-        public Type MessageType => typeof(YesNoCancelDialogRequestMessage);
+        public YesNoCancelDialogRequest()
+        {
+            TypeOfRecipientView = typeof(YesNoCancelDialogContent);
+            MessageType = typeof(YesNoCancelDialogRequestMessage);
+        }
     }
     /// <summary>
     /// 

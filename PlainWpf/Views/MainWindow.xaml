@@ -10,6 +10,7 @@
         mc:Ignorable="d"
         Mvvm:NavigationServiceEx.Startup="{x:Type local:SubPage1}"
         Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
+        Icon="{x:Null}"
         Title="{Binding Title}" Height="400" Width="736" Background="#FF002EFF">
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>

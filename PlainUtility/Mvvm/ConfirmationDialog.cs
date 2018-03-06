@@ -94,19 +94,14 @@ namespace Mvvm
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfirmationDialogRequest"/> class.
         /// </summary>
-        public ConfirmationDialogRequest()
+        public ConfirmationDialogRequest(Type typeOfRecipientView, Type messageType)
+            : base(typeOfRecipientView, messageType)
         {
             WindowStyle = WindowStyle.ToolWindow;
             WindowState = WindowState.Normal;
             ResizeMode = ResizeMode.NoResize;
             SizeToContent = SizeToContent.WidthAndHeight;
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
-            //Width;
-            //MinWidth;
-            //MaxWidth;
-            //Height;
-            //MinHeight;
-            //MaxHeight;
         }
     }
     /// <summary>
@@ -138,9 +133,8 @@ namespace Mvvm
         /// Initializes a new instance of the <see cref="OkDialogRequest"/> class.
         /// </summary>
         public OkDialogRequest()
+            : base(typeof(OkDialogContent), typeof(OkDialogRequestMessage))
         {
-            TypeOfRecipientView = typeof(OkDialogContent);
-            MessageType = typeof(OkDialogRequestMessage);
         }
     }
     /// <summary>
@@ -172,9 +166,8 @@ namespace Mvvm
         /// Initializes a new instance of the <see cref="OkCancelDialogRequest"/> class.
         /// </summary>
         public OkCancelDialogRequest()
+            : base(typeof(OkCancelDialogContent), typeof(OkCancelDialogRequestMessage))
         {
-            TypeOfRecipientView = typeof(OkCancelDialogContent);
-            MessageType = typeof(OkCancelDialogRequestMessage);
         }
     }
     /// <summary>
@@ -206,9 +199,8 @@ namespace Mvvm
         /// Initializes a new instance of the <see cref="YesNoCancelDialogRequest"/> class.
         /// </summary>
         public YesNoCancelDialogRequest()
+            : base(typeof(YesNoCancelDialogContent), typeof(YesNoCancelDialogRequestMessage))
         {
-            TypeOfRecipientView = typeof(YesNoCancelDialogContent);
-            MessageType = typeof(YesNoCancelDialogRequestMessage);
         }
     }
     /// <summary>
@@ -446,7 +438,7 @@ namespace Mvvm
                 RequestMessage.ConfirmationDialogResult = ConfirmationDialogResult.Cancel;
                 Closer = true;
             });
-            Button1Text = dialogType == ConfirmationDialogType.YesNoCancel　? "はい" : "OK";
+            Button1Text = dialogType == ConfirmationDialogType.YesNoCancel ? "はい" : "OK";
             Button2Text = dialogType == ConfirmationDialogType.YesNoCancel ? "いいえ" : "キャンセル";
             Button3Text = "キャンセル";
             Button1Visibility = Visibility.Visible;

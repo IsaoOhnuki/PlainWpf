@@ -792,7 +792,7 @@
             
             </summary>
         </member>
-        <member name="M:Mvvm.ConfirmationDialogRequest.#ctor">
+        <member name="M:Mvvm.ConfirmationDialogRequest.#ctor(System.Type,System.Type)">
             <summary>
             Initializes a new instance of the <see cref="T:Mvvm.ConfirmationDialogRequest"/> class.
             </summary>
@@ -1081,7 +1081,7 @@
             <param name="target"></param>
             <returns></returns>
         </member>
-        <member name="M:Mvvm.MessengerService.SetRequests(System.Windows.FrameworkElement,System.Collections.Generic.IEnumerable{Mvvm.IRequest})">
+        <member name="M:Mvvm.MessengerService.SetRequests(System.Windows.FrameworkElement,Mvvm.RequestCollection)">
             <summary>
             
             </summary>
@@ -1156,6 +1156,14 @@
             
             </summary>
         </member>
+        <member name="P:Mvvm.IRequest.RequestAction">
+            <summary>
+            Gets the action.
+            </summary>
+            <value>
+            The action.
+            </value>
+        </member>
         <member name="P:Mvvm.IRequest.TypeOfRecipientView">
             <summary>
             
@@ -1166,7 +1174,69 @@
             
             </summary>
         </member>
+        <member name="T:Mvvm.PopupWindowRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.PopupWindowRequest.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.PopupWindowRequest.#ctor(System.Type,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="typeOfRecipientView"></param>
+            <param name="messageType"></param>
+        </member>
+        <member name="P:Mvvm.PopupWindowRequest.TypeOfRecipientView">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.PopupWindowRequest.MessageType">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="T:Mvvm.Request">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.Request.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Mvvm.Request.#ctor(System.Type,System.Type)">
+            <summary>
+            
+            </summary>
+            <param name="typeOfRecipientView"></param>
+            <param name="messageType"></param>
+        </member>
+        <member name="M:Mvvm.Request.#ctor(System.Type,System.Type,System.Action{Mvvm.IMessage})">
+            <summary>
+            
+            </summary>
+            <param name="typeOfRecipientView"></param>
+            <param name="messageType"></param>
+            <param name="requestAction "></param>
+        </member>
+        <member name="F:Mvvm.Request.requestAction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Mvvm.Request.RequestAction">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Mvvm.Request.typeOfRecipientView">
             <summary>
             
             </summary>
@@ -1176,23 +1246,15 @@
             
             </summary>
         </member>
-        <member name="P:Mvvm.Request.MessageType">
+        <member name="F:Mvvm.Request.messageType">
             <summary>
             
             </summary>
         </member>
-        <member name="T:Mvvm.Message">
+        <member name="P:Mvvm.Request.MessageType">
             <summary>
             
             </summary>
-            <remarks>
-            <a href="http://gushwell.ldblog.jp/archives/52146779.html">MVVM：Messengerを理解するために自作してみた(1)</a><br/>
-            <a href="http://gushwell.ldblog.jp/archives/52146816.html">MVVM：Messengerを理解するために自作してみた(2)</a><br/>
-            <a href="http://gushwell.ldblog.jp/archives/52146951.html">MVVM：Messengerを理解するために自作してみた(3)</a><br/>
-            <a href="http://gushwell.ldblog.jp/archives/52146964.html">MVVM:Messenger + Behaviorを理解するために自作してみた(1)</a><br/>
-            <a href="http://gushwell.ldblog.jp/archives/52146967.html">MVVM:Messenger + Behaviorを理解するために自作してみた(2)</a><br/>
-            <a href="http://gushwell.ldblog.jp/archives/52152996.html">MVVM:Messenger + Behaviorを理解するために自作してみた(3)</a><br/>
-            </remarks>
         </member>
         <member name="T:Mvvm.SimpleWipeNavigationStory">
             <summary>

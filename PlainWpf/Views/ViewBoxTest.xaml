@@ -14,6 +14,7 @@
             <Mvvm:OkDialogRequest/>
             <Mvvm:OkCancelDialogRequest/>
             <Mvvm:YesNoCancelDialogRequest/>
+            <Mvvm:DefaultOpenFileDialogRequest/>
         </Mvvm:RequestCollection>
     </Mvvm:MessengerService.Requests>
     <UserControl.DataContext>
@@ -27,6 +28,7 @@
                     <Button Content="OkDialog" Command="{Binding ShowOkDialogCommand}"/>
                     <Button Content="OkCancelDialog" Command="{Binding ShowOkCancelDialogCommand}"/>
                     <Button Content="YesNoCancelDialog" Command="{Binding ShowYesNoCancelDialogCommand}"/>
+                    <Button Content="OpenFileDialog" Command="{Binding OpenFileDialogCommand}"/>
                 </StackPanel>
             </ContentControl>
         </Viewbox>

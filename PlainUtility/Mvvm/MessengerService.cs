@@ -135,16 +135,16 @@ namespace Mvvm
         /// </summary>
         /// <param name="target"></param>
         /// <returns></returns>
-        public static IEnumerable<IRequest> GetRequests(FrameworkElement target)
+        public static RequestCollection GetRequests(FrameworkElement target)
         {
-            return (IEnumerable<IRequest>)target.GetValue(RequestsProperty);
+            return (RequestCollection)target.GetValue(RequestsProperty);
         }
         /// <summary>
         /// 
         /// </summary>
         /// <param name="target"></param>
         /// <param name="value"></param>
-        public static void SetRequests(FrameworkElement target, IEnumerable<IRequest> value)
+        public static void SetRequests(FrameworkElement target, RequestCollection value)
         {
             target.SetValue(RequestsProperty, value);
         }
@@ -153,7 +153,7 @@ namespace Mvvm
         /// </summary>
         public static readonly DependencyProperty RequestsProperty = DependencyProperty.RegisterAttached(
                 "Requests",
-                typeof(IEnumerable<IRequest>),
+                typeof(RequestCollection),
                 typeof(MessengerService),
                 new PropertyMetadata(null, OnRequestsPropertyChanged));
 
@@ -185,50 +185,10 @@ namespace Mvvm
         /// <returns></returns>
         public static IMessage SendMessage(Type typeOfViewModel, IMessage message)
         {
-            var request = MessengerService.Requests.Where(x => x.Key.GetType().Equals(typeOfViewModel) && x.Value.MessageType.Equals(message.GetType()))
+            var request = MessengerService.Requests
+                .Where(x => x.Key.GetType().Equals(typeOfViewModel) && x.Value.MessageType.Equals(message.GetType()))
                 .Select(x => x.Value).FirstOrDefault();
-            if (request != null)
-            {
-                var view = Activator.CreateInstance(request.TypeOfRecipientView);
-                if (view is FrameworkElement element && element.DataContext is IMessageRecipient recipient)
-                {
-                    recipient.Message = message;
-                    Window window;
-                    if (request is PopupWindowRequest popup)
-                    {
-                        window = new Window
-                        {
-                            Content = element,
-                            Owner = Application.Current.MainWindow,
-                            Title = message.Title,
-                            Icon = popup.Icon,
-                            WindowStyle = popup.WindowStyle,
-                            WindowState = popup.WindowState,
-                            ResizeMode = popup.ResizeMode,
-                            SizeToContent = popup.SizeToContent,
-                            WindowStartupLocation = popup.WindowStartupLocation,
-                            VerticalContentAlignment = VerticalAlignment.Stretch,
-                            HorizontalContentAlignment = HorizontalAlignment.Stretch
-                        };
-                    }
-                    else
-                    {
-                        window = new Window
-                        {
-                            Content = element,
-                            Owner = Application.Current.MainWindow,
-                            Title = message.Title,
-                            WindowStyle = WindowStyle.SingleBorderWindow,
-                            WindowState = WindowState.Normal,
-                            ResizeMode = ResizeMode.CanResize,
-                            SizeToContent = SizeToContent.Manual,
-                            VerticalContentAlignment = VerticalAlignment.Stretch,
-                            HorizontalContentAlignment = HorizontalAlignment.Stretch
-                        };
-                    }
-                    window.ShowDialog();
-                }
-            }
+            request?.RequestAction?.Invoke(message);
             return message;
         }
     }
@@ -286,6 +246,13 @@ namespace Mvvm
     public interface IRequest
     {
         /// <summary>
+        /// Gets the action.
+        /// </summary>
+        /// <value>
+        /// The action.
+        /// </value>
+        Action<IMessage> RequestAction { get; }
+        /// <summary>
         /// 
         /// </summary>
         Type TypeOfRecipientView { get; }
@@ -297,13 +264,52 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
-    public class Request : IRequest
+    public class PopupWindowRequest : Request
     {
-        private Type typeOfRecipientView;
         /// <summary>
         /// 
         /// </summary>
-        public Type TypeOfRecipientView
+        public PopupWindowRequest()
+        {
+            requestAction = ActionHnadler;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="typeOfRecipientView"></param>
+        /// <param name="messageType"></param>
+        public PopupWindowRequest(Type typeOfRecipientView, Type messageType)
+            : base(typeOfRecipientView, messageType)
+        {
+            requestAction = ActionHnadler;
+        }
+        private void ActionHnadler(IMessage message)
+        {
+            var view = Activator.CreateInstance(TypeOfRecipientView);
+            if (view is FrameworkElement element && element.DataContext is IMessageRecipient recipient)
+            {
+                recipient.Message = message;
+                Window window = new Window
+                {
+                    Content = element,
+                    Owner = Application.Current.MainWindow,
+                    Title = message.Title,
+                    Icon = Icon,
+                    WindowStyle = WindowStyle,
+                    WindowState = WindowState,
+                    ResizeMode = ResizeMode,
+                    SizeToContent = SizeToContent,
+                    WindowStartupLocation = WindowStartupLocation,
+                    VerticalContentAlignment = VerticalAlignment.Stretch,
+                    HorizontalContentAlignment = HorizontalAlignment.Stretch
+                };
+                window.ShowDialog();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        new public Type TypeOfRecipientView
         {
             get { return typeOfRecipientView; }
             set
@@ -319,11 +325,10 @@ namespace Mvvm
                 }
             }
         }
-        private Type messageType;
         /// <summary>
         /// 
         /// </summary>
-        public Type MessageType
+        new public Type MessageType
         {
             get { return messageType; }
             set
@@ -339,10 +344,6 @@ namespace Mvvm
                 }
             }
         }
-    }
-
-    public class PopupWindowRequest : Request
-    {
         public ImageSource Icon { get; set; }
         public WindowStyle WindowStyle { get; set; } = WindowStyle.SingleBorderWindow;
         public WindowState WindowState { get; set; } = WindowState.Normal;
@@ -355,5 +356,64 @@ namespace Mvvm
         public double Height { get; set; }
         public double MinHeight { get; set; }
         public double MaxHeight { get; set; }
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    public class Request : IRequest
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        protected Request()
+        {
+
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="typeOfRecipientView"></param>
+        /// <param name="messageType"></param>
+        public Request(Type typeOfRecipientView, Type messageType)
+        {
+            this.typeOfRecipientView = typeOfRecipientView;
+            this.messageType = messageType;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="typeOfRecipientView"></param>
+        /// <param name="messageType"></param>
+        /// <param name="requestAction "></param>
+        public Request(Type typeOfRecipientView, Type messageType, Action<IMessage> requestAction)
+        {
+            this.typeOfRecipientView = typeOfRecipientView;
+            this.messageType = messageType;
+            this.requestAction = requestAction;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        protected Action<IMessage> requestAction;
+        /// <summary>
+        /// 
+        /// </summary>
+        public Action<IMessage> RequestAction { get { return requestAction; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        protected Type typeOfRecipientView;
+        /// <summary>
+        /// 
+        /// </summary>
+        public Type TypeOfRecipientView { get { return typeOfRecipientView; } }
+        /// <summary>
+        /// 
+        /// </summary>
+        protected Type messageType;
+        /// <summary>
+        /// 
+        /// </summary>
+        public Type MessageType { get { return messageType; } }
     }
 }

@@ -13,6 +13,7 @@ namespace PlainWpf.ViewModels
         public DelegateCommand ShowOkDialogCommand { get; private set; }
         public DelegateCommand ShowOkCancelDialogCommand { get; private set; }
         public DelegateCommand ShowYesNoCancelDialogCommand { get; private set; }
+        public DelegateCommand OpenFileDialogCommand { get; private set; }
 
         public ViewBoxTestViewModel()
         {
@@ -27,6 +28,9 @@ namespace PlainWpf.ViewModels
             });
             ShowWindowCommand = new DelegateCommand(() => {
                 var result = MessengerService.SendMessage(typeof(ViewBoxTestViewModel), new UserControl1Message { Title = "0123456", Content = "0123456" });
+            });
+            OpenFileDialogCommand = new DelegateCommand(() => {
+                var result = MessengerService.SendMessage(typeof(ViewBoxTestViewModel), new OpenFileDialogMessage { Title = "0123456", Content = "0123456" });
             });
         }
     }

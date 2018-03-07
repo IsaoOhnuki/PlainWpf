@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\AsyncCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ConfirmationDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DefaultOpenFileDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DefaultSaveFileDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\MessengerService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleWipeNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ColorPlus.cs" />

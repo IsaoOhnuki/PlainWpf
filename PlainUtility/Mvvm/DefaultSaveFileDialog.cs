@@ -1,14 +1,13 @@
 ﻿using Microsoft.Win32;
+using Mvvm;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Security;
 using System.Text;
 using System.Windows;
 
 namespace Mvvm
 {
-    public class OpenFileDialogMessage : IMessage
+    public class SaveFileDialogMessage : IMessage
     {
         //
         // 概要:
@@ -17,23 +16,29 @@ namespace Mvvm
         // 戻り値:
         //     選択されたファイルごとに 1 つずつ安全なファイル名を格納する System.String の配列。既定値は、値が System.String.Empty
         //     である 1 つの項目を持つ配列です。
-        public string[] SafeFileNames { get; set; }
+        public string[] SafeFileNames { get; }
         //
         // 概要:
         //     選択されたファイルのファイル名のみを格納する文字列を取得します。
         //
         // 戻り値:
         //     選択されたファイルのファイル名のみを格納する System.String。既定値は System.String.Empty です。ファイルが選択されていない場合やディレクトリが選択された場合もこの値が使用されます。
-        public string SafeFileName { get; set; }
-        ////
-        //// 概要:
-        ////     コモン ダイアログ ボックスを表示します。
-        ////
-        //// 戻り値:
-        ////     表示されているダイアログ ボックス (Microsoft.Win32.OpenFileDialog や Microsoft.Win32.SaveFileDialog
-        ////     など) でユーザーが [OK] ボタンをクリックした場合は true を返します。それ以外の場合は、false を返します。
-        //[SecurityCritical]
-        //public virtual bool? ShowDialog();
+        public string SafeFileName { get; }
+        //
+        // 概要:
+        //     ユーザーが存在しないファイルを指定した場合に、ファイルを作成することを確認するメッセージを Microsoft.Win32.SaveFileDialog
+        //     で表示するかどうかを示す値を取得または設定します。
+        //
+        // 戻り値:
+        //     存在しないファイル名に保存する前にダイアログでメッセージを表示する場合は true。それ以外の場合は false。既定値は、false です。
+        public bool CreatePrompt { get; set; }
+        //
+        // 概要:
+        //     ユーザーが既に存在するファイル名を指定した場合に Microsoft.Win32.SaveFileDialog で警告を表示するかどうかを示す値を取得または設定します。
+        //
+        // 戻り値:
+        //     存在するファイル名に保存する前にダイアログ ボックスでメッセージを表示する場合は true。それ以外の場合は false。既定値は、true です。
+        public bool OverwritePrompt { get; set; }
         //
         // 概要:
         //     ダイアログが有効な Win32 ファイル名だけを受け入れるかどうかを示す値を取得または設定します。
@@ -87,7 +92,7 @@ namespace Mvvm
         // 戻り値:
         //     選択されたファイルごとに 1 つずつファイル名を格納する System.String の配列。既定値は、値が System.String.Empty である
         //     1 つの項目を持つ配列です。
-        public string[] FileNames { get; set; }
+        public string[] FileNames { get; }
         //
         // 概要:
         //     ファイル ダイアログで選択されたファイルの完全なパスを含む文字列を取得または設定します。
@@ -144,44 +149,23 @@ namespace Mvvm
         // 戻り値:
         //     ファイル ダイアログで初期化のために使用される Win32 コモン ファイル ダイアログ フラグを格納する System.Int32。
         protected int Options { get; }
-        //
-        // 概要:
-        //     Microsoft.Win32.OpenFileDialog でユーザーが複数のファイルを選択できるかどうかを示すオプションを取得または設定します。
-        //
-        // 戻り値:
-        //     複数のファイルを選択できる場合は true。それ以外の場合は false。既定値は、false です。
-        public bool Multiselect { get; set; }
-        //
-        // 概要:
-        //     Microsoft.Win32.OpenFileDialog で表示される読み取り専用チェック ボックスがオンかオフかを示す値を取得または設定します。
-        //
-        // 戻り値:
-        //     チェック ボックスがオンの場合は true。それ以外の場合は false。既定値は、false です。
-        public bool ReadOnlyChecked { get; set; }
-        //
-        // 概要:
-        //     Microsoft.Win32.OpenFileDialog に読み取り専用チェック ボックスが表示されているかどうかを示す値を取得または設定します。
-        //
-        // 戻り値:
-        //     チェック ボックスが表示されている場合は true。それ以外の場合は false。既定値は、false です。
-        public bool ShowReadOnly { get; set; }
 
         public object Content { get; set; }
 
         public bool DialogResult { get; set; }
     }
 
-    public class DefaultOpenFileDialogRequest : Request
+    public class DefaultSaveFileDialogRequest : Request
     {
-        public DefaultOpenFileDialogRequest()
-            : base(typeof(OpenFileDialog), typeof(OpenFileDialogMessage), ActionHnadler)
+        public DefaultSaveFileDialogRequest()
+            : base(typeof(SaveFileDialog), typeof(SaveFileDialogMessage), ActionHnadler)
         {
 
         }
         private static void ActionHnadler(IMessage message)
         {
-            var msg = message as OpenFileDialogMessage;
-            var dialog = new OpenFileDialog()
+            var msg = message as SaveFileDialogMessage;
+            var dialog = new SaveFileDialog()
             {
                 AddExtension = msg.AddExtension,
                 CheckFileExists = msg.CheckFileExists,
@@ -193,23 +177,15 @@ namespace Mvvm
                 Filter = msg.Filter,
                 FilterIndex = msg.FilterIndex,
                 InitialDirectory = msg.InitialDirectory,
-                Multiselect = msg.Multiselect,
-                ReadOnlyChecked = msg.ReadOnlyChecked,
                 RestoreDirectory = msg.RestoreDirectory,
-                ShowReadOnly = msg.ShowReadOnly,
                 Title = msg.Title,
                 ValidateNames = msg.ValidateNames,
+                CreatePrompt = msg.CreatePrompt,
+                OverwritePrompt = msg.OverwritePrompt,
             };
 
             var ret = dialog.ShowDialog(Application.Current.MainWindow);
             msg.DialogResult = ret.HasValue && ret.Value;
-            if (msg.DialogResult)
-            {
-                msg.FileName = dialog.FileName;
-                msg.FileNames = dialog.FileNames;
-                msg.SafeFileName = dialog.SafeFileName;
-                msg.SafeFileNames = dialog.SafeFileNames;
-            }
         }
     }
 }

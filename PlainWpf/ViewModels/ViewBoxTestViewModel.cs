@@ -14,6 +14,7 @@ namespace PlainWpf.ViewModels
         public DelegateCommand ShowOkCancelDialogCommand { get; private set; }
         public DelegateCommand ShowYesNoCancelDialogCommand { get; private set; }
         public DelegateCommand OpenFileDialogCommand { get; private set; }
+        public DelegateCommand SaveFileDialogCommand { get; private set; }
 
         public ViewBoxTestViewModel()
         {
@@ -31,6 +32,9 @@ namespace PlainWpf.ViewModels
             });
             OpenFileDialogCommand = new DelegateCommand(() => {
                 var result = MessengerService.SendMessage(typeof(ViewBoxTestViewModel), new OpenFileDialogMessage { Title = "0123456", Content = "0123456" });
+            });
+            SaveFileDialogCommand = new DelegateCommand(() => {
+                var result = MessengerService.SendMessage(typeof(ViewBoxTestViewModel), new SaveFileDialogMessage { Title = "0123456", Content = "0123456" });
             });
         }
     }

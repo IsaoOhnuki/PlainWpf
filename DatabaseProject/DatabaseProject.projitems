@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c055d3d8-8edd-48b3-b488-e0b526696e75</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>DatabaseProject</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ColorData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Database_Kernel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FromConnectionAuthenticateConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SQLServerConfigurationDialog.xaml.cs">
+      <DependentUpon>SQLServerConfigurationDialog.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)SQLServerConfigurationDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>

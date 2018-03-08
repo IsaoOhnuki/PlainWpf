@@ -23,16 +23,16 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntComparisonToBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\VagueStringToMatchLikePattern.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\AsyncCommand.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\ConfirmationDialog.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DefaultOpenFileDialog.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\DefaultSaveFileDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\ConfirmationDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\DefaultOpenFileDialog.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\DefaultSaveFileDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\MessengerService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleWipeNavigationStory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\SimpleWipeNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ColorPlus.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\NotifyBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\SimpleRaiseNavigationStory.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\NotifyBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\SimpleRaiseNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\HistoryStack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\JapaneseDateTimeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindableBase.cs" />
@@ -47,5 +47,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)MvvmOption\" />
   </ItemGroup>
 </Project>

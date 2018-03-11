@@ -33,6 +33,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NotifyBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\SimpleRaiseNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ImageSourceToFile.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\HistoryStack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\JapaneseDateTimeExtensions.cs" />

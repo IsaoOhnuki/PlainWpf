@@ -12,9 +12,24 @@
     <Mvvm:MessengerService.Requests>
         <Mvvm:RequestCollection>
             <Mvvm:PopupWindowRequest TypeOfRecipientView="{x:Type local:UserControl1}" MessageType="{x:Type ViewModels:UserControl1Message}"/>
-            <MvvmOption:OkDialogRequest ControlMargin="30" ButtonHeight="50" ButtonWidth="150" LabelFontFamily="Wide Latin" ButtonFontSize="36"/>
-            <MvvmOption:OkCancelDialogRequest ControlMargin="30" ButtonHeight="50" ButtonWidth="150"/>
-            <MvvmOption:YesNoCancelDialogRequest ControlMargin="30" ButtonHeight="50" ButtonWidth="150"/>
+            <MvvmOption:OkDialogRequest ContentMargin="30" ButtonHeight="50" ButtonWidth="150" LabelFontFamily="Wide Latin" ButtonFontSize="36" ButtonBackground="#FFBF4343" />
+            <MvvmOption:OkCancelDialogRequest ContentMargin="30" ButtonHeight="50" ButtonWidth="150" LabelForeground="White">
+                <MvvmOption:OkCancelDialogRequest.ContentBackground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <RotateTransform Angle="120" CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FFCB3A3A" Offset="0"/>
+                        <GradientStop Color="#FF2D71D4" Offset="1"/>
+                    </LinearGradientBrush>
+                </MvvmOption:OkCancelDialogRequest.ContentBackground>
+            </MvvmOption:OkCancelDialogRequest>
+            <MvvmOption:YesNoCancelDialogRequest ContentMargin="30" ButtonHeight="50" ButtonWidth="150" ButtonBorderThickness="5"/>
             <MvvmOption:DefaultOpenFileDialogRequest/>
             <MvvmOption:DefaultSaveFileDialogRequest/>
         </Mvvm:RequestCollection>

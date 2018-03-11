@@ -95,13 +95,19 @@ namespace MvvmOption
     /// </summary>
     public class ConfirmationDialogRequest : PopupWindowRequest
     {
-        public double ControlMargin { get; set; } = double.NaN;
+        public double ContentMargin { get; set; } = double.NaN;
+        public Brush ContentBackground { get; set; }
         public double ButtonWidth { get; set; } = double.NaN;
         public double ButtonHeight { get; set; } = double.NaN;
         public FontFamily ButtonFontFamily { get; set; }
         public double ButtonFontSize { get; set; } = double.NaN;
+        public Brush ButtonBackground{ get; set; }
+        public Brush ButtonForeground { get; set; }
+        public Brush ButtonBorder { get; set; }
+        public Thickness ButtonBorderThickness { get; set; } = new Thickness(double.NaN);
         public FontFamily LabelFontFamily { get; set; }
         public double LabelFontSize { get; set; } = double.NaN;
+        public Brush LabelForeground { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfirmationDialogRequest"/> class.
         /// </summary>
@@ -129,9 +135,9 @@ namespace MvvmOption
                 {
                     dialogContent.ButtonHeight = ButtonHeight;
                 }
-                if (!double.IsNaN(ControlMargin))
+                if (!double.IsNaN(ContentMargin))
                 {
-                    dialogContent.ControlMargin = ControlMargin;
+                    dialogContent.ControlMargin = ContentMargin;
                 }
                 if (!double.IsNaN(LabelFontSize))
                 {
@@ -148,6 +154,30 @@ namespace MvvmOption
                 if (ButtonFontFamily != null)
                 {
                     dialogContent.ButtonFontFamily = ButtonFontFamily;
+                }
+                if (!double.IsNaN(ButtonBorderThickness.Left) || !double.IsNaN(ButtonBorderThickness.Top) || !double.IsNaN(ButtonBorderThickness.Right) || !double.IsNaN(ButtonBorderThickness.Bottom))
+                {
+                    dialogContent.ButtonBorderThickness = ButtonBorderThickness;
+                }
+                if (ContentBackground != null)
+                {
+                    dialogContent.ContentBackground = ContentBackground;
+                }
+                if (ButtonBackground != null)
+                {
+                    dialogContent.ButtonBackground = ButtonBackground;
+                }
+                if (ButtonForeground != null)
+                {
+                    dialogContent.ButtonForeground = ButtonForeground;
+                }
+                if (LabelForeground != null)
+                {
+                    dialogContent.LabelForeground = LabelForeground;
+                }
+                if (ButtonBorder != null)
+                {
+                    dialogContent.ButtonBorder = ButtonBorder;
                 }
             }
         }
@@ -333,24 +363,93 @@ namespace MvvmOption
     /// </summary>
     public class ConfirmationDialogContent : RecipientView
     {
+        private Grid grid;
         private TextBlock textBlock;
         private Button button1;
         private Button button2;
         private Button button3;
         private StackPanel buttonPanel;
         private ConfirmationDialogType dialogType;
-        private double controlMargin = 10;
+        private double contentMargin = 10;
         public double ControlMargin
         {
-            get { return controlMargin; }
+            get { return contentMargin; }
             set
             {
-                controlMargin = value;
+                contentMargin = value;
                 textBlock.Margin = new Thickness(ControlMargin);
                 button1.Margin = new Thickness(dialogType == ConfirmationDialogType.Ok ? 0 : ControlMargin, 0, 0, 0);
                 button2.Margin = new Thickness(dialogType == ConfirmationDialogType.OkCancel ? 0 : ControlMargin, 0, 0, 0);
                 button3.Margin = new Thickness(0, 0, 0, 0);
                 buttonPanel.Margin = new Thickness(ControlMargin, 0, ControlMargin, ControlMargin);
+            }
+        }
+        private Brush contentBackground;
+        public Brush ContentBackground
+        {
+            get { return contentBackground; }
+            set
+            {
+                contentBackground = value;
+                grid.Background = ContentBackground;
+            }
+        }
+        private Brush buttonBackground;
+        public Brush ButtonBackground
+        {
+            get { return buttonBackground; }
+            set
+            {
+                buttonBackground = value;
+                button1.Background = buttonBackground;
+                button2.Background = buttonBackground;
+                button3.Background = buttonBackground;
+            }
+        }
+        private Brush buttonForeground;
+        public Brush ButtonForeground
+        {
+            get { return buttonForeground; }
+            set
+            {
+                buttonForeground = value;
+                button1.Foreground = buttonForeground;
+                button2.Foreground = buttonForeground;
+                button3.Foreground = buttonForeground;
+            }
+        }
+        private Brush buttonBorder;
+        public Brush ButtonBorder
+        {
+            get { return buttonBorder; }
+            set
+            {
+                buttonBorder = value;
+                button1.BorderBrush = buttonBorder;
+                button2.BorderBrush = buttonBorder;
+                button3.BorderBrush = buttonBorder;
+            }
+        }
+        private Thickness buttonBorderThickness;
+        public Thickness ButtonBorderThickness
+        {
+            get { return buttonBorderThickness; }
+            set
+            {
+                buttonBorderThickness = value;
+                button1.BorderThickness = buttonBorderThickness;
+                button2.BorderThickness = buttonBorderThickness;
+                button3.BorderThickness = buttonBorderThickness;
+            }
+        }
+        private Brush labelForeground;
+        public Brush LabelForeground
+        {
+            get { return labelForeground; }
+            set
+            {
+                labelForeground = value;
+                textBlock.Foreground = labelForeground;
             }
         }
         private double buttonWidth = 80;
@@ -429,7 +528,7 @@ namespace MvvmOption
         {
             this.dialogType = dialogType;
             DataContext = new ConfirmationDialogContentViewModel(dialogType);
-            var grid = new Grid();
+            grid = new Grid();
             var row1 = new RowDefinition { Height = new System.Windows.GridLength(1, GridUnitType.Star) };
             var row2 = new RowDefinition { Height = new System.Windows.GridLength(0, GridUnitType.Auto) };
             grid.RowDefinitions.Add(row1);

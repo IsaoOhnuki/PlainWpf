@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Media.Animation;
 using Utilitys;
 
-namespace PlainUtility.Mvvm
+namespace MvvmOption
 {
     /// <summary>
     /// シンプルなスライド系のアニメーション

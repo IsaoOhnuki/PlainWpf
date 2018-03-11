@@ -15,6 +15,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.xaml.cs">
       <DependentUpon>ColorSelector.xaml</DependentUpon>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\NoControlboxWindow.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ForColorPlusConverters.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\ColorToBrushConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DateTimeToJpStringsConverters.cs" />
@@ -29,10 +30,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\MessengerService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\SimpleWipeNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ColorPlus.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\NotifyBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NotifyBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\SimpleRaiseNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\Logger.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\HistoryStack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\JapaneseDateTimeExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\BindableBase.cs" />

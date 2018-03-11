@@ -2,10 +2,12 @@
 using Mvvm;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 using System.Windows;
 
-namespace Mvvm
+namespace MvvmOption
 {
     public class SaveFileDialogMessage : IMessage
     {
@@ -155,6 +157,36 @@ namespace Mvvm
         public bool DialogResult { get; set; }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
+    public class DefaultSaveFileDialogRequestToIRequestTypeConverter : TypeConverter
+    {
+        //public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        //{
+        //    return destinationType == typeof(IRequest);
+        //}
+
+        //public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        //{
+        //    return value as IRequest;
+        //}
+
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return sourceType == typeof(IRequest);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            return value as IRequest;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [TypeConverter(typeof(DefaultSaveFileDialogRequestToIRequestTypeConverter))]
     public class DefaultSaveFileDialogRequest : Request
     {
         public DefaultSaveFileDialogRequest()

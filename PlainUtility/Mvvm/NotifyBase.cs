@@ -4,7 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Text;
 
-namespace Utilitys
+namespace Mvvm
 {
     /// <summary>
     /// ビューモデル等の基底に使うベースクラス

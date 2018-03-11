@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Mvvm;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -7,7 +8,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Utilitys;
 
-namespace Mvvm
+namespace MvvmOption
 {
     /// <summary>
     /// シンプルなワイプ系のアニメーション

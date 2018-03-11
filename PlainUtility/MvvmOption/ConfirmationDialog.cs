@@ -1,11 +1,15 @@
-﻿using System;
+﻿using Mvvm;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Globalization;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Media;
 
-namespace Mvvm
+namespace MvvmOption
 {
     /// <summary>
     /// 
@@ -91,17 +95,61 @@ namespace Mvvm
     /// </summary>
     public class ConfirmationDialogRequest : PopupWindowRequest
     {
+        public double ControlMargin { get; set; } = double.NaN;
+        public double ButtonWidth { get; set; } = double.NaN;
+        public double ButtonHeight { get; set; } = double.NaN;
+        public FontFamily ButtonFontFamily { get; set; }
+        public double ButtonFontSize { get; set; } = double.NaN;
+        public FontFamily LabelFontFamily { get; set; }
+        public double LabelFontSize { get; set; } = double.NaN;
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfirmationDialogRequest"/> class.
         /// </summary>
         public ConfirmationDialogRequest(Type typeOfRecipientView, Type messageType)
             : base(typeOfRecipientView, messageType)
         {
-            WindowStyle = WindowStyle.ToolWindow;
-            WindowState = WindowState.Normal;
+            ControlboxEnabled = false;
+            WindowStyle = WindowStyle.SingleBorderWindow;
             ResizeMode = ResizeMode.NoResize;
+            WindowState = WindowState.Normal;
             SizeToContent = SizeToContent.WidthAndHeight;
             WindowStartupLocation = WindowStartupLocation.CenterOwner;
+        }
+        protected override void OnCreateContent(ContentControl content)
+        {
+            base.OnCreateContent(content);
+
+            if (content is ConfirmationDialogContent dialogContent)
+            {
+                if (!double.IsNaN(ButtonWidth))
+                {
+                    dialogContent.ButtonWidth = ButtonWidth;
+                }
+                if (!double.IsNaN(ButtonHeight))
+                {
+                    dialogContent.ButtonHeight = ButtonHeight;
+                }
+                if (!double.IsNaN(ControlMargin))
+                {
+                    dialogContent.ControlMargin = ControlMargin;
+                }
+                if (!double.IsNaN(LabelFontSize))
+                {
+                    dialogContent.LabelFontSize = LabelFontSize;
+                }
+                if (LabelFontFamily != null)
+                {
+                    dialogContent.LabelFontFamily = LabelFontFamily;
+                }
+                if (!double.IsNaN(ButtonFontSize))
+                {
+                    dialogContent.ButtonFontSize = ButtonFontSize;
+                }
+                if (ButtonFontFamily != null)
+                {
+                    dialogContent.ButtonFontFamily = ButtonFontFamily;
+                }
+            }
         }
     }
     /// <summary>
@@ -124,9 +172,34 @@ namespace Mvvm
     public class OkDialogRequestMessage : ConfirmationDialogRequestMessage
     {
     }
+
+    public class OkDialogRequestToIRequestTypeConverter : TypeConverter
+    {
+        //public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        //{
+        //    return destinationType == typeof(IRequest);
+        //}
+
+        //public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        //{
+        //    return value as IRequest;
+        //}
+
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return sourceType == typeof(IRequest);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            return value as IRequest;
+        }
+    }
+
     /// <summary>
     /// 
     /// </summary>
+    [TypeConverter(typeof(OkDialogRequestToIRequestTypeConverter))]
     public class OkDialogRequest : ConfirmationDialogRequest
     {
         /// <summary>
@@ -157,9 +230,34 @@ namespace Mvvm
     public class OkCancelDialogRequestMessage : ConfirmationDialogRequestMessage
     {
     }
+
+    public class OkCancelDialogRequestToIRequestTypeConverter : TypeConverter
+    {
+        //public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        //{
+        //    return destinationType == typeof(IRequest);
+        //}
+
+        //public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        //{
+        //    return value as IRequest;
+        //}
+
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return sourceType == typeof(IRequest);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            return value as IRequest;
+        }
+    }
+
     /// <summary>
     /// 
     /// </summary>
+    [TypeConverter(typeof(OkCancelDialogRequestToIRequestTypeConverter))]
     public class OkCancelDialogRequest : ConfirmationDialogRequest
     {
         /// <summary>
@@ -193,6 +291,33 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
+    public class YesNoCancelDialogRequestToIRequestTypeConverter : TypeConverter
+    {
+        //public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        //{
+        //    return destinationType == typeof(IRequest);
+        //}
+
+        //public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        //{
+        //    return value as IRequest;
+        //}
+
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return sourceType == typeof(IRequest);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            return value as IRequest;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [TypeConverter(typeof(YesNoCancelDialogRequestToIRequestTypeConverter))]
     public class YesNoCancelDialogRequest : ConfirmationDialogRequest
     {
         /// <summary>
@@ -206,72 +331,119 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
-    public class RecipientView : ContentControl
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RecipientView"/> class.
-        /// </summary>
-        public RecipientView()
-        {
-            BindingOperations.SetBinding(this, CloserProperty, new Binding("Closer") { Mode = BindingMode.TwoWay });
-        }
-        /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="RecipientView"/> is closer.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if closer; otherwise, <c>false</c>.
-        /// </value>
-        public bool Closer
-        {
-            get { return (bool)GetValue(CloserProperty); }
-            set { SetValue(CloserProperty, value); }
-        }
-        /// <summary>
-        /// The closer property
-        /// </summary>
-        public static readonly DependencyProperty CloserProperty = DependencyProperty.Register(
-            "Closer",
-            typeof(bool),
-            typeof(ConfirmationDialogContent),
-            new PropertyMetadata(default(bool), (sender, e) => {
-                if (sender is ContentControl control && control.Parent is Window owner)
-                {
-                    if ((bool)e.NewValue)
-                    {
-                        owner.DialogResult = true;
-                    }
-                }
-            }));
-    }
-    /// <summary>
-    /// 
-    /// </summary>
     public class ConfirmationDialogContent : RecipientView
     {
-        readonly double marginSize = 10;
-        readonly double buttonWidth = 70;
+        private TextBlock textBlock;
+        private Button button1;
+        private Button button2;
+        private Button button3;
+        private StackPanel buttonPanel;
+        private ConfirmationDialogType dialogType;
+        private double controlMargin = 10;
+        public double ControlMargin
+        {
+            get { return controlMargin; }
+            set
+            {
+                controlMargin = value;
+                textBlock.Margin = new Thickness(ControlMargin);
+                button1.Margin = new Thickness(dialogType == ConfirmationDialogType.Ok ? 0 : ControlMargin, 0, 0, 0);
+                button2.Margin = new Thickness(dialogType == ConfirmationDialogType.OkCancel ? 0 : ControlMargin, 0, 0, 0);
+                button3.Margin = new Thickness(0, 0, 0, 0);
+                buttonPanel.Margin = new Thickness(ControlMargin, 0, ControlMargin, ControlMargin);
+            }
+        }
+        private double buttonWidth = 80;
+        public double ButtonWidth
+        {
+            get { return buttonWidth; }
+            set
+            {
+                buttonWidth = value;
+                button1.Width = ButtonWidth;
+                button2.Width = ButtonWidth;
+                button3.Width = ButtonWidth;
+            }
+        }
+        private double buttonHeight = 20;
+        public double ButtonHeight
+        {
+            get { return buttonHeight; }
+            set
+            {
+                buttonHeight = value;
+                button1.Height = ButtonHeight;
+                button2.Height = ButtonHeight;
+                button3.Height = ButtonHeight;
+            }
+        }
+        private FontFamily buttonFontFamily = new FontFamily("Yu Gothic UI");
+        public FontFamily ButtonFontFamily
+        {
+            get { return buttonFontFamily; }
+            set
+            {
+                buttonFontFamily = value;
+                button1.FontFamily = buttonFontFamily;
+                button2.FontFamily = buttonFontFamily;
+                button3.FontFamily = buttonFontFamily;
+            }
+        }
+        private double buttonFontSize = 12;
+        public double ButtonFontSize
+        {
+            get { return buttonFontSize; }
+            set
+            {
+                buttonFontSize = value;
+                button1.FontSize = buttonFontSize;
+                button2.FontSize = buttonFontSize;
+                button3.FontSize = buttonFontSize;
+            }
+        }
+        private FontFamily labelFontFamily = new FontFamily("Yu Gothic UI");
+        public FontFamily LabelFontFamily
+        {
+            get { return labelFontFamily; }
+            set
+            {
+                labelFontFamily = value;
+                textBlock.FontFamily = labelFontFamily;
+            }
+        }
+        private double labelFontSize = 12;
+        public double LabelFontSize
+        {
+            get { return labelFontSize; }
+            set
+            {
+                labelFontSize = value;
+                textBlock.FontSize = labelFontSize;
+            }
+        }
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfirmationDialogContent"/> class.
         /// </summary>
         /// <param name="dialogType">Type of the dialog.</param>
         public ConfirmationDialogContent(ConfirmationDialogType dialogType)
         {
+            this.dialogType = dialogType;
             DataContext = new ConfirmationDialogContentViewModel(dialogType);
             var grid = new Grid();
             var row1 = new RowDefinition { Height = new System.Windows.GridLength(1, GridUnitType.Star) };
             var row2 = new RowDefinition { Height = new System.Windows.GridLength(0, GridUnitType.Auto) };
             grid.RowDefinitions.Add(row1);
             grid.RowDefinitions.Add(row2);
-            var text = new TextBlock { Margin = new Thickness(marginSize, marginSize, marginSize, 0) };
-            BindingOperations.SetBinding(text, TextBlock.TextProperty, new Binding("Text"));
-            Grid.SetRow(text, 0);
-            grid.Children.Add(text);
-            var buttonPanel = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(marginSize), FlowDirection = FlowDirection.RightToLeft };
+            textBlock = new TextBlock { Name = "TextBlock", Margin = new Thickness(ControlMargin), FontFamily = LabelFontFamily, FontSize = LabelFontSize };
+            BindingOperations.SetBinding(textBlock, TextBlock.TextProperty, new Binding("Text"));
+            Grid.SetRow(textBlock, 0);
+            grid.Children.Add(textBlock);
+            buttonPanel = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(ControlMargin, 0, ControlMargin, ControlMargin), FlowDirection = FlowDirection.RightToLeft };
             Grid.SetRow(buttonPanel, 1);
             grid.Children.Add(buttonPanel);
-            var button1 = new Button { Margin = new Thickness(0, 0, marginSize, 0), Width = buttonWidth };
-            var button2 = new Button { Margin = new Thickness(0, 0, marginSize, 0), Width = buttonWidth };
-            var button3 = new Button { Margin = new Thickness(0, 0, marginSize, 0), Width = buttonWidth };
+            button1 = new Button { Name = "Button1", Margin = new Thickness(dialogType == ConfirmationDialogType.Ok ? 0 : ControlMargin, 0, 0, 0), Width = ButtonWidth, Height = ButtonHeight, FontFamily = ButtonFontFamily, FontSize = ButtonFontSize };
+            button2 = new Button { Name = "Button2", Margin = new Thickness(dialogType == ConfirmationDialogType.OkCancel ? 0 : ControlMargin, 0, 0, 0), Width = ButtonWidth, Height = ButtonHeight, FontFamily = ButtonFontFamily, FontSize = ButtonFontSize };
+            button3 = new Button { Name = "Button3", Margin = new Thickness(0, 0, 0, 0), Width = ButtonWidth, Height = ButtonHeight, FontFamily = ButtonFontFamily, FontSize = ButtonFontSize };
             BindingOperations.SetBinding(button1, Button.CommandProperty, new Binding("Button1Command"));
             BindingOperations.SetBinding(button2, Button.CommandProperty, new Binding("Button2Command"));
             BindingOperations.SetBinding(button3, Button.CommandProperty, new Binding("Button3Command"));
@@ -285,7 +457,7 @@ namespace Mvvm
             buttonPanel.Children.Add(button2);
             buttonPanel.Children.Add(button1);
             Content = grid;
-            MinWidth = (marginSize + buttonWidth) * (dialogType == ConfirmationDialogType.Ok ? 2 : dialogType == ConfirmationDialogType.OkCancel ? 3 : 4);
+            //MinWidth = (ControlMargin + ButtonWidth) * (dialogType == ConfirmationDialogType.Ok ? 2 : dialogType == ConfirmationDialogType.OkCancel ? 3 : 4);
         }
     }
     /// <summary>

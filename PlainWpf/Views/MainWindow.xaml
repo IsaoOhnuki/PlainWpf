@@ -7,11 +7,12 @@
         xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
         xmlns:Converters="clr-namespace:Converters"
         xmlns:Mvvm="clr-namespace:Mvvm"
+        xmlns:MvvmOption="clr-namespace:MvvmOption"
         mc:Ignorable="d"
         Mvvm:NavigationServiceEx.Startup="{x:Type local:SubPage1}"
         Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
         Icon="{x:Null}"
-        Title="{Binding Title}" Height="400" Width="736" Background="#FF002EFF">
+        Title="{Binding Title}" Height="400" Width="736" Background="#FF002EFF" ResizeMode="NoResize">
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
@@ -19,16 +20,16 @@
         <Converters:DoubleComparisonToBooleanConverter x:Key="DoubleComparisonToBooleanConverter"/>
         <NullableBoolConverter x:Key="NullableBoolConverter"/>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="CenterNarrowed" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHN" NavigationMode="HorizontalNarrowed" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVN" NavigationMode="VerticalNarrowed" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryS" NavigationMode="CenterSpread" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHS" NavigationMode="HorizontalSpread" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVS" NavigationMode="VerticalSpread" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHR" NavigationMode="RightToHorizontal" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryHL" NavigationMode="LeftToHorizontal" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVT" NavigationMode="TopToVertical" Duration="0:0:1"/>
-        <Mvvm:SimpleWipeNavigationStory x:Key="StoryVB" NavigationMode="BottomToVertical" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryN" NavigationMode="CenterNarrowed" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryHN" NavigationMode="HorizontalNarrowed" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryVN" NavigationMode="VerticalNarrowed" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryS" NavigationMode="CenterSpread" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryHS" NavigationMode="HorizontalSpread" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryVS" NavigationMode="VerticalSpread" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryHR" NavigationMode="RightToHorizontal" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryHL" NavigationMode="LeftToHorizontal" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryVT" NavigationMode="TopToVertical" Duration="0:0:1"/>
+        <MvvmOption:SimpleWipeNavigationStory x:Key="StoryVB" NavigationMode="BottomToVertical" Duration="0:0:1"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>

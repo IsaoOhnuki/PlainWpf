@@ -7,12 +7,13 @@
       xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
       xmlns:Views="clr-namespace:PlainWpf.Views"
       xmlns:Mvvm="clr-namespace:Mvvm"
+      xmlns:MvvmOption="clr-namespace:MvvmOption"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300" Background="#FF00FF51"
       >
     <Mvvm:MessengerService.Requests>
         <Mvvm:RequestCollection>
-            <Mvvm:OkCancelDialogRequest/>
+            <MvvmOption:OkCancelDialogRequest/>
         </Mvvm:RequestCollection>
     </Mvvm:MessengerService.Requests>
     <UserControl.DataContext>

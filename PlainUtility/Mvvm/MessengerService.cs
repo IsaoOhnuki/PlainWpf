@@ -1,11 +1,17 @@
-﻿using System;
+﻿using Controls;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
+using System.Windows.Interop;
 using System.Windows.Media;
 
 namespace Mvvm
@@ -26,6 +32,10 @@ namespace Mvvm
         /// <summary>
         /// 
         /// </summary>
+        public static readonly string RequestNotifyPropertyName = nameof(MessengerService) + ":Request";
+        /// <summary>
+        /// 
+        /// </summary>
         protected static List<KeyValuePair<object, IRequest>> Requests { get; private set; } = new List<KeyValuePair<object, IRequest>>();
 
         private object dataContext;
@@ -40,28 +50,36 @@ namespace Mvvm
             get { return dataContext; }
             set
             {
+                // OldDataContextがあったら
                 if (dataContext != null)
                 {
+                    // OldDataContextをKeyとしたりくえすとがあったら写像しておく
                     var list = Requests.Where(x => x.Key.Equals(dataContext)).ToArray();
                     if (list.Count() > 0)
                     {
+                        // Keyだけ変更したいがKeyはリードオンリなのでいったん外す
                         foreach (var val in list)
                         {
                             MessengerService.Requests.Remove(val);
                         }
+                        // KeyをMessengerService管轄にしておく
                         MessengerService.Requests.AddRange(list.Select(x => new KeyValuePair<object, IRequest>(this, x.Value)));
                     }
                 }
                 dataContext = value;
+                // NewDataContextがあったら
                 if (dataContext != null)
                 {
+                    // MessengerService管轄のリクエストを写像しておく
                     var list = Requests.Where(x => x.Key.Equals(this)).ToArray();
                     if (list.Count() > 0)
                     {
+                        // Keyだけ変更したいがKeyはリードオンリなのでいったん外す
                         foreach (var val in list)
                         {
                             MessengerService.Requests.Remove(val);
                         }
+                        // KeyをNewDataContext管轄にする
                         MessengerService.Requests.AddRange(list.Select(x => new KeyValuePair<object, IRequest>(dataContext, x.Value)));
                     }
                 }
@@ -264,103 +282,7 @@ namespace Mvvm
     /// <summary>
     /// 
     /// </summary>
-    public class PopupWindowRequest : Request
-    {
-        /// <summary>
-        /// 
-        /// </summary>
-        public PopupWindowRequest()
-        {
-            requestAction = ActionHnadler;
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="typeOfRecipientView"></param>
-        /// <param name="messageType"></param>
-        public PopupWindowRequest(Type typeOfRecipientView, Type messageType)
-            : base(typeOfRecipientView, messageType)
-        {
-            requestAction = ActionHnadler;
-        }
-        private void ActionHnadler(IMessage message)
-        {
-            var view = Activator.CreateInstance(TypeOfRecipientView);
-            if (view is FrameworkElement element && element.DataContext is IMessageRecipient recipient)
-            {
-                recipient.Message = message;
-                Window window = new Window
-                {
-                    Content = element,
-                    Owner = Application.Current.MainWindow,
-                    Title = message.Title,
-                    Icon = Icon,
-                    WindowStyle = WindowStyle,
-                    WindowState = WindowState,
-                    ResizeMode = ResizeMode,
-                    SizeToContent = SizeToContent,
-                    WindowStartupLocation = WindowStartupLocation,
-                    VerticalContentAlignment = VerticalAlignment.Stretch,
-                    HorizontalContentAlignment = HorizontalAlignment.Stretch
-                };
-                window.ShowDialog();
-            }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        new public Type TypeOfRecipientView
-        {
-            get { return typeOfRecipientView; }
-            set
-            {
-                // TypeOfViewに代入された値がContentControlの派生クラスか、またはContentControlか
-                if (value.IsSubclassOf(typeof(ContentControl)) || value.Equals(typeof(ContentControl)))
-                {
-                    typeOfRecipientView = value;
-                }
-                else
-                {
-                    throw new Exception("ViewにできるTypeはContentControlから派生している必要があります");
-                }
-            }
-        }
-        /// <summary>
-        /// 
-        /// </summary>
-        new public Type MessageType
-        {
-            get { return messageType; }
-            set
-            {
-                // MessageTypeに代入された値がIMessageに指定可能か
-                if (typeof(IMessage).IsAssignableFrom(value))
-                {
-                    messageType = value;
-                }
-                else
-                {
-                    throw new Exception("MessageにできるTypeはIMessageを実装している必要があります");
-                }
-            }
-        }
-        public ImageSource Icon { get; set; }
-        public WindowStyle WindowStyle { get; set; } = WindowStyle.SingleBorderWindow;
-        public WindowState WindowState { get; set; } = WindowState.Normal;
-        public ResizeMode ResizeMode { get; set; } = ResizeMode.CanResize;
-        public SizeToContent SizeToContent { get; set; } = SizeToContent.Manual;
-        public WindowStartupLocation WindowStartupLocation { get; set; } = WindowStartupLocation.Manual;
-        public double Width { get; set; }
-        public double MinWidth { get; set; }
-        public double MaxWidth { get; set; }
-        public double Height { get; set; }
-        public double MinHeight { get; set; }
-        public double MaxHeight { get; set; }
-    }
-    /// <summary>
-    /// 
-    /// </summary>
-    public class Request : IRequest
+    public class Request : DependencyObject, IRequest
     {
         /// <summary>
         /// 
@@ -415,5 +337,204 @@ namespace Mvvm
         /// 
         /// </summary>
         public Type MessageType { get { return messageType; } }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public class PopupWindowRequestToIRequestTypeConverter : TypeConverter
+    {
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="context"></param>
+        ///// <param name="destinationType"></param>
+        ///// <returns></returns>
+        //public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType)
+        //{
+        //    return destinationType == typeof(IRequest);
+        //}
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="context"></param>
+        ///// <param name="culture"></param>
+        ///// <param name="value"></param>
+        ///// <param name="destinationType"></param>
+        ///// <returns></returns>
+        //public override object ConvertTo(ITypeDescriptorContext context, CultureInfo culture, object value, Type destinationType)
+        //{
+        //    return value as IRequest;
+        //}
+
+        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
+        {
+            return sourceType == typeof(IRequest);
+        }
+
+        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
+        {
+            return value as IRequest;
+        }
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    [TypeConverter(typeof(PopupWindowRequestToIRequestTypeConverter))]
+    public class PopupWindowRequest : Request
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        public PopupWindowRequest()
+        {
+            requestAction = ActionHnadler;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="content"></param>
+        protected virtual void OnCreateContent(ContentControl content)
+        {
+            if (!double.IsNaN(Width))
+                content.Width = Width;
+            if (!double.IsNaN(Height))
+                content.Height = Height;
+            if (!double.IsNaN(MinWidth))
+                content.MinWidth = MinWidth;
+            if (!double.IsNaN(MinHeight))
+                content.MinHeight = MinHeight;
+            if (!double.IsNaN(MaxWidth))
+                content.MaxWidth = MaxWidth;
+            if (!double.IsNaN(MaxHeight))
+                content.MaxHeight = MaxHeight;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="typeOfRecipientView"></param>
+        /// <param name="messageType"></param>
+        public PopupWindowRequest(Type typeOfRecipientView, Type messageType)
+            : base(typeOfRecipientView, messageType)
+        {
+            requestAction = ActionHnadler;
+        }
+        private void ActionHnadler(IMessage message)
+        {
+            var view = Activator.CreateInstance(TypeOfRecipientView);
+            if (view is ContentControl content && content.DataContext is IMessageRecipient recipient)
+            {
+                recipient.Message = message;
+                NoControlboxWindow window = new NoControlboxWindow
+                {
+                    ControlboxEnabled = ControlboxEnabled,
+                    Content = content,
+                    Owner = Application.Current.MainWindow,
+                    Title = message.Title,
+                    Icon = Icon,
+                    WindowStyle = WindowStyle,
+                    WindowState = WindowState,
+                    ResizeMode = ResizeMode,
+                    SizeToContent = SizeToContent,
+                    WindowStartupLocation = WindowStartupLocation,
+                    VerticalContentAlignment = VerticalAlignment.Stretch,
+                    HorizontalContentAlignment = HorizontalAlignment.Stretch,
+                };
+                OnCreateContent(content);
+                window.ShowDialog();
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        new public Type TypeOfRecipientView
+        {
+            get { return typeOfRecipientView; }
+            set
+            {
+                // TypeOfViewに代入された値がContentControlの派生クラスか、またはContentControlか
+                if (value.IsSubclassOf(typeof(ContentControl)) || value.Equals(typeof(ContentControl)))
+                {
+                    typeOfRecipientView = value;
+                }
+                else
+                {
+                    throw new Exception("ViewにできるTypeはContentControlから派生している必要があります");
+                }
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        new public Type MessageType
+        {
+            get { return messageType; }
+            set
+            {
+                // MessageTypeに代入された値がIMessageに指定可能か
+                if (typeof(IMessage).IsAssignableFrom(value))
+                {
+                    messageType = value;
+                }
+                else
+                {
+                    throw new Exception("MessageにできるTypeはIMessageを実装している必要があります");
+                }
+            }
+        }
+        public bool ControlboxEnabled { get; set; } = true;
+        public ImageSource Icon { get; set; }
+        public WindowStyle WindowStyle { get; set; } = WindowStyle.SingleBorderWindow;
+        public WindowState WindowState { get; set; } = WindowState.Normal;
+        public ResizeMode ResizeMode { get; set; } = ResizeMode.CanResize;
+        public SizeToContent SizeToContent { get; set; } = SizeToContent.Manual;
+        public WindowStartupLocation WindowStartupLocation { get; set; } = WindowStartupLocation.Manual;
+        public double Width { get; set; } = double.NaN;
+        public double MinWidth { get; set; } = double.NaN;
+        public double MaxWidth { get; set; } = double.NaN;
+        public double Height { get; set; } = double.NaN;
+        public double MinHeight { get; set; } = double.NaN;
+        public double MaxHeight { get; set; } = double.NaN;
+    }
+    /// <summary>
+    /// 
+    /// </summary>
+    public class RecipientView : ContentControl
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RecipientView"/> class.
+        /// </summary>
+        public RecipientView()
+        {
+            BindingOperations.SetBinding(this, CloserProperty, new Binding("Closer") { Mode = BindingMode.TwoWay });
+        }
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="RecipientView"/> is closer.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if closer; otherwise, <c>false</c>.
+        /// </value>
+        public bool Closer
+        {
+            get { return (bool)GetValue(CloserProperty); }
+            set { SetValue(CloserProperty, value); }
+        }
+        /// <summary>
+        /// The closer property
+        /// </summary>
+        public static readonly DependencyProperty CloserProperty = DependencyProperty.Register(
+            "Closer",
+            typeof(bool),
+            typeof(RecipientView),
+            new PropertyMetadata(default(bool), (sender, e) => {
+                if (sender is ContentControl control && control.Parent is Window owner)
+                {
+                    if ((bool)e.NewValue)
+                    {
+                        owner.DialogResult = true;
+                    }
+                }
+            }));
     }
 }

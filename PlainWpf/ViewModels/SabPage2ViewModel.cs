@@ -11,6 +11,7 @@ using System.Windows.Data;
 using Mvvm;
 using System.Windows.Input;
 using System.ComponentModel;
+using MvvmOption;
 
 namespace PlainWpf.ViewModels
 {

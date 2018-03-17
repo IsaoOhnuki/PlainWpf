@@ -5,20 +5,28 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlainWpf.Views"
              xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
+             xmlns:Mvvm="clr-namespace:Mvvm"
+             xmlns:MvvmOption="clr-namespace:MvvmOption"
              xmlns:Behaviors="clr-namespace:Behaviors"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="200" d:DesignWidth="371">
     <UserControl.DataContext>
         <ViewModels:SubPage5ViewModel/>
     </UserControl.DataContext>
+    <Mvvm:MessengerService.Requests>
+        <Mvvm:RequestCollection>
+            <MvvmOption:DefaultOpenFileDialogRequest/>
+        </Mvvm:RequestCollection>
+    </Mvvm:MessengerService.Requests>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="153*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical">
-            <Button Content="Prev" Command="{Binding Undo}"/>
-            <Button Content="Next"/>
+            <Button Content="Load" Command="{Binding Load}"/>
+            <Button Content="Prev" Command="{Binding Undo}" IsEnabled="{Binding Strokes.CanUndo}"/>
+            <Button Content="Next" Command="{Binding Redo}" IsEnabled="{Binding Strokes.CanRedo}"/>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Width"/>
                 <TextBox Text="{Binding ActualSize.Width}"/>
@@ -27,7 +35,13 @@
                 <Label Content="Height"/>
                 <TextBox Text="{Binding ActualSize.Height}"/>
             </StackPanel>
+            <Button Content="Draw" Command="{Binding Draw}"/>
         </StackPanel>
-        <InkCanvas Grid.Column="1" Behaviors:InkCanvasBehavior.Strokes="{Binding Strokes}" Behaviors:InkCanvasBehavior.ActualSizeChanged="{Binding ActualSizeChanged}"/>
+        <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
+            <Grid Background="RosyBrown">
+                <Image x:Name="ImageView" Grid.Column="1" Source="{Binding ImageSource}"/>
+                <InkCanvas Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" Behaviors:InkCanvasBehavior.Strokes="{Binding Strokes}" Behaviors:InkCanvasBehavior.ActualSizeChanged="{Binding ActualSizeChanged}" MinWidth="0" MinHeight="0"/>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>

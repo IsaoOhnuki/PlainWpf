@@ -1971,9 +1971,15 @@
             </summary>
             <typeparam name="T">保持するオブジェクト</typeparam>
         </member>
-        <member name="M:Utilitys.HistoryStack`1.#ctor">
+        <member name="M:Utilitys.HistoryStack`1.#ctor(System.Boolean)">
             <summary>
             Initializes a new instance of the <see cref="T:Utilitys.HistoryStack`1"/> class.
+            </summary>
+            <param name="KeepFirstItem"></param>
+        </member>
+        <member name="P:Utilitys.HistoryStack`1.KeepFirstItem">
+            <summary>
+            
             </summary>
         </member>
         <member name="P:Utilitys.HistoryStack`1.CanUndo">
@@ -2013,11 +2019,6 @@
         <member name="M:Utilitys.HistoryStack`1.Rewind">
             <summary>
             ポイント位置までクリアします
-            </summary>
-        </member>
-        <member name="M:Utilitys.HistoryStack`1.Dispose">
-            <summary>
-            Releases unmanaged and - optionally - managed resources.
             </summary>
         </member>
         <member name="T:Utilitys.NotifyTaskCompletion`1">

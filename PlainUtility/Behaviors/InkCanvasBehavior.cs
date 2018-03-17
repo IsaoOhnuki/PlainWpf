@@ -6,6 +6,8 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Ink;
+using System.Windows.Media.Imaging;
+using System.Windows.Media;
 
 namespace Behaviors
 {
@@ -61,6 +63,15 @@ namespace Behaviors
         {
             switch (e.Action)
             {
+                case NotifyCollectionChangedAction.Add:
+                    if (!canvasDraw)
+                    {
+                        foreach (var val in e.NewItems)
+                        {
+                            InkCanvas.Strokes.Add(val as Stroke);
+                        }
+                    }
+                    break;
                 case NotifyCollectionChangedAction.Remove:
                     foreach (var val in e.OldItems)
                     {
@@ -108,9 +119,13 @@ namespace Behaviors
             }
         }
 
+        private bool canvasDraw;
         private static void InkCanvas_StrokeCollected(object sender, InkCanvasStrokeCollectedEventArgs e)
         {
+            var behavior = GetBehavior(sender as DependencyObject);
+            behavior.canvasDraw = true;
             GetStrokes(sender as DependencyObject)?.Add(e.Stroke);
+            behavior.canvasDraw = false;
         }
 
         private static void InkCanvas_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -135,5 +150,30 @@ namespace Behaviors
             typeof(Action<Size>),
             typeof(InkCanvasBehavior),
             new PropertyMetadata(null));
+
+        public static BitmapSource DrawStrokes(BitmapSource imageSource, ICollection<Stroke> strokes, Size strokeCanvasSize)
+        {
+            if (imageSource != null && strokes != null)
+            {
+                DrawingVisual drawingVisual = new DrawingVisual();
+                using (DrawingContext drawingContext = drawingVisual.RenderOpen())
+                {
+                    drawingContext.DrawImage(imageSource, new Rect(new Size(imageSource.PixelWidth, imageSource.PixelHeight)));
+
+                    var matrix = new Matrix(imageSource.PixelWidth / strokeCanvasSize.Width, 0, 0, imageSource.PixelHeight / strokeCanvasSize.Height, 0, 0);
+
+                    foreach (var stroke in strokes)
+                    {
+                        stroke.Transform(matrix, true);
+                        stroke.Draw(drawingContext);
+                    }
+                }
+                RenderTargetBitmap bitmap = new RenderTargetBitmap(imageSource.PixelWidth, imageSource.PixelHeight, imageSource.DpiX, imageSource.DpiY, PixelFormats.Pbgra32);
+                bitmap?.Render(drawingVisual);
+                return bitmap as BitmapSource;
+            }
+            else
+                return imageSource;
+        }
     }
 }

@@ -28,6 +28,9 @@
                         <GradientStop Color="#FF2D71D4" Offset="1"/>
                     </LinearGradientBrush>
                 </MvvmOption:OkCancelDialogRequest.ContentBackground>
+                <MvvmOption:OkCancelDialogRequest.ButtonBackground>
+                    <SolidColorBrush Color="#FF1DFF27"/>
+                </MvvmOption:OkCancelDialogRequest.ButtonBackground>
             </MvvmOption:OkCancelDialogRequest>
             <MvvmOption:YesNoCancelDialogRequest ContentMargin="30" ButtonHeight="50" ButtonWidth="150" ButtonBorderThickness="5"/>
             <MvvmOption:DefaultOpenFileDialogRequest/>

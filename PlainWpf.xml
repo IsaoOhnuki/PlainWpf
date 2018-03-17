@@ -120,6 +120,19 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:PlainWpf.Views.SubPage5">
+            <summary>
+            SubPage5.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            SubPage5
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.SubPage5.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:PlainWpf.Views.ViewBoxTest">
             <summary>
             ViewBoxTest.xaml の相互作用ロジック

@@ -12,7 +12,7 @@
         Mvvm:NavigationServiceEx.Startup="{x:Type local:SubPage1}"
         Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}"
         Icon="{x:Null}"
-        Title="{Binding Title}" Height="400" Width="736" Background="#FF002EFF" ResizeMode="NoResize">
+        Title="{Binding Title}" Height="400" Width="736" Background="#FF002EFF">
     <Window.DataContext>
         <ViewModels:MainWindowViewModel/>
     </Window.DataContext>
@@ -121,6 +121,7 @@
                 <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage4}"/>
                 <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:XmlTreeView}"/>
                 <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:ViewBoxTest}"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage5" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage5}"/>
                 <ListBox x:Name="AnimeType" ScrollViewer.VerticalScrollBarVisibility="Visible">
                     <ListBox.Items>
                         <ListBoxItem Name="n5" Content="Narrowed"/>

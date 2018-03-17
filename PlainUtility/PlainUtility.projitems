@@ -12,6 +12,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\AlwaysOverrideBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\FileDragBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\FormatTextInputBehavior.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\InkCanvasBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Controls\ColorSelector.xaml.cs">
       <DependentUpon>ColorSelector.xaml</DependentUpon>
     </Compile>
@@ -33,7 +34,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\NotifyBase.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\SimpleRaiseNavigationStory.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\GridLengthAnimation.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ImageSourceToFile.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilitys\ImageSourceUtilitys.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\Logger.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilitys\HistoryStack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\JapaneseDateTimeExtensions.cs" />

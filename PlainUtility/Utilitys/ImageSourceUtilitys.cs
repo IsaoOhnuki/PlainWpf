@@ -4,7 +4,13 @@ using System.IO;
 using System.Text;
 using System.Windows.Media.Imaging;
 
-namespace PlainUtility.Utilitys
+/// <summary>
+/// 
+/// </summary>
+/// <remarks>
+/// <a href="http://blog.shibayan.jp/entry/20071013/1192204667">WPF に用意されている 7 種類のビットマップ</a>>
+/// </remarks>
+namespace Utilitys
 {
     public class ImageSourceToFile
     {

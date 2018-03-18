@@ -8,6 +8,7 @@
              xmlns:Mvvm="clr-namespace:Mvvm"
              xmlns:MvvmOption="clr-namespace:MvvmOption"
              xmlns:Behaviors="clr-namespace:Behaviors"
+             xmlns:Controls="clr-namespace:Controls"
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="371">
     <UserControl.DataContext>
@@ -19,6 +20,14 @@
             <MvvmOption:DefaultSaveFileDialogRequest/>
         </Mvvm:RequestCollection>
     </Mvvm:MessengerService.Requests>
+    <UserControl.Resources>
+        <DrawingAttributes x:Key="DrawingAttributesLE" Width="30" Height="30" StylusTip="Ellipse" Color="#80000000"/>
+        <DrawingAttributes x:Key="DrawingAttributesME" Width="20" Height="20" StylusTip="Ellipse" Color="#80000000"/>
+        <DrawingAttributes x:Key="DrawingAttributesSE" Width="10" Height="10" StylusTip="Ellipse" Color="#80000000"/>
+        <DrawingAttributes x:Key="DrawingAttributesLR" Width="30" Height="30" StylusTip="Rectangle" Color="#80000000"/>
+        <DrawingAttributes x:Key="DrawingAttributesMR" Width="20" Height="20" StylusTip="Rectangle" Color="#80000000"/>
+        <DrawingAttributes x:Key="DrawingAttributesSR" Width="10" Height="10" StylusTip="Rectangle" Color="#80000000"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
@@ -26,7 +35,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical">
             <Button Content="Prev" Command="{Binding Undo}" IsEnabled="{Binding CanUndo}"/>
-            <Button Content="Next" Command="{Binding Redo}" IsEnabled="{Binding Strokes.CanRedo}"/>
+            <Button Content="Next" Command="{Binding Redo}" IsEnabled="{Binding CanRedo}"/>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Width"/>
                 <TextBox Text="{Binding ActualWidth}"/>
@@ -38,12 +47,79 @@
             <Button Content="Draw" Command="{Binding Draw}"/>
             <Button Content="Load" Command="{Binding Load}"/>
             <Button Content="Save" Command="{Binding Save}"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <RadioButton x:Name="rbE" Grid.Column="0" IsChecked="True" Content="○" Margin="10"/>
+                <RadioButton x:Name="rbR" Grid.Column="1" Content="□" Margin="10"/>
+            </Grid>
+            <StackPanel Orientation="Vertical">
+                <RadioButton x:Name="rbL" IsChecked="True" Content="Lage" Margin="10"/>
+                <RadioButton x:Name="rbM" Content="Medium" Margin="10"/>
+                <RadioButton x:Name="rbS" Content="Small" Margin="10"/>
+            </StackPanel>
+            <Controls:ColorSelector x:Name="ColorSelector"/>
         </StackPanel>
         <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
             <Grid Background="RosyBrown">
                 <Image x:Name="ImageView" Grid.Column="1" Source="{Binding ImageSource}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <!--<InkCanvas Behaviors:ActualSizeBehavior.ActualSize="{Binding ActualSize}"  Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" Behaviors:InkCanvasBehavior.Strokes="{Binding Strokes}" Behaviors:InkCanvasBehavior.ActualSizeChanged="{Binding ActualSizeChanged}" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>-->
                 <InkCanvas Strokes="{Binding InkStrokes}" Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <!--<InkCanvas.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=rbL, Path=IsChecked}" Value="true">
+                            <Setter Property="DefaultDrawingAttributes" Value=""/>
+                        </DataTrigger>
+                    </InkCanvas.Triggers>-->
+                    <InkCanvas.Style>
+                        <Style TargetType="InkCanvas">
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=rbL, Path=IsChecked}" Value="true"/>
+                                        <Condition Binding="{Binding ElementName=rbE, Path=IsChecked}" Value="true"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="DefaultDrawingAttributes" Value="{StaticResource DrawingAttributesLE}"/>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=rbM, Path=IsChecked}" Value="true"/>
+                                        <Condition Binding="{Binding ElementName=rbE, Path=IsChecked}" Value="true"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="DefaultDrawingAttributes" Value="{StaticResource DrawingAttributesME}"/>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=rbS, Path=IsChecked}" Value="true"/>
+                                        <Condition Binding="{Binding ElementName=rbE, Path=IsChecked}" Value="true"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="DefaultDrawingAttributes" Value="{StaticResource DrawingAttributesSE}"/>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=rbL, Path=IsChecked}" Value="true"/>
+                                        <Condition Binding="{Binding ElementName=rbR, Path=IsChecked}" Value="true"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="DefaultDrawingAttributes" Value="{StaticResource DrawingAttributesLR}"/>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=rbM, Path=IsChecked}" Value="true"/>
+                                        <Condition Binding="{Binding ElementName=rbR, Path=IsChecked}" Value="true"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="DefaultDrawingAttributes" Value="{StaticResource DrawingAttributesMR}"/>
+                                </MultiDataTrigger>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding ElementName=rbS, Path=IsChecked}" Value="true"/>
+                                        <Condition Binding="{Binding ElementName=rbR, Path=IsChecked}" Value="true"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="DefaultDrawingAttributes" Value="{StaticResource DrawingAttributesSR}"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </InkCanvas.Style>
                     <Behaviors:DataPiping.DataPipes>
                         <Behaviors:DataPipeCollection>
                             <Behaviors:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type InkCanvas}}, Path=ActualWidth}" Target="{Binding Path=ActualWidth, Mode=OneWayToSource}"/>

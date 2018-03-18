@@ -18,8 +18,8 @@ namespace PlainWpf.ViewModels
 {
     public class SubPage5ViewModel : BindableBase
     {
-        public HistoryStack<Stroke> Strokes { get; set; } = new HistoryStack<Stroke>(false);
         public StrokeCollection InkStrokes { get; set; } = new StrokeCollection();
+        public DrawingAttributes InkPen { get; set; } = new DrawingAttributes { Width = 10, Height = 10, StylusTip = StylusTip.Ellipse };
 
         private double actualWidth;
         public double ActualWidth
@@ -88,11 +88,11 @@ namespace PlainWpf.ViewModels
                 }
             });
             Undo = new DelegateCommand(() => {
-                Strokes.Undo();
+                //Strokes.Undo();
                 InkStrokes.RemoveAt(InkStrokes.Count - 1);
             });
             Redo = new DelegateCommand(() => {
-                Strokes.Redo();
+                //Strokes.Redo();
             });
         }
 

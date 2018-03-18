@@ -43,7 +43,7 @@
             <Grid Background="RosyBrown">
                 <Image x:Name="ImageView" Grid.Column="1" Source="{Binding ImageSource}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <!--<InkCanvas Behaviors:ActualSizeBehavior.ActualSize="{Binding ActualSize}"  Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" Behaviors:InkCanvasBehavior.Strokes="{Binding Strokes}" Behaviors:InkCanvasBehavior.ActualSizeChanged="{Binding ActualSizeChanged}" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>-->
-                <InkCanvas Behaviors:ActualSizeBehavior.ActualSize="{Binding ActualSize}" Strokes="{Binding InkStrokes}" Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                <InkCanvas Strokes="{Binding InkStrokes}" Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top">
                     <Behaviors:DataPiping.DataPipes>
                         <Behaviors:DataPipeCollection>
                             <Behaviors:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type InkCanvas}}, Path=ActualWidth}" Target="{Binding Path=ActualWidth, Mode=OneWayToSource}"/>

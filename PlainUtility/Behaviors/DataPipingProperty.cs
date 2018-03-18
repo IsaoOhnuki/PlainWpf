@@ -8,14 +8,14 @@ namespace Behaviors
     /// <summary>
     /// <code>
     /// <Canvas>
-    ///     <u:DataPiping.DataPipes>
-    ///          <u:DataPipeCollection>
-    ///              <u:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type Canvas}}, Path=ActualWidth}"
+    ///     <Behaviors:DataPiping.DataPipes>
+    ///          <Behaviors:DataPipeCollection>
+    ///              <Behaviors:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type Canvas}}, Path=ActualWidth}"
     ///                          Target="{Binding Path=ViewportWidth, Mode=OneWayToSource}"/>
-    ///              <u:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type Canvas}}, Path=ActualHeight}"
+    ///              <Behaviors:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type Canvas}}, Path=ActualHeight}"
     ///                          Target="{Binding Path=ViewportHeight, Mode=OneWayToSource}"/>
-    ///           </u:DataPipeCollection>
-    ///      </u:DataPiping.DataPipes>
+    ///           </Behaviors:DataPipeCollection>
+    ///      </Behaviors:DataPiping.DataPipes>
     /// <Canvas>
     /// </code>
     /// </summary>

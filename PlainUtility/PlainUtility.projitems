@@ -9,7 +9,6 @@
     <Import_RootNamespace>PlainUtility</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Behaviors\ActualSizeBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\AlwaysOverrideBehavior.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\DataPipingProperty.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Behaviors\FileDragBehavior.cs" />

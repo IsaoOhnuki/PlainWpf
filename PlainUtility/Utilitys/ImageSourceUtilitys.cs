@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Windows;
+using System.Windows.Ink;
+using System.Windows.Media;
 using System.Windows.Media.Imaging;
 
 /// <summary>
@@ -12,9 +15,39 @@ using System.Windows.Media.Imaging;
 /// </remarks>
 namespace Utilitys
 {
-    public class ImageSourceToFile
+    public class ImageSourceUtility
     {
-        public static void BitmapSourceToFile(string filePath, BitmapSource bmpSrc)
+        public static BitmapSource DrawStrokes(BitmapSource imageSource, ICollection<Stroke> strokes, Size strokeCanvasSize)
+        {
+            if (imageSource != null && strokes != null && strokeCanvasSize.Width > 0 && strokeCanvasSize.Height > 0)
+            {
+                DrawingVisual drawingVisual = new DrawingVisual();
+                using (DrawingContext drawingContext = drawingVisual.RenderOpen())
+                {
+                    // DrawingContext.DrawImageがdpi96を想定しているため補正してから描画する
+                    double imageSourceWidth = imageSource.PixelWidth * 96.0 / imageSource.DpiX;
+                    double imageSourceHeight = imageSource.PixelHeight * 96.0 / imageSource.DpiY;
+
+                    drawingContext.DrawImage(imageSource, new Rect(new Size(imageSourceWidth, imageSourceHeight)));
+
+                    var matrix = new Matrix(imageSourceWidth / strokeCanvasSize.Width, 0, 0, imageSourceHeight / strokeCanvasSize.Height, 0, 0);
+
+                    foreach (var stroke in strokes)
+                    {
+                        var val = stroke.Clone();
+                        val.Transform(matrix, true);
+                        val.Draw(drawingContext);
+                    }
+                }
+                RenderTargetBitmap bitmap = new RenderTargetBitmap(imageSource.PixelWidth, imageSource.PixelHeight, imageSource.DpiX, imageSource.DpiY, PixelFormats.Pbgra32);
+                bitmap?.Render(drawingVisual);
+                return bitmap as BitmapSource;
+            }
+            else
+                return imageSource;
+        }
+
+        public static void BitmapSourceToFile(string filePath, BitmapSource bmpSrc, FileMode fileMode = FileMode.OpenOrCreate, FileAccess fileAccess = FileAccess.Write)
         {
             if (bmpSrc == null)
             {
@@ -45,7 +78,7 @@ namespace Utilitys
             if (encoder != null)
             {
                 encoder.Frames.Add(BitmapFrame.Create(bmpSrc));
-                using (FileStream fs = new FileStream(filePath, System.IO.FileMode.Create))
+                using (FileStream fs = new FileStream(filePath, fileMode, fileAccess))
                 {
                     encoder.Save(fs);
                 }

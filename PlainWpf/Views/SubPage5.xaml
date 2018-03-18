@@ -16,6 +16,7 @@
     <Mvvm:MessengerService.Requests>
         <Mvvm:RequestCollection>
             <MvvmOption:DefaultOpenFileDialogRequest/>
+            <MvvmOption:DefaultSaveFileDialogRequest/>
         </Mvvm:RequestCollection>
     </Mvvm:MessengerService.Requests>
     <Grid>
@@ -24,23 +25,32 @@
             <ColumnDefinition Width="153*"/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Vertical">
-            <Button Content="Load" Command="{Binding Load}"/>
-            <Button Content="Prev" Command="{Binding Undo}" IsEnabled="{Binding Strokes.CanUndo}"/>
+            <Button Content="Prev" Command="{Binding Undo}" IsEnabled="{Binding CanUndo}"/>
             <Button Content="Next" Command="{Binding Redo}" IsEnabled="{Binding Strokes.CanRedo}"/>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Width"/>
-                <TextBox Text="{Binding ActualSize.Width}"/>
+                <TextBox Text="{Binding ActualWidth}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <Label Content="Height"/>
-                <TextBox Text="{Binding ActualSize.Height}"/>
+                <TextBox Text="{Binding ActualHeight}"/>
             </StackPanel>
             <Button Content="Draw" Command="{Binding Draw}"/>
+            <Button Content="Load" Command="{Binding Load}"/>
+            <Button Content="Save" Command="{Binding Save}"/>
         </StackPanel>
         <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
             <Grid Background="RosyBrown">
-                <Image x:Name="ImageView" Grid.Column="1" Source="{Binding ImageSource}"/>
-                <InkCanvas Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" Behaviors:InkCanvasBehavior.Strokes="{Binding Strokes}" Behaviors:InkCanvasBehavior.ActualSizeChanged="{Binding ActualSizeChanged}" MinWidth="0" MinHeight="0"/>
+                <Image x:Name="ImageView" Grid.Column="1" Source="{Binding ImageSource}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <!--<InkCanvas Behaviors:ActualSizeBehavior.ActualSize="{Binding ActualSize}"  Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" Behaviors:InkCanvasBehavior.Strokes="{Binding Strokes}" Behaviors:InkCanvasBehavior.ActualSizeChanged="{Binding ActualSizeChanged}" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>-->
+                <InkCanvas Behaviors:ActualSizeBehavior.ActualSize="{Binding ActualSize}" Strokes="{Binding InkStrokes}" Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Behaviors:DataPiping.DataPipes>
+                        <Behaviors:DataPipeCollection>
+                            <Behaviors:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type InkCanvas}}, Path=ActualWidth}" Target="{Binding Path=ActualWidth, Mode=OneWayToSource}"/>
+                            <Behaviors:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type InkCanvas}}, Path=ActualHeight}" Target="{Binding Path=ActualHeight, Mode=OneWayToSource}"/>
+                        </Behaviors:DataPipeCollection>
+                    </Behaviors:DataPiping.DataPipes>
+                </InkCanvas>
             </Grid>
         </ScrollViewer>
     </Grid>

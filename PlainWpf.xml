@@ -251,6 +251,7 @@
             <param name="target">DependencyObject</param>
             <param name="e">DependencyPropertyChangedEventArgs</param>
         </member>
+        <!-- 正しくない形式の XML コメントがメンバー "T:Behaviors.DataPiping" で無視されました -->
         <member name="T:Behaviors.FileDragBehavior">
             <summary>
             ファイルのＤ＆Ｄを受け入れるビヘイビア

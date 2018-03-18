@@ -153,19 +153,23 @@ namespace Behaviors
 
         public static BitmapSource DrawStrokes(BitmapSource imageSource, ICollection<Stroke> strokes, Size strokeCanvasSize)
         {
-            if (imageSource != null && strokes != null)
+            if (imageSource != null && strokes != null && strokeCanvasSize.Width > 0 && strokeCanvasSize.Height > 0)
             {
                 DrawingVisual drawingVisual = new DrawingVisual();
                 using (DrawingContext drawingContext = drawingVisual.RenderOpen())
                 {
-                    drawingContext.DrawImage(imageSource, new Rect(new Size(imageSource.PixelWidth, imageSource.PixelHeight)));
+                    double imageSourceWidth = imageSource.PixelWidth * 96.0 / imageSource.DpiX;
+                    double imageSourceHeight = imageSource.PixelHeight * 96.0 / imageSource.DpiY;
 
-                    var matrix = new Matrix(imageSource.PixelWidth / strokeCanvasSize.Width, 0, 0, imageSource.PixelHeight / strokeCanvasSize.Height, 0, 0);
+                    drawingContext.DrawImage(imageSource, new Rect(new Size(imageSourceWidth, imageSourceHeight)));
+
+                    var matrix = new Matrix(imageSourceWidth / strokeCanvasSize.Width, 0, 0, imageSourceHeight / strokeCanvasSize.Height, 0, 0);
 
                     foreach (var stroke in strokes)
                     {
-                        stroke.Transform(matrix, true);
-                        stroke.Draw(drawingContext);
+                        var val = stroke.Clone();
+                        val.Transform(matrix, true);
+                        val.Draw(drawingContext);
                     }
                 }
                 RenderTargetBitmap bitmap = new RenderTargetBitmap(imageSource.PixelWidth, imageSource.PixelHeight, imageSource.DpiX, imageSource.DpiY, PixelFormats.Pbgra32);

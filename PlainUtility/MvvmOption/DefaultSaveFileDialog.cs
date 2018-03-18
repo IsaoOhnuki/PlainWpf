@@ -40,7 +40,7 @@ namespace MvvmOption
         //
         // 戻り値:
         //     存在するファイル名に保存する前にダイアログ ボックスでメッセージを表示する場合は true。それ以外の場合は false。既定値は、true です。
-        public bool OverwritePrompt { get; set; }
+        public bool OverwritePrompt { get; set; } = true;
         //
         // 概要:
         //     ダイアログが有効な Win32 ファイル名だけを受け入れるかどうかを示す値を取得または設定します。
@@ -218,6 +218,10 @@ namespace MvvmOption
 
             var ret = dialog.ShowDialog(Application.Current.MainWindow);
             msg.DialogResult = ret.HasValue && ret.Value;
+            if (msg.DialogResult)
+            {
+                msg.FileName = dialog.FileName;
+            }
         }
     }
 }

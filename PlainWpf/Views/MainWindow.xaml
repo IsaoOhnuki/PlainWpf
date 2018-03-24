@@ -40,7 +40,7 @@
         <Grid x:Name="LeftContent" Grid.Column="0">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="{Binding ActualWidth, ElementName=MainContent}" ContentStringFormat="ActualWidth={0}" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.BrowseBack">
+                    <Button Content="PrevPage" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.BrowseBack">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Style.Triggers>
@@ -64,7 +64,7 @@
                             </Style>
                         </Button.Style>
                     </Button>
-                    <Button Content="{Binding ActualWidth, ElementName=MainContent}" ContentStringFormat="ActualWidth={0}" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.BrowseForward">
+                    <Button Content="NextPage" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.BrowseForward">
                         <Button.Style>
                             <Style TargetType="Button">
                                 <Style.Triggers>

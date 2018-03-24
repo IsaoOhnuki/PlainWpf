@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PlainWpf.Views"
              xmlns:ViewModels="clr-namespace:PlainWpf.ViewModels"
+             xmlns:Configuration="clr-namespace:System.Configuration;assembly=System"
              xmlns:Mvvm="clr-namespace:Mvvm"
              xmlns:MvvmOption="clr-namespace:MvvmOption"
              xmlns:Behaviors="clr-namespace:Behaviors"
@@ -21,6 +22,7 @@
         </Mvvm:RequestCollection>
     </Mvvm:MessengerService.Requests>
     <UserControl.Resources>
+        <!--<DrawingAttributes x:Key="DrawingAttributesLE" Width="{Binding Source={x:Static Configuration:ConfigurationSettings.AppSettings}, Path=MaskPen.Lage.Width}" Height="30" StylusTip="Ellipse" Color="#80000000"/>-->
         <DrawingAttributes x:Key="DrawingAttributesLE" Width="30" Height="30" StylusTip="Ellipse" Color="#80000000"/>
         <DrawingAttributes x:Key="DrawingAttributesME" Width="20" Height="20" StylusTip="Ellipse" Color="#80000000"/>
         <DrawingAttributes x:Key="DrawingAttributesSE" Width="10" Height="10" StylusTip="Ellipse" Color="#80000000"/>
@@ -33,7 +35,7 @@
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="153*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Orientation="Vertical">
+        <StackPanel Orientation="Vertical" Background="White">
             <Button Content="Prev" Command="{Binding Undo}" IsEnabled="{Binding CanUndo}"/>
             <Button Content="Next" Command="{Binding Redo}" IsEnabled="{Binding CanRedo}"/>
             <StackPanel Orientation="Horizontal">
@@ -52,27 +54,23 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <RadioButton x:Name="rbE" Grid.Column="0" IsChecked="True" Content="○" Margin="10"/>
-                <RadioButton x:Name="rbR" Grid.Column="1" Content="□" Margin="10"/>
+                <RadioButton x:Name="rbE" Grid.Column="0" IsChecked="{Binding IsEllipsePen, Mode=OneWay}" Command="{Binding PenTipCommand}" CommandParameter="Ellipse" Content="○" Margin="10"/>
+                <RadioButton x:Name="rbR" Grid.Column="1" IsChecked="{Binding IsRectanglePen, Mode=OneWay}" Command="{Binding PenTipCommand}" CommandParameter="Rectangle" Content="□" Margin="10"/>
             </Grid>
             <StackPanel Orientation="Vertical">
-                <RadioButton x:Name="rbL" IsChecked="True" Content="Lage" Margin="10"/>
-                <RadioButton x:Name="rbM" Content="Medium" Margin="10"/>
-                <RadioButton x:Name="rbS" Content="Small" Margin="10"/>
+                <RadioButton x:Name="rbL" IsChecked="{Binding IsLagePen, Mode=OneWay}" Command="{Binding PenSizeCommand}" CommandParameter="Lage" Content="Lage" Margin="10"/>
+                <RadioButton x:Name="rbM" IsChecked="{Binding IsMediumPen, Mode=OneWay}" Command="{Binding PenSizeCommand}" CommandParameter="Medium" Content="Medium" Margin="10"/>
+                <RadioButton x:Name="rbS" IsChecked="{Binding IsSmallPen, Mode=OneWay}" Command="{Binding PenSizeCommand}" CommandParameter="Small" Content="Small" Margin="10"/>
             </StackPanel>
-            <Controls:ColorSelector x:Name="ColorSelector"/>
+            <Controls:ColorSelector x:Name="ColorSelector" SelectedColor="{Binding PenColor}"/>
         </StackPanel>
         <ScrollViewer Grid.Column="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" >
-            <Grid Background="RosyBrown">
-                <Image x:Name="ImageView" Grid.Column="1" Source="{Binding ImageSource}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Grid Background="LemonChiffon">
+                <Image x:Name="ImageView" Grid.Column="1" Source="{Binding ImageSource}" HorizontalAlignment="Left" VerticalAlignment="Top">
+                </Image>
                 <!--<InkCanvas Behaviors:ActualSizeBehavior.ActualSize="{Binding ActualSize}"  Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" Behaviors:InkCanvasBehavior.Strokes="{Binding Strokes}" Behaviors:InkCanvasBehavior.ActualSizeChanged="{Binding ActualSizeChanged}" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top"/>-->
-                <InkCanvas Strokes="{Binding InkStrokes}" Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top">
-                    <!--<InkCanvas.Triggers>
-                        <DataTrigger Binding="{Binding ElementName=rbL, Path=IsChecked}" Value="true">
-                            <Setter Property="DefaultDrawingAttributes" Value=""/>
-                        </DataTrigger>
-                    </InkCanvas.Triggers>-->
-                    <InkCanvas.Style>
+                <InkCanvas Strokes="{Binding InkStrokes}" DefaultDrawingAttributes="{Binding InkPen}"  Width="{Binding ActualWidth, ElementName=ImageView}" Height="{Binding ActualHeight,ElementName=ImageView}" Background="Transparent" MinWidth="0" MinHeight="0" HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <!--<InkCanvas.Style>
                         <Style TargetType="InkCanvas">
                             <Style.Triggers>
                                 <MultiDataTrigger>
@@ -119,7 +117,7 @@
                                 </MultiDataTrigger>
                             </Style.Triggers>
                         </Style>
-                    </InkCanvas.Style>
+                    </InkCanvas.Style>-->
                     <Behaviors:DataPiping.DataPipes>
                         <Behaviors:DataPipeCollection>
                             <Behaviors:DataPipe Source = "{Binding RelativeSource={RelativeSource AncestorType={x:Type InkCanvas}}, Path=ActualWidth}" Target="{Binding Path=ActualWidth, Mode=OneWayToSource}"/>

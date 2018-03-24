@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converters\DoubleComparisonToBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converters\IntComparisonToBooleanConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensions\VagueStringToMatchLikePattern.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\ProgressDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mvvm\AsyncCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\ConfirmationDialog.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MvvmOption\DefaultOpenFileDialog.cs" />
@@ -51,8 +52,5 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)MvvmOption\" />
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace DatabaseUtility
 {
@@ -192,7 +193,7 @@ namespace DatabaseUtility
     {
         public static double ColorToValue(ColorData color)
         {
-            Windows.UI.Color col = color;
+            Color col = color;
             return (
                 ((double)col.R / 255) * 1.35
                 +
@@ -202,9 +203,9 @@ namespace DatabaseUtility
                 ) / 5.0;
         }
 
-        public static Windows.UI.Color BackColorToTextColor(Windows.UI.Color col)
+        public static Color BackColorToTextColor(Color col)
         {
-            return ColorToValue(col) < 0.53 ? Windows.UI.Colors.White : Windows.UI.Colors.Black;
+            return ColorToValue(col) < 0.53 ? Colors.White : Colors.Black;
         }
         //データソース->表示データ
         public object Convert(object Value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -219,7 +220,7 @@ namespace DatabaseUtility
         public object ConvertBack(object Value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
             System.Windows.Media.Color value = Value == null ? System.Windows.Media.Colors.White : (System.Windows.Media.Color)Value;
-            Windows.UI.Color color = BackColorToTextColor(Windows.UI.Color.FromArgb(value.A, value.R, value.G, value.B));
+            Color color = BackColorToTextColor(Color.FromArgb(value.A, value.R, value.G, value.B));
             return new ColorData { color = (((Int32)color.A) << 24) + (((Int32)color.R) << 16) + (((Int32)color.G) << 8) + ((Int32)color.B) };
         }
     }

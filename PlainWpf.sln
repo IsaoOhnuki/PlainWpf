@@ -12,6 +12,7 @@ EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		PlainUtility\PlainUtility.projitems*{1da0aa92-c1a2-4b4a-ac69-98a5ab62f165}*SharedItemsImports = 13
+		DatabaseProject\DatabaseProject.projitems*{a10d60e0-9458-4360-919f-612e557f9d92}*SharedItemsImports = 4
 		PlainUtility\PlainUtility.projitems*{a10d60e0-9458-4360-919f-612e557f9d92}*SharedItemsImports = 4
 		DatabaseProject\DatabaseProject.projitems*{c055d3d8-8edd-48b3-b488-e0b526696e75}*SharedItemsImports = 13
 	EndGlobalSection

@@ -4,8 +4,8 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.Data.Entity;
 using System.Data.SqlClient;
-//using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
 using System.Security;
@@ -25,21 +25,33 @@ namespace DatabaseUtility
 {
     public enum DialogInitializeType
     {
-        // サーバー選択ダイアログ（データベース固定）
+        /// <summary>
+        /// サーバー選択ダイアログ（データベース固定）
+        /// </summary>
         ServerSelect,
-        // データベース選択ダイアログ（サーバー固定）
+        /// <summary>
+        /// データベース選択ダイアログ（サーバー固定）
+        /// </summary>
         DatabaseSelect,
-        // サーバー、データベース選択可能
+        /// <summary>
+        /// サーバー、データベース選択可能
+        /// </summary>
         ServerAndDatabaseSelect,
     }
 
     public enum ServerConnectionAuthenticate
     {
-        // 認証無し
+        /// <summary>
+        /// 認証無し
+        /// </summary>
         NoAuthenticate,
-        // Windows認証デフォルト選択
+        /// <summary>
+        /// Windows認証デフォルト選択
+        /// </summary>
         Windows,
-        // SQLServer認証デフォルト選択
+        /// <summary>
+        /// SQLServer認証デフォルト選択
+        /// </summary>
         SQLServer,
     }
 
@@ -192,7 +204,7 @@ namespace DatabaseUtility
 
         public ObservableCollection<string> Databases { get; set; }
 
-        public SQLServerConfigurationDialog(string connectionString)
+        private SQLServerConfigurationDialog(string connectionString)
         {
             InitializeComponent();
 
@@ -220,7 +232,14 @@ namespace DatabaseUtility
                 Databases.Clear();
             Databases.Add("<最新の情報に更新>");
             if (list != null)
-                Databases.AddRange(list);
+            {
+                //Databases.AddRange(list);
+                foreach (var val in list)
+                {
+                    Databases.Add(val);
+                }
+            }
+
         }
 
         public string SelectedDatabase

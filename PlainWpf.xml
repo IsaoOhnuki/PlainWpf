@@ -146,6 +146,19 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:PlainWpf.Views.Thread">
+            <summary>
+            Thread.xaml の相互作用ロジック
+            </summary>
+            <summary>
+            Thread
+            </summary>
+        </member>
+        <member name="M:PlainWpf.Views.Thread.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:PlainWpf.Views.ViewBoxTest">
             <summary>
             ViewBoxTest.xaml の相互作用ロジック
@@ -691,6 +704,555 @@
             </summary>
             <param name="dateTime">The date time.</param>
             <returns>サンプル出力</returns>
+        </member>
+        <member name="F:MvvmOption.ProgressDialogResult.None">
+            <summary>
+            The none
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ProgressDialogResult.Cancel">
+            <summary>
+            The cancel
+            </summary>
+        </member>
+        <member name="P:MvvmOption.ProgressDialogRequestMessage.Button1Text">
+            <summary>
+            Gets or sets the button1 text.
+            </summary>
+            <value>
+            The button1 text.
+            </value>
+        </member>
+        <member name="M:MvvmOption.ProgressDialogContent.#ctor(MvvmOption.ProgressDialogType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogContent"/> class.
+            </summary>
+            <param name="dialogType">Type of the dialog.</param>
+        </member>
+        <member name="P:MvvmOption.ProgressDialogContentViewModel.Closer">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:MvvmOption.ConfirmationDialogContentViewModel"/> is closer.
+            </summary>
+            <value>
+              <c>true</c> if closer; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ProgressDialogContentViewModel.Text">
+            <summary>
+            Gets the text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ProgressDialogContentViewModel.Button1Command">
+            <summary>
+            Gets the button1 command.
+            </summary>
+            <value>
+            The button1 command.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ProgressDialogContentViewModel.Button1Text">
+            <summary>
+            Gets the button1 text.
+            </summary>
+            <value>
+            The button1 text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ProgressDialogContentViewModel.Button1Visibility">
+            <summary>
+            Gets the button1 visibility.
+            </summary>
+            <value>
+            The button1 visibility.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ProgressDialogContentViewModel.RequestMessage">
+            <summary>
+            Gets or sets the request message.
+            </summary>
+            <value>
+            The request message.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ProgressDialogContentViewModel.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>
+            The message.
+            </value>
+        </member>
+        <member name="M:MvvmOption.ProgressDialogContentViewModel.#ctor(MvvmOption.ProgressDialogType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogContentViewModel"/> class.
+            </summary>
+            <param name="dialogType">Type of the dialog.</param>
+        </member>
+        <member name="T:MvvmOption.ConfirmationDialogType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ConfirmationDialogType.Ok">
+            <summary>
+            The ok
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ConfirmationDialogType.OkCancel">
+            <summary>
+            The ok cancel
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ConfirmationDialogType.YesNoCancel">
+            <summary>
+            The yes no cancel
+            </summary>
+        </member>
+        <member name="T:MvvmOption.ConfirmationDialogResult">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ConfirmationDialogResult.None">
+            <summary>
+            The none
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ConfirmationDialogResult.Ok">
+            <summary>
+            The ok
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ConfirmationDialogResult.Cancel">
+            <summary>
+            The cancel
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ConfirmationDialogResult.Yes">
+            <summary>
+            The yes
+            </summary>
+        </member>
+        <member name="F:MvvmOption.ConfirmationDialogResult.No">
+            <summary>
+            The no
+            </summary>
+        </member>
+        <member name="T:MvvmOption.ConfirmationDialogRequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogRequestMessage.Button1Text">
+            <summary>
+            Gets or sets the button1 text.
+            </summary>
+            <value>
+            The button1 text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogRequestMessage.Button2Text">
+            <summary>
+            Gets or sets the button2 text.
+            </summary>
+            <value>
+            The button2 text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogRequestMessage.Button3Text">
+            <summary>
+            Gets or sets the button3 text.
+            </summary>
+            <value>
+            The button3 text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogRequestMessage.ConfirmationDialogResult">
+            <summary>
+            Gets or sets the confirmation dialog result.
+            </summary>
+            <value>
+            The confirmation dialog result.
+            </value>
+        </member>
+        <member name="T:MvvmOption.ConfirmationDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MvvmOption.ConfirmationDialogRequest.#ctor(System.Type,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogRequest"/> class.
+            </summary>
+        </member>
+        <member name="T:MvvmOption.OkDialogContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MvvmOption.OkDialogContent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.OkDialogContent"/> class.
+            </summary>
+        </member>
+        <member name="T:MvvmOption.OkDialogRequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MvvmOption.OkDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MvvmOption.OkDialogRequest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.OkDialogRequest"/> class.
+            </summary>
+        </member>
+        <member name="T:MvvmOption.OkCancelDialogContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MvvmOption.OkCancelDialogContent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.OkCancelDialogContent"/> class.
+            </summary>
+        </member>
+        <member name="T:MvvmOption.OkCancelDialogRequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MvvmOption.OkCancelDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MvvmOption.OkCancelDialogRequest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.OkCancelDialogRequest"/> class.
+            </summary>
+        </member>
+        <member name="T:MvvmOption.YesNoCancelDialogContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MvvmOption.YesNoCancelDialogContent.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.YesNoCancelDialogContent"/> class.
+            </summary>
+        </member>
+        <member name="T:MvvmOption.YesNoCancelDialogRequestMessage">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MvvmOption.YesNoCancelDialogRequestToIRequestTypeConverter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MvvmOption.YesNoCancelDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MvvmOption.YesNoCancelDialogRequest.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.YesNoCancelDialogRequest"/> class.
+            </summary>
+        </member>
+        <member name="T:MvvmOption.ConfirmationDialogContent">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MvvmOption.ConfirmationDialogContent.#ctor(MvvmOption.ConfirmationDialogType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogContent"/> class.
+            </summary>
+            <param name="dialogType">Type of the dialog.</param>
+        </member>
+        <member name="T:MvvmOption.ConfirmationDialogContentViewModel">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Closer">
+            <summary>
+            Gets or sets a value indicating whether this <see cref="T:MvvmOption.ConfirmationDialogContentViewModel"/> is closer.
+            </summary>
+            <value>
+              <c>true</c> if closer; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Text">
+            <summary>
+            Gets the text.
+            </summary>
+            <value>
+            The text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button1Command">
+            <summary>
+            Gets the button1 command.
+            </summary>
+            <value>
+            The button1 command.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button2Command">
+            <summary>
+            Gets the button2 command.
+            </summary>
+            <value>
+            The button2 command.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button3Command">
+            <summary>
+            Gets the button3 command.
+            </summary>
+            <value>
+            The button3 command.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button1Text">
+            <summary>
+            Gets the button1 text.
+            </summary>
+            <value>
+            The button1 text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button2Text">
+            <summary>
+            Gets the button2 text.
+            </summary>
+            <value>
+            The button2 text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button3Text">
+            <summary>
+            Gets the button3 text.
+            </summary>
+            <value>
+            The button3 text.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button1Visibility">
+            <summary>
+            Gets the button1 visibility.
+            </summary>
+            <value>
+            The button1 visibility.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button2Visibility">
+            <summary>
+            Gets the button2 visibility.
+            </summary>
+            <value>
+            The button2 visibility.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button3Visibility">
+            <summary>
+            Gets the button3 visibility.
+            </summary>
+            <value>
+            The button3 visibility.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.RequestMessage">
+            <summary>
+            Gets or sets the request message.
+            </summary>
+            <value>
+            The request message.
+            </value>
+        </member>
+        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>
+            The message.
+            </value>
+        </member>
+        <member name="M:MvvmOption.ConfirmationDialogContentViewModel.#ctor(MvvmOption.ConfirmationDialogType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogContentViewModel"/> class.
+            </summary>
+            <param name="dialogType">Type of the dialog.</param>
+        </member>
+        <member name="T:MvvmOption.DefaultOpenFileDialogRequestToIRequestTypeConverter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MvvmOption.DefaultOpenFileDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MvvmOption.DefaultSaveFileDialogRequestToIRequestTypeConverter">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MvvmOption.DefaultSaveFileDialogRequest">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:MvvmOption.SimpleWipeNavigationStory">
+            <summary>
+            シンプルなワイプ系のアニメーション
+            </summary>
+            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
+        </member>
+        <member name="T:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode">
+            <summary>
+            ワイプアニメーションのタイプ定義
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.CenterSpread">
+            <summary>
+            遷移先が中心から広がる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalSpread">
+            <summary>
+            遷移先が水平方向に広がる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.VerticalSpread">
+            <summary>
+            遷移先が垂直方向に広がる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.CenterNarrowed">
+            <summary>
+            遷移元が中心に窄まる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalNarrowed">
+            <summary>
+            遷移元が左右から中心に窄まる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.VerticalNarrowed">
+            <summary>
+            遷移元が上下から中心に窄まる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.LeftToHorizontal">
+            <summary>
+            遷移先が左から右に水平方向に広がる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.RightToHorizontal">
+            <summary>
+            遷移先が右から左に水平方向に広がる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.TopToVertical">
+            <summary>
+            遷移先が上から下に垂直方向に広がる
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.BottomToVertical">
+            <summary>
+            遷移先が下から上に垂直方向に広がる
+            </summary>
+        </member>
+        <member name="P:MvvmOption.SimpleWipeNavigationStory.NavigationMode">
+            <summary>
+            再生するワイプアニメーションのタイプ
+            </summary>
+        </member>
+        <member name="P:MvvmOption.SimpleWipeNavigationStory.Duration">
+            <summary>
+            アニメーションの再生時間
+            </summary>
+        </member>
+        <member name="M:MvvmOption.SimpleWipeNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
+            <summary>
+            アニメーション再生の為のイニシャライザ
+            </summary>
+            <param name="fromContent">遷移元ページ</param>
+            <param name="toContent">遷移先ページ</param>
+            <returns>アニメーションを再生するコンテント</returns>
+        </member>
+        <member name="M:MvvmOption.SimpleWipeNavigationStory.Animate(System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            アニメーション再生
+            </summary>
+            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
+        </member>
+        <member name="T:MvvmOption.SimpleRaiseNavigationStory">
+            <summary>
+            シンプルなスライド系のアニメーション
+            </summary>
+            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
+        </member>
+        <member name="T:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode">
+            <summary>
+            スライドアニメーションのタイプ定義
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
+            <summary>
+            遷移先ページが右側からスライド
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
+            <summary>
+            遷移先ページが左側からスライド
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
+            <summary>
+            遷移先ページが下側からスライド
+            </summary>
+        </member>
+        <member name="F:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
+            <summary>
+            遷移先ページが上側からスライド
+            </summary>
+        </member>
+        <member name="P:MvvmOption.SimpleRaiseNavigationStory.NavigationMode">
+            <summary>
+            再生するスライドアニメーションのタイプ
+            </summary>
+        </member>
+        <member name="P:MvvmOption.SimpleRaiseNavigationStory.Duration">
+            <summary>
+            アニメーションの再生時間
+            </summary>
+        </member>
+        <member name="M:MvvmOption.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
+            <summary>
+            アニメーション再生の為のイニシャライザ
+            </summary>
+            <param name="fromContent">遷移元ページ</param>
+            <param name="toContent">遷移先ページ</param>
+            <returns>アニメーションを再生するコンテント</returns>
+        </member>
+        <member name="M:MvvmOption.SimpleRaiseNavigationStory.Animate(System.Action{System.Windows.FrameworkElement})">
+            <summary>
+            アニメーション再生
+            </summary>
+            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
         </member>
         <member name="T:Mvvm.AsyncCommand`1">
             <summary>
@@ -1301,469 +1863,6 @@
             </summary>
             <param name="element">ターゲットを添付したFrameworkElement</param>
             <param name="viewType">遷移先ページのType</param>
-        </member>
-        <member name="T:MvvmOption.ConfirmationDialogType">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:MvvmOption.ConfirmationDialogType.Ok">
-            <summary>
-            The ok
-            </summary>
-        </member>
-        <member name="F:MvvmOption.ConfirmationDialogType.OkCancel">
-            <summary>
-            The ok cancel
-            </summary>
-        </member>
-        <member name="F:MvvmOption.ConfirmationDialogType.YesNoCancel">
-            <summary>
-            The yes no cancel
-            </summary>
-        </member>
-        <member name="T:MvvmOption.ConfirmationDialogResult">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="F:MvvmOption.ConfirmationDialogResult.None">
-            <summary>
-            The none
-            </summary>
-        </member>
-        <member name="F:MvvmOption.ConfirmationDialogResult.Ok">
-            <summary>
-            The ok
-            </summary>
-        </member>
-        <member name="F:MvvmOption.ConfirmationDialogResult.Cancel">
-            <summary>
-            The cancel
-            </summary>
-        </member>
-        <member name="F:MvvmOption.ConfirmationDialogResult.Yes">
-            <summary>
-            The yes
-            </summary>
-        </member>
-        <member name="F:MvvmOption.ConfirmationDialogResult.No">
-            <summary>
-            The no
-            </summary>
-        </member>
-        <member name="T:MvvmOption.ConfirmationDialogRequestMessage">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogRequestMessage.Button1Text">
-            <summary>
-            Gets or sets the button1 text.
-            </summary>
-            <value>
-            The button1 text.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogRequestMessage.Button2Text">
-            <summary>
-            Gets or sets the button2 text.
-            </summary>
-            <value>
-            The button2 text.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogRequestMessage.Button3Text">
-            <summary>
-            Gets or sets the button3 text.
-            </summary>
-            <value>
-            The button3 text.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogRequestMessage.ConfirmationDialogResult">
-            <summary>
-            Gets or sets the confirmation dialog result.
-            </summary>
-            <value>
-            The confirmation dialog result.
-            </value>
-        </member>
-        <member name="T:MvvmOption.ConfirmationDialogRequest">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MvvmOption.ConfirmationDialogRequest.#ctor(System.Type,System.Type)">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogRequest"/> class.
-            </summary>
-        </member>
-        <member name="T:MvvmOption.OkDialogContent">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MvvmOption.OkDialogContent.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.OkDialogContent"/> class.
-            </summary>
-        </member>
-        <member name="T:MvvmOption.OkDialogRequestMessage">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:MvvmOption.OkDialogRequest">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MvvmOption.OkDialogRequest.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.OkDialogRequest"/> class.
-            </summary>
-        </member>
-        <member name="T:MvvmOption.OkCancelDialogContent">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MvvmOption.OkCancelDialogContent.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.OkCancelDialogContent"/> class.
-            </summary>
-        </member>
-        <member name="T:MvvmOption.OkCancelDialogRequestMessage">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:MvvmOption.OkCancelDialogRequest">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MvvmOption.OkCancelDialogRequest.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.OkCancelDialogRequest"/> class.
-            </summary>
-        </member>
-        <member name="T:MvvmOption.YesNoCancelDialogContent">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MvvmOption.YesNoCancelDialogContent.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.YesNoCancelDialogContent"/> class.
-            </summary>
-        </member>
-        <member name="T:MvvmOption.YesNoCancelDialogRequestMessage">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:MvvmOption.YesNoCancelDialogRequestToIRequestTypeConverter">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:MvvmOption.YesNoCancelDialogRequest">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MvvmOption.YesNoCancelDialogRequest.#ctor">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.YesNoCancelDialogRequest"/> class.
-            </summary>
-        </member>
-        <member name="T:MvvmOption.ConfirmationDialogContent">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:MvvmOption.ConfirmationDialogContent.#ctor(MvvmOption.ConfirmationDialogType)">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogContent"/> class.
-            </summary>
-            <param name="dialogType">Type of the dialog.</param>
-        </member>
-        <member name="T:MvvmOption.ConfirmationDialogContentViewModel">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Closer">
-            <summary>
-            Gets or sets a value indicating whether this <see cref="T:MvvmOption.ConfirmationDialogContentViewModel"/> is closer.
-            </summary>
-            <value>
-              <c>true</c> if closer; otherwise, <c>false</c>.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Text">
-            <summary>
-            Gets the text.
-            </summary>
-            <value>
-            The text.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button1Command">
-            <summary>
-            Gets the button1 command.
-            </summary>
-            <value>
-            The button1 command.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button2Command">
-            <summary>
-            Gets the button2 command.
-            </summary>
-            <value>
-            The button2 command.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button3Command">
-            <summary>
-            Gets the button3 command.
-            </summary>
-            <value>
-            The button3 command.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button1Text">
-            <summary>
-            Gets the button1 text.
-            </summary>
-            <value>
-            The button1 text.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button2Text">
-            <summary>
-            Gets the button2 text.
-            </summary>
-            <value>
-            The button2 text.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button3Text">
-            <summary>
-            Gets the button3 text.
-            </summary>
-            <value>
-            The button3 text.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button1Visibility">
-            <summary>
-            Gets the button1 visibility.
-            </summary>
-            <value>
-            The button1 visibility.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button2Visibility">
-            <summary>
-            Gets the button2 visibility.
-            </summary>
-            <value>
-            The button2 visibility.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Button3Visibility">
-            <summary>
-            Gets the button3 visibility.
-            </summary>
-            <value>
-            The button3 visibility.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.RequestMessage">
-            <summary>
-            Gets or sets the request message.
-            </summary>
-            <value>
-            The request message.
-            </value>
-        </member>
-        <member name="P:MvvmOption.ConfirmationDialogContentViewModel.Message">
-            <summary>
-            Gets or sets the message.
-            </summary>
-            <value>
-            The message.
-            </value>
-        </member>
-        <member name="M:MvvmOption.ConfirmationDialogContentViewModel.#ctor(MvvmOption.ConfirmationDialogType)">
-            <summary>
-            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogContentViewModel"/> class.
-            </summary>
-            <param name="dialogType">Type of the dialog.</param>
-        </member>
-        <member name="T:MvvmOption.DefaultOpenFileDialogRequestToIRequestTypeConverter">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:MvvmOption.DefaultOpenFileDialogRequest">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:MvvmOption.DefaultSaveFileDialogRequestToIRequestTypeConverter">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:MvvmOption.DefaultSaveFileDialogRequest">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="T:MvvmOption.SimpleWipeNavigationStory">
-            <summary>
-            シンプルなワイプ系のアニメーション
-            </summary>
-            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
-        </member>
-        <member name="T:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode">
-            <summary>
-            ワイプアニメーションのタイプ定義
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.CenterSpread">
-            <summary>
-            遷移先が中心から広がる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalSpread">
-            <summary>
-            遷移先が水平方向に広がる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.VerticalSpread">
-            <summary>
-            遷移先が垂直方向に広がる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.CenterNarrowed">
-            <summary>
-            遷移元が中心に窄まる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.HorizontalNarrowed">
-            <summary>
-            遷移元が左右から中心に窄まる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.VerticalNarrowed">
-            <summary>
-            遷移元が上下から中心に窄まる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.LeftToHorizontal">
-            <summary>
-            遷移先が左から右に水平方向に広がる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.RightToHorizontal">
-            <summary>
-            遷移先が右から左に水平方向に広がる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.TopToVertical">
-            <summary>
-            遷移先が上から下に垂直方向に広がる
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleWipeNavigationStory.WipeNavigationMode.BottomToVertical">
-            <summary>
-            遷移先が下から上に垂直方向に広がる
-            </summary>
-        </member>
-        <member name="P:MvvmOption.SimpleWipeNavigationStory.NavigationMode">
-            <summary>
-            再生するワイプアニメーションのタイプ
-            </summary>
-        </member>
-        <member name="P:MvvmOption.SimpleWipeNavigationStory.Duration">
-            <summary>
-            アニメーションの再生時間
-            </summary>
-        </member>
-        <member name="M:MvvmOption.SimpleWipeNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
-            <summary>
-            アニメーション再生の為のイニシャライザ
-            </summary>
-            <param name="fromContent">遷移元ページ</param>
-            <param name="toContent">遷移先ページ</param>
-            <returns>アニメーションを再生するコンテント</returns>
-        </member>
-        <member name="M:MvvmOption.SimpleWipeNavigationStory.Animate(System.Action{System.Windows.FrameworkElement})">
-            <summary>
-            アニメーション再生
-            </summary>
-            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
-        </member>
-        <member name="T:MvvmOption.SimpleRaiseNavigationStory">
-            <summary>
-            シンプルなスライド系のアニメーション
-            </summary>
-            <remarks><a href="http://techoh.net/wpf-control-storyboard-with-code/">2分でできるC#コードからWPFのアニメーションを操る方法</a></remarks>
-        </member>
-        <member name="T:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode">
-            <summary>
-            スライドアニメーションのタイプ定義
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode.RightToLeft">
-            <summary>
-            遷移先ページが右側からスライド
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode.LeftToRight">
-            <summary>
-            遷移先ページが左側からスライド
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode.BottomToTop">
-            <summary>
-            遷移先ページが下側からスライド
-            </summary>
-        </member>
-        <member name="F:MvvmOption.SimpleRaiseNavigationStory.RaiseNavigationMode.TopToBottom">
-            <summary>
-            遷移先ページが上側からスライド
-            </summary>
-        </member>
-        <member name="P:MvvmOption.SimpleRaiseNavigationStory.NavigationMode">
-            <summary>
-            再生するスライドアニメーションのタイプ
-            </summary>
-        </member>
-        <member name="P:MvvmOption.SimpleRaiseNavigationStory.Duration">
-            <summary>
-            アニメーションの再生時間
-            </summary>
-        </member>
-        <member name="M:MvvmOption.SimpleRaiseNavigationStory.Initialize(System.Windows.FrameworkElement,System.Windows.FrameworkElement)">
-            <summary>
-            アニメーション再生の為のイニシャライザ
-            </summary>
-            <param name="fromContent">遷移元ページ</param>
-            <param name="toContent">遷移先ページ</param>
-            <returns>アニメーションを再生するコンテント</returns>
-        </member>
-        <member name="M:MvvmOption.SimpleRaiseNavigationStory.Animate(System.Action{System.Windows.FrameworkElement})">
-            <summary>
-            アニメーション再生
-            </summary>
-            <param name="endAnimation">アニメーション終了時のイベントハンドラ</param>
         </member>
         <member name="T:Utilitys.ColorPlus">
             <summary>

@@ -113,27 +113,28 @@
                         </Button.Style>
                     </Button>
                 </StackPanel>
-                <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage1}"/>
-                <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage1}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage2}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage3}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage4}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:XmlTreeView}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:ViewBoxTest}"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage5" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage5}"/>
+                <Button Content="SubPage1-Show" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage1}" Padding="0,5"/>
+                <Button Content="SubPage1-Close" Mvvm:NavigationServiceEx.Target="{Binding ElementName=RightContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Null}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage1" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage1}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage2" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage2}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage3" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage3}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage4" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage4}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:XmlTreeView}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:ViewBoxTest}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage5" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage5}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Progress" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:Thread}" Padding="0,5"/>
                 <ListBox x:Name="AnimeType" ScrollViewer.VerticalScrollBarVisibility="Visible">
                     <ListBox.Items>
-                        <ListBoxItem Name="n5" Content="Narrowed"/>
-                        <ListBoxItem Name="n6" Content="HorizontalNarrowed"/>
-                        <ListBoxItem Name="n7" Content="VerticalNarrowed"/>
-                        <ListBoxItem Name="n8" Content="Spread"/>
-                        <ListBoxItem Name="n9" Content="HorizontalSpread"/>
-                        <ListBoxItem Name="n10" Content="VerticalSpread"/>
-                        <ListBoxItem Name="n11" Content="LeftToHorizontal"/>
-                        <ListBoxItem Name="n12" Content="RightToHorizontal"/>
-                        <ListBoxItem Name="n13" Content="TopToVertical"/>
-                        <ListBoxItem Name="n14" Content="BottomToVertical"/>
+                        <ListBoxItem Name="n5" Content="Narrowed" Padding="0,5"/>
+                        <ListBoxItem Name="n6" Content="HorizontalNarrowed" Padding="0,5"/>
+                        <ListBoxItem Name="n7" Content="VerticalNarrowed" Padding="0,5"/>
+                        <ListBoxItem Name="n8" Content="Spread" Padding="0,5"/>
+                        <ListBoxItem Name="n9" Content="HorizontalSpread" Padding="0,5"/>
+                        <ListBoxItem Name="n10" Content="VerticalSpread" Padding="0,5"/>
+                        <ListBoxItem Name="n11" Content="LeftToHorizontal" Padding="0,5"/>
+                        <ListBoxItem Name="n12" Content="RightToHorizontal" Padding="0,5"/>
+                        <ListBoxItem Name="n13" Content="TopToVertical" Padding="0,5"/>
+                        <ListBoxItem Name="n14" Content="BottomToVertical" Padding="0,5"/>
                     </ListBox.Items>
                 </ListBox>
             </StackPanel>

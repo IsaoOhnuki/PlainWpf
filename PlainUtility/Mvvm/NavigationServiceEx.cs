@@ -52,22 +52,19 @@ namespace Mvvm
             }
         }
 
-        /// <summary>
-        /// Gets or sets a value indicating whether [history tracing animation].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [history tracing animation]; otherwise, <c>false</c>.
-        /// </value>
-        public bool HistoryTracingAnimation
+        public static bool GetHistoryTracingAnimation(DependencyObject obj)
         {
-            get { return (bool)(Content.GetValue(HistoryTracingAnimationProperty)); }
-            set { Content.SetValue(HistoryTracingAnimationProperty, value); }
+            return (bool)obj.GetValue(HistoryTracingAnimationProperty);
+        }
+        public static void SetHistoryTracingAnimation(DependencyObject obj, bool value)
+        {
+            obj.SetValue(HistoryTracingAnimationProperty, value);
         }
         /// <summary>
         /// The history tracing animation property
         /// </summary>
         public static readonly DependencyProperty HistoryTracingAnimationProperty = DependencyProperty.RegisterAttached(
-            nameof(HistoryTracingAnimation),
+            "HistoryTracingAnimation",
             typeof(bool),
             typeof(NavigationServiceEx),
             new PropertyMetadata(default(bool)));
@@ -172,7 +169,7 @@ namespace Mvvm
             if (CanNavigation)
             {
                 CanNavigation = false;
-                if (story == null || (!HistoryTracingAnimation && historyTrace))
+                if (story == null || (!GetHistoryTracingAnimation(this.Content) && historyTrace))
                 {
                     this.Content.Content = view;
                     if (!historyTrace)

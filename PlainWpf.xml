@@ -133,15 +133,15 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:PlainWpf.Views.Thread">
+        <member name="T:PlainWpf.Views.ThreadPage">
             <summary>
             Thread.xaml の相互作用ロジック
             </summary>
             <summary>
-            Thread
+            ThreadPage
             </summary>
         </member>
-        <member name="M:PlainWpf.Views.Thread.InitializeComponent">
+        <member name="M:PlainWpf.Views.ThreadPage.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -692,7 +692,7 @@
             <param name="dateTime">The date time.</param>
             <returns>サンプル出力</returns>
         </member>
-        <member name="F:MvvmOption.ProgressDialogResult.None">
+        <member name="F:MvvmOption.ProgressDialogResult.Completed">
             <summary>
             The none
             </summary>
@@ -700,6 +700,11 @@
         <member name="F:MvvmOption.ProgressDialogResult.Cancel">
             <summary>
             The cancel
+            </summary>
+        </member>
+        <member name="M:MvvmOption.ProgressDialogRequest.#ctor(System.Type,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogRequest"/> class.
             </summary>
         </member>
         <member name="P:MvvmOption.ProgressDialogRequestMessage.Button1Text">

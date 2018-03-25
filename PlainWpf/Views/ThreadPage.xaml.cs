@@ -18,9 +18,9 @@ namespace PlainWpf.Views
     /// <summary>
     /// Thread.xaml の相互作用ロジック
     /// </summary>
-    public partial class Thread : UserControl
+    public partial class ThreadPage : UserControl
     {
-        public Thread()
+        public ThreadPage()
         {
             InitializeComponent();
         }

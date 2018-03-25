@@ -64,7 +64,7 @@
     <Compile Include="ViewModels\SubPage3ViewModel.cs" />
     <Compile Include="ViewModels\SubPage4ViewModel.cs" />
     <Compile Include="ViewModels\SubPage5ViewModel.cs" />
-    <Compile Include="ViewModels\ThreadViewModel.cs" />
+    <Compile Include="ViewModels\ThreadPageViewModel.cs" />
     <Compile Include="ViewModels\UserControl1ViewModel.cs" />
     <Compile Include="ViewModels\ViewBoxTestViewModel.cs" />
     <Compile Include="ViewModels\XmlTreeViewModel.cs" />
@@ -83,8 +83,8 @@
     <Compile Include="Views\SubPage5.xaml.cs">
       <DependentUpon>SubPage5.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Thread.xaml.cs">
-      <DependentUpon>Thread.xaml</DependentUpon>
+    <Compile Include="Views\ThreadPage.xaml.cs">
+      <DependentUpon>ThreadPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewBoxTest.xaml.cs">
       <DependentUpon>ViewBoxTest.xaml</DependentUpon>
@@ -128,7 +128,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Thread.xaml">
+    <Page Include="Views\ThreadPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

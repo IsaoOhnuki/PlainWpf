@@ -122,7 +122,7 @@
                 <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="XML" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:XmlTreeView}" Padding="0,5"/>
                 <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Viewbox" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:ViewBoxTest}" Padding="0,5"/>
                 <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="SubPage5" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:SubPage5}" Padding="0,5"/>
-                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Progress" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:Thread}" Padding="0,5"/>
+                <Button IsEnabled="{Binding ElementName=MainContent, Path=(Mvvm:NavigationServiceEx.CanNavigation)}" Content="Progress" Mvvm:NavigationServiceEx.Target="{Binding ElementName=MainContent}" Command="NavigationCommands.GoToPage" CommandParameter="{x:Type local:ThreadPage}" Padding="0,5"/>
                 <ListBox x:Name="AnimeType" ScrollViewer.VerticalScrollBarVisibility="Visible">
                     <ListBox.Items>
                         <ListBoxItem Name="n5" Content="Narrowed" Padding="0,5"/>

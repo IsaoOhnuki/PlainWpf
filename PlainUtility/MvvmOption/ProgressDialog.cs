@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -18,12 +19,151 @@ namespace MvvmOption
         /// <summary>
         /// The none
         /// </summary>
-        None,
+        Completed,
         /// <summary>
         /// The cancel
         /// </summary>
         Cancel,
     }
+
+    public class CancelProgressDialogContent : ProgressDialogContent
+    {
+        public CancelProgressDialogContent()
+            : base(ProgressDialogType.Cancel)
+        {
+
+        }
+    }
+
+    public class CancelProgressDialogRequest : ProgressDialogRequest
+    {
+        public CancelProgressDialogRequest()
+            : base(typeof(CancelProgressDialogContent), typeof(ProgressDialogRequestMessage))
+        {
+
+        }
+    }
+
+    public class ProgressDialogRequest : PopupWindowRequest
+    {
+        public double ContentMargin { get; set; } = double.NaN;
+        public Brush ContentBackground { get; set; }
+        public double ProgressWidth { get; set; } = double.NaN;
+        public double ProgressHeight { get; set; } = double.NaN;
+        public double ButtonWidth { get; set; } = double.NaN;
+        public double ButtonHeight { get; set; } = double.NaN;
+        public FontFamily ButtonFontFamily { get; set; }
+        public double ButtonFontSize { get; set; } = double.NaN;
+        public Brush ProgressBackground { get; set; }
+        public Brush ProgressForeground { get; set; }
+        public Brush ProgressBorder { get; set; }
+        public Thickness ProgressBorderThickness { get; set; } = new Thickness(double.NaN);
+        public Brush ButtonBackground { get; set; }
+        public Brush ButtonForeground { get; set; }
+        public Brush ButtonBorder { get; set; }
+        public Thickness ButtonBorderThickness { get; set; } = new Thickness(double.NaN);
+        public FontFamily LabelFontFamily { get; set; }
+        public double LabelFontSize { get; set; } = double.NaN;
+        public Brush LabelForeground { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConfirmationDialogRequest"/> class.
+        /// </summary>
+        public ProgressDialogRequest(Type typeOfRecipientView, Type messageType)
+            : base(typeOfRecipientView, messageType)
+        {
+            ControlboxEnabled = false;
+            WindowStyle = WindowStyle.SingleBorderWindow;
+            ResizeMode = ResizeMode.NoResize;
+            WindowState = WindowState.Normal;
+            SizeToContent = SizeToContent.WidthAndHeight;
+            WindowStartupLocation = WindowStartupLocation.CenterOwner;
+        }
+        protected override void OnCreateContent(ContentControl content)
+        {
+            base.OnCreateContent(content);
+
+            if (content is ProgressDialogContent dialogContent)
+            {
+                if (!double.IsNaN(ProgressWidth))
+                {
+                    dialogContent.ProgressWidth = ProgressWidth;
+                }
+                if (!double.IsNaN(ProgressHeight))
+                {
+                    dialogContent.ProgressHeight = ProgressHeight;
+                }
+                if (!double.IsNaN(ButtonWidth))
+                {
+                    dialogContent.ButtonWidth = ButtonWidth;
+                }
+                if (!double.IsNaN(ButtonHeight))
+                {
+                    dialogContent.ButtonHeight = ButtonHeight;
+                }
+                if (!double.IsNaN(ContentMargin))
+                {
+                    dialogContent.ControlMargin = ContentMargin;
+                }
+                if (!double.IsNaN(LabelFontSize))
+                {
+                    dialogContent.LabelFontSize = LabelFontSize;
+                }
+                if (LabelFontFamily != null)
+                {
+                    dialogContent.LabelFontFamily = LabelFontFamily;
+                }
+                if (!double.IsNaN(ButtonFontSize))
+                {
+                    dialogContent.ButtonFontSize = ButtonFontSize;
+                }
+                if (ButtonFontFamily != null)
+                {
+                    dialogContent.ButtonFontFamily = ButtonFontFamily;
+                }
+                if (!double.IsNaN(ProgressBorderThickness.Left) || !double.IsNaN(ProgressBorderThickness.Top) || !double.IsNaN(ProgressBorderThickness.Right) || !double.IsNaN(ProgressBorderThickness.Bottom))
+                {
+                    dialogContent.ProgressBorderThickness = ProgressBorderThickness;
+                }
+                if (!double.IsNaN(ButtonBorderThickness.Left) || !double.IsNaN(ButtonBorderThickness.Top) || !double.IsNaN(ButtonBorderThickness.Right) || !double.IsNaN(ButtonBorderThickness.Bottom))
+                {
+                    dialogContent.ButtonBorderThickness = ButtonBorderThickness;
+                }
+                if (ContentBackground != null)
+                {
+                    dialogContent.ContentBackground = ContentBackground;
+                }
+                if (ProgressBackground != null)
+                {
+                    dialogContent.ProgressBackground = ProgressBackground;
+                }
+                if (ProgressForeground != null)
+                {
+                    dialogContent.ProgressForeground = ProgressForeground;
+                }
+                if (ButtonBackground != null)
+                {
+                    dialogContent.ButtonBackground = ButtonBackground;
+                }
+                if (ButtonForeground != null)
+                {
+                    dialogContent.ButtonForeground = ButtonForeground;
+                }
+                if (LabelForeground != null)
+                {
+                    dialogContent.LabelForeground = LabelForeground;
+                }
+                if (ButtonBorder != null)
+                {
+                    dialogContent.ButtonBorder = ButtonBorder;
+                }
+                if (ProgressBorder != null)
+                {
+                    dialogContent.ProgressBorder = ProgressBorder;
+                }
+            }
+        }
+    }
+
     public class ProgressDialogRequestMessage : RequestMessage
     {
         /// <summary>
@@ -34,6 +174,7 @@ namespace MvvmOption
         /// </value>
         public string Button1Text { get; set; }
         public ProgressDialogResult ProgressDialogResult { get; set; }
+        public Task Work { get; set; }
     }
 
     public class ProgressDialogContent : RecipientView
@@ -66,6 +207,36 @@ namespace MvvmOption
                 grid.Background = ContentBackground;
             }
         }
+        private Brush progressBackground;
+        public Brush ProgressBackground
+        {
+            get { return progressBackground; }
+            set
+            {
+                progressBackground = value;
+                progress.Background = progressBackground;
+            }
+        }
+        private Brush progressForeground;
+        public Brush ProgressForeground
+        {
+            get { return progressForeground; }
+            set
+            {
+                progressForeground = value;
+                progress.Foreground = progressForeground;
+            }
+        }
+        private Brush progressBorder;
+        public Brush ProgressBorder
+        {
+            get { return progressBorder; }
+            set
+            {
+                progressBorder = value;
+                progress.BorderBrush = progressBorder;
+            }
+        }
         private Brush buttonBackground;
         public Brush ButtonBackground
         {
@@ -96,6 +267,16 @@ namespace MvvmOption
                 button1.BorderBrush = buttonBorder;
             }
         }
+        private Thickness progressBorderThickness;
+        public Thickness ProgressBorderThickness
+        {
+            get { return progressBorderThickness; }
+            set
+            {
+                progressBorderThickness = value;
+                progress.BorderThickness = progressBorderThickness;
+            }
+        }
         private Thickness buttonBorderThickness;
         public Thickness ButtonBorderThickness
         {
@@ -114,6 +295,26 @@ namespace MvvmOption
             {
                 labelForeground = value;
                 textBlock.Foreground = labelForeground;
+            }
+        }
+        private double progressWidth = 300;
+        public double ProgressWidth
+        {
+            get { return progressWidth; }
+            set
+            {
+                progressWidth = value;
+                progress.Width = progressWidth;
+            }
+        }
+        private double progressHeight = 20;
+        public double ProgressHeight
+        {
+            get { return progressHeight; }
+            set
+            {
+                progressHeight = value;
+                progress.Height = progressHeight;
             }
         }
         private double buttonWidth = 80;
@@ -176,13 +377,14 @@ namespace MvvmOption
                 textBlock.FontSize = labelFontSize;
             }
         }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfirmationDialogContent"/> class.
         /// </summary>
         /// <param name="dialogType">Type of the dialog.</param>
         public ProgressDialogContent(ProgressDialogType dialogType)
         {
-            this.dialogType = dialogType;
+            this.dialogType = ProgressDialogType.Cancel;
             DataContext = new ProgressDialogContentViewModel(dialogType);
             grid = new Grid();
             var row1 = new RowDefinition { Height = new System.Windows.GridLength(1, GridUnitType.Star) };
@@ -195,10 +397,11 @@ namespace MvvmOption
             BindingOperations.SetBinding(textBlock, TextBlock.TextProperty, new Binding("Text"));
             Grid.SetRow(textBlock, 0);
             grid.Children.Add(textBlock);
-            progress = new ProgressBar { IsIndeterminate = true, Margin = new Thickness(ControlMargin, 0, ControlMargin, ControlMargin) };
-            Grid.SetRow(progress, 2);
+            progress = new ProgressBar { IsIndeterminate = true, Margin = new Thickness(ControlMargin, 0, ControlMargin, ControlMargin), Width = ProgressWidth, Height = ProgressHeight };
+            Grid.SetRow(progress, 1);
+            grid.Children.Add(progress);
             buttonPanel = new StackPanel { Orientation = Orientation.Horizontal, Margin = new Thickness(ControlMargin, 0, ControlMargin, ControlMargin), FlowDirection = FlowDirection.RightToLeft };
-            Grid.SetRow(buttonPanel, 3);
+            Grid.SetRow(buttonPanel, 2);
             grid.Children.Add(buttonPanel);
             button1 = new Button { Name = "Button1", Margin = new Thickness(0, 0, 0, 0), Width = ButtonWidth, Height = ButtonHeight, FontFamily = ButtonFontFamily, FontSize = ButtonFontSize };
             BindingOperations.SetBinding(button1, Button.CommandProperty, new Binding("Button1Command"));
@@ -209,6 +412,7 @@ namespace MvvmOption
             //MinWidth = (ControlMargin + ButtonWidth) * (dialogType == ConfirmationDialogType.Ok ? 2 : dialogType == ConfirmationDialogType.OkCancel ? 3 : 4);
         }
     }
+
     public class ProgressDialogContentViewModel : BindableBase, IMessageRecipient
     {
         private bool closer = false;
@@ -295,7 +499,7 @@ namespace MvvmOption
         public ProgressDialogContentViewModel(ProgressDialogType dialogType)
         {
             Button1Command = new DelegateCommand(() => {
-                RequestMessage.ProgressDialogResult = dialogType == ProgressDialogType.Cancel ? ProgressDialogResult.Cancel : ProgressDialogResult.None;
+                RequestMessage.ProgressDialogResult = ProgressDialogResult.Cancel;
                 Closer = true;
             });
             Button1Text = dialogType == ProgressDialogType.Cancel ? "キャンセル" : "";

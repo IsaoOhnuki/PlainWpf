@@ -11,8 +11,21 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Mvvm:MessengerService.Requests>
         <Mvvm:RequestCollection>
-            <MvvmOption:CancelProgressDialogRequest ProgressForeground="Black" ProgressBorderThickness="5" ProgressBorder="ForestGreen" >
-                <MvvmOption:CancelProgressDialogRequest.ProgressBackground>
+            <MvvmOption:ProgressDialogRequest ProgressBorderThickness="5" ProgressBorder="ForestGreen" >
+                <MvvmOption:ProgressDialogRequest.ProgressForeground>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <LinearGradientBrush.RelativeTransform>
+                            <TransformGroup>
+                                <ScaleTransform CenterY="0.5" CenterX="0.5"/>
+                                <SkewTransform CenterY="0.5" CenterX="0.5"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </LinearGradientBrush.RelativeTransform>
+                        <GradientStop Color="#FF7E8FFF" Offset="0"/>
+                        <GradientStop Color="#FFFFB2B2" Offset="1"/>
+                    </LinearGradientBrush>
+                </MvvmOption:ProgressDialogRequest.ProgressForeground>
+                <MvvmOption:ProgressDialogRequest.ProgressBackground>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <LinearGradientBrush.RelativeTransform>
                             <TransformGroup>
@@ -25,15 +38,16 @@
                         <GradientStop Color="#FF7E8FFF" Offset="0"/>
                         <GradientStop Color="#FFFFB2B2" Offset="1"/>
                     </LinearGradientBrush>
-                </MvvmOption:CancelProgressDialogRequest.ProgressBackground>
-            </MvvmOption:CancelProgressDialogRequest>
+                </MvvmOption:ProgressDialogRequest.ProgressBackground>
+            </MvvmOption:ProgressDialogRequest>
         </Mvvm:RequestCollection>
     </Mvvm:MessengerService.Requests>
     <UserControl.DataContext>
         <ViewModels:ThreadPageViewModel/>
     </UserControl.DataContext>
     <Grid>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="151,138,0,0" VerticalAlignment="Top" Width="75" Command="{Binding RunCommand}"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="376,146,0,0" TextWrapping="Wrap" Text="{Binding Result}" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Run Task" HorizontalAlignment="Left" Margin="151,138,0,0" VerticalAlignment="Top" Width="75" Command="{Binding RunCommand}"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="376,146,0,0" TextWrapping="Wrap" Text="{Binding LoopCount}" VerticalAlignment="Top" Width="120"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="376,176,0,0" TextWrapping="Wrap" Text="{Binding Result}" IsReadOnly="True" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </UserControl>

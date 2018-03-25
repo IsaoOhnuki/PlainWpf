@@ -715,7 +715,7 @@
             The cancel
             </summary>
         </member>
-        <member name="M:MvvmOption.ProgressDialogRequest.#ctor(System.Type,System.Type)">
+        <member name="M:MvvmOption.ProgressDialogRequest.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogRequest"/> class.
             </summary>
@@ -728,7 +728,7 @@
             The button1 text.
             </value>
         </member>
-        <member name="M:MvvmOption.ProgressDialogContent.#ctor(MvvmOption.ProgressDialogType)">
+        <member name="M:MvvmOption.ProgressDialogContent.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogContent"/> class.
             </summary>
@@ -790,7 +790,7 @@
             The message.
             </value>
         </member>
-        <member name="M:MvvmOption.ProgressDialogContentViewModel.#ctor(MvvmOption.ProgressDialogType)">
+        <member name="M:MvvmOption.ProgressDialogContentViewModel.#ctor">
             <summary>
             Initializes a new instance of the <see cref="T:MvvmOption.ConfirmationDialogContentViewModel"/> class.
             </summary>

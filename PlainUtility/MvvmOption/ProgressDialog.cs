@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -10,10 +11,6 @@ using System.Windows.Media;
 
 namespace MvvmOption
 {
-    public enum ProgressDialogType
-    {
-        Cancel,
-    }
     public enum ProgressDialogResult
     {
         /// <summary>
@@ -24,24 +21,6 @@ namespace MvvmOption
         /// The cancel
         /// </summary>
         Cancel,
-    }
-
-    public class CancelProgressDialogContent : ProgressDialogContent
-    {
-        public CancelProgressDialogContent()
-            : base(ProgressDialogType.Cancel)
-        {
-
-        }
-    }
-
-    public class CancelProgressDialogRequest : ProgressDialogRequest
-    {
-        public CancelProgressDialogRequest()
-            : base(typeof(CancelProgressDialogContent), typeof(ProgressDialogRequestMessage))
-        {
-
-        }
     }
 
     public class ProgressDialogRequest : PopupWindowRequest
@@ -68,8 +47,8 @@ namespace MvvmOption
         /// <summary>
         /// Initializes a new instance of the <see cref="ConfirmationDialogRequest"/> class.
         /// </summary>
-        public ProgressDialogRequest(Type typeOfRecipientView, Type messageType)
-            : base(typeOfRecipientView, messageType)
+        public ProgressDialogRequest()
+            : base(typeof(ProgressDialogContent), typeof(ProgressDialogRequestMessage))
         {
             ControlboxEnabled = false;
             WindowStyle = WindowStyle.SingleBorderWindow;
@@ -174,7 +153,10 @@ namespace MvvmOption
         /// </value>
         public string Button1Text { get; set; }
         public ProgressDialogResult ProgressDialogResult { get; set; }
-        public Task Work { get; set; }
+        //public CancellationTokenSource CancellationTokenSource { get; set; }
+        //public Task Work { get; set; }
+        public Action<CancellationToken> WorkAction { get; set; }
+        public Action<ProgressDialogResult> WorkCompleted { get; set; }
     }
 
     public class ProgressDialogContent : RecipientView
@@ -184,7 +166,6 @@ namespace MvvmOption
         private Button button1;
         private ProgressBar progress;
         private StackPanel buttonPanel;
-        private ProgressDialogType dialogType;
         private double contentMargin = 10;
         public double ControlMargin
         {
@@ -382,10 +363,9 @@ namespace MvvmOption
         /// Initializes a new instance of the <see cref="ConfirmationDialogContent"/> class.
         /// </summary>
         /// <param name="dialogType">Type of the dialog.</param>
-        public ProgressDialogContent(ProgressDialogType dialogType)
+        public ProgressDialogContent()
         {
-            this.dialogType = ProgressDialogType.Cancel;
-            DataContext = new ProgressDialogContentViewModel(dialogType);
+            DataContext = new ProgressDialogContentViewModel();
             grid = new Grid();
             var row1 = new RowDefinition { Height = new System.Windows.GridLength(1, GridUnitType.Star) };
             var row2 = new RowDefinition { Height = new System.Windows.GridLength(0, GridUnitType.Auto) };
@@ -473,8 +453,21 @@ namespace MvvmOption
                 {
                     Button1Text = RequestMessage.Button1Text;
                 }
+
+                TaskWait();
             }
         }
+
+        private CancellationTokenSource cancellationTokenSource;
+
+        private async void TaskWait()
+        {
+            cancellationTokenSource = new CancellationTokenSource();
+            await Task.Run(() => requestMessage.WorkAction.Invoke(cancellationTokenSource.Token), cancellationTokenSource.Token);
+            Closer = true;
+            requestMessage.WorkCompleted?.Invoke(cancellationTokenSource.IsCancellationRequested ? ProgressDialogResult.Cancel : ProgressDialogResult.Completed);
+        }
+
         private IMessage message;
         /// <summary>
         /// Gets or sets the message.
@@ -496,14 +489,13 @@ namespace MvvmOption
         /// Initializes a new instance of the <see cref="ConfirmationDialogContentViewModel"/> class.
         /// </summary>
         /// <param name="dialogType">Type of the dialog.</param>
-        public ProgressDialogContentViewModel(ProgressDialogType dialogType)
+        public ProgressDialogContentViewModel()
         {
             Button1Command = new DelegateCommand(() => {
-                RequestMessage.ProgressDialogResult = ProgressDialogResult.Cancel;
-                Closer = true;
+                cancellationTokenSource.Cancel();
             });
-            Button1Text = dialogType == ProgressDialogType.Cancel ? "キャンセル" : "";
-            Button1Visibility = dialogType == ProgressDialogType.Cancel ? Visibility.Visible : Visibility.Collapsed;
+            Button1Text = "キャンセル";
+            Button1Visibility = Visibility.Visible;
         }
     }
 }

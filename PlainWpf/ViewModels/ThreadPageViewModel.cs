@@ -14,7 +14,7 @@ namespace PlainWpf.ViewModels
     // http://nineworks2.blog.fc2.com/blog-entry-4.html asyncとIProgressを使ってプログレスバーを操作する
     public class ThreadPageViewModel : BindableBase
     {
-        private string loopCount = "1000000000";
+        private string loopCount;
         public string LoopCount
         {
             get { return loopCount; }

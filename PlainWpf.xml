@@ -1665,14 +1665,6 @@
             </summary>
             <remarks><a href="http://sourcechord.hatenablog.com/entry/2016/02/01/003758">WPFでシンプルな独自ナビゲーション処理のサンプルを書いてみた</a></remarks>
         </member>
-        <member name="P:Mvvm.NavigationServiceEx.HistoryTracingAnimation">
-            <summary>
-            Gets or sets a value indicating whether [history tracing animation].
-            </summary>
-            <value>
-              <c>true</c> if [history tracing animation]; otherwise, <c>false</c>.
-            </value>
-        </member>
         <member name="F:Mvvm.NavigationServiceEx.HistoryTracingAnimationProperty">
             <summary>
             The history tracing animation property

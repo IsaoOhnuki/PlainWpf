@@ -140,7 +140,7 @@
             </StackPanel>
         </Grid>
         <ContentControl x:Name="RightContent" Mvvm:NavigationServiceEx.NavigationStory="{StaticResource StoryS}" Grid.Column="2" Width="Auto"/>
-        <ContentControl x:Name="MainContent" Grid.Column="1" Background="Red">
+        <ContentControl x:Name="MainContent" Mvvm:NavigationServiceEx.HistoryTracingAnimation="true"  Grid.Column="1" Background="Red">
             <ContentControl.Style>
                 <Style TargetType="ContentControl">
                     <Style.Triggers>

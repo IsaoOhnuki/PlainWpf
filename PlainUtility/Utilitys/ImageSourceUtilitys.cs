@@ -65,7 +65,7 @@ namespace Utilitys
                     pixelFormat = PixelFormats.Pbgra32;
                     break;
                 default:
-                case 58:
+                case 64:
                     pixelFormat = PixelFormats.Rgb24;
                     break;
             }

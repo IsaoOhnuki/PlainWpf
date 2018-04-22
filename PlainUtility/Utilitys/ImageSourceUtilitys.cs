@@ -58,6 +58,7 @@ namespace Utilitys
             BitmapEncoder encoder = null;
             switch (ext)
             {
+                default:
                 case ".bmp":
                     encoder = new BmpBitmapEncoder();
                     break;

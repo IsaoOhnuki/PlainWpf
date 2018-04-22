@@ -47,6 +47,45 @@ namespace Utilitys
                 return imageSource;
         }
 
+        public static BitmapSource RedrawBitmapSourceToNewDpiBpp(BitmapSource bitmapSource, double dpi, int bpp)
+        {
+            PixelFormat pixelFormat;
+            switch (bpp)
+            {
+                case 2:
+                    pixelFormat = PixelFormats.Gray2;
+                    break;
+                case 8:
+                    pixelFormat = PixelFormats.Gray8;
+                    break;
+                case 16:
+                    pixelFormat = PixelFormats.Gray16;
+                    break;
+                case 32:
+                    pixelFormat = PixelFormats.Pbgra32;
+                    break;
+                default:
+                case 24:
+                    pixelFormat = PixelFormats.Rgb24;
+                    break;
+            }
+
+            BitmapSource source;
+
+            var bf = BitmapFrame.Create(bitmapSource);
+
+            var convertedBitmap = new FormatConvertedBitmap(bf, pixelFormat, null, 0);
+            int w = convertedBitmap.PixelWidth;
+            int h = convertedBitmap.PixelHeight;
+            int stride = (w * pixelFormat.BitsPerPixel + 7) / 8;
+            byte[] pixels = new byte[h * stride];
+            convertedBitmap.CopyPixels(pixels, stride, 0);
+
+            source = BitmapSource.Create(w, h, dpi, dpi, convertedBitmap.Format, convertedBitmap.Palette, pixels, stride);
+
+            return source;
+        }
+
         public static void BitmapSourceToFile(string filePath, BitmapSource bmpSrc, FileMode fileMode = FileMode.OpenOrCreate, FileAccess fileAccess = FileAccess.Write)
         {
             if (bmpSrc == null)
